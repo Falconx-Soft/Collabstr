@@ -1,0 +1,98 @@
+/* Navbar */
+.navbar-default{
+    background: white;
+    border-color: white ;
+}
+.collabstr-logo{
+    width: 105px;
+}
+.navbar-right{
+    font-weight: 700;
+    color: black;
+    
+}
+.navbar-right-links{
+    color: black;
+}
+.navbar-default .navbar-nav>li>a {
+    color: rgb(0, 0, 0);
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: grey;
+}
+.Influencer {
+    
+    background: linear-gradient(to right, #fd749f 0%, #c33ab9 100%);    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+/* page content */
+
+.login-form {
+    margin: 6% auto;
+    width: 30%;
+    min-width: 380px;
+}
+.form-title {
+    font-size: 185%;
+    margin: 0 auto 7% auto;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
+.input {
+    min-height: 45px;
+    padding: 0 4px;
+}
+.login-btn {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    font-size: 115%;
+    font-family: inherit;
+    border-radius: 8px;
+    box-shadow:rgba(120, 120, 170, 0.15) 0 2px 16px 0;;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    position: relative;
+    background: black;
+    color: azure;
+    width: inherit;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    margin: 4% auto;
+}
+.login-btn:hover{
+    color: azure;
+    opacity: 0.8;
+}
+.input-login{
+    outline: none;
+    margin-bottom: 30px;
+    width: inherit;
+    border: 1px solid rgba(191,203,218,.6);
+    border-radius: 8px;
+}
+.forgot{
+    color: lightGray;
+    font-size: 100%;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px){
+    .login-form {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,85 @@
+/* contnts */
+.billing-holder {
+    width: 80%;
+    margin: 4% auto;
+}
+.billing-title {
+    font-size: 210%;
+    font-weight: 600;
+    margin: 0 0 4% 0;
+}
+.total-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5% 0 6% 0;
+}
+.total-holder {
+    width: 25%;
+    padding: 26px 0 26px 26px;
+    border-right: 1px solid rgba(191,203,218,.6);
+}
+.total-title {
+    color: gray;
+    margin-bottom: 5px;
+    font-size: 90%;
+}
+.total-num {
+    font-weight: 500;
+    font-size: 190%;
+    margin: 0;
+}
+.download-invoice-btn, .view-stripe-btn {
+    display: block;
+    margin-top: 4px;
+    font-size: 75%;
+    color: #2c9eff;
+    cursor: pointer;
+    width: fit-content;
+}
+.earnings-form{
+    display: flex;
+    margin: 2% 0;
+}
+.textarea, .input, #card-element {
+    font-family: 'Inter', sans-serif;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid rgba(191,203,218,.6);
+    transition-duration: 0.3s;
+}
+.input {
+    min-height: 32px !important;
+    font-weight: 300;
+    margin-right: 8px;
+    width: 100px;
+}
+
+/* order holders */
+.order-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 10px;
+    border-bottom: 1px solid rgba(191,203,218,.4);
+    font-size: 92%;
+}
+.order-date, .order-amount {
+    width: 100px;
+}
+.order-title {
+    font-weight: 600;
+}
+.order-details {
+    width: 30%;
+}
+.order-status {
+    width: 16%;
+}
+.order-amount {
+    width: 100px;
+}
+.no-orders {
+    margin: 5% auto;
+    text-align: center;
+    color: #AAA;
+}

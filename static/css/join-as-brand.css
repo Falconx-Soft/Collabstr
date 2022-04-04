@@ -1,0 +1,279 @@
+.input-content-block{
+    display: flex;
+    padding: 12px;
+}
+.username-domain{
+    font-weight: 700;
+    margin-top: 2px;
+    margin-left: 20px;
+    font-size: initial;
+
+}
+.username-input-influencer{
+    font-size: initial;
+    border: none;
+    width: 550px;
+    outline: none;
+    
+}
+.Join-brand-Title{
+    font-size: 41px;
+    font-weight: 600;
+}
+.signup-txt{
+    margin-top: 8px;
+    color: white;
+    font-weight: 400;
+    font-size: initial;
+    padding: 0px;
+}
+.signup-btn{
+    margin-top: 40px;
+    background: black;
+    border-radius: 10px;
+    width: 200px;
+}
+.change-txt{
+    background: linear-gradient(to right, #fd749f 0%, #c33ab9 100%);    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    border-right: 2px solid;
+}
+/* Example Row Holder 1 */
+.example-row-holder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.row-holder {
+    margin: 10% auto;
+}
+.example-steps-holder {
+    width: 42%;
+}
+.example-row-title {
+    font-size: 190%;
+    font-weight: 600;
+    margin: 0 0 11% 0;
+}
+.example-step {
+    margin: 8% 0;
+}
+.example-step-title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 125%;
+}
+.example-step-txt {
+    line-height: 1.4;
+    font-size: 95%;
+    margin-top: 2%;
+    color: gray;
+    font-weight: 400;
+}
+.example-img-holder {
+    width: 50%;
+}
+.example-img {
+    width: 100%;
+    filter: drop-shadow(2px 8px 0.9rem #f9f9f9);
+}
+/* example row holder with videos to align */
+.content-holder-row .content-holder {
+    width: 33%;
+    box-shadow: var(--darkBoxShadow);
+    border-radius: 8px;
+}
+.link-spanner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.content-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.content-holder-row .content-holder:nth-child(2) {
+    margin-bottom: 58px;
+}
+
+
+.play-btn-holder {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent 0%, #0000009e 100%);
+    border-radius: 0 0 8px 8px;
+}
+.play-btn {
+    width: 20px;
+    margin-bottom: 11px;
+    margin-left: 11px;
+}
+
+/* first Row */
+.title-gradient{
+    margin-top: 100px;
+    font-weight: 600;
+    color: palevioletred;
+}
+.niches {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: 3% auto 4% auto;
+}
+.niche {
+    background-color: rgba(209, 212, 217, 0.38);
+    text-align: center;
+    min-width: 90px;
+    border-radius: 30px;
+    padding: 12px 20px;
+    margin: 8px;
+}
+.influencer-card{
+    margin-right: 15px;
+    width: 270px;
+}
+.card-img-overlay{
+    text-align: initial;
+}
+.profile-text {
+    text-align: initial;
+    font-size: 13px;
+    color: grey;
+}
+/* Faqs Holder */
+
+.faqs-holder {
+    margin: 5% 0 8% 0;
+}
+.faq-holder {
+    margin-bottom: 50px;
+    padding-bottom: 2%;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+.faq-title-holder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.faq-question {
+    font-weight: 600;
+    font-size: 112%;
+    margin: 0;
+}
+.faq-btn {
+    width: 15px;
+    margin-right: 10px;
+    transition-duration: 0.3s;
+}
+.faq-answer {
+    transition: visibility 0s, opacity 0.5s linear;
+    display: none;
+    margin-top: 2%;
+    font-weight: 300;
+    font-size: 95%;
+}
+.row-holder-mobile{
+    display: none;
+}
+.row-holder-mobile-reverse{
+    display: none;
+}
+
+.content-holder-center{
+    margin-top: -40px;
+}
+.scrollbar-none{
+    scrollbar-width: none;
+}
+/* scroll bar style */
+::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: grey; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: black; 
+  }
+  .featured-row::-webkit-scrollbar {
+    display: none;
+  }
+  .navbar-header{
+    width: 40%;
+}
+@media only screen and (max-width: 932px){
+    .navbar-header{
+        width: 29%;
+    }
+}
+@media only screen and (max-width: 800px){
+    .row-holder-mobile{
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar-header {
+        width: 100%;
+    }
+    .row-holder-mobile-reverse{
+        display: flex;
+        flex-direction: column;
+    }
+    .example-img-holder {
+        width: 100%;
+    }
+    .example-steps-holder {
+        width: 95%;
+    }
+    .row-holder-brand{
+        display: none;
+    }
+    .row-holder-brand-reverse{
+        display: none;
+    }
+    .cta-holder{
+        margin-right: 10px;
+        margin-left: 10px;
+        text-align: center;
+        
+    }
+    .faqs-holder {
+     margin-left: 10px;
+    }
+    .featured-row{
+       overflow-x: scroll;
+        margin-left: 10px;
+    }
+.logo-holder{
+    flex-wrap: wrap;
+}
+.content-holder{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.content-holder-center{
+    margin-top: 0;
+}
+}

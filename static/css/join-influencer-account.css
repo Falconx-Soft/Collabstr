@@ -1,0 +1,68 @@
+.edit-holder {
+    width: 80%;
+    margin: 4% auto;
+}
+.edit-title {
+    font-size: 210%;
+    font-weight: 600;
+    margin: 0 0 4% 0;
+}
+.form-influencer-account{
+    align-items: inherit;
+    display: flex;
+    justify-content: center;
+    width: 65%;
+    flex-direction: column;
+}
+.btn-row {
+    display: flex;
+    align-items: center;
+    margin: 0 0 6% 0;
+    flex-wrap: wrap;
+}
+.btn-row .btn {
+    width: 30%;
+    padding: 14px 0;
+    margin: 0 2% 2% 0;
+    box-shadow: none;
+    border: 1px solid black;
+}
+.btn {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    /* border: none; */
+    font-size: 95%;
+    font-family: inherit;
+    border-radius: 8px;
+    /* box-shadow: rgba(120, 120, 170, 0.15) 0 2px 16px 0;; */
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    position: relative;
+}
+.enable-btn {
+    background-color: #d6efe2;
+}
+.input-title {
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+.submit-influencer-account {
+    background-color: black;
+    color: white;
+    width: 250px;
+    padding: 16px 0;
+    margin: 0 0 0 auto;
+}
+.submit-influencer-account:hover{
+    opacity: 0.8;
+    color: white;
+}
+.delete-btn, .pause-btn, .cancel-btn {
+    color: gray;
+    cursor: pointer;
+    font-size: 80%;
+    width: fit-content;
+    margin-right: 25px;
+}
