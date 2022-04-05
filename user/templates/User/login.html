@@ -1,4 +1,4 @@
-{% extends "base-fullscreen.html" %}
+{% extends "base.html" %}
 {% load static %}
 	{% block title %}Login{% endblock %}
 
@@ -7,36 +7,18 @@
 	{% endblock %}
 
 {% block content %} 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid " style="padding: 0;">
-            <div class="container mt-5 navbar-conatainer" style="">
-                <div class="navbar-header" style="width: 40%;">
-                    <a class="navbar-brand" href="home.html">
-                        <div class="" style="display: flex; justify-content: left; margin-top: -23px;">
-                            <h3 class="logo" style="font-weight: 700; color: black;">I N F U L</h3>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <ul class="nav navbar-nav navbar-right ">
-                        <li><a class="navbar-right-links text-dark" href="#">Explore</a></li>
-                        <li><a class="navbar-right-links" href="#">How It Works</a></li>
-                        <li><a class="navbar-right-links" href="login.html">Login</a></li>
-                        <li><a class="navbar-right-links" href="join-as-brand.html">Join as Brand</a></li>
-                        <li><a class="navbar-right-links Influencer" href="join-as-influencer.html">Join as Influencer</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+
     <div class="form-holder login-form">
         <h1 class="form-title">Welcome Back</h1>
-		<form method="POST" action="{% url 'login' %}">
+		<p>{{msg}}</p>
+		<form class = "form" method="POST" action="{% url 'login' %}">
 			{% csrf_token %} 
             <input class="input input-login mt-3" type="email" placeholder="Email" name="email" required="">
-            <input class="input input-login mt-3" type="password" placeholder="Password" name="password" minlength="6" required="">
+            <input class="input input-login mt-3" type="password" placeholder="Password" name="password" required="">
             <button class="submit btn login-btn mt-5">Login</button>
-            <div class="login-forgot forgot mt-4" style="color: rgba(37, 35, 35, 0.329);"><a style="color: rgb(151, 163, 197);;" href="#">Forgot password?</a></div>
+            <div class="login-forgot forgot mt-4" style="color: rgba(37, 35, 35, 0.329);">
+				<a style="color: rgb(151, 163, 197);;" href="{% url 'reset_password' %}">Forgot password?</a>
+			</div>
         </form>
     </div>
 
@@ -47,8 +29,8 @@
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
+{% block extrajavascript %}
 
 	<script src=" /static/assets/js/waves.min.js"></script>
 
-{% endblock javascripts %} 
+{% endblock extrajavascript %} 
