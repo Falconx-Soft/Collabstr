@@ -31,7 +31,7 @@
         <div class="container-fluid ">
             <div class="container mt-5 navbar-conatainer">
                 <div class="navbar-header" style="">
-                    <a class="navbar-brand" href="home.html" style="margin-left: 0px;">
+                    <a class="navbar-brand" href="{% url 'home' %}" style="margin-left: 0px;">
                         <div class="" style="display: flex; justify-content: left; margin-top: -23px;">
                             <h3 style="font-weight: 700; color: black;">I N F U L</h3>
                         </div>
@@ -42,8 +42,8 @@
                         <li><a class="navbar-right-links text-dark" href="#">Explore</a></li>
                         <li><a class="navbar-right-links" href="#">How It Works</a></li>
                         <li><a class="navbar-right-links" href="{% url 'login' %}">Login</a></li>
-                        <li><a class="navbar-right-links" href="/joinasbrand">Join as Brand</a></li>
-                        <li><a class="navbar-right-links Influencer" href="join-as-influencer.html">Join as Influencer</a></li>
+                        <li><a class="navbar-right-links" href="{% url 'join_as_brand' %}">Join as Brand</a></li>
+                        <li><a class="navbar-right-links Influencer" href="{% url 'join_as_influencer' %}">Join as Influencer</a></li>
                     </ul>
 
                 </div>

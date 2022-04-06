@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -8,6 +9,7 @@ import uuid
 from .models import*
 from django.conf import settings
 from django.core.mail import send_mail
+# from .models import join_influencer
 
 # Create your views here.
 # @login_required(login_url='login')
@@ -76,3 +78,37 @@ def logoutUser(request):
 
 def join_as_brand(request):
 	return render(request,'User/join_as_brand.html')
+
+
+
+def join_as_influencer(request):
+	if request.method== 'POST':
+		influencer_username= request.POST.get('influencer_username')
+		influencer= JoinInfluencer.objects.create(influencer_username= influencer_username)
+		context= {'influencer_username': influencer_username}
+		return render(request,'User/create_your_page.html', context)
+
+	return render(request,'User/join_as_influencer.html')
+
+
+def create_your_page(request):
+	if request.method== 'POST':
+		influencer_username_2= request.POST.get('influencer_username_2')
+		fullname_influencer= request.POST.get('fullname')
+		email_influencer= request.POST.get('email')
+		password_influencer= request.POST.get('password')
+		influencer=JoinInfluencer.objects.get(influencer_username= influencer_username_2)
+		print('influencer', influencer)
+		influencer.full_name=fullname_influencer
+		influencer.email_address=email_influencer
+		influencer.password=password_influencer
+		influencer.save()
+		# influencer= JoinInfluencer.objects.create(influencer_username= influencer_username_2)
+		context= {'influencer_username_2': influencer_username_2}
+		return render(request,'User/join_influencer_profile.html', context)
+	return render(request,'User/create_your_page.html')
+
+
+
+def join_influencer_profile(request):
+	return render(request,'User/create_your_page.html')

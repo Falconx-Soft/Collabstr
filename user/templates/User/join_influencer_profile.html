@@ -1,0 +1,3628 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}">
+<style>
+    .form-holder {
+        margin-top: 10%;
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+    .gender-option{
+        padding: 8px;
+    }
+    .profile-submit-btn{
+        font-size: initial;
+    }
+    @media(max-width:800px){
+        .form-holder .package-holder{
+            flex: 0 48%;
+        }
+    }
+    @media(max-width:400px){
+        .form-holder{
+            min-width: 350px;
+        }
+        .form-holder .package-holder{
+            flex: 0 100%;
+        }
+    }
+</style>
+
+{% endblock extrastyle %}
+
+{% block content %}	
+<!-- form1 -->
+<div class="form-holder active" data-step="1">
+    <!-- <div class="top-btn-holder" style="visibility:hidden;">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div> -->
+    <!-- </div> -->
+    <h2 class="form-title">Where are you located?</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="s66cBhMKKkPHHoaz3AUSp7qlojX5sKtYndywqboOFK4UFp1fbmfUtGPAEMwz8x1d">
+
+
+
+        <div id="location-dropdown">
+            <!-- <input id="location-input" name="l" class="input" type="text"
+                placeholder="City - Enter first 3 letters and select from dropdown" value=""
+                autocomplete="new-password">
+            <input id="location-id" name="l_id" type="hidden" value=""> -->
+            <select name="location_influencer" class="input">
+
+
+                <option value="" selected="" hidden="">City - Enter first 3 letters and select from dropdown</option>
+
+
+                <option value="New Albany">New Albany</option>
+
+                <option value="Alabama">Alabama</option>
+
+                <option value="Alice">Alice</option>
+
+                <option value="Alicia">Alicia</option>
+
+                <option value="Alief">Alief</option>
+
+                <!-- <option value="5">500k-1m</option>
+
+                <option value="6">1m-5m</option>
+
+                <option value="7">5m-10m</option>
+
+                <option value="8">10m+</option> -->
+
+
+            </select>
+            <!-- <div id="location-dropdown-content" style="display: none;">
+                <div class="location-option" data-id="101090"><b>New Albany</b><span class="region-country"> IN,
+                        United States</span></div>
+                <div class="location-option" data-id="101090"><b>Alabama</b><span class="region-country"> NY, United
+                        States</span></div>
+                <div class="location-option" data-id="101090"><b>Alice</b><span class="region-country"> TX, United
+                        States</span></div>
+                <div class="location-option" data-id="101090"><b>Alicia</b><span class="region-country"> MI, United
+                        States</span></div>
+                <div class="location-option" data-id="101090"><b>Alief</b><span class="region-country"> TX, United
+                        States</span></div>
+            </div> -->
+        </div>
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+        <div class="under-btn">I don't see my city<a href="/supported-countries" target="_blank"><span
+                    class="link-spanner"></span></a></div>
+    </form>
+</div>
+<!-- form2 -->
+<div class="form-holder" data-step="2">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">2/12</div>
+    </div>
+    <h2 class="form-title">Summarize yourself, this is your title shown on your profile</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="UFL0q48LC588rvbJy9KB3iLFehyFU0KP3D7Vs82SKdCcnMBm5AvYxeFI5V1sjSLW">
+        <input class="input" type="text" name="title" placeholder="E.g. Fitness Content Creator & Student Athlete"
+            minlength="10" maxlength="75" value="" required="">
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+    </form>
+</div>
+<!-- form3 -->
+<div class="form-holder" data-step="3" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">3/12</div>
+    </div>
+    <h2 class="form-title">Describe yourself and your content</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="UFL0q48LC588rvbJy9KB3iLFehyFU0KP3D7Vs82SKdCcnMBm5AvYxeFI5V1sjSLW">
+        <textarea class="input textarea" name="description"
+            placeholder="Who are you and what type of content do you create? Who is your audience? Be specific as this will help you show up in searches."
+            minlength="100" maxlength="800" required=""></textarea>
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+    </form>
+</div>
+<!-- form4 -->
+<div class="form-holder " data-step="4" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">4/12</div>
+    </div>
+    <h2 class="form-title active">What's your gender?</h2>
+    <form class="form">
+        <div class="gender-option">
+            <input type="radio" id="Female" name="fav_language" value="Female"><label class="gender-selectors"
+                for="female">Female</label><br>
+        </div>
+        <div class="gender-option">
+            <input type="radio" id="Male" name="fav_language" value="Male">
+            <label for="male" class="gender-selectors">Male</label><br>
+        </div>
+        <div class="gender-option">
+            <input type="radio" id="Other" name="fav_language" value="Other">
+            <label for="other" class="gender-selectors">Other</label>
+        </div>
+
+
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+        <div class="under-btn tooltip">Why do you ask this?<img class="tooltip-img"
+                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/tooltip.svg">
+            <div class="tooltip-txt">Brands sometimes look for specific gender(s) when searching. This is how they
+                can filter for it.</div>
+        </div>
+    </form>
+</div>
+<!-- form 5 -->
+<div class="form-holder" data-step="5" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">5/12</div>
+    </div>
+    <h2 class="form-title">Add your social channels</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="UFL0q48LC588rvbJy9KB3iLFehyFU0KP3D7Vs82SKdCcnMBm5AvYxeFI5V1sjSLW">
+        <div class="platform-holder">
+            <div class="platform-option" style="display: flex;">
+                <div class="platform-img"><img
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg">
+                </div>
+                <div>Add Instagram</div>
+            </div>
+            <div class="input-row" style="">
+                <input class="input" type="text" name="instagram_username" placeholder="Instagram Username"
+                    value="">
+                <select name="instagram_followers" class="input">
+
+
+                    <option value="" selected="" hidden="">Instagram Followers</option>
+
+
+                    <option value="9">0-1k</option>
+
+                    <option value="1">1k-10k</option>
+
+                    <option value="2">10k-50k</option>
+
+                    <option value="3">50k-100k</option>
+
+                    <option value="4">100k-500k</option>
+
+                    <option value="5">500k-1m</option>
+
+                    <option value="6">1m-5m</option>
+
+                    <option value="7">5m-10m</option>
+
+                    <option value="8">10m+</option>
+
+
+                </select>
+            </div>
+        </div>
+
+        <div class="platform-holder">
+            <div class="platform-option">
+                <div class="platform-img"><img
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg">
+                </div>
+                <div>Add TikTok</div>
+            </div>
+            <div class="input-row">
+                <input class="input" type="text" name="tiktok_username" placeholder="TikTok Username" value="">
+                <select name="tiktok_followers" class="input">
+
+
+                    <option value="" selected="" hidden="">TikTok Followers</option>
+
+
+                    <option value="9">0-1k</option>
+
+                    <option value="1">1k-10k</option>
+
+                    <option value="2">10k-50k</option>
+
+                    <option value="3">50k-100k</option>
+
+                    <option value="4">100k-500k</option>
+
+                    <option value="5">500k-1m</option>
+
+                    <option value="6">1m-5m</option>
+
+                    <option value="7">5m-10m</option>
+
+                    <option value="8">10m+</option>
+
+
+                </select>
+            </div>
+        </div>
+
+        <div class="platform-holder">
+            <div class="platform-option">
+                <div class="platform-img"><img
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/youtube.svg">
+                </div>
+                <div>Add YouTube</div>
+            </div>
+            <div class="input-row">
+                <input class="input" type="text" name="youtube_username" placeholder="YouTube URL" value="">
+                <select name="youtube_followers" class="input">
+
+
+                    <option value="" selected="" hidden="">YouTube Subscribers</option>
+
+
+                    <option value="9">0-1k</option>
+
+                    <option value="1">1k-10k</option>
+
+                    <option value="2">10k-50k</option>
+
+                    <option value="3">50k-100k</option>
+
+                    <option value="4">100k-500k</option>
+
+                    <option value="5">500k-1m</option>
+
+                    <option value="6">1m-5m</option>
+
+                    <option value="7">5m-10m</option>
+
+                    <option value="8">10m+</option>
+
+
+                </select>
+            </div>
+        </div>
+
+        <div class="platform-holder">
+            <div class="platform-option">
+                <div class="platform-img"><img
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg">
+                </div>
+                <div>Add Twitter</div>
+            </div>
+            <div class="input-row">
+                <input class="input" type="text" name="twitter_username" placeholder="Twitter Username" value="">
+                <select name="twitter_followers" class="input">
+
+
+                    <option value="" selected="" hidden="">Twitter Followers</option>
+
+
+                    <option value="9">0-1k</option>
+
+                    <option value="1">1k-10k</option>
+
+                    <option value="2">10k-50k</option>
+
+                    <option value="3">50k-100k</option>
+
+                    <option value="4">100k-500k</option>
+
+                    <option value="5">500k-1m</option>
+
+                    <option value="6">1m-5m</option>
+
+                    <option value="7">5m-10m</option>
+
+                    <option value="8">10m+</option>
+
+
+                </select>
+            </div>
+        </div>
+
+        <div class="platform-holder">
+            <div class="platform-option">
+                <div class="platform-img"><img
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitch.svg">
+                </div>
+                <div>Add Twitch</div>
+            </div>
+            <div class="input-row">
+                <input class="input" type="text" name="twitch_username" placeholder="Twitch Username" value="">
+                <select name="twitch_followers" class="input">
+
+
+                    <option value="" selected="" hidden="">Twitch Followers</option>
+
+
+                    <option value="9">0-1k</option>
+
+                    <option value="1">1k-10k</option>
+
+                    <option value="2">10k-50k</option>
+
+                    <option value="3">50k-100k</option>
+
+                    <option value="4">100k-500k</option>
+
+                    <option value="5">500k-1m</option>
+
+                    <option value="6">1m-5m</option>
+
+                    <option value="7">5m-10m</option>
+
+                    <option value="8">10m+</option>
+
+
+                </select>
+            </div>
+        </div>
+
+        <div class="platform-holder">
+            <div class="platform-option">
+                <div class="platform-img"><img
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/website.svg">
+                </div>
+                <div>Add Website</div>
+            </div>
+            <div class="input-row">
+                <input class="input" type="text" name="website" placeholder="Website" value="">
+            </div>
+        </div>
+
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+    </form>
+</div>
+<!-- form 6 -->
+<div class="form-holder" data-step="6" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">6/12</div>
+    </div>
+    <h2 class="form-title">Select the niches that match your content</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="UFL0q48LC588rvbJy9KB3iLFehyFU0KP3D7Vs82SKdCcnMBm5AvYxeFI5V1sjSLW">
+        <div class="niches-holder scroll-holder">
+
+
+            <div class="niche-holder " data-id="35">Lifestyle</div>
+
+            <div class="niche-holder " data-id="36">Fashion</div>
+
+            <div class="niche-holder " data-id="37">Beauty</div>
+
+            <div class="niche-holder " data-id="26">Health & Fitness</div>
+
+            <div class="niche-holder " data-id="34">Travel</div>
+
+            <div class="niche-holder " data-id="23">Food & Drink</div>
+
+            <div class="niche-holder " data-id="39">Model</div>
+
+            <div class="niche-holder " data-id="38">Comedy & Entertainment</div>
+
+            <div class="niche-holder " data-id="28">Art & Photography</div>
+
+            <div class="niche-holder " data-id="31">Music & Dance</div>
+
+            <div class="niche-holder " data-id="24">Entrepreneur & Business</div>
+
+            <div class="niche-holder " data-id="29">Family & Children</div>
+
+            <div class="niche-holder " data-id="30">Animals & Pets</div>
+
+            <div class="niche-holder " data-id="33">Athlete & Sports</div>
+
+            <div class="niche-holder " data-id="43">Celebrity & Public Figure</div>
+
+            <div class="niche-holder " data-id="45">Adventure & Outdoors</div>
+
+            <div class="niche-holder " data-id="40">Actor</div>
+
+            <div class="niche-holder " data-id="42">Education</div>
+
+            <div class="niche-holder " data-id="32">Gaming</div>
+
+            <div class="niche-holder " data-id="44">LGBTQ2+</div>
+
+            <div class="niche-holder " data-id="41">Technology</div>
+
+            <div class="niche-holder " data-id="49">Healthcare</div>
+
+            <div class="niche-holder " data-id="46">Vegan</div>
+
+            <div class="niche-holder " data-id="50">Cannabis</div>
+
+            <div class="niche-holder " data-id="48">Skilled Trades</div>
+
+            <div class="niche-holder " data-id="47">Automotive</div>
+
+
+        </div>
+        <input type="hidden" name="niches" value="[33]">
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+    </form>
+</div>
+<!-- form7 -->
+<div class="form-holder " data-step="7" style=" width: 75%;">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">7/12</div>
+    </div>
+    <h2 class="form-title">Add up to 5 images of you and your content</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="2bpzdRBtcWyvFChLxoJHFDwtrpLrnUwFb9LufVvAk42zBTHo4Pu49zqwi3eeMMxM">
+        <div class="scroll-holder scroll-holder-wide">
+            <div id="file-area-prof-pic">
+                <img class="profile-img"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/addProfPic.png">
+                <input id="file-input" type="file" name="img" accept="image/*">
+            </div>
+
+            <div class="img-row">
+                <!-- overlay -->
+
+                <div class="upload-img-overlay">
+                    <div class="upload-btn-overlay">
+                        <input type="file" class="img-file-input file-input js-img-file-input" name="img-files"
+                            accept="image/*" multiple="">
+                        <div class="upload-img-btn btn">
+                            <img class="upload-btn-img"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/upload.svg">Upload
+                            Photos
+                        </div>
+                    </div>
+                    <div class="primary-img">
+                        <div class="file-area"></div>
+                    </div>
+                    <div class="img-col">
+                        <div class="img-row-sq">
+                            <div class="file-area"></div>
+                            <div class="file-area"></div>
+                        </div>
+                        <div class="file-area file-area4"></div>
+                    </div>
+                </div>
+
+                <!-- overlay end -->
+
+                <div class="primary-img">
+                    <div class="file-area">
+                        <div class="cover-img-badge">Cover Photo</div>
+                        <input id="required-img" onchange="showImg(this,0)" class="img-input" type="file"
+                            name="img1" accept="image/*">
+                        <img class="img img1"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/defaultCover.png">
+                    </div>
+                </div>
+                <div class="img-col">
+                    <div class="img-row-sq">
+                        <div class="file-area">
+                            <!-- menu btn -->
+                            <div class="more-img-holder">
+                                <div class="more-img-badge">•••</div>
+                                <div class="more-img-dropdown-holder">
+
+                                    <div class="more-img-dropdown-item" data-action="cover" data-id="2">Make cover
+                                        photo</div>
+
+                                    <div class="more-img-dropdown-item" data-action="delete" data-id="2">Delete
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- menu btn end -->
+
+                            <input onchange="showImg(this,1)" class="img-input" type="file" name="img2"
+                                accept="image/*">
+                            <img class="img img2"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                        </div>
+                        <div class="file-area">
+                            <!-- menu btn -->
+                            <div class="more-img-holder">
+                                <div class="more-img-badge">•••</div>
+                                <div class="more-img-dropdown-holder">
+
+                                    <div class="more-img-dropdown-item" data-action="cover" data-id="3">Make cover
+                                        photo</div>
+
+                                    <div class="more-img-dropdown-item" data-action="delete" data-id="3">Delete
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- menu btn end -->
+
+                            <input onchange="showImg(this,2)" class="img-input" type="file" name="img3"
+                                accept="image/*">
+                            <img class="img img3"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                        </div>
+                    </div>
+                    <div class="file-area file-area4">
+                        <!-- menu btn -->
+                        <div class="more-img-holder">
+                            <div class="more-img-badge">•••</div>
+                            <div class="more-img-dropdown-holder">
+
+                                <div class="more-img-dropdown-item" data-action="cover" data-id="4">Make cover photo
+                                </div>
+
+                                <div class="more-img-dropdown-item" data-action="delete" data-id="4">Delete</div>
+                            </div>
+                        </div>
+                        <!-- menu btn end -->
+
+                        <input onchange="showImg(this,3)" class="img-input" type="file" name="img4"
+                            accept="image/*">
+                        <img class="img img4"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="del_img_list">
+
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+    </form>
+</div>
+<!-- form 8 -->
+<div class="form-holder " data-step="8" style=" width: 75%;">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">8/12</div>
+    </div>
+    <h2 class="form-title" style="margin-bottom: 10px;">Add your packages</h2>
+    <div style="margin-bottom: 30px;">These are services brands can purchase from you. This can be anything from a
+        shoutout on your social media to original content creation. Unsure what to charge?<a href=""> Use our rate
+            calculator.</a>
+    </div>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="2bpzdRBtcWyvFChLxoJHFDwtrpLrnUwFb9LufVvAk42zBTHo4Pu49zqwi3eeMMxM">
+        <div class="scroll-holder scroll-holder-wide">
+            <div class="package-holder box-holder package-holder-1">
+                <div class="package-title box-title">Package 1</div>
+
+
+
+                <select class="input package-category-select" name="package_category_0">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_0">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_0" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_0"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_0" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-2" style="display: none;">
+                <div class="package-title box-title">Package 2</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_1">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_1">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_1" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_1"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_1" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-3" style="display: none;">
+                <div class="package-title box-title">Package 3</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_2">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_2">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_2" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_2"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_2" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-4" style="display: none;">
+                <div class="package-title box-title">Package 4</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_3">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_3">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_3" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_3"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_3" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-5" style="display: none;">
+                <div class="package-title box-title">Package 5</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_4">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_4">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_4" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_4"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_4" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-6" style="display: none;">
+                <div class="package-title box-title">Package 6</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_5">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_5">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_5" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_5"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_5" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-7" style="display: none;">
+                <div class="package-title box-title">Package 7</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_6">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_6">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_6" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_6"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_6" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-8" style="display: none;">
+                <div class="package-title box-title">Package 8</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_7">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_7">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_7" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_7"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_7" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-9" style="display: none;">
+                <div class="package-title box-title">Package 9</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_8">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_8">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_8" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_8"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_8" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-10" style="display: none;">
+                <div class="package-title box-title">Package 10</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_9">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_9">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_9" placeholder="What is this package offering?"
+                    maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_9"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_9" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-11" style="display: none;">
+                <div class="package-title box-title">Package 11</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_10">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_10">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_10"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_10"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_10" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-12" style="display: none;">
+                <div class="package-title box-title">Package 12</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_11">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_11">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_11"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_11"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_11" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-13" style="display: none;">
+                <div class="package-title box-title">Package 13</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_12">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_12">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_12"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_12"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_12" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-14" style="display: none;">
+                <div class="package-title box-title">Package 14</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_13">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_13">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_13"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_13"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_13" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-15" style="display: none;">
+                <div class="package-title box-title">Package 15</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_14">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_14">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_14"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_14"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_14" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-16" style="display: none;">
+                <div class="package-title box-title">Package 16</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_15">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_15">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_15"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_15"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_15" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-17" style="display: none;">
+                <div class="package-title box-title">Package 17</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_16">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_16">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_16"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_16"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_16" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-18" style="display: none;">
+                <div class="package-title box-title">Package 18</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_17">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_17">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_17"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_17"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_17" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-19" style="display: none;">
+                <div class="package-title box-title">Package 19</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_18">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_18">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_18"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_18"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_18" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+            <div class="package-holder box-holder package-holder-20" style="display: none;">
+                <div class="package-title box-title">Package 20</div>
+
+                <div class="delete-package-btn delete-btn">+</div>
+
+
+
+                <select class="input package-category-select" name="package_category_19">
+
+                    <option value="" selected="" hidden="">Choose Platform</option>
+
+
+                    <option value="1">Instagram</option>
+
+                    <option value="2">TikTok</option>
+
+                    <option value="3">User Generated Content</option>
+
+                    <option value="4">YouTube</option>
+
+                    <option value="5">Twitter</option>
+
+                    <option value="6">Twitch</option>
+
+                </select>
+
+                <select class="input package-content-type-select" name="package_content_type_19">
+
+
+                    <option value="" selected="" hidden="">Choose Content Type</option>
+
+
+                    <option data-platform-id="3" hidden="" value="1">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="2">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="3">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="5">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="7">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="8">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="9">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
+
+                    <option data-platform-id="1" hidden="" value="12">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="13">Story</option>
+
+                    <option data-platform-id="1" hidden="" value="14">Live</option>
+
+                    <option data-platform-id="1" hidden="" value="15">Other</option>
+
+                    <option data-platform-id="2" hidden="" value="16">Video</option>
+
+                    <option data-platform-id="2" hidden="" value="17">Story</option>
+
+                    <option data-platform-id="2" hidden="" value="18">Live</option>
+
+                    <option data-platform-id="2" hidden="" value="19">Other</option>
+
+                    <option data-platform-id="4" hidden="" value="20">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="21">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="22">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="23">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="24">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="25">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="26">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="27">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="28">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="29">Other</option>
+
+
+                </select>
+
+
+                <input class="input" type="text" name="package_title_19"
+                    placeholder="What is this package offering?" maxlength="60" value="">
+
+
+                <textarea class="input textarea" name="package_description_19"
+                    placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
+                    maxlength="800"></textarea>
+
+                <input class="input price-input" type="number" name="package_price_19" placeholder="Price (USD)"
+                    value="">
+                <div class="price-disclaimer">Collabstr takes a 15% fee</div>
+            </div>
+
+
+
+            <div class="add-package-btn add-btn mobile-add-btn mobile-add-package-btn">+ Add Another Package</div>
+        </div>
+        <div class="add-package-btn add-btn desktop-add-btn">+ Add Another Package</div>
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+    </form>
+</div>
+<!-- form 9 -->
+<div class="form-holder" data-step="9" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">9/12</div>
+    </div>
+    <h2 class="form-title">Add FAQ's to answer questions about you and your services</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="DrJ98fNQdbG3e8mcAdrVKP6JuQvZdui2Mp54ajHXlja7apMP7EcieL0MluYMCmj9">
+        <div class="scroll-holder">
+
+
+
+            <div class="faq-holder box-holder" style="">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_0"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_0"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_1"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_1"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="display: none;">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_2"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_2"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="display: none;">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_3"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_3"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="display: none;">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_4"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_4"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="display: none;">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_5"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_5"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="display: none;">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_6"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_6"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="display: none;">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_7"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_7"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="display: none;">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_8"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_8"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="faq-holder box-holder" style="display: none;">
+                <div class="box-title">FAQ</div>
+                <div class="delete-faq-btn delete-btn">+</div>
+                <input class="input" type="text" name="faq_question_9"
+                    placeholder="E.g. What brands have you worked with?" maxlength="100" value="">
+                <textarea class="input textarea" name="faq_answer_9"
+                    placeholder="I have worked with FashionNova, HiSmile and more." maxlength="400"></textarea>
+            </div>
+
+
+
+            <div class="add-faq-btn add-btn mobile-add-btn">+ Add FAQ</div>
+        </div>
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+        <div class="under-btn" onclick="nextPrev(1)">Skip for now</div>
+    </form>
+</div>
+<!-- form 10 -->
+<div class="form-holder" data-step="10" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">10/12</div>
+    </div>
+    <h2 class="form-title">Add your mobile number to be notified when you receive an order</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="DrJ98fNQdbG3e8mcAdrVKP6JuQvZdui2Mp54ajHXlja7apMP7EcieL0MluYMCmj9">
+        <div class="sms-row">
+            <select class="input sms-country-dropdown" name="country_code">
+
+
+                <option value="AD">Andorra</option>
+
+                <option value="AE">United Arab Emirates</option>
+
+                <option value="AF">Afghanistan</option>
+
+                <option value="AG">Antigua</option>
+
+                <option value="AI">Anguilla</option>
+
+                <option value="AL">Albania</option>
+
+                <option value="AM">Armenia</option>
+
+                <option value="AN">Netherlands Antilles</option>
+
+                <option value="AO">Angola</option>
+
+                <option value="AQ">Antarctica</option>
+
+                <option value="AR">Argentina</option>
+
+                <option value="AS">American Samoa</option>
+
+                <option value="AT">Austria</option>
+
+                <option value="AU">Australia</option>
+
+                <option value="AW">Aruba</option>
+
+                <option value="AX">Aland Islands</option>
+
+                <option value="AZ">Azerbaijan</option>
+
+                <option value="BA">Bosnia and Herzegovina</option>
+
+                <option value="BB">Barbados</option>
+
+                <option value="BD">Bangladesh</option>
+
+                <option value="BE">Belgium</option>
+
+                <option value="BF">Burkina Faso</option>
+
+                <option value="BG">Bulgaria</option>
+
+                <option value="BH">Bahrain</option>
+
+                <option value="BI">Burundi</option>
+
+                <option value="BJ">Benin</option>
+
+                <option value="BL">Saint Barthélemy</option>
+
+                <option value="BM">Bermuda</option>
+
+                <option value="BN">Brunei</option>
+
+                <option value="BO">Bolivia</option>
+
+                <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+
+                <option value="BR">Brazil</option>
+
+                <option value="BS">The Bahamas</option>
+
+                <option value="BT">Bhutan</option>
+
+                <option value="BV">Bouvet Island</option>
+
+                <option value="BW">Botswana</option>
+
+                <option value="BY">Belarus</option>
+
+                <option value="BZ">Belize</option>
+
+                <option value="CA">Canada</option>
+
+                <option value="CC">Cocos (Keeling) Islands</option>
+
+                <option value="CD">Democratic Republic of the Congo</option>
+
+                <option value="CF">Central African Republic</option>
+
+                <option value="CG">Republic of the Congo</option>
+
+                <option value="CH">Switzerland</option>
+
+                <option value="CI">CÃ´te d'Ivoire</option>
+
+                <option value="CK">Cook Islands</option>
+
+                <option value="CL">Chile</option>
+
+                <option value="CM">Cameroon</option>
+
+                <option value="CN">China</option>
+
+                <option value="CO">Colombia</option>
+
+                <option value="CR">Costa Rica</option>
+
+                <option value="CV">Cape Verde</option>
+
+                <option value="CW">CuraÃ§ao</option>
+
+                <option value="CX">Christmas Island</option>
+
+                <option value="CY">Cyprus</option>
+
+                <option value="CZ">Czech Republic</option>
+
+                <option value="DE">Germany</option>
+
+                <option value="DJ">Djibouti</option>
+
+                <option value="DK">Denmark</option>
+
+                <option value="DM">Dominica</option>
+
+                <option value="DO">Dominican Republic</option>
+
+                <option value="DZ">Algeria</option>
+
+                <option value="EC">Ecuador</option>
+
+                <option value="EE">Estonia</option>
+
+                <option value="EG">Egypt</option>
+
+                <option value="EH">Western Sahara</option>
+
+                <option value="ER">Eritrea</option>
+
+                <option value="ES">Spain</option>
+
+                <option value="ET">Ethiopia</option>
+
+                <option value="FI">Finland</option>
+
+                <option value="FJ">Fiji</option>
+
+                <option value="FK">Falkland Islands</option>
+
+                <option value="FM">Federated States of Micronesia</option>
+
+                <option value="FO">Faroe Islands</option>
+
+                <option value="FR">France</option>
+
+                <option value="GA">Gabon</option>
+
+                <option value="GB">United Kingdom</option>
+
+                <option value="GD">Grenada</option>
+
+                <option value="GE">Georgia</option>
+
+                <option value="GF">French Guiana</option>
+
+                <option value="GG">Guernsey</option>
+
+                <option value="GH">Ghana</option>
+
+                <option value="GI">Gibraltar</option>
+
+                <option value="GL">Greenland</option>
+
+                <option value="GM">The Gambia</option>
+
+                <option value="GN">Guinea</option>
+
+                <option value="GP">Guadeloupe</option>
+
+                <option value="GQ">Equatorial Guinea</option>
+
+                <option value="GR">Greece</option>
+
+                <option value="GS">South Georgia and the South Sandwich Islands</option>
+
+                <option value="GT">Guatemala</option>
+
+                <option value="GU">Guam</option>
+
+                <option value="GW">Guinea-Bissau</option>
+
+                <option value="GY">Guyana</option>
+
+                <option value="HK">Hong Kong</option>
+
+                <option value="HM">Heard Island and McDonald Islands</option>
+
+                <option value="HN">Honduras</option>
+
+                <option value="HR">Croatia</option>
+
+                <option value="HT">Haiti</option>
+
+                <option value="HU">Hungary</option>
+
+                <option value="ID">Indonesia</option>
+
+                <option value="IE">Ireland</option>
+
+                <option value="IL">Israel</option>
+
+                <option value="IM">Isle Of Man</option>
+
+                <option value="IN">India</option>
+
+                <option value="IO">British Indian Ocean Territory</option>
+
+                <option value="IQ">Iraq</option>
+
+                <option value="IS">Iceland</option>
+
+                <option value="IT">Italy</option>
+
+                <option value="JE">Jersey</option>
+
+                <option value="JM">Jamaica</option>
+
+                <option value="JO">Jordan</option>
+
+                <option value="JP">Japan</option>
+
+                <option value="KE">Kenya</option>
+
+                <option value="KG">Kyrgyzstan</option>
+
+                <option value="KH">Cambodia</option>
+
+                <option value="KI">Kiribati</option>
+
+                <option value="KM">Comoros</option>
+
+                <option value="KN">Saint Kitts and Nevis</option>
+
+                <option value="KR">South Korea</option>
+
+                <option value="KW">Kuwait</option>
+
+                <option value="KY">Cayman Islands</option>
+
+                <option value="KZ">Kazakhstan</option>
+
+                <option value="LA">Laos</option>
+
+                <option value="LB">Lebanon</option>
+
+                <option value="LC">St. Lucia</option>
+
+                <option value="LI">Liechtenstein</option>
+
+                <option value="LK">Sri Lanka</option>
+
+                <option value="LR">Liberia</option>
+
+                <option value="LS">Lesotho</option>
+
+                <option value="LT">Lithuania</option>
+
+                <option value="LU">Luxembourg</option>
+
+                <option value="LV">Latvia</option>
+
+                <option value="LY">Libya</option>
+
+                <option value="MA">Morocco</option>
+
+                <option value="MC">Monaco</option>
+
+                <option value="MD">Moldova</option>
+
+                <option value="ME">Montenegro</option>
+
+                <option value="MF">Saint Martin</option>
+
+                <option value="MG">Madagascar</option>
+
+                <option value="MH">Marshall Islands</option>
+
+                <option value="MK">Macedonia</option>
+
+                <option value="ML">Mali</option>
+
+                <option value="MM">Myanmar</option>
+
+                <option value="MN">Mongolia</option>
+
+                <option value="MO">Macau</option>
+
+                <option value="MP">Northern Mariana Islands</option>
+
+                <option value="MQ">Martinique</option>
+
+                <option value="MR">Mauritania</option>
+
+                <option value="MS">Montserrat</option>
+
+                <option value="MT">Malta</option>
+
+                <option value="MU">Mauritius</option>
+
+                <option value="MV">Maldives</option>
+
+                <option value="MW">Malawi</option>
+
+                <option value="MX">Mexico</option>
+
+                <option value="MY">Malaysia</option>
+
+                <option value="MZ">Mozambique</option>
+
+                <option value="NA">Namibia</option>
+
+                <option value="NC">New Caledonia</option>
+
+                <option value="NE">Niger</option>
+
+                <option value="NF">Norfolk Island</option>
+
+                <option value="NG">Nigeria</option>
+
+                <option value="NI">Nicaragua</option>
+
+                <option value="NL">Netherlands</option>
+
+                <option value="NO">Norway</option>
+
+                <option value="NP">Nepal</option>
+
+                <option value="NR">Nauru</option>
+
+                <option value="NU">Niue</option>
+
+                <option value="NZ">New Zealand</option>
+
+                <option value="OM">Oman</option>
+
+                <option value="PA">Panama</option>
+
+                <option value="PE">Peru</option>
+
+                <option value="PF">French Polynesia</option>
+
+                <option value="PG">Papua New Guinea</option>
+
+                <option value="PH">Philippines</option>
+
+                <option value="PK">Pakistan</option>
+
+                <option value="PL">Poland</option>
+
+                <option value="PM">Saint Pierre and Miquelon</option>
+
+                <option value="PN">Pitcairn</option>
+
+                <option value="PR">Puerto Rico</option>
+
+                <option value="PS">Palestine</option>
+
+                <option value="PT">Portugal</option>
+
+                <option value="PW">Palau</option>
+
+                <option value="PY">Paraguay</option>
+
+                <option value="QA">Qatar</option>
+
+                <option value="RE">RÃ©union</option>
+
+                <option value="RO">Romania</option>
+
+                <option value="RS">Serbia</option>
+
+                <option value="RU">Russia</option>
+
+                <option value="RW">Rwanda</option>
+
+                <option value="SA">Saudi Arabia</option>
+
+                <option value="SB">Solomon Islands</option>
+
+                <option value="SC">Seychelles</option>
+
+                <option value="SE">Sweden</option>
+
+                <option value="SG">Singapore</option>
+
+                <option value="SH">Saint Helena</option>
+
+                <option value="SI">Slovenia</option>
+
+                <option value="SJ">Svalbard and Jan Mayen</option>
+
+                <option value="SK">Slovakia</option>
+
+                <option value="SL">Sierra Leone</option>
+
+                <option value="SM">San Marino</option>
+
+                <option value="SN">Senegal</option>
+
+                <option value="SO">Somalia</option>
+
+                <option value="SR">Suriname</option>
+
+                <option value="SS">South Sudan</option>
+
+                <option value="ST">Sao Tome and Principe</option>
+
+                <option value="SV">El Salvador</option>
+
+                <option value="SX">Sint Maarten</option>
+
+                <option value="SZ">Swaziland</option>
+
+                <option value="TC">Turks and Caicos Islands</option>
+
+                <option value="TD">Chad</option>
+
+                <option value="TF">French Southern Territories</option>
+
+                <option value="TG">Togo</option>
+
+                <option value="TH">Thailand</option>
+
+                <option value="TJ">Tajikistan</option>
+
+                <option value="TK">Tokelau</option>
+
+                <option value="TL">Timor-Leste</option>
+
+                <option value="TM">Turkmenistan</option>
+
+                <option value="TN">Tunisia</option>
+
+                <option value="TO">Tonga</option>
+
+                <option value="TR">Turkey</option>
+
+                <option value="TT">Trinidad and Tobago</option>
+
+                <option value="TV">Tuvalu</option>
+
+                <option value="TW">Taiwan</option>
+
+                <option value="TZ">Tanzania</option>
+
+                <option value="UA">Ukraine</option>
+
+                <option value="UG">Uganda</option>
+
+                <option value="UM">United States Minor Outlying Islands</option>
+
+                <option value="US" selected="selected">United States</option>
+
+                <option value="UY">Uruguay</option>
+
+                <option value="UZ">Uzbekistan</option>
+
+                <option value="VA">Vatican City</option>
+
+                <option value="VC">Saint Vincent and the Grenadines</option>
+
+                <option value="VE">Venezuela</option>
+
+                <option value="VG">British Virgin Islands</option>
+
+                <option value="VI">US Virgin Islands</option>
+
+                <option value="VN">Vietnam</option>
+
+                <option value="VU">Vanuatu</option>
+
+                <option value="WF">Wallis and Futuna</option>
+
+                <option value="WS">Samoa</option>
+
+                <option value="XK">Kosovo</option>
+
+                <option value="YE">Yemen</option>
+
+                <option value="YT">Mayotte</option>
+
+                <option value="ZA">South Africa</option>
+
+                <option value="ZM">Zambia</option>
+
+                <option value="ZW">Zimbabwe</option>
+
+
+            </select>
+            <input class="input sms-input" type="tel" name="phone_num" placeholder="Phone Number" minlength="6"
+                value="" required="">
+        </div>
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+    </form>
+</div>
+<!-- form 11 -->
+<div class="form-holder" data-step="11" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">11/12</div>
+    </div>
+    <h2 class="form-title">Enter the 6-digit code sent to your mobile number</h2>
+    <form class="form">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="DrJ98fNQdbG3e8mcAdrVKP6JuQvZdui2Mp54ajHXlja7apMP7EcieL0MluYMCmj9">
+        <input class="input" type="tel" name="verification_code" pattern="[0-9]{6}" placeholder="6-Digit Code"
+            autocomplete="one-time-code" required="">
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+    </form>
+</div>
+<!-- form 12 -->
+<div class="form-holder" data-step="12" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">12/12</div>
+    </div>
+    <h2 class="form-title">Last step! Add your payment info</h2>
+    <div class="form">
+        <a class="submit btn profile-submit-btn" rel="nofollow"
+            href="">Connect
+            Stripe</a>
+        <div class="under-btn">Skip for now<a href=""><span class="link-spanner"></span></a></div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+<script>
+    // $(document).ready(function () {
+    // navbar
+    $(".dashboard-menu-holder").hover(function () {
+        $('.dashboard-menu').show();
+    }, function () {
+        $('.dashboard-menu').hide();
+    });
+    // allforms
+    $('.profile-submit-btn').click(function () {
+        var active = $(".form-holder.active").attr("data-step")
+        var next = parseInt(active) + 1
+        console.log(next)
+        $("[data-step]").removeClass('active')
+        var next_select = `[data-step=${next}]`
+        $(next_select).addClass("active")
+
+
+    });
+    $('.back-btn').click(function () {
+        var active = $(".form-holder.active").attr("data-step")
+        var previous = parseInt(active) - 1
+        console.log(previous)
+        $("[data-step]").removeClass('active')
+        var previous_select = `[data-step=${previous}]`
+        $(previous_select).addClass("active")
+
+
+    });
+    // form 1
+    $('#location-input').click(function () {
+        $('#location-dropdown-content').css("display", "block")
+
+
+    });
+    $('.location-option').click(function () {
+        $('#location-dropdown-content').css("display", "none")
+    });
+
+    // 
+
+    // $('.profile-submit-btn').click(function () {
+    //     $(this).parent().parent().removeClass("form-holder-active")
+    //     $(this).parent().parent().addClass("form-holder")
+
+    //     $(this).parent().parent().next().addClass("form-holder-active")
+    //     $(this).parent().parent().next().removeClass("form-holder")
+
+    // });
+
+    // });
+    // ###############################################################################
+    // form 5
+    $('.platform-option').click(function () {
+        $(this).css("display", "none")
+        $(this).next().css("display", "flex")
+    });
+
+    // ##################################################
+    // form 6
+
+    $('.niche-holder').click(function () {
+
+        if ($(this).hasClass("niche-selected")) {
+            $(this).removeClass("niche-selected")
+        }
+        else {
+            $(this).addClass("niche-selected")
+
+        }
+
+
+    });
+    // #################################################
+    // form 7 upload images
+    $(function () {
+        $('#file-input').change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.profile-img').attr("src", x);
+
+        });
+    })
+    $(function () {
+        $('.js-img-file-input').change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.img1').attr("src", x);
+            $('.upload-img-overlay').css("display", "none")
+
+        });
+    })
+    $(function () {
+        $("input[name='img2']").change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.img2').attr("src", x);
+
+
+        });
+    })
+    $(function () {
+        $("input[name='img3']").change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.img3').attr("src", x);
+
+
+        });
+    })
+    $(function () {
+        $("input[name='img4']").change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.img4').attr("src", x);
+
+
+        });
+    })
+    // #########################################################
+    // form 8
+
+    // ############################################################
+    //  add new form
+    var count = 0
+
+    $($(".add-package-btn.add-btn.desktop-add-btn")[0]).on('click', function (e) {
+        count = count + 1
+        console.log($(this))
+        for (var i = 1; i <= count; i++) {
+            $($(".package-holder.box-holder")[i]).show()
+        }
+    })
+    $(".delete-package-btn").click(function (event) {
+        event.preventDefault();
+        $(this).parent('div').addClass("remove-form-holder");
+
+
+    });
+    $(".package-category-select").on('click', function (e) {
+        console.log($(this).children())
+
+        $(this).next().children().hide()
+        console.log('all elements', $(this).next().children())
+        console.log('inside')
+        var e = $(this).val();
+        var matching = $(this).next().children().filter(function () {
+            return $(this).attr('data-platform-id') == e
+        });
+        console.log(matching)
+        matching.show()
+        console.log('value', e)
+    });
+    $(".package-category-select").children().on('click', function (e) {
+        $(this).next().css("display", "block")
+    })
+
+
+
+    // ##############################################################
+    // form 9
+    var faq_count = 0
+    $($(".add-faq-btn")[0]).on('click', function (e) {
+        faq_count = faq_count + 1
+        console.log($(this))
+        for (var i = 1; i <= faq_count; i++) {
+            $($(".faq-holder")[i]).show()
+        }
+    })
+    $(".delete-faq-btn").click(function (event) {
+        event.preventDefault();
+        $(this).parent('div').addClass("remove-form-holder");
+
+
+    });
+
+</script>
+
+{% endblock extrajavascript %}

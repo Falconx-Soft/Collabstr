@@ -1,0 +1,599 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static '/css/join-as-influencer.css' %}">
+
+{% endblock extrastyle %}
+
+{% block content %}	
+
+<div class="container text-center title-section" style="    padding: 10px;display: flex;flex-direction: column;text-align: center;align-items: center;justify-content: center;">
+    <h1 class="Join-Influencer-Title">Power Your Brand Deals</h1>
+    <h2 class="subtitle">The simple way to sell, manage, and get paid for your Instagram, TikTok, and YouTube brand
+        deals
+    </h2>
+</div>
+<form action="{% url 'join_as_influencer' %}" method="post">
+{% csrf_token %}
+    <div class="d-flex">
+        <div class="dropdown-section container d-flex mt-5 mb-5" style="display: flex;">
+          
+            <div class="input-content-block d-flex" style="">
+    
+                <div class="username-domain">collabstr.com/</div>
+                <div class="username-input-holder">
+                    <input name="influencer_username" type="text" class="username-input-influencer" placeholder="yourname">
+                </div>
+            </div>
+    
+    
+            <div class="claim-influencer">
+                <button  type="submit" class="claim-btn">
+                    <p class="claim-txt" style="color: white;">Claim</p>
+                </button></div>
+    
+        </div>
+    
+    </div>
+</form>
+
+
+<div class="container">
+    <div class="hero-img-holder" style="margin-top: 10%;">
+        <video class="hero-vid" playsinline="" autoplay="" muted="" loop="">
+            <source src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/hero.mp4">
+        </video>
+        <img class="platform-img ig-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/ig.svg" alt="Instagram Logo">
+        <img class="platform-img tiktok-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktokHome.svg"
+            alt="TikTok Logo">
+        <img class="platform-img youtube-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/youtubeHome.svg"
+            alt="Youtube Logo">
+    </div>
+
+</div>
+
+<div class="container" style="text-align: center;">
+    <h2 class="row-title row-title-center title-gradient">Loved by 40,000+ Creators</h2>
+    <div class="niches">
+        <div class="niche">Lifestyle</div>
+        <div class="niche">Fashion</div>
+        <div class="niche">Beauty</div>
+        <div class="niche">Travel</div>
+        <div class="niche">Health & Fitness</div>
+        <div class="niche">Family & Children</div>
+        <div class="niche">Music & Dance</div>
+        <div class="niche">Comedy & Entertainment</div>
+    </div>
+</div>
+<div class="container mt-3 featured-row" style="text-align: center; justify-content: center;">
+
+
+    <div class="influencer-card card img-fluid" style="width:270px">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/29165/16328611849188118.jpg"
+                alt="Card image" style="width:100%">
+
+        </div>
+
+        <div class="card-img-overlay">
+            <h4 class="card-title">Dj Davids</h4>
+            <p class="card-text">NewYork, NY, US </p>
+
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color:grey">Instagram</div>
+            <div>$500</div>
+        </div>
+        <h3 class="profile-text">Mr USA 2021, Lgbt Advocate, Fitness App founder</h3>
+    </div>
+    <div class="influencer-card card img-fluid" style="width:270px ">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/25369/16287337189095507.jpg"
+                alt="Card image" style="width:100% ">
+        </div>
+
+        <div class="card-img-overlay">
+            <h4 class="card-title">Tommy Smith</h4>
+            <p class="card-text">Sydney, NSW, AUS </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">TikTok</div>
+            <div>$500</div>
+        </div>
+        <h3 class="profile-text">Prank Content Creator</h3>
+
+
+    </div>
+    <div class="influencer-card card img-fluid" style="width:270px">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/11400/16276327937195756.jpg"
+                alt="Card image" style="width:100%">
+        </div>
+
+        <div class="card-img-overlay">
+            <h4 class="card-title">Ignacio De Lorenzo</h4>
+            <p class="card-text">Madrid, ES </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">Instagram</div>
+            <div>$150</div>
+        </div>
+        <h3 class="profile-text">Travel, Aviation, Fashion, Lifestyle</h3>
+    </div>
+    <div class="influencer-card card img-fluid" style="width:270px">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/27815/16315628236296604.jpg"
+                alt="Card image" style="width:100%">
+        </div>
+
+        <div class="card-img-overlay">
+            <h4 class="card-title">Jessica</h4>
+            <p class="card-text">Buffalo, NY, US </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">Instagram</div>
+            <div>$400</div>
+        </div>
+        <h3 class="profile-text">Hi I'm Jess, Avid Traveler and Content Creator</h3>
+    </div>
+</div>
+
+<div>
+    <div class="logo-title">As seen in</div>
+    <div class="logo-holder">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/buzzfeed.svg"
+            alt="Buzzfeed logo" loading="lazy">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/bloomberg.svg"
+            alt="Bloomberg logo" loading="lazy">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/nyt.svg"
+            alt="New York Times logo" style="width: 175px;" loading="lazy">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/yahoo.svg"
+            alt="Yahoo logo" loading="lazy">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/shopify.svg"
+            alt="Shopify logo" loading="lazy">
+    </div>
+</div>
+<!-- ###################################### -->
+<!-- How collabster works with images -->
+<!-- <div class="container" style="padding: 10px; margin-top: 80px; ">
+    <h1 class="featured-title">How Collabstr Works</h1>
+    <p class="featured-text">Everything you need to run your influencer campaigns, and more.</p>
+</div>
+<div class="container mt-3 featured-row featured-row-influencer  mb-5 mt-5" style="padding: 0;">
+
+
+    <div class="card img-fluid img-fluid-influencer" style=" ">
+        <div class="img-background" style="">
+            <img class="card-img-top"
+                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/step1.png"
+                alt="Card image"
+                style="width:100%; -webkit-mask-image: linear-gradient(to top, rgb(0 0 0 / 5%) 15%, rgba(0, 0, 0, 1));">
+        </div>
+
+        <div class="card-img-overlay overlay-influencer-btm" style="">
+            <h2 style="padding: 5px;">1</h2>
+            <h2 style="font-size: 22px; font-weight: 700;  margin-top: 0;  " class="card-title">Create Your Page</h2>
+            <p style="padding: 5px; margin-top: 0; font-size: 105%;">Create your personal page and list your services for Instagram, TikTok, YouTube, and UGC.</p>
+
+
+        </div>
+
+    </div>
+    <div class="card img-fluid img-fluid-influencer" style="">
+        <div class="img-background">
+            <img class="card-img-top"
+                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/step2.png"
+                alt="Card image" style="width:100%">
+
+        </div>
+
+        <div class="card-img-overlay overlay-influencer-btm" style="">
+            <h2 style="padding: 5px;">2</h2>
+            <h2 style="font-size: 22px; font-weight: 700;  margin-top: 0;  " class="card-title">Share Your Link</h2>
+            <p style="padding: 5px; margin-top: 0; font-size: 105%;">Share your custom link in your bio and social media. Brands can view and purchase your services.</p>
+
+
+        </div>
+
+    </div>
+    <div class="card img-fluid img-fluid-influencer" style="">
+        <div class="img-background">
+            <img class="card-img-top"
+                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/step3.png"
+                alt="Card image" style="width:100%">
+
+        </div>
+
+        <div class="card-img-overlay overlay-influencer-btm" style="">
+            <h2 style="padding: 5px;">3</h2>
+            <h2 style="font-size: 22px; font-weight: 700;  margin-top: 0%;  " class="card-title">Start Earning</h2>
+            <p style="padding: 5px; margin-top: 0; font-size: 105%;">Easily manage brand deals and get paid for your work directly through the platform.</p>
+
+
+        </div>
+
+    </div>
+
+
+</div> -->
+<!-- end with images -->
+<!-- ###################################### -->
+<!-- ###################################### -->
+<!-- how collabstr works  without images -->
+<div class="container mt-3 featured-row" style="padding-left: 100px; padding-right: 100px; width: 100%; margin-top: 90px; display: block;">
+    <h1 class="featured-title">How Collabstr Works</h1>
+    <p class="featured-text">Everything you need to run your influencer campaigns, and more.</p>
+</div>
+<div class="container how-work-outer" style="padding-left: 100px; padding-right: 100px; width: 100%; display: flex;">
+    <div class="how-work-card">
+        <h1>1</h1>
+        <h3>Search Influencers</h3>
+        <p>Search through thousands of vetted Instagram, TikTok, and YouTube influencers.</p>
+    </div>
+
+    <div class="how-work-card">
+        <h1>2</h1>
+        <h3>Purchase Securely</h3>
+        <p>Safely purchase through Collabstr. We hold your payment until the work is completed.</p>
+    </div>
+
+    <div class="how-work-card">
+        <h1>3</h1>
+        <h3>Receive Quality Content</h3>
+        <p>Receive your high quality content from influencers directly through the platform.</p>
+    </div>
+</div>
+
+
+<!-- end without images -->
+ <!-- ###################################### -->
+
+
+<div class="container">
+    <div class="row-holder">
+        <div class="features-holder">
+            <div class="feature-holder">
+                <div class="feature-title"><img class="feature-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/sell.svg"
+                        alt="Sell icon" loading="lazy">Get Brand Deals</div>
+                <div class="feature-txt">Get discovered by thousands of brands on our marketplace looking to work
+                    with you.</div>
+            </div>
+            <div class="feature-holder">
+                <div class="feature-title"><img class="feature-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/check.svg"
+                        alt="Check icon" loading="lazy">Manage Collabs</div>
+                <div class="feature-txt">Easily keep track of brand deals and deadlines. Submit deliverables
+                    directly through the platform.</div>
+            </div>
+            <div class="feature-holder">
+                <div class="feature-title"><img class="feature-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/money.svg"
+                        alt="Money icon" loading="lazy">Always Get Paid</div>
+                <div class="feature-txt">Funds are collected upfront and transferred to your bank account when you
+                    complete the collaboration.</div>
+            </div>
+            <div class="feature-holder">
+                <div class="feature-title"><img class="feature-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/link.svg"
+                        alt="link icon" loading="lazy">Custom Link</div>
+                <div class="feature-txt">Share your custom URL in your link in bio and with brands. Drive traffic to
+                    your page and get more brand deals.</div>
+            </div>
+            <div class="feature-holder">
+                <div class="feature-title"><img class="feature-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/chat.svg"
+                        alt="Chat icon" loading="lazy">Instant Chat</div>
+                <div class="feature-txt">Receive messages from brands and communicate instantly throughout the whole
+                    collaboration.</div>
+            </div>
+            <div class="feature-holder">
+                <div class="feature-title"><img class="feature-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tax.svg"
+                        alt="Tax icon" loading="lazy">Taxes Made Simple</div>
+                <div class="feature-txt">We handle the filing of your 1099 forms. No more worrying about tax season.
+                </div>
+            </div>
+
+            <div class="feature-holder empty-feature-holder">
+                <div class="feature-title"></div>
+                <div class="feature-txt"></div>
+            </div>
+            <div class="feature-holder empty-feature-holder">
+                <div class="feature-title"></div>
+                <div class="feature-txt"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding: 10px;">
+        <h1 class="featured-title">Work with 5,000+ Brands</h1>
+        <p class="featured-text">View collaborations from brands like Wealthsimple, ClickUp, Deezer, and more.</p>
+    </div>
+    <div class="listing-row-influencer-block" style="display: -webkit-box; overflow: scroll; padding: 10px;">
+        
+        <div class="listing-row-influencer">
+            <div class="listing-row ">
+                <div class="content-holder">
+                    <div class="play-btn-holder">
+                        <img class="play-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/play.svg"
+                            loading="lazy">
+                    </div>
+                    <video class="content-img content-vid" playsinline="" preload="metadata">
+                        <source src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/1.mp4#t=0.1">
+                    </video>
+                </div>
+
+                <div class="content-holder">
+                    <a rel="nofollow" href="https://www.instagram.com/p/CN546zuBXwr/" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img loading="lazy" class="content-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/2.png" alt="Influencer content">
+                </div>
+
+                <div class="content-holder">
+                    <div class="play-btn-holder">
+                        <img class="play-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/play.svg"
+                            loading="lazy">
+                    </div>
+                    <video class="content-img content-vid" playsinline="" preload="metadata">
+                        <source src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/3.mp4#t=0.1">
+                    </video>
+                </div>
+
+                <div class="content-holder">
+                    <a rel="nofollow" href="https://www.instagram.com/p/CB3KJUdB3Sq/" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img loading="lazy" class="content-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/4.png" alt="Influencer content">
+                </div>
+
+                <div class="content-holder">
+                    <div class="play-btn-holder">
+                        <img class="play-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/play.svg"
+                            loading="lazy">
+                    </div>
+                    <video class="content-img content-vid" playsinline="" preload="metadata">
+                        <source src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/5.mp4#t=0.1">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+
+</div>
+<div class="container">
+    <div class="logo-holder">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/wealthsimple.svg"
+            alt="Wealthsimple logo" loading="lazy">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/clickup.svg"
+            alt="ClickUp logo" loading="lazy">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/anese.svg"
+            alt="Anese logo" loading="lazy">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/un.svg"
+            alt="United Nations logo" loading="lazy">
+        <img class="logo-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/deezer.svg"
+            alt="Deezer logo" loading="lazy">
+    </div>
+</div>
+<div class="container" style="padding: 0;">
+    <div class="faqs-holder">
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">How do I get paid?</h3>
+                <img class="faq-btn"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg"
+                    loading="lazy" style="transform: rotateZ(0deg);">
+            </div>
+
+            <div class="faq-answer" style="" hidden>Payments are made directly through our website. We use <a
+                    href="https://stripe.com/" target="_blank">Stripe</a> as our payment processor and support all
+                major credit &amp; debit cards. Once you complete an order, we will deposit the money into your bank
+                account.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">How much does it cost?</h3>
+                <img class="faq-btn"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg"
+                    loading="lazy">
+            </div>
+
+            <div class="faq-answer" style="">There is no up-front cost. We take a 15% transaction fee when you make
+                a sale.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">Is my payment guaranteed?</h3>
+                <img class="faq-btn"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg"
+                    loading="lazy">
+            </div>
+
+            <div class="faq-answer" style="">Yes, we collect the payment from the buyer and hold it until the order
+                is complete. This ensures that both sides are protected during every transaction.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">Can I decline orders?</h3>
+                <img class="faq-btn"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg"
+                    loading="lazy">
+            </div>
+            <div class="faq-answer" style="">Yes, you are able to accept or decline an order. This gives you the
+                freedom to only work with brands that align with you.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">What platforms does Collabstr support?</h3>
+                <img class="faq-btn"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg"
+                    loading="lazy">
+            </div>
+            <div class="faq-answer" style="">Currently you can list your services for Instagram, TikTok, YouTube,
+                Twitch, Twitter and UGC.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">Do I need to connect to Stripe?</h3>
+                <img class="faq-btn"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg"
+                    loading="lazy">
+            </div>
+            <div class="faq-answer" style="">Yes, Stripe is what we use to collect payments and make direct deposits
+                to your bank account. Stripe is used by apps like Lyft and Instacart. Stripe also provides invoices
+                and tax forms for your convenience. Any information you enter into Stripe is not accessible by
+                Collabstr.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">Are there binding contracts?</h3>
+                <img class="faq-btn"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg"
+                    loading="lazy">
+            </div>
+            <div class="faq-answer" style="">No, we do not ask you to sign any contracts. We are a self-serve
+                platform, you are free to manage your own deals without our involvement. We simply provide the
+                platform for you to advertise your services to brands.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">Are you an agency?</h3>
+                <img class="faq-btn"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg"
+                    loading="lazy">
+            </div>
+            <div class="faq-answer" style="">No, we are not an agency. We are a platform for you to advertise your
+                services, and manage your own brand deals.</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="cta-holder">
+        <div class="cta-overlay-holder">
+            <div class="cta-txt-holder">
+                <h2 class="cta-title">Power Your Brand Deals</h2>
+                <h3 class="cta-txt">Join 40,000+ Creators using Collabstr to Power their Brand Deals</h3>
+                <a href="create-your-page.html"><div class="cta-btn btn">Create Page</div></a>
+            </div>
+        </div>
+        <img loading="lazy" alt="top influencers" class="cta-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/cta.png">
+    </div>
+
+</div>
+<div class="container" style="width:100%">
+    <div class="footer">
+        <div class="footer-top-row">
+            <div class="footer-section">
+                <div class="footer-title">Resources</div>
+                <a href="/blog" class="footer-txt">Blog</a>
+                <a href="/creator-hub" class="footer-txt">Creator Hub</a>
+                <a href="/referral-program" class="footer-txt">Affiliate Program</a>
+                <a href="/ultimate-guide-to-tiktok-for-brands" class="footer-txt">TikTok Ebook For Brands</a>
+                <a href="/2022-influencer-marketing-report" class="footer-txt">2022 Influencer Marketing Report</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Tools</div>
+                <a href="/influencer-price-calculator" class="footer-txt">Influencer Price Calculator</a>
+                <a href="/influencer-campaign-brief-template" class="footer-txt">Influencer Campaign Brief
+                    Template</a>
+                <a href="/influencer-contract-template" class="footer-txt">Influencer Contract Generator</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Discover</div>
+                <a href="/find-influencers" class="footer-txt">Find Influencers</a>
+                <a href="/hire-influencers" class="footer-txt">Hire Influencers</a>
+                <a href="/search-influencers" class="footer-txt">Search Influencers</a>
+                <a href="/influencer-shoutouts" class="footer-txt">Buy Shoutouts</a>
+                <a href="/influencer-marketplace" class="footer-txt">Influencer Marketplace</a>
+                <a href="/top-influencers" class="footer-txt">Top Influencers</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Support</div>
+                <a href="mailto:hello@collabstr.com" class="footer-txt">hello@collabstr.com</a>
+                <a href="/#how-it-works" class="footer-txt">How It Works</a>
+                <a href="/faq" class="footer-txt">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-btm-row">
+            <div class="footer-btm-row-left">
+                <div class="footer-item">© Collabstr Inc.</div>
+                <a href="/privacy" class="footer-item">Privacy</a>
+                <a href="/terms" class="footer-item">Terms</a>
+                <a href="/sitemap" class="footer-item">Sitemap</a>
+            </div>
+
+            <div class="footer-btm-row-right">
+                <div class="footer-img">
+                    <a href="https://instagram.com/collabstr" target="_blank"><span class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                        alt="Instagram logo" loading="lazy">
+                </div>
+                <div class="footer-img">
+                    <a href="https://tiktok.com/@collabstr.com" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                        alt="TikTok logo" loading="lazy">
+                </div>
+
+                <div class="footer-img">
+                    <a href="https://twitter.com/@usecollabstr" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
+                        alt="Twitter logo" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+<script>
+    $(document).ready(function () {
+        $('.faq-holder').click(function () {
+        let answer = $(this).children('.faq-answer');
+        if (answer.is(":visible")) {
+            $(this).removeClass("rotate")
+            answer.slideUp();
+        } else {
+            $(this).addClass("rotate")
+            answer.slideDown();
+        }
+    });
+    });
+</script>
+
+{% endblock extrajavascript %}

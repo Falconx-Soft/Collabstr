@@ -11,3 +11,12 @@ class accountsCheck(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class JoinInfluencer(models.Model):
+    influencer_username= models.CharField(max_length=50)
+    full_name= models.CharField(max_length=150,default="")
+    email_address= models.EmailField(max_length=300, default="")
+    password= models.CharField(max_length=30,default="")
+
+
