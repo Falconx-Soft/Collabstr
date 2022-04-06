@@ -16,6 +16,16 @@
         deals
     </h2>
 </div>
+{% if messages %}
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style="border: 1px solid; background: #ddffdd; padding: 2px;">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+</div>
+       
+        {% endif %}
 <form action="{% url 'join_as_influencer' %}" method="post">
 {% csrf_token %}
     <div class="d-flex">

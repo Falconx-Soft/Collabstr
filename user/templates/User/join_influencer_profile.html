@@ -38,370 +38,379 @@
 {% endblock extrastyle %}
 
 {% block content %}	
-<!-- form1 -->
-<div class="form-holder active" data-step="1">
-    <!-- <div class="top-btn-holder" style="visibility:hidden;">
-        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-            </path>
-        </svg>
-        <div class="example-profile-btn">View Example Profile</div> -->
-    <!-- </div> -->
-    <h2 class="form-title">Where are you located?</h2>
-    <form class="form">
-        <input type="hidden" name="csrfmiddlewaretoken"
-            value="s66cBhMKKkPHHoaz3AUSp7qlojX5sKtYndywqboOFK4UFp1fbmfUtGPAEMwz8x1d">
-
-
-
-        <div id="location-dropdown">
-            <!-- <input id="location-input" name="l" class="input" type="text"
-                placeholder="City - Enter first 3 letters and select from dropdown" value=""
-                autocomplete="new-password">
-            <input id="location-id" name="l_id" type="hidden" value=""> -->
-            <select name="location_influencer" class="input">
-
-
-                <option value="" selected="" hidden="">City - Enter first 3 letters and select from dropdown</option>
-
-
-                <option value="New Albany">New Albany</option>
-
-                <option value="Alabama">Alabama</option>
-
-                <option value="Alice">Alice</option>
-
-                <option value="Alicia">Alicia</option>
-
-                <option value="Alief">Alief</option>
-
-                <!-- <option value="5">500k-1m</option>
-
-                <option value="6">1m-5m</option>
-
-                <option value="7">5m-10m</option>
-
-                <option value="8">10m+</option> -->
-
-
-            </select>
-            <!-- <div id="location-dropdown-content" style="display: none;">
-                <div class="location-option" data-id="101090"><b>New Albany</b><span class="region-country"> IN,
-                        United States</span></div>
-                <div class="location-option" data-id="101090"><b>Alabama</b><span class="region-country"> NY, United
-                        States</span></div>
-                <div class="location-option" data-id="101090"><b>Alice</b><span class="region-country"> TX, United
-                        States</span></div>
-                <div class="location-option" data-id="101090"><b>Alicia</b><span class="region-country"> MI, United
-                        States</span></div>
-                <div class="location-option" data-id="101090"><b>Alief</b><span class="region-country"> TX, United
-                        States</span></div>
-            </div> -->
-        </div>
-        <button type="button" class="submit btn profile-submit-btn">Continue</button>
-        <div class="under-btn">I don't see my city<a href="/supported-countries" target="_blank"><span
-                    class="link-spanner"></span></a></div>
-    </form>
-</div>
-<!-- form2 -->
-<div class="form-holder" data-step="2">
-    <div class="top-btn-holder">
-        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-            </path>
-        </svg>
-        <div class="example-profile-btn">View Example Profile</div>
-        <div class="step-holder">2/12</div>
+<form action="{% url 'join_influencer_profile' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="influencer_username_3"
+                value="{{influencer_username_2}}">
+    <!-- form1 -->
+    <div class="form-holder active" data-step="1">
+        <!-- <div class="top-btn-holder" style="visibility:hidden;">
+            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+                </path>
+            </svg>
+            <div class="example-profile-btn">View Example Profile</div> -->
+        <!-- </div> -->
+        <h2 class="form-title">Where are you located?</h2>
+        
+        <div class="form" >
+            
+            <input type="hidden" name=""
+                value="">
+    
+    
+    
+            <div id="location-dropdown">
+                <!-- <input id="location-input" name="l" class="input" type="text"
+                    placeholder="City - Enter first 3 letters and select from dropdown" value=""
+                    autocomplete="new-password">
+                <input id="location-id" name="l_id" type="hidden" value=""> -->
+                
+                <select name="location_influencer" class="input" required>
+    
+    
+                    <option value="" selected="" hidden="" disabled>City - Enter first 3 letters and select from dropdown</option>
+    
+    
+                    <option value="New Albany">New Albany</option>
+    
+                    <option value="Alabama">Alabama</option>
+    
+                    <option value="Alice">Alice</option>
+    
+                    <option value="Alicia">Alicia</option>
+    
+                    <option value="Alief">Alief</option>
+    
+                    <!-- <option value="5">500k-1m</option>
+    
+                    <option value="6">1m-5m</option>
+    
+                    <option value="7">5m-10m</option>
+    
+                    <option value="8">10m+</option> -->
+    
+    
+                </select>
+                <!-- <div id="location-dropdown-content" style="display: none;">
+                    <div class="location-option" data-id="101090"><b>New Albany</b><span class="region-country"> IN,
+                            United States</span></div>
+                    <div class="location-option" data-id="101090"><b>Alabama</b><span class="region-country"> NY, United
+                            States</span></div>
+                    <div class="location-option" data-id="101090"><b>Alice</b><span class="region-country"> TX, United
+                            States</span></div>
+                    <div class="location-option" data-id="101090"><b>Alicia</b><span class="region-country"> MI, United
+                            States</span></div>
+                    <div class="location-option" data-id="101090"><b>Alief</b><span class="region-country"> TX, United
+                            States</span></div>
+                </div> -->
+            </div>
+            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+            <div class="under-btn">I don't see my city<a href="/supported-countries" target="_blank"><span
+                        class="link-spanner"></span></a></div>
+            </div>
     </div>
-    <h2 class="form-title">Summarize yourself, this is your title shown on your profile</h2>
-    <form class="form">
-        <input type="hidden" name="csrfmiddlewaretoken"
-            value="UFL0q48LC588rvbJy9KB3iLFehyFU0KP3D7Vs82SKdCcnMBm5AvYxeFI5V1sjSLW">
-        <input class="input" type="text" name="title" placeholder="E.g. Fitness Content Creator & Student Athlete"
-            minlength="10" maxlength="75" value="" required="">
-        <button type="button" class="submit btn profile-submit-btn">Continue</button>
-    </form>
-</div>
-<!-- form3 -->
-<div class="form-holder" data-step="3" style="">
-    <div class="top-btn-holder">
-        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-            </path>
-        </svg>
-        <div class="example-profile-btn">View Example Profile</div>
-        <div class="step-holder">3/12</div>
+    <!-- form2 -->
+    <div class="form-holder" data-step="2">
+        <div class="top-btn-holder">
+            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+                </path>
+            </svg>
+            <div class="example-profile-btn">View Example Profile</div>
+            <div class="step-holder">2/12</div>
+        </div>
+        <h2 class="form-title">Summarize yourself, this is your title shown on your profile</h2>
+        <div class="form">
+            
+            <input type="hidden" name=""
+                value="">
+            <input class="input" type="text" name="title_influencer" placeholder="E.g. Fitness Content Creator & Student Athlete"
+                minlength="10" maxlength="75" value="" required="">
+            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+        </div>
     </div>
-    <h2 class="form-title">Describe yourself and your content</h2>
-    <form class="form">
-        <input type="hidden" name="csrfmiddlewaretoken"
-            value="UFL0q48LC588rvbJy9KB3iLFehyFU0KP3D7Vs82SKdCcnMBm5AvYxeFI5V1sjSLW">
-        <textarea class="input textarea" name="description"
-            placeholder="Who are you and what type of content do you create? Who is your audience? Be specific as this will help you show up in searches."
-            minlength="100" maxlength="800" required=""></textarea>
-        <button type="button" class="submit btn profile-submit-btn">Continue</button>
-    </form>
-</div>
-<!-- form4 -->
-<div class="form-holder " data-step="4" style="">
-    <div class="top-btn-holder">
-        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-            </path>
-        </svg>
-        <div class="example-profile-btn">View Example Profile</div>
-        <div class="step-holder">4/12</div>
+    <!-- form3 -->
+    <div class="form-holder" data-step="3" style="">
+        <div class="top-btn-holder">
+            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+                </path>
+            </svg>
+            <div class="example-profile-btn">View Example Profile</div>
+            <div class="step-holder">3/12</div>
+        </div>
+        <h2 class="form-title">Describe yourself and your content</h2>
+        <div class="form">
+            <input type="hidden" name=""
+                value="">
+            <textarea class="input textarea" name="description_influencer"
+                placeholder="Who are you and what type of content do you create? Who is your audience? Be specific as this will help you show up in searches."
+                minlength="5" maxlength="800" required=""></textarea>
+            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+        </div>
     </div>
-    <h2 class="form-title active">What's your gender?</h2>
-    <form class="form">
-        <div class="gender-option">
-            <input type="radio" id="Female" name="fav_language" value="Female"><label class="gender-selectors"
-                for="female">Female</label><br>
+    <!-- form4 -->
+    <div class="form-holder " data-step="4" style="">
+        <div class="top-btn-holder">
+            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+                </path>
+            </svg>
+            <div class="example-profile-btn">View Example Profile</div>
+            <div class="step-holder">4/12</div>
         </div>
-        <div class="gender-option">
-            <input type="radio" id="Male" name="fav_language" value="Male">
-            <label for="male" class="gender-selectors">Male</label><br>
-        </div>
-        <div class="gender-option">
-            <input type="radio" id="Other" name="fav_language" value="Other">
-            <label for="other" class="gender-selectors">Other</label>
-        </div>
+        <h2 class="form-title active">What's your gender?</h2>
+        <div class="form">
+            <div class="gender-option">
+                <input type="radio" id="Female" name="gender_influencer" value="female"><label class="gender-selectors"
+                    for="female">Female</label><br>
+            </div>
+            <div class="gender-option">
+                <input type="radio" id="Male" name="gender_influencer" value="male">
+                <label for="male" class="gender-selectors">Male</label><br>
+            </div>
+            <div class="gender-option">
+                <input type="radio" id="Other" name="gender_influencer" value="other">
+                <label for="other" class="gender-selectors">Other</label>
+            </div>
 
 
-        <button type="button" class="submit btn profile-submit-btn">Continue</button>
-        <div class="under-btn tooltip">Why do you ask this?<img class="tooltip-img"
-                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/tooltip.svg">
-            <div class="tooltip-txt">Brands sometimes look for specific gender(s) when searching. This is how they
-                can filter for it.</div>
+            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+            <div class="under-btn tooltip">Why do you ask this?<img class="tooltip-img"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/tooltip.svg">
+                <div class="tooltip-txt">Brands sometimes look for specific gender(s) when searching. This is how they
+                    can filter for it.</div>
+            </div>
         </div>
-    </form>
-</div>
-<!-- form 5 -->
-<div class="form-holder" data-step="5" style="">
-    <div class="top-btn-holder">
-        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-            </path>
-        </svg>
-        <div class="example-profile-btn">View Example Profile</div>
-        <div class="step-holder">5/12</div>
     </div>
-    <h2 class="form-title">Add your social channels</h2>
-    <form class="form">
-        <input type="hidden" name="csrfmiddlewaretoken"
-            value="UFL0q48LC588rvbJy9KB3iLFehyFU0KP3D7Vs82SKdCcnMBm5AvYxeFI5V1sjSLW">
-        <div class="platform-holder">
-            <div class="platform-option" style="display: flex;">
-                <div class="platform-img"><img
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg">
-                </div>
-                <div>Add Instagram</div>
-            </div>
-            <div class="input-row" style="">
-                <input class="input" type="text" name="instagram_username" placeholder="Instagram Username"
-                    value="">
-                <select name="instagram_followers" class="input">
-
-
-                    <option value="" selected="" hidden="">Instagram Followers</option>
-
-
-                    <option value="9">0-1k</option>
-
-                    <option value="1">1k-10k</option>
-
-                    <option value="2">10k-50k</option>
-
-                    <option value="3">50k-100k</option>
-
-                    <option value="4">100k-500k</option>
-
-                    <option value="5">500k-1m</option>
-
-                    <option value="6">1m-5m</option>
-
-                    <option value="7">5m-10m</option>
-
-                    <option value="8">10m+</option>
-
-
-                </select>
-            </div>
+    <!-- form 5 -->
+    <div class="form-holder" data-step="5" style="">
+        <div class="top-btn-holder">
+            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+                </path>
+            </svg>
+            <div class="example-profile-btn">View Example Profile</div>
+            <div class="step-holder">5/12</div>
         </div>
-
-        <div class="platform-holder">
-            <div class="platform-option">
-                <div class="platform-img"><img
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg">
+        <h2 class="form-title">Add your social channels</h2>
+        <div class="form">
+            <input type="hidden" name=""
+                value="">
+            <div class="platform-holder">
+                <div class="platform-option" style="display: flex;">
+                    <div class="platform-img"><img
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg">
+                    </div>
+                    <div>Add Instagram</div>
                 </div>
-                <div>Add TikTok</div>
-            </div>
-            <div class="input-row">
-                <input class="input" type="text" name="tiktok_username" placeholder="TikTok Username" value="">
-                <select name="tiktok_followers" class="input">
+                <div class="input-row" style="">
+                    <input class="input" type="text" name="instagram_username" placeholder="Instagram Username"
+                        value="">
+                    <select name="instagram_followers" class="input" >
 
 
-                    <option value="" selected="" hidden="">TikTok Followers</option>
+                        <option value="" selected="" hidden="" disabled>Instagram Followers</option>
 
 
-                    <option value="9">0-1k</option>
+                        <option value="0-1k">0-1k</option>
 
-                    <option value="1">1k-10k</option>
+                        <option value="1k-10k">1k-10k</option>
 
-                    <option value="2">10k-50k</option>
+                        <option value="10k-50k">10k-50k</option>
 
-                    <option value="3">50k-100k</option>
+                        <option value="50k-100k">50k-100k</option>
 
-                    <option value="4">100k-500k</option>
+                        <option value="100k-500k">100k-500k</option>
 
-                    <option value="5">500k-1m</option>
+                        <option value="500k-1m">500k-1m</option>
 
-                    <option value="6">1m-5m</option>
+                        <option value="1m-5m">1m-5m</option>
 
-                    <option value="7">5m-10m</option>
+                        <option value="5m-10m">5m-10m</option>
 
-                    <option value="8">10m+</option>
+                        <option value="10m+">10m+</option>
 
 
-                </select>
-            </div>
-        </div>
-
-        <div class="platform-holder">
-            <div class="platform-option">
-                <div class="platform-img"><img
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/youtube.svg">
+                    </select>
                 </div>
-                <div>Add YouTube</div>
             </div>
-            <div class="input-row">
-                <input class="input" type="text" name="youtube_username" placeholder="YouTube URL" value="">
-                <select name="youtube_followers" class="input">
 
-
-                    <option value="" selected="" hidden="">YouTube Subscribers</option>
-
-
-                    <option value="9">0-1k</option>
-
-                    <option value="1">1k-10k</option>
-
-                    <option value="2">10k-50k</option>
-
-                    <option value="3">50k-100k</option>
-
-                    <option value="4">100k-500k</option>
-
-                    <option value="5">500k-1m</option>
-
-                    <option value="6">1m-5m</option>
-
-                    <option value="7">5m-10m</option>
-
-                    <option value="8">10m+</option>
-
-
-                </select>
-            </div>
-        </div>
-
-        <div class="platform-holder">
-            <div class="platform-option">
-                <div class="platform-img"><img
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg">
+            <div class="platform-holder">
+                <div class="platform-option">
+                    <div class="platform-img"><img
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg">
+                    </div>
+                    <div>Add TikTok</div>
                 </div>
-                <div>Add Twitter</div>
-            </div>
-            <div class="input-row">
-                <input class="input" type="text" name="twitter_username" placeholder="Twitter Username" value="">
-                <select name="twitter_followers" class="input">
+                <div class="input-row">
+                    <input class="input" type="text" name="tiktok_username" placeholder="TikTok Username" value="">
+                    <select name="tiktok_followers" class="input">
 
 
-                    <option value="" selected="" hidden="">Twitter Followers</option>
+                        <option value="" selected="" hidden="" disabled>TikTok Followers</option>
+                       
 
 
-                    <option value="9">0-1k</option>
+                        <option value="0-1k">0-1k</option>
 
-                    <option value="1">1k-10k</option>
+                        <option value="1k-10k">1k-10k</option>
 
-                    <option value="2">10k-50k</option>
+                        <option value="10k-50k">10k-50k</option>
 
-                    <option value="3">50k-100k</option>
+                        <option value="50k-100k">50k-100k</option>
 
-                    <option value="4">100k-500k</option>
+                        <option value="100k-500k">100k-500k</option>
 
-                    <option value="5">500k-1m</option>
+                        <option value="500k-1m">500k-1m</option>
 
-                    <option value="6">1m-5m</option>
+                        <option value="1m-5m">1m-5m</option>
 
-                    <option value="7">5m-10m</option>
+                        <option value="5m-10m">5m-10m</option>
 
-                    <option value="8">10m+</option>
+                        <option value="10m+">10m+</option>
 
 
-                </select>
-            </div>
-        </div>
-
-        <div class="platform-holder">
-            <div class="platform-option">
-                <div class="platform-img"><img
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitch.svg">
+                    </select>
                 </div>
-                <div>Add Twitch</div>
             </div>
-            <div class="input-row">
-                <input class="input" type="text" name="twitch_username" placeholder="Twitch Username" value="">
-                <select name="twitch_followers" class="input">
 
-
-                    <option value="" selected="" hidden="">Twitch Followers</option>
-
-
-                    <option value="9">0-1k</option>
-
-                    <option value="1">1k-10k</option>
-
-                    <option value="2">10k-50k</option>
-
-                    <option value="3">50k-100k</option>
-
-                    <option value="4">100k-500k</option>
-
-                    <option value="5">500k-1m</option>
-
-                    <option value="6">1m-5m</option>
-
-                    <option value="7">5m-10m</option>
-
-                    <option value="8">10m+</option>
-
-
-                </select>
-            </div>
-        </div>
-
-        <div class="platform-holder">
-            <div class="platform-option">
-                <div class="platform-img"><img
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/website.svg">
+            <div class="platform-holder">
+                <div class="platform-option">
+                    <div class="platform-img"><img
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/youtube.svg">
+                    </div>
+                    <div>Add YouTube</div>
                 </div>
-                <div>Add Website</div>
-            </div>
-            <div class="input-row">
-                <input class="input" type="text" name="website" placeholder="Website" value="">
-            </div>
-        </div>
+                <div class="input-row">
+                    <input class="input" type="text" name="youtube_username" placeholder="YouTube URL" value="">
+                    <select name="youtube_followers" class="input">
 
-        <button type="button" class="submit btn profile-submit-btn">Continue</button>
-    </form>
-</div>
-<!-- form 6 -->
+
+                        <option value="" selected="" hidden="" disabled>YouTube Subscribers</option>
+
+
+                        <option value="0-1k">0-1k</option>
+
+                        <option value="1k-10k">1k-10k</option>
+
+                        <option value="10k-50k">10k-50k</option>
+
+                        <option value="50k-100k">50k-100k</option>
+
+                        <option value="100k-500k">100k-500k</option>
+
+                        <option value="500k-1m">500k-1m</option>
+
+                        <option value="1m-5m">1m-5m</option>
+
+                        <option value="5m-10m">5m-10m</option>
+
+                        <option value="10m+">10m+</option>
+
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="platform-holder">
+                <div class="platform-option">
+                    <div class="platform-img"><img
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg">
+                    </div>
+                    <div>Add Twitter</div>
+                </div>
+                <div class="input-row">
+                    <input class="input" type="text" name="twitter_username" placeholder="Twitter Username" value="">
+                    <select name="twitter_followers" class="input">
+
+
+                        <option value="" selected="" hidden="" disabled>Twitter Followers</option>
+
+
+                        <option value="0-1k">0-1k</option>
+
+                        <option value="1k-10k">1k-10k</option>
+
+                        <option value="10k-50k">10k-50k</option>
+
+                        <option value="50k-100k">50k-100k</option>
+
+                        <option value="100k-500k">100k-500k</option>
+
+                        <option value="500k-1m">500k-1m</option>
+
+                        <option value="1m-5m">1m-5m</option>
+
+                        <option value="5m-10m">5m-10m</option>
+
+                        <option value="10m+">10m+</option>
+
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="platform-holder">
+                <div class="platform-option">
+                    <div class="platform-img"><img
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitch.svg">
+                    </div>
+                    <div>Add Twitch</div>
+                </div>
+                <div class="input-row">
+                    <input class="input" type="text" name="twitch_username" placeholder="Twitch Username" value="">
+                    <select name="twitch_followers" class="input" aria-placeholder="">
+
+
+                        <option value="" selected="" hidden="" disabled>Twitch Followers</option>
+
+
+                        <option value="0-1k">0-1k</option>
+
+                        <option value="1k-10k">1k-10k</option>
+
+                        <option value="10k-50k">10k-50k</option>
+
+                        <option value="50k-100k">50k-100k</option>
+
+                        <option value="100k-500k">100k-500k</option>
+
+                        <option value="500k-1m">500k-1m</option>
+
+                        <option value="1m-5m">1m-5m</option>
+
+                        <option value="5m-10m">5m-10m</option>
+
+                        <option value="10m+">10m+</option>
+
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="platform-holder">
+                <div class="platform-option">
+                    <div class="platform-img"><img
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/website.svg">
+                    </div>
+                    <div>Add Website</div>
+                </div>
+                <div class="input-row">
+                    <input class="input" type="text" name="website" placeholder="Website">
+                </div>
+            </div>
+
+            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+        </div>
+    </div>
+    <!-- form 6 -->
 <div class="form-holder" data-step="6" style="">
     <div class="top-btn-holder">
         <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
@@ -413,70 +422,51 @@
         <div class="step-holder">6/12</div>
     </div>
     <h2 class="form-title">Select the niches that match your content</h2>
-    <form class="form">
-        <input type="hidden" name="csrfmiddlewaretoken"
-            value="UFL0q48LC588rvbJy9KB3iLFehyFU0KP3D7Vs82SKdCcnMBm5AvYxeFI5V1sjSLW">
+    <div class="form">
+        <input type="hidden" id="niches_input" name="niches_val" value="">
         <div class="niches-holder scroll-holder">
 
 
             <div class="niche-holder " data-id="35">Lifestyle</div>
-
             <div class="niche-holder " data-id="36">Fashion</div>
-
             <div class="niche-holder " data-id="37">Beauty</div>
-
             <div class="niche-holder " data-id="26">Health & Fitness</div>
-
             <div class="niche-holder " data-id="34">Travel</div>
-
             <div class="niche-holder " data-id="23">Food & Drink</div>
-
             <div class="niche-holder " data-id="39">Model</div>
-
             <div class="niche-holder " data-id="38">Comedy & Entertainment</div>
-
             <div class="niche-holder " data-id="28">Art & Photography</div>
-
             <div class="niche-holder " data-id="31">Music & Dance</div>
-
             <div class="niche-holder " data-id="24">Entrepreneur & Business</div>
-
             <div class="niche-holder " data-id="29">Family & Children</div>
-
             <div class="niche-holder " data-id="30">Animals & Pets</div>
-
             <div class="niche-holder " data-id="33">Athlete & Sports</div>
-
             <div class="niche-holder " data-id="43">Celebrity & Public Figure</div>
-
             <div class="niche-holder " data-id="45">Adventure & Outdoors</div>
-
             <div class="niche-holder " data-id="40">Actor</div>
-
             <div class="niche-holder " data-id="42">Education</div>
-
             <div class="niche-holder " data-id="32">Gaming</div>
-
             <div class="niche-holder " data-id="44">LGBTQ2+</div>
-
             <div class="niche-holder " data-id="41">Technology</div>
-
             <div class="niche-holder " data-id="49">Healthcare</div>
-
             <div class="niche-holder " data-id="46">Vegan</div>
-
             <div class="niche-holder " data-id="50">Cannabis</div>
-
             <div class="niche-holder " data-id="48">Skilled Trades</div>
-
             <div class="niche-holder " data-id="47">Automotive</div>
 
 
         </div>
         <input type="hidden" name="niches" value="[33]">
-        <button type="button" class="submit btn profile-submit-btn">Continue</button>
-    </form>
+        <button type="submit" class="submit btn profile-submit-btn">Continue</button>
+   </div>
 </div>
+</form>
+
+
+
+
+
+
 <!-- form7 -->
 <div class="form-holder " data-step="7" style=" width: 75%;">
     <div class="top-btn-holder">
@@ -489,7 +479,7 @@
         <div class="step-holder">7/12</div>
     </div>
     <h2 class="form-title">Add up to 5 images of you and your content</h2>
-    <form class="form">
+    <div class="form">
         <input type="hidden" name="csrfmiddlewaretoken"
             value="2bpzdRBtcWyvFChLxoJHFDwtrpLrnUwFb9LufVvAk42zBTHo4Pu49zqwi3eeMMxM">
         <div class="scroll-holder scroll-holder-wide">
@@ -604,7 +594,7 @@
         <input type="hidden" name="del_img_list">
 
         <button type="button" class="submit btn profile-submit-btn">Continue</button>
-    </form>
+   </div>
 </div>
 <!-- form 8 -->
 <div class="form-holder " data-step="8" style=" width: 75%;">
@@ -622,7 +612,7 @@
         shoutout on your social media to original content creation. Unsure what to charge?<a href=""> Use our rate
             calculator.</a>
     </div>
-    <form class="form">
+    <div class="form">
         <input type="hidden" name="csrfmiddlewaretoken"
             value="2bpzdRBtcWyvFChLxoJHFDwtrpLrnUwFb9LufVvAk42zBTHo4Pu49zqwi3eeMMxM">
         <div class="scroll-holder scroll-holder-wide">
@@ -2751,7 +2741,7 @@
         </div>
         <div class="add-package-btn add-btn desktop-add-btn">+ Add Another Package</div>
         <button type="button" class="submit btn profile-submit-btn">Continue</button>
-    </form>
+   </div>
 </div>
 <!-- form 9 -->
 <div class="form-holder" data-step="9" style="">
@@ -2765,7 +2755,7 @@
         <div class="step-holder">9/12</div>
     </div>
     <h2 class="form-title">Add FAQ's to answer questions about you and your services</h2>
-    <form class="form">
+    <div class="form">
         <input type="hidden" name="csrfmiddlewaretoken"
             value="DrJ98fNQdbG3e8mcAdrVKP6JuQvZdui2Mp54ajHXlja7apMP7EcieL0MluYMCmj9">
         <div class="scroll-holder">
@@ -2886,7 +2876,7 @@
         </div>
         <button type="button" class="submit btn profile-submit-btn">Continue</button>
         <div class="under-btn" onclick="nextPrev(1)">Skip for now</div>
-    </form>
+   </div>
 </div>
 <!-- form 10 -->
 <div class="form-holder" data-step="10" style="">
@@ -2900,7 +2890,7 @@
         <div class="step-holder">10/12</div>
     </div>
     <h2 class="form-title">Add your mobile number to be notified when you receive an order</h2>
-    <form class="form">
+    <div class="form">
         <input type="hidden" name="csrfmiddlewaretoken"
             value="DrJ98fNQdbG3e8mcAdrVKP6JuQvZdui2Mp54ajHXlja7apMP7EcieL0MluYMCmj9">
         <div class="sms-row">
@@ -3405,7 +3395,7 @@
                 value="" required="">
         </div>
         <button type="button" class="submit btn profile-submit-btn">Continue</button>
-    </form>
+   </div>
 </div>
 <!-- form 11 -->
 <div class="form-holder" data-step="11" style="">
@@ -3419,13 +3409,13 @@
         <div class="step-holder">11/12</div>
     </div>
     <h2 class="form-title">Enter the 6-digit code sent to your mobile number</h2>
-    <form class="form">
+    <div class="form">
         <input type="hidden" name="csrfmiddlewaretoken"
             value="DrJ98fNQdbG3e8mcAdrVKP6JuQvZdui2Mp54ajHXlja7apMP7EcieL0MluYMCmj9">
         <input class="input" type="tel" name="verification_code" pattern="[0-9]{6}" placeholder="6-Digit Code"
             autocomplete="one-time-code" required="">
         <button type="button" class="submit btn profile-submit-btn">Continue</button>
-    </form>
+   </div>
 </div>
 <!-- form 12 -->
 <div class="form-holder" data-step="12" style="">
@@ -3622,6 +3612,29 @@
 
 
     });
+    // #########################################
+    // to select the niches
+    var input_value = $('#niches_input').val()
+    var str = ""
+    $(".niche-holder").click(function () {
+        console.log('niche holder clicked::::::::::::::::::::')
+        var id = $(this).text();
+        console.log('text inside the niche', id)
+        console.log(id)
+        if ($('#niches_input').val().includes(id)) {
+            console.log('in if statement')
+            str = str.replace(id + ',', '')
+            $('#niches_input').val(str)
+        }
+
+        else {
+            str = str + id + ','
+            console.log('string value', str)
+
+            $('#niches_input').val(str)
+        }
+        console.log('niches_input', $('#niches_input').val())
+        });
 
 </script>
 
