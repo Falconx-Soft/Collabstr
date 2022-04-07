@@ -38,7 +38,7 @@
 {% endblock extrastyle %}
 
 {% block content %}	
-<form action="{% url 'join_influencer_profile' %}" method="POST">
+<form action="{% url 'join_influencer_profile' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="influencer_username_3"
                 value="{{influencer_username_2}}">
@@ -456,17 +456,10 @@
 
 
         </div>
-        <input type="hidden" name="niches" value="[33]">
-        <button type="submit" class="submit btn profile-submit-btn">Continue</button>
+        <input type="hidden" name="niches" value="">
+        <button type="button" class="submit btn profile-submit-btn">Continue</button>
    </div>
 </div>
-</form>
-
-
-
-
-
-
 <!-- form7 -->
 <div class="form-holder " data-step="7" style=" width: 75%;">
     <div class="top-btn-holder">
@@ -480,13 +473,13 @@
     </div>
     <h2 class="form-title">Add up to 5 images of you and your content</h2>
     <div class="form">
-        <input type="hidden" name="csrfmiddlewaretoken"
-            value="2bpzdRBtcWyvFChLxoJHFDwtrpLrnUwFb9LufVvAk42zBTHo4Pu49zqwi3eeMMxM">
+        <input type="hidden" name=""
+            value="">
         <div class="scroll-holder scroll-holder-wide">
             <div id="file-area-prof-pic">
                 <img class="profile-img"
                     src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/addProfPic.png">
-                <input id="file-input" type="file" name="img" accept="image/*">
+                <input id="file-input" type="file" name="profile_img" accept="image/*">
             </div>
 
             <div class="img-row">
@@ -520,7 +513,7 @@
                     <div class="file-area">
                         <div class="cover-img-badge">Cover Photo</div>
                         <input id="required-img" onchange="showImg(this,0)" class="img-input" type="file"
-                            name="img1" accept="image/*">
+                            name="cover_image" accept="image/*">
                         <img class="img img1"
                             src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/defaultCover.png">
                     </div>
@@ -593,9 +586,17 @@
 
         <input type="hidden" name="del_img_list">
 
-        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+        <button type="submit" class="submit btn profile-submit-btn">Continue</button>
    </div>
 </div>
+</form>
+
+
+
+
+
+
+
 <!-- form 8 -->
 <div class="form-holder " data-step="8" style=" width: 75%;">
     <div class="top-btn-holder">

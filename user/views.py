@@ -137,6 +137,11 @@ def join_influencer_profile(request):
 		twitch_followers= request.POST.get('twitch_followers')
 		website= request.POST.get('website')
 		niches= request.POST.get('niches_val')
+		profile_image= request.FILES.get('profile_img')
+		cover_image= request.FILES.get('cover_image')
+		img2= request.FILES.get('img2')
+		img3= request.FILES.get('img3')
+		img4= request.FILES.get('img4')
 
 		influencer=JoinInfluencer.objects.get(influencer_username= influencer_username_3)
 		influencer.location=location
@@ -154,6 +159,11 @@ def join_influencer_profile(request):
 		influencer.twitch_username=twitch_username
 		influencer.twitch_followers=twitch_followers
 		influencer.website=website
+		influencer.profile_image=profile_image
+		influencer.cover_image=cover_image
+		influencer.image3=img2
+		influencer.image4=img3
+		influencer.image5=img4
 		if "Lifestyle" in niches:
 			influencer.lifestyle= True
 		if "Fashion" in niches:
