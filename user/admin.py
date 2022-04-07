@@ -4,3 +4,5 @@ from .models import*
 
 admin.site.register(accountsCheck)
 admin.site.register(JoinInfluencer)
+admin.site.register(InfluencerPackage)
+admin.site.register(InfluencerFaq)

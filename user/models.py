@@ -4,6 +4,7 @@ from operator import truediv
 from pickle import TRUE
 from pyexpat import model
 from tkinter import CASCADE
+from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -74,6 +75,7 @@ class JoinInfluencer(models.Model):
     image4=models.ImageField(null=True,blank=True,upload_to="images/")
     image5=models.ImageField(null=True, blank=True,upload_to="images/")
 
+   
 
      
 
@@ -85,8 +87,24 @@ class JoinInfluencer(models.Model):
 
 
 class InfluencerPackage(models.Model):
-    influencer_username= models.ForeignKey(JoinInfluencer,on_delete=CASCADE)
-    choose_platform_1=models.CharField(max_length=100)
-    package_offering_1=models.CharField(max_length=500)
-    package_include_1=models.CharField(max_length=1000)
-    package_price_1=models.IntegerField()
+    influencer_username= models.ForeignKey(JoinInfluencer,on_delete=models.CASCADE)
+    choose_platform=models.CharField(max_length=100, default="")
+    content_category= models.CharField(max_length=50, default="")
+    package_offering=models.CharField(max_length=500, default="")
+    package_include=models.CharField(max_length=1000, default="")
+    package_price=models.IntegerField(default=0)
+    
+    
+    
+    def __str__(self):
+            return self.influencer_username.influencer_username
+
+class InfluencerFaq(models.Model):
+    influencer_username=models.ForeignKey(JoinInfluencer, on_delete=models.CASCADE)
+    faq_question=models.CharField(max_length=500)
+    faq_answer=models.CharField(max_length=700)
+
+
+
+    def __str__(self):
+            return self.influencer_username.influencer_username
