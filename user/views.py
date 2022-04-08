@@ -1,4 +1,5 @@
 from multiprocessing import context
+from urllib.parse import uses_netloc
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -10,6 +11,7 @@ from .models import*
 from django.conf import settings
 from django.core.mail import send_mail
 from sms import send_sms
+
 # from .models import join_influencer
 
 # Create your views here.
@@ -31,7 +33,7 @@ def loginUser(request):
 			user = User.objects.get(email=email)
 			if user:
 				username = user.username
-			user = authenticate(request, username=username, password=password) # check password
+				user = authenticate(request, username=username, password=password) # check password
 
 			if user is not None:
 				login(request, user)
@@ -87,13 +89,15 @@ def join_as_influencer(request):
 	if request.method== 'POST':
 		try:
 			influencer_username= request.POST.get('influencer_username')
-			if JoinInfluencer.objects.filter(influencer_username=influencer_username):
+			if User.objects.filter(username=influencer_username):
 				messages.success(request, 'Username Not Available')
 				return redirect(request, 'join_as_influencer.html')
 			else:
 
-				influencer= JoinInfluencer.objects.create(influencer_username= influencer_username)
+				influencer= User.objects.create(username= influencer_username)
 				influencer.save()
+				influencer_obj2= JoinInfluencer.objects.create(influencer_username= influencer_username)
+				influencer_obj2.save()
 				context= {'influencer_username': influencer_username}
 				return render(request,'User/create_your_page.html', context)
 		except Exception as e:
@@ -107,13 +111,20 @@ def create_your_page(request):
 		fullname_influencer= request.POST.get('fullname')
 		email_influencer= request.POST.get('email')
 		password_influencer= request.POST.get('password')
-		influencer=JoinInfluencer.objects.get(influencer_username= influencer_username_2)
+		influencer=User.objects.get(username= influencer_username_2)
+		influencer_obj= JoinInfluencer.objects.get(influencer_username= influencer_username_2)
 		print('influencer', influencer)
-		influencer.full_name=fullname_influencer
-		influencer.email_address=email_influencer
-		influencer.password=password_influencer
+		# influencer_obj=influencer(firstname=fullname_influencer,email=email_influencer)
+		influencer.first_name=fullname_influencer
+		influencer.email=email_influencer
+		influencer.set_password(password_influencer)
+		# influencer_obj_.set_password(password_influencer)
 		influencer.save()
-		# influencer= JoinInfluencer.objects.create(influencer_username= influencer_username_2)
+		
+		influencer_obj.full_name=fullname_influencer
+		influencer_obj.email_address=email_influencer
+		influencer_obj.password=password_influencer
+		influencer_obj.save()
 		context= {'influencer_username_2': influencer_username_2}
 		return render(request,'User/join_influencer_profile.html', context)
 	return render(request,'User/create_your_page.html')
@@ -123,6 +134,7 @@ def create_your_page(request):
 def join_influencer_profile(request):
 	if request.method == 'POST':
 		influencer_username_3= request.POST.get('influencer_username_3')
+		influencer=JoinInfluencer.objects.get(influencer_username= influencer_username_3)
 		location= request.POST.get('location_influencer')
 		title_influencer= request.POST.get('title_influencer')
 		description_influencer= request.POST.get('description_influencer')
@@ -166,7 +178,7 @@ def join_influencer_profile(request):
 		package_platform_19= request.POST.get('package_platform_19')
 
 
-		influencer=JoinInfluencer.objects.get(influencer_username= influencer_username_3)
+		
 		influencer.location=location
 		influencer.title_influencer=title_influencer
 		influencer.description_influencer=description_influencer
@@ -893,19 +905,22 @@ def join_influencer_profile(request):
 		
 		
 		
-		print('##########################')
-		print('location_influencer',location)
-		print('**************************')
-		print('title_influencer',title_influencer)
-		print('**************************')
-		print('description_influencer',description_influencer)
-		print('**************************')
-		print('instagram_username',instagram_username)
-		print('**************************')
-		print('instagram_followers',instagram_followers)
-		print('**************************')
-		print('tiktok_username',tiktok_username)
-		print('**************************')
-		print('package_platform_1',package_platform_0)
-		return render(request,'User/join_influencer_profile.html')
+		context={'influencer_username_3': influencer_username_3}
+		return render(request,'User/influencer_profile.html', context)
 	
+
+
+def influencer_profile(request):
+	username = None
+	if request.user.is_authenticated:
+		print("User is logged in :)")
+		username= request.user.username
+		joined_influencer=JoinInfluencer.objects.get(influencer_username=username)
+		package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
+		faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
+		print('joined_influencer::::::::::',joined_influencer)
+		context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
+		return render(request, 'User/influencer_profile.html', context)
+	else:
+   		print("User is not logged in :(")
+		# return redirect(request, 'User/influencer_profile.html')

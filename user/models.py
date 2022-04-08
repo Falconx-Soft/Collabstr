@@ -21,7 +21,7 @@ class accountsCheck(models.Model):
 
 
 class JoinInfluencer(models.Model):
-    influencer_username= models.CharField(max_length=50)
+    influencer_username= models.CharField(max_length=200)
     full_name= models.CharField(max_length=150,default="")
     email_address= models.EmailField(max_length=300, default="")
     password= models.CharField(max_length=30,default="")
@@ -97,7 +97,7 @@ class InfluencerPackage(models.Model):
     
     
     def __str__(self):
-            return self.influencer_username.influencer_username
+          return self.influencer_username.influencer_username
 
 class InfluencerFaq(models.Model):
     influencer_username=models.ForeignKey(JoinInfluencer, on_delete=models.CASCADE)

@@ -1,0 +1,529 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+
+<!-- <link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}"> -->
+<!-- <link rel="stylesheet" href="{% static '/css/join-influencer-earnings.css' %}"> -->
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+<style>
+    
+</style>
+
+{% endblock extrastyle %}
+
+{% block content %}	
+
+
+
+<!-- ________________________________________ -->
+<!-- body content -->
+<input type="hidden" name="influencer_username_3" value="{{influencer_username_3}}">
+<div class="btn-row">
+
+
+    <div class="share-btn row-btn"><img class="row-btn-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/share.svg">Share</div>
+
+
+
+
+    <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/save.svg"><span
+            class="save-btn-txt">Save</span></div>
+
+</div>
+<div class="listing-holder">
+
+    <div class="img-row">
+        <div class="primary-img">
+            <div class="file-area">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="https://d5ik1gor6xydq.cloudfront.net/sellers/16063/162762703374507.jpg">
+                    <img class="img img1"
+                        src="{{joined_influencer.profile_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col">
+            <div class="img-row-sq">
+                <div class="file-area" style="width: 50%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.profile_image.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+                <div class="file-area" style="width: 50%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.profile_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+            <div class="file-area file-area4">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    <img class="img img4"
+                        src="{{joined_influencer.profile_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+    </div>
+
+    <div class="listing-cols">
+
+        <div class="listing-col-l">
+
+            <h1 class="listing-title">{{joined_influencer.title_influencer}}</h1>
+            <div class="listing-description">{{joined_influencer.description_influencer}}</div>
+
+
+            <div class="section-title">
+                <div style="font-size: 120%; font-weight: 600;">Packages</div>
+
+            </div>
+
+            <div class="packages-holder">
+                {% for package in package_influencer %}
+                <div class="package-holder package-active" style="border-left: 8px solid rgba(117, 86, 118, 0.65);" data-id="53018">
+                    <div class="package-category">{{package.choose_platform}}</div>
+                    <div class="package-row">
+                    <div class="package-title">{{package.content_category}}</div>
+                        <div class="package-btn-holder">
+                            <div class="package-price">${{package.package_price}}</div>
+                            <div class="package-btn btn-active"></div>
+                        </div>
+                    </div>
+                    <div class="package-description">{{package.package_include}}</div>
+
+                </div>
+                    {% endfor %}
+               
+
+            </div>
+
+
+            <div class="portfolio-section">
+                <h3>Portfolio</h3>
+
+                <div class="portfolio-section-slider">
+                    <div class="portfolio-section-slider-image-div">
+                        <img src="https://d5ik1gor6xydq.cloudfront.net/sellers/36161/portfolio/16418988954462435.jpg"
+                        alt="Photo of Nigel Kabvina">
+                    </div>
+                    <div class="portfolio-section-slider-image-div">
+                        <img src="https://d5ik1gor6xydq.cloudfront.net/sellers/36161/portfolio/16419002010589297.jpg"
+                        alt="Photo of Nigel Kabvina">
+                    </div>
+                    <div class="portfolio-section-slider-image-div">
+                        <img src="https://d5ik1gor6xydq.cloudfront.net/sellers/36161/portfolio/16419002012503948.jpg"
+                        alt="Photo of Nigel Kabvina">
+                    </div>
+
+                    <div class="portfolio-section-slider-image-div">
+                        <img src="https://d5ik1gor6xydq.cloudfront.net/sellers/36161/portfolio/16419002014087353.jpg"
+                        alt="Photo of Nigel Kabvina">
+                    </div>
+                    <div class="portfolio-section-slider-image-div">
+                        <img src="https://d5ik1gor6xydq.cloudfront.net/sellers/36161/portfolio/16419002015612748.jpg"
+                        alt="Photo of Nigel Kabvina">
+                    </div>
+                    <div class="portfolio-section-slider-image-div">
+                        <img src="https://d5ik1gor6xydq.cloudfront.net/sellers/36161/portfolio/16419002017166097.jpg"
+                        alt="Photo of Nigel Kabvina">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-section">
+                <h3>FAQ</h3>
+
+                <div class="faq-holder">
+                    <h3 class="faq-question">Where are you based?</h3>
+                    <div class="faq-answer" style="display: none;">London and Manchester</div>
+                </div>
+
+                <div class="faq-holder">
+                    <h3 class="faq-question">Are you willing to travel internationally?</h3>
+                    <div class="faq-answer" style="display: none;">Yes. Absolutely. </div>
+                </div>
+
+                <div class="faq-holder">
+                    <h3 class="faq-question">Do you have any flexibility with package options?</h3>
+                    <div class="faq-answer" style="display: none;">Yes, I would be happy to discuss a negotiated
+                        rate or project.</div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="listing-col-r">
+
+            <div class="profile-holder">
+                <div class="profile-info-holder">
+                    <img class="profile-pic"
+                        src="{{joined_influencer.profile_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    <div class="profile-name">{{joined_influencer.full_name}}</div>
+                    <div class="profile-location">{{joined_influencer.location}}</div>
+                    <div class="platform-img-holder">
+                        {% if joined_influencer.instagram_username != "" %}
+                        <div class="platform-img">
+                            <a rel="nofollow" href="https://instagram.com/{{joined_influencer.instagram_username}}" target="_blank"
+                                data-platform="instagram" class="intercept"><span class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                                alt="Instagram logo">
+                        </div>
+                        {% endif %}
+
+
+                        <div class="platform-img">
+                            <a rel="nofollow" href="https://tiktok.com/@sxmplyni" target="_blank"
+                                data-platform="tiktok" class="intercept"><span class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                                alt="TikTok logo">
+                        </div>
+
+
+                        <div class="platform-img">
+                            <a rel="nofollow" href="https://m.youtube.com/channel/UC4V7U259IxflS-qSoSfNbVQ/featured"
+                                target="_blank" data-platform="youtube" class="intercept"><span
+                                    class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/youtube.svg"
+                                alt="YouTube logo">
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-area">
+
+                <div class="checkout-holder">
+
+                    <div class="checkout-title">Food, coffee and cocktails content creator. Lifestyle Influencer
+                    </div>
+                    <select class="input package-input" onchange="changePackage(this)">
+
+                        <option value="53018">TikTok - Up to 15s</option>
+
+                        <option value="53019">TikTok using &amp; experiencing your product - Up to 30s</option>
+
+                        <option value="53021">TikTok 30 to 60s + Instagram Reel &amp; Story</option>
+
+                        <option value="53020">2 Experience Photos</option>
+
+                    </select>
+                    <div class="checkout-price">$450</div>
+                    <div class="checkout-description-holder">I will create a tailored TikTok video using your
+                        product to create something, with unique music and an eye catching hook (intro) to keep
+                        viewers watching. </div>
+
+                    <button class="buy-btn btn" data-id="checkout">Continue</button>
+                    <div class="msg-btn checkout-description-holder" data-id="message">Send Custom Offer</div>
+
+
+                </div>
+
+                <div class="how-it-works-btn"><img alt="How Collabstr works" class="how-it-works-btn-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/howItWorks.svg">How does it work?</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+<h3 class="sim-padding">Similar Influencers</h3>
+<div class="influencers-div" style="    grid-template-columns: repeat(5, 24%);"> 
+
+
+    <div class="card img-fluid f-image" style="margin-right: 0px;">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/7075/16276318856345878.jpg"
+            alt="Card image" style="width:100%">
+
+        </div>
+        
+        <div class="card-img-overlay">
+            <h4 class="card-title">Isaiah Lamb</h4>
+            <p class="card-text">Baltimore, MD, US </p>
+
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color:grey">Instagram</div>
+            <div style="font-size: initial; color: black; font-weight: 600;">$100</div>
+        </div>
+        <h3 class="profile-text">Verified fitness content creator and Professional</h3>
+    </div>
+
+    <div class="card img-fluid f-image" >
+        <div class="img-background">
+            <img class="card-img-top"  src="https://d5ik1gor6xydq.cloudfront.net/sellers/13709/16276331921042554.jpg"
+            alt="Card image" style="width:100% ">
+        </div>
+       
+        <div class="card-img-overlay">
+            <h4 class="card-title">Jhony Valentine</h4>
+            <p class="card-text">California, CA, US </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">TikTok</div>
+            <div style="font-size: initial; color: black; font-weight: 600;">$5000</div>
+        </div>
+        <h3 class="profile-text">Verified fitness content creator and Professional</h3>
+
+        
+    </div>
+    <div class="card img-fluid f-image">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/27767/16314533827067404.jpg"
+            alt="Card image" style="width:100%">
+        </div>
+        
+        <div class="card-img-overlay">
+            <h4 class="card-title">Mona-Lisa Di-Macio</h4>
+            <p class="card-text">London, LND, GB </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">Instagram</div>
+            <div style="font-size: initial; color: black; font-weight: 600;">$560</div>
+        </div>
+        <h3 class="profile-text">Verified fitness content creator and Professional</h3>
+    </div>
+    <div class="card img-fluid f-image">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/30078/1633620831978466.jpg"
+            alt="Card image" style="width:100%">
+        </div>
+        
+        <div class="card-img-overlay">
+            <h4 class="card-title">Jenelle Eason</h4>
+            <p class="card-text">Wellmington, NC, US </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">YouTube</div>
+            <div style="font-size: initial; color: black; font-weight: 600;">$1000</div>
+        </div>
+        <h3 class="profile-text">Verified fitness content creator and Professional</h3>
+    </div>
+
+
+
+</div>
+
+<!-- Sign Up modals -->
+<div class="modal" style="">
+    <div class="modal-content-holder" style="width: 500px;">
+        <link rel="stylesheet" type="text/css" href="/static/igmarketplace/auth/brandSignupModal.css?v=3.16">
+
+
+        <form class="form-holder-signup">
+            <input type="hidden" name="csrfmiddlewaretoken"
+                value="o2hdUlC7XrRdNCSqt8UCJibpfCA03TTIQEhrIgHaGs3FcgHIUGXzN5ywLyWveR5u">
+            <!-- first form -->
+            <div class="form-1">
+                <div class="modal-content-header">
+                    <div class="modal-content-header-title">Brand Sign Up</div>
+                    <div class="close-modal"><img class="close-modal-img"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/closeModal.svg">
+                    </div>
+                </div>
+
+                <div class="modal-content-scroll">
+                    <div class="form">
+                        <input class="input" type="text" placeholder="Full Name" name="name" required="">
+                        <input class="input" type="text" placeholder="Brand Name" name="company" required="">
+                        <input class="input" type="email" placeholder="Email" name="email" required="">
+                        <input class="input" type="password" placeholder="Password" name="password" minlength="6"
+                            required="">
+                    </div>
+                </div>
+
+                <div class="modal-content-footer">
+                    <button class="btn modal-btn">Continue</button>
+                    <div class="login-signup">Already have an account? <a class="login-btn">Login</a></div>
+                </div>
+            </div>
+
+            <!-- second form -->
+            <div class="form-2">
+                <div class="modal-content-header">
+                    <div class="modal-content-header-title">Complete Profile</div>
+                    <div class="close-modal"><img class="close-modal-img"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/closeModal.svg">
+                    </div>
+                </div>
+
+                <div class="modal-content-scroll">
+                    <div class="form">
+                        <input class="input" type="text" name="website" placeholder="Website">
+                        <input class="input" type="text" name="instagram" placeholder="Instagram Username">
+                        <input class="input" type="text" name="tiktok" placeholder="TikTok Username">
+                        <input class="input" type="text" name="youtube" placeholder="YouTube URL">
+                    </div>
+                </div>
+
+                <div class="modal-content-footer">
+                    <button class="btn modal-btn">Sign Up</button>
+                    <div class="login-signup legal-signup">By signing up, you agree to our <a
+                            href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a></div>
+                </div>
+            </div>
+        </form>
+
+        <form class="form-holder-login">
+            <input type="hidden" name="csrfmiddlewaretoken"
+                value="o2hdUlC7XrRdNCSqt8UCJibpfCA03TTIQEhrIgHaGs3FcgHIUGXzN5ywLyWveR5u">
+
+            <div class="modal-content-header">
+                <div class="modal-content-header-title">Welcome Back</div>
+                <div class="close-modal"><img class="close-modal-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/closeModal.svg">
+                </div>
+            </div>
+
+
+            <div class="modal-content-scroll">
+                <div class="form">
+                    <input class="input" type="email" placeholder="Email" name="email" required="">
+                    <input class="input" type="password" placeholder="Password" name="password" minlength="6"
+                        required="">
+                </div>
+            </div>
+
+            <div class="modal-content-footer">
+                <button class="btn modal-btn">Login</button>
+                <div class="login-signup forgot-btn">Forgot password?</div>
+                <div class="login-signup">Don't have an account? <a class="signup-btn">Sign up</a></div>
+            </div>
+        </form>
+
+        <form class="form-holder form-holder-forgot">
+            <input type="hidden" name="csrfmiddlewaretoken"
+                value="o2hdUlC7XrRdNCSqt8UCJibpfCA03TTIQEhrIgHaGs3FcgHIUGXzN5ywLyWveR5u">
+            <div class="modal-content-header">
+                <div class="modal-content-header-title">Reset Password</div>
+                <div class="close-modal"><img class="close-modal-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/closeModal.svg">
+                </div>
+            </div>
+
+
+            <div class="modal-content-scroll">
+                <div class="form">
+                    <input class="input" type="email" placeholder="Email" name="email" required="">
+                </div>
+            </div>
+
+            <div class="modal-content-footer">
+                <button class="btn modal-btn">Send Reset Email</button>
+                <div class="login-signup">Want to try again? <a class="login-btn">Login.</a></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="container" style="width: 100%;">
+    <div class="footer">
+        <div class="footer-top-row">
+            <div class="footer-section">
+                <div class="footer-title">Resources</div>
+                <a href="/blog" class="footer-txt">Blog</a>
+                <a href="/creator-hub" class="footer-txt">Creator Hub</a>
+                <a href="/referral-program" class="footer-txt">Affiliate Program</a>
+                <a href="/ultimate-guide-to-tiktok-for-brands" class="footer-txt">TikTok Ebook For Brands</a>
+                <a href="/2022-influencer-marketing-report" class="footer-txt">2022 Influencer Marketing Report</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Tools</div>
+                <a href="/influencer-price-calculator" class="footer-txt">Influencer Price Calculator</a>
+                <a href="/influencer-campaign-brief-template" class="footer-txt">Influencer Campaign Brief
+                    Template</a>
+                <a href="/influencer-contract-template" class="footer-txt">Influencer Contract Generator</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Discover</div>
+                <a href="/find-influencers" class="footer-txt">Find Influencers</a>
+                <a href="/hire-influencers" class="footer-txt">Hire Influencers</a>
+                <a href="/search-influencers" class="footer-txt">Search Influencers</a>
+                <a href="/influencer-shoutouts" class="footer-txt">Buy Shoutouts</a>
+                <a href="/influencer-marketplace" class="footer-txt">Influencer Marketplace</a>
+                <a href="/top-influencers" class="footer-txt">Top Influencers</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Support</div>
+                <a href="mailto:hello@collabstr.com" class="footer-txt">hello@collabstr.com</a>
+                <a href="/#how-it-works" class="footer-txt">How It Works</a>
+                <a href="/faq" class="footer-txt">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-btm-row">
+            <div class="footer-btm-row-left">
+                <div class="footer-item">© Collabstr Inc.</div>
+                <a href="/privacy" class="footer-item">Privacy</a>
+                <a href="/terms" class="footer-item">Terms</a>
+                <a href="/sitemap" class="footer-item">Sitemap</a>
+            </div>
+
+            <div class="footer-btm-row-right">
+                <div class="footer-img">
+                    <a href="https://instagram.com/collabstr" target="_blank"><span class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                        alt="Instagram logo" loading="lazy">
+                </div>
+                <div class="footer-img">
+                    <a href="https://tiktok.com/@collabstr.com" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                        alt="TikTok logo" loading="lazy">
+                </div>
+
+                <div class="footer-img">
+                    <a href="https://twitter.com/@usecollabstr" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
+                        alt="Twitter logo" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+
+
+{% endblock extrajavascript %}

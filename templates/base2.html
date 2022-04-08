@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>
+        {% block title %}{% endblock %}
+    </title>    
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-gradientable">
+	
+	<meta name="description" content="" />
+	<meta name="keywords" content="">
+	<meta name="author" content="" />
+	<!-- Favicon icon -->
+	<link rel="icon" href="/static/assets/images/favicon.ico" type="image/x-icon">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
+    <link rel="stylesheet" href="{% static '/css/join-influencer-earnings.css' %}">
+    <link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}">
+
+    <!-- Specific CSS goes HERE -->
+    {% block extrastyle %}{% endblock extrastyle %}
+
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid ">
+            <div class="container navbar_content mt-5" style="">
+                <div class="navbar-header" style="width: 75%;">
+                    <a class="navbar-brand" href="">
+                        <div class="" style="display: flex; justify-content: left; margin-top: -23px;">
+                            <h3 style="font-weight: 700; color: black;">I N F U L</h3>
+                            <!-- <div style="margin-right: 14px;"><h1 style="font-weight: 700;">N</h1></div>
+                            <div style="margin-right: 14px;"><h1 style="font-weight: 700;">F</h1></div>
+                            <div style="margin-right: 14px;"><h1 style="font-weight: 700;">U</h1></div>
+                            <div style="margin-right: 14px;"><h1 style="font-weight: 700;">L</h1></div> -->
+                            <!-- <h1 class="title">Find and Hire Influencers in Seconds</h1>
+                            <h2 class="subtitle">Find Instagram, TikTok, and YouTube influencers to create unique content for your brand
+                            </h2> -->
+                        </div>
+                    
+                        <!-- <img class="collabstr-logo"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/logo.svg" alt=""> -->
+                    </a>
+                </div>
+                <div class="header-right">
+                    <a class="header-btn dashboard-btn">
+                        <div class="dashboard-menu-holder">
+                            <div class="dashboard-menu-btn">|||</div>
+                            <img class="dashboard-img"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/avatar.png"
+                                onclick="location.href=''">
+                            <div class="dashboard-menu">
+    
+                                 <div class="dashboard-menu-item"> Profile</div>
+    
+                                <div class="dashboard-menu-item"
+                                    onclick="location.href='/join-influencer-account.html'">Account</div>
+    
+                                <div class="dashboard-menu-item"
+                                    onclick="location.href='/join-influencer-earnings.html'">Earnings</div>
+    
+                                <div class="dashboard-menu-item" onclick="location.href='/logout'">Sign Out</div>
+                            </div>
+                        </div>
+                    </a>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    </nav>
+    
+	{% block content %}{% endblock content %}
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+     $(".dashboard-menu-holder").hover(function () {
+        $('.dashboard-menu').show();
+    }, function () {
+        $('.dashboard-menu').hide();
+    });</script>
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block extrajavascript %}{% endblock extrajavascript %} 
+
+</body>
+</html>
