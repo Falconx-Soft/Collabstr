@@ -5,10 +5,43 @@
 <!-- Specific CSS goes HERE -->
 {% block extrastyle %}
 <link rel="stylesheet" href="{% static '/css/join-as-influencer.css' %}">
-
+<style>
+    .messages{
+        display: flex;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 366px;
+    padding: 12px;
+    border-radius: 8px;
+    /* color: var(--black); */
+    background-color: white;
+    /* box-shadow: var(--mediumBoxShadow); */
+    font-size: 90%;
+    z-index: 9999999999;
+    box-shadow: rgb(120 120 170 / 20%) 0 2px 10px 0;
+    color: black;
+    }
+</style>
 {% endblock extrastyle %}
 
 {% block content %}	
+{% if messages %}
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style=" padding: 2px; display: flex;">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div>{{ message }}</div>
+            {% endfor %}
+    </ul>
+</div>
+       
+        {% endif %}
 
 <div class="container text-center title-section" style="    padding: 10px;display: flex;flex-direction: column;text-align: center;align-items: center;justify-content: center;">
     <h1 class="Join-Influencer-Title">Power Your Brand Deals</h1>
@@ -16,16 +49,7 @@
         deals
     </h2>
 </div>
-{% if messages %}
-<div style="    display: flex;justify-content: center;">
-    <ul class="messages" style="border: 1px solid; background: #ddffdd; padding: 2px;">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-            {% endfor %}
-    </ul>
-</div>
-       
-        {% endif %}
+
 <form action="{% url 'join_as_influencer' %}" method="post">
 {% csrf_token %}
     <div class="d-flex">

@@ -9,11 +9,13 @@ import uuid
 from .models import*
 from django.conf import settings
 from django.core.mail import send_mail
+from sms import send_sms
 # from .models import join_influencer
 
 # Create your views here.
 # @login_required(login_url='login')
 def home(request):
+
 	return render(request,'User/home.html')
 
 def loginUser(request):
@@ -86,7 +88,7 @@ def join_as_influencer(request):
 		try:
 			influencer_username= request.POST.get('influencer_username')
 			if JoinInfluencer.objects.filter(influencer_username=influencer_username):
-				messages.success(request, 'Username is taken')
+				messages.success(request, 'Username Not Available')
 				return redirect(request, 'join_as_influencer.html')
 			else:
 
