@@ -39,10 +39,10 @@ def loginUser(request):
 				login(request, user)
 				return redirect('home')
 			else:
-				msg = 'User/Something is wrong'
+				messages.success(request, 'Something is wrong')
 		except Exception as error:
 			print("error", error)
-			msg = 'User not recognized.'
+			messages.success(request, 'Username Not recognized')
 	context = {
 		'msg':msg
 	}
@@ -98,6 +98,9 @@ def join_as_influencer(request):
 				influencer.save()
 				influencer_obj2= JoinInfluencer.objects.create(influencer_username= influencer_username)
 				influencer_obj2.save()
+				request.session['username_session'] = influencer_username
+				username_session = request.session.get('username_session')
+				print('Fav username_session::::::@@@@',username_session)
 				context= {'influencer_username': influencer_username}
 				return render(request,'User/create_your_page.html', context)
 		except Exception as e:
@@ -107,34 +110,46 @@ def join_as_influencer(request):
 
 def create_your_page(request):
 	if request.method== 'POST':
-		influencer_username_2= request.POST.get('influencer_username_2')
-		fullname_influencer= request.POST.get('fullname')
-		email_influencer= request.POST.get('email')
-		password_influencer= request.POST.get('password')
-		influencer=User.objects.get(username= influencer_username_2)
-		influencer_obj= JoinInfluencer.objects.get(influencer_username= influencer_username_2)
-		print('influencer', influencer)
-		# influencer_obj=influencer(firstname=fullname_influencer,email=email_influencer)
-		influencer.first_name=fullname_influencer
-		influencer.email=email_influencer
-		influencer.set_password(password_influencer)
-		# influencer_obj_.set_password(password_influencer)
-		influencer.save()
-		
-		influencer_obj.full_name=fullname_influencer
-		influencer_obj.email_address=email_influencer
-		influencer_obj.password=password_influencer
-		influencer_obj.save()
-		context= {'influencer_username_2': influencer_username_2}
-		return render(request,'User/join_influencer_profile.html', context)
+		try:
+			username_session = request.session.get('username_session')
+			print('Fav username_session create page::::::@@@@',username_session)
+			influencer_username_2= request.POST.get('influencer_username_2')
+			fullname_influencer= request.POST.get('fullname')
+			email_influencer= request.POST.get('email')
+			password_influencer= request.POST.get('password')
+			if User.objects.filter(email=email_influencer):
+					messages.success(request, 'Email Already in use')
+					return redirect('create_your_page' )
+			else:
+				influencer=User.objects.get(username= username_session)
+				influencer_obj= JoinInfluencer.objects.get(influencer_username= username_session)
+				print('influencer', influencer)
+				# influencer_obj=influencer(firstname=fullname_influencer,email=email_influencer)
+				influencer.first_name=fullname_influencer
+				influencer.email=email_influencer
+				influencer.set_password(password_influencer)
+				# influencer_obj_.set_password(password_influencer)
+				influencer.save()
+				
+				
+				influencer_obj.full_name=fullname_influencer
+				influencer_obj.email_address=email_influencer
+				influencer_obj.password=password_influencer
+				influencer_obj.save()
+			context= {'influencer_username_2': influencer_username_2}
+			return render(request,'User/join_influencer_profile.html', context)
+		except Exception as e:
+			print(e)
 	return render(request,'User/create_your_page.html')
 
 
 
 def join_influencer_profile(request):
 	if request.method == 'POST':
+		username_session = request.session.get('username_session')
+		print('Fav username_session create page::::::@@@@',username_session)
 		influencer_username_3= request.POST.get('influencer_username_3')
-		influencer=JoinInfluencer.objects.get(influencer_username= influencer_username_3)
+		influencer=JoinInfluencer.objects.get(influencer_username= username_session)
 		location= request.POST.get('location_influencer')
 		title_influencer= request.POST.get('title_influencer')
 		description_influencer= request.POST.get('description_influencer')
@@ -152,7 +167,7 @@ def join_influencer_profile(request):
 		website= request.POST.get('website')
 		niches= request.POST.get('niches_val')
 		profile_image= request.FILES.get('profile_img')
-		cover_image= request.FILES.get('cover_image')
+		cover_image= request.FILES.get('img-files')
 		img2= request.FILES.get('img2')
 		img3= request.FILES.get('img3')
 		img4= request.FILES.get('img4')
@@ -906,21 +921,25 @@ def join_influencer_profile(request):
 		
 		
 		context={'influencer_username_3': influencer_username_3}
-		return render(request,'User/influencer_profile.html', context)
+		return render(request,'User/login.html', context)
 	
 
 
 def influencer_profile(request):
 	username = None
-	if request.user.is_authenticated:
-		print("User is logged in :)")
-		username= request.user.username
-		joined_influencer=JoinInfluencer.objects.get(influencer_username=username)
-		package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
-		faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
-		print('joined_influencer::::::::::',joined_influencer)
-		context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
-		return render(request, 'User/influencer_profile.html', context)
-	else:
-   		print("User is not logged in :(")
-		# return redirect(request, 'User/influencer_profile.html')
+	try:
+		if request.user.is_authenticated:
+			print("User is logged in :)")
+			username= request.user.username
+			joined_influencer=JoinInfluencer.objects.get(influencer_username=username)
+			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
+			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
+			print('joined_influencer::::::::::',joined_influencer)
+			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
+			return render(request, 'User/influencer_profile.html', context)
+		else:
+			print("User is not logged in :(")
+			# return redirect(request, 'User/influencer_profile.html')
+	except Exception as e:
+			messages.success(request, 'Superuser logged in')
+			return redirect('home')

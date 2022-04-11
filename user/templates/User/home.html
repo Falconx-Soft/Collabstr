@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+
+
+
 {% block title %} Dashboard {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
@@ -8,7 +11,18 @@
 {% endblock extrastyle %}
 
 {% block content %}	
-
+{% if messages %}
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style=" padding: 2px; display: flex;">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div>{{ message }}</div>
+            {% endfor %}
+    </ul>
+</div>
+       
+        {% endif %}
 
 <div class="home-title-div" style="padding: 10px;">
     <h1 class="home-title">Find and Hire Influencers in Seconds</h1>

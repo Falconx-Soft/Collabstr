@@ -33,7 +33,7 @@
         <div class="container-fluid ">
             <div class="container navbar_content mt-5" style="">
                 <div class="navbar-header" style="width: 75%;">
-                    <a class="navbar-brand" href="">
+                    <a class="navbar-brand" href="{% url 'home' %}">
                         <div class="" style="display: flex; justify-content: left; margin-top: -23px;">
                             <h3 style="font-weight: 700; color: black;">I N F U L</h3>
                             <!-- <div style="margin-right: 14px;"><h1 style="font-weight: 700;">N</h1></div>
@@ -58,13 +58,13 @@
                                 onclick="location.href=''">
                             <div class="dashboard-menu">
     
-                                 <div class="dashboard-menu-item"> Profile</div>
+                                 <div class="dashboard-menu-item"  onclick="location.href='/influencerprofile'"> Profile</div>
     
                                 <div class="dashboard-menu-item"
-                                    onclick="location.href='/join-influencer-account.html'">Account</div>
+                                    onclick="location.href='#'">Account</div>
     
                                 <div class="dashboard-menu-item"
-                                    onclick="location.href='/join-influencer-earnings.html'">Earnings</div>
+                                    onclick="location.href='#'">Earnings</div>
     
                                 <div class="dashboard-menu-item" onclick="location.href='/logout'">Sign Out</div>
                             </div>
