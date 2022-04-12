@@ -13,6 +13,9 @@
 </style>
 
 {% endblock extrastyle %}
+<style>
+
+</style>
 
 {% block content %}	
 
@@ -24,21 +27,101 @@
 <div class="btn-row">
 
 
-    <div class="share-btn row-btn"><img class="row-btn-img"
-            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/share.svg">Share</div>
+    <div class="share-btn row-btn" onclick="location.href='/influenceredit'"><img class="row-btn-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/edit.svg">Edit</div>
 
 
 
 
-    <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
+    <!-- <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
             src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/save.svg"><span
-            class="save-btn-txt">Save</span></div>
+            class="save-btn-txt">Save</span></div> -->
 
 </div>
 <div class="listing-holder">
 
     <div class="img-row">
-        <div class="primary-img">
+        {% if joined_influencer.image3 and joined_influencer.image4 and   joined_influencer.image5  %}
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="https://d5ik1gor6xydq.cloudfront.net/sellers/16063/162762703374507.jpg">
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col ">
+            <div class="img-row-sq">
+                <div class="file-area" style="width: 50%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+                <div class="file-area" style="width: 50%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+            <div class="file-area file-area4">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        {% elif joined_influencer.image3 and joined_influencer.image4 and not joined_influencer.image5  %}
+        
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="https://d5ik1gor6xydq.cloudfront.net/sellers/16063/162762703374507.jpg">
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col d-lg-none">
+            <div class="img-row-sq">
+                <div class="file-area" style="width: 50%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+                <div class="file-area" style="width: 50%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+            <!-- <div class="file-area file-area4">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div> -->
+        </div>
+            {% elif joined_influencer.image3 and not joined_influencer.image4 and not joined_influencer.image5  %}
+        <div class="primary-img" style="">
             <div class="file-area">
                 <picture>
                     <source media="(max-width: 800px)"
@@ -51,38 +134,212 @@
         </div>
         <div class="img-col">
             <div class="img-row-sq">
-                <div class="file-area" style="width: 50%;">
+                <div class="file-area" style="width: 200%; height: 200%;">
                     <picture>
                         <img style="width: 100%;" class="img img2"
-                            src="{{joined_influencer.cover_image.url}}"
+                            src="{{joined_influencer.image3.url}}"
                             alt="Photo of Nigel Kabvina">
                     </picture>
                 </div>
-                <div class="file-area" style="width: 50%;">
+                <!-- <div class="file-area" style="width: 50%; height: 200%;">
                     <picture>
                         <img style="width: 100%;" class="img img3"
-                        src="{{joined_influencer.profile_image.url}}"
+                        src="{{joined_influencer.image4.url}}"
                         alt="Photo of Nigel Kabvina">
                     </picture>
-                </div>
+                </div> -->
             </div>
-            <div class="file-area file-area4">
+            <!-- <div class="file-area file-area4">
                 <picture>
                     <source media="(max-width: 800px)"
                         srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
                     <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div> -->
+        </div>
+        {% elif not  joined_influencer.image3 and  joined_influencer.image4 and not joined_influencer.image5  %}
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="https://d5ik1gor6xydq.cloudfront.net/sellers/16063/162762703374507.jpg">
+                    <img class="img img1"
                         src="{{joined_influencer.cover_image.url}}"
                         alt="Photo of Nigel Kabvina">
                 </picture>
             </div>
         </div>
+        <div class="img-col">
+            <div class="img-row-sq">
+                <!-- <div class="file-area" style="width: 200%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div> -->
+                <div class="file-area" style="width: 200%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+            <!-- <div class="file-area file-area4">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div> -->
+        </div>
+        {% elif not joined_influencer.image3 and not  joined_influencer.image4 and  joined_influencer.image5  %}
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="https://d5ik1gor6xydq.cloudfront.net/sellers/16063/162762703374507.jpg">
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col">
+            <!-- <div class="img-row-sq">
+                <div class="file-area" style="width: 200%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+                <div class="file-area" style="width: 50%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div> -->
+            <div class="file-area file-area4" style="height: 204%;">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        {% elif not joined_influencer.image3 and   joined_influencer.image4 and  joined_influencer.image5  %}
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="https://d5ik1gor6xydq.cloudfront.net/sellers/16063/162762703374507.jpg">
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col">
+            <div class="img-row-sq">
+                <!-- <div class="file-area" style="width: 200%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div> -->
+                <div class="file-area" style="width: 100%; height: 100%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+            <div class="file-area file-area4" style="">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        {% elif  joined_influencer.image3 and not  joined_influencer.image4 and  joined_influencer.image5  %}
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="https://d5ik1gor6xydq.cloudfront.net/sellers/16063/162762703374507.jpg">
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col">
+            <div class="img-row-sq">
+                <div class="file-area" style="width: 200%; height: 100%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+                <!-- <div class="file-area" style="width: 100%; height: 100%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div> -->
+            </div>
+            <div class="file-area file-area4" style="">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+
+        {% endif %}
+        {% if not joined_influencer.image3 and not joined_influencer.image4 and not joined_influencer.image5  %}
+        <div class="primary-img" style="width: 100%;">
+            <div class="file-area">
+                <picture>
+                    <source media="(max-width: 800px)"
+                        srcset="https://d5ik1gor6xydq.cloudfront.net/sellers/16063/162762703374507.jpg">
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        
+
+        {% endif %}
     </div>
+   
 
     <div class="listing-cols">
 
         <div class="listing-col-l">
 
-            <h1 class="listing-title">{{joined_influencer.title_influencer}}</h1>
+            <h1 class="listing-title">{{joined_influencer.title_influencer| title}}</h1>
             <div class="listing-description">{{joined_influencer.description_influencer}}</div>
 
 
@@ -93,7 +350,7 @@
 
             <div class="packages-holder">
                 {% for package in package_influencer %}
-                <div class="package-holder package-active" style="border-left: 8px solid rgba(117, 86, 118, 0.65);" data-id="53018">
+                <div class="package-holder " style="border-left: 8px solid rgba(117, 86, 118, 0.65);" data-id="53018">
                     <div class="package-category">{{package.choose_platform}}</div>
                     <div class="package-row">
                     <div class="package-title">{{package.content_category}}</div>
@@ -149,13 +406,13 @@
 
             <div class="faq-section">
                 <h3>FAQ</h3>
-
+                {% for faq in faq_influencer %}
                 <div class="faq-holder">
-                    <h3 class="faq-question">Where are you based?</h3>
-                    <div class="faq-answer" style="display: none;">London and Manchester</div>
+                    <h3 class="faq-question">{{faq.faq_question}}</h3>
+                    <div class="faq-answer" style="display: none;">{{faq.faq_answer}}</div>
                 </div>
-
-                <div class="faq-holder">
+                {% endfor %}
+                <!-- <div class="faq-holder">
                     <h3 class="faq-question">Are you willing to travel internationally?</h3>
                     <div class="faq-answer" style="display: none;">Yes. Absolutely. </div>
                 </div>
@@ -164,7 +421,7 @@
                     <h3 class="faq-question">Do you have any flexibility with package options?</h3>
                     <div class="faq-answer" style="display: none;">Yes, I would be happy to discuss a negotiated
                         rate or project.</div>
-                </div>
+                </div> -->
 
             </div>
 
@@ -177,7 +434,7 @@
                     <img class="profile-pic"
                         src="{{joined_influencer.profile_image.url}}"
                         alt="Photo of Nigel Kabvina">
-                    <div class="profile-name">{{joined_influencer.full_name}}</div>
+                    <div class="profile-name">{{joined_influencer.full_name | title}}</div>
                     <div class="profile-location">{{joined_influencer.location}}</div>
                     <div class="platform-img-holder">
                         {% if joined_influencer.instagram_username != "" %}
@@ -234,11 +491,11 @@
 
                 <div class="checkout-holder">
 
-                    <div class="checkout-title">{{joined_influencer.title_influencer}}
+                    <div class="checkout-title">{{joined_influencer.title_influencer|title}}
                     </div>
                     <select class="input package-input" onchange="changePackage(this)">
                         {% for package in package_influencer %}
-                        <option value="53018">{{package.content_category}}</option>
+                        <option value="{{package.content_category}}">{{package.content_category}}</option>
                         {% endfor %}
 
                     </select>
@@ -264,7 +521,7 @@
 
 
 </div>
-<h3 class="sim-padding">Similar Influencers</h3>
+<!-- <h3 class="sim-padding">Similar Influencers</h3>
 <div class="influencers-div" style="    grid-template-columns: repeat(5, 24%);"> 
 
 
@@ -340,7 +597,7 @@
 
 
 
-</div>
+</div> -->
 
 <!-- Sign Up modals -->
 <div class="modal" style="">
@@ -538,5 +795,77 @@
 <!-- Specific Page JS goes HERE  -->
 {% block extrajavascript %}
 
+<script>
+       $('.faq-holder').click(function () {
+            let answer = $(this).children('.faq-answer');
+            if (answer.is(":visible")) {
+                answer.slideUp();
+            } else {
+                answer.slideDown();
+            }
+        });
+        // for selecting package holders
+        $('.package-holder').click(function () {
+            $('.package-btn').removeClass('btn-active');
+            $('.package-holder').removeClass('package-active');
+            $(this).find('.package-btn').addClass('btn-active');
+            $(this).addClass('package-active');
+            $('.package-input').val($(this).data('id'));
 
+            // update info on checkout box
+            $('.checkout-price').html($(this).find('.package-price').html());
+            $('.checkout-description-holder').html($(this).find('.package-description').html());
+        });
+
+        function changePackage(el) {
+            let packageID = $(el).find(":selected").val();
+            $(".packages-holder").find(`[data-id='${packageID}']`).click();
+        }
+
+        function changeFilter(el) {
+            let cat = $(el).find(":selected").val();
+
+            $('.package-holder').show();
+            if (cat !== 'All') {
+                $(".package-category").each(function () {
+                    if ($(this).text().toLowerCase() !== cat) {
+                        $(this).parent('.package-holder').hide();
+                    }
+                });
+            }
+        }
+        $(document).on('click', '.login-btn', function () {
+            $('.form-holder-forgot').hide();
+            $('.form-holder-signup').hide();
+            $('.form-holder-login').show();
+        });
+        $(document).on('click', '.forgot-btn', function () {
+            $('.form-holder-login').hide();
+            $('.form-holder-forgot').show();
+        });
+        $(document).on('click', '.signup-btn', function () {
+            $('.form-holder-login').hide();
+            $('.form-holder-signup').show();
+        });
+        $('.msg-btn, .buy-btn, .save-btn').click(function () {
+
+            $(".modal").css("display", "flex");
+        });
+        $('.close-modal').click(function () {
+
+            $(".modal").css("display", "none");
+            $(".form-1").css("display", "block");
+                $(".form-2").css("display", "none");
+        });
+            $('.modal-btn').click(function () {
+
+                $(".form-1").css("display", "none");
+                $(".form-2").css("display", "block");
+
+            });
+
+        
+
+    </script>
+</script>
 {% endblock extrajavascript %}

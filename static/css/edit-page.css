@@ -1,0 +1,382 @@
+.edit-main-div{
+	padding: 30px;
+	padding-left: 140px;
+	padding-right: 140px;
+}
+
+.edit-main-headding{
+    font-weight: 600;
+}
+
+.edit-div-options{
+	display: flex;
+	margin-top: 50px;
+}
+
+.edit-div-item{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 18px 9px;
+    margin-right: 45px;
+    color: gray;
+    cursor: pointer;
+    font-weight: 600;
+	font-size: 17px;
+    transition-duration: 0.3s;
+    white-space: nowrap;
+}
+
+.active{
+	color: black;
+	border-bottom: 3px solid black;
+}
+
+@media only screen and (max-width: 884px){
+	.edit-main-div{
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	.edit-div-item{
+		margin-right: 20px;
+	}
+
+	.edit-main-headding{
+		font-size: 25px;
+	}
+
+	.dashboard-menu-holder{
+		display: none;
+	}
+
+	.navbar-header{
+		margin-left: 0px !important;
+	}
+}
+
+/********************************************************************* input div */
+
+.details-div{
+	width: 60%;
+}
+
+.details-input-div{
+	margin-top: 40px;
+	width: 100%;
+}
+
+.details-input-field-head{
+	font-size: 18px;
+}
+
+.details-input-field{
+	width: 100%;
+	margin-top: 12px;
+	padding: 10px;
+	border: 1px solid rgba(191,203,218,.6);
+	border-radius: 10px;
+	height: 46px;
+}
+
+.details-input-field:focus {
+    outline: none !important;
+    border: 1px solid rgba(191,203,218,.6);
+}
+
+.save-btn-div{
+	width: 100%;
+	display: flex;
+	justify-content: right;
+	margin-top: 50px;
+}
+
+@media only screen and (max-width: 768px){
+
+	.details-div{
+		width: 100%;
+	}
+
+	.edit-div-options{
+		display: -webkit-box;
+    	overflow: scroll;
+	}
+
+	.edit-div-options::-webkit-scrollbar{
+		display: none;
+	  }
+	  
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.edit-div-options{
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+	}
+}
+
+/********************************************************************* input div end */
+
+
+/********************************************************************* Social Media */
+
+.social-media-div{
+	width: 60%;
+}
+
+@media only screen and (max-width: 884px){
+	.social-media-div{
+		width: 100%;
+	}
+
+	.platform-holder{
+		margin-left: 0px !important;
+		width: 100%;
+	}
+}
+
+/********************************************************************* Social End */
+
+/********************************************************************* Images */
+
+.profile-pic-div{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.profile-pic{
+	width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 3%;
+}
+
+.img-row {
+    display: flex;
+    height: 440px;
+    justify-content: space-between;
+}
+.primary-img {
+    width: 57.5%;
+}
+.file-area {
+    height: 100%;
+    border-radius: 8px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+.img1 {
+    border-radius: 8px 0 0 8px;
+}
+.img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.img-col {
+    display: flex;
+    flex-direction: column;
+    width: 42%;
+    justify-content: space-between;
+}
+.img-row-sq {
+    display: flex;
+    height: 50%;
+    margin: 0 0 1% 0;
+}
+.img-row-sq .file-area:first-child {
+    margin-right: 1%;
+}
+.img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.img2 {
+    width: 215px;
+    border-radius: 0 8px 0 0;
+}
+.img3 {
+    width: 222px;
+    border-radius: 0 8px 0 0;
+}
+.file-area4 {
+    height: calc(220px - 1%);
+}
+.img4 {
+    border-radius: 0 0 8px 0;
+}
+
+@media only screen and (max-width: 674px){
+
+	.img-row{
+		display: block;
+		height: 100%;
+	}
+	
+	.primary-img{
+		width: 100%;
+		height: 270px;
+	}
+
+	.img1, 
+	.img2,
+	.img3,
+	.img4{
+		border-radius: 10px !important;
+	}
+
+	.img-col{
+		width: 100%;
+		margin-top: 5px;
+	}
+
+	.img-row-sq{
+		width: 100%;
+		height: 270px;
+		margin: 0px;
+	}
+
+	.file-area4{
+		width: 100%;
+		height: 270px;
+		margin-top: 5px;
+	}
+}
+
+/*********************************************************************  Images end */
+
+/********************************************************************* Package */
+
+.packages-div{
+	width: 100%;
+	margin-top: 40px;
+}
+
+.box-holder{
+	width: 30%;
+	margin-right: 20px;
+}
+
+@media only screen and (max-width: 661px){
+	.box-holder{
+		width: 100%;
+		margin-right: 0px;
+	}
+}
+
+/********************************************************************* Package end */
+
+/********************************************************************* FAQ */
+
+.faqs-div{
+	margin-top: 40px;
+	display: grid; 
+	grid-template-columns: repeat(3, 30%);
+	grid-column-gap: 20px;
+}
+
+.faq-holder{
+	width: 100% !important;
+}
+
+@media only screen and (max-width: 769px){
+	.faqs-div{
+		margin-top: 40px;
+		display: grid; 
+		grid-template-columns: repeat(2, 50%);
+		grid-column-gap: 20px;
+	}
+}
+
+@media only screen and (max-width: 600px){
+	.faqs-div{
+		margin-top: 40px;
+		display: grid; 
+		grid-template-columns: repeat(1, 100%);
+		grid-column-gap: 20px;
+	}
+}
+
+/********************************************************************* FAQ end */
+
+/********************************************************************* Portfolio */
+
+.portfolio-div{
+	width: 60%;
+
+}
+
+.upload-btn-wrapper {
+	margin-top: 40px;
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	cursor: pointer !important;
+	width: 100%;
+}
+
+.upload-btn {
+	border: 1px solid rgba(191,203,218,.6);
+	color: black;
+	background-color: white;
+	padding: 8px 20px;
+	border-radius: 8px;
+	font-size: 18px;
+	width: 100%;
+	padding: 13px;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	width: 800px;
+  }
+
+  @media only screen and (max-width: 768px){
+
+	.portfolio-div{
+		width: 100%;
+	}
+}
+
+/********************************************************************* end Portfolio */
+
+.show{
+	display: block;
+}
+
+.hide{
+	display: none;
+}
+
+.save-btn{
+	display: block;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    font-size: 16px;
+    font-family: inherit;
+    border-radius: 8px;
+    box-shadow: var(--lightBoxShadow);
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    position: relative;
+	background-color: #222;
+    color: white;
+    width: 250px;
+    padding: 16px 0;
+    margin: 0 0 0 auto;
+}
+
+@media only screen and (max-width: 884px){
+	.save-btn{
+		width: 100%;
+	}
+}

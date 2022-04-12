@@ -941,5 +941,93 @@ def influencer_profile(request):
 			print("User is not logged in :(")
 			# return redirect(request, 'User/influencer_profile.html')
 	except Exception as e:
-			messages.success(request, 'Superuser logged in')
+			# messages.success(request, 'Superuser logged in')
 			return redirect('home')
+
+
+def influencer_profile_edit(request):
+	try:
+		if request.user.is_authenticated:
+			print("User is logged in :)")
+			username= request.user.username
+			influencer=User.objects.get(username= username)
+			
+			joined_influencer=JoinInfluencer.objects.get(influencer_username=username)
+			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
+			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
+			print('joined_influencer::::::::::',joined_influencer)
+			if request.method == 'POST':
+				print('influencer firstname', influencer.first_name)
+				influencer_fullname= request.POST.get('influencer_fullname')
+				influencer_location= request.POST.get('influencer_location')
+				influencer_title= request.POST.get('influencer_title')
+				influencer_description= request.POST.get('influencer_description')
+				influencer_gender= request.POST.get('influencer_gender')
+				instagram_username= request.POST.get('instagram_username')
+				instagram_followers= request.POST.get('instagram_followers')
+				tiktok_username= request.POST.get('tiktok_username')
+				tiktok_followers= request.POST.get('tiktok_followers')
+				youtube_username= request.POST.get('youtube_username')
+				youtube_followers= request.POST.get('youtube_followers')
+				twitter_username= request.POST.get('twitter_username')
+				twitter_followers= request.POST.get('twitter_followers')
+				twitch_username= request.POST.get('twitch_username')
+				twitch_followers= request.POST.get('twitch_followers')
+				website= request.POST.get('website')
+				
+				
+				if influencer_fullname != "":
+					print('#####################################')
+					print('influencer_fullname edit:::',influencer_fullname)
+					influencer.first_name=influencer_fullname
+					influencer.save()
+					joined_influencer.full_name=influencer_fullname
+					joined_influencer.save()
+				if influencer_location!= "":
+					joined_influencer.location=influencer_location
+					joined_influencer.save()
+				if influencer_title!= "":
+					joined_influencer.title_influencer=influencer_title
+					joined_influencer.save()
+				if influencer_description!= "":
+					joined_influencer.description_influencer=influencer_description
+					joined_influencer.save()
+				if influencer_gender!= "":
+					joined_influencer.gender_influencer=influencer_gender
+					joined_influencer.save()
+				if instagram_username!= "":
+					joined_influencer.instagram_username=instagram_username
+					joined_influencer.instagram_followers=instagram_followers
+					joined_influencer.save()
+				if tiktok_username!= "":
+					joined_influencer.tiktok_username=tiktok_username
+					joined_influencer.tiktok_followers=tiktok_followers
+					joined_influencer.save()
+				if youtube_username!= "":
+					joined_influencer.youtube_url=youtube_username
+					joined_influencer.youtube_followers=youtube_followers
+					joined_influencer.save()
+				if twitter_username!= "":
+					joined_influencer.twitter_username=twitter_username
+					joined_influencer.twitter_followers=twitter_followers
+					joined_influencer.save()
+				if twitch_username!= "":
+					joined_influencer.twitch_username=twitch_username
+					joined_influencer.twitch_followers=twitch_followers
+					joined_influencer.save()
+				if website!= "":
+					joined_influencer.instagram_username=website
+					
+					joined_influencer.save()
+				return redirect('influencer_profile_edit')
+			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
+			return render(request, 'User/infl_profile_edit.html', context)
+				
+			
+		else:
+			print("User is not logged in :(")
+			# return redirect(request, 'User/influencer_profile.html')
+	except Exception as e:
+			# messages.success(request, 'Superuser logged in')
+			print(e)
+	return render(request, 'User/infl_profile_edit.html')

@@ -18,6 +18,7 @@ urlpatterns = [
       path('createyourpage/', views.create_your_page, name="create_your_page"),
       path('joininfluencerprofile/', views.join_influencer_profile, name="join_influencer_profile"),
       path('influencerprofile/', views.influencer_profile, name="influencer_profile"),
+      path('influenceredit/', views.influencer_profile_edit, name="influencer_profile_edit"),
       
 
 	path('reset_password/', auth_views.PasswordResetView.as_view(template_name="User/restPassword/restPassword.html"), name="reset_password"),

@@ -20,6 +20,34 @@
     .profile-submit-btn{
         font-size: initial;
     }
+    .form_2_submit , .form_3_submit , .form_1_submit, .form_7_submit{
+    
+    font-size: initial;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    font-size: 95%;
+    font-family: inherit;
+    border-radius: 8px;
+    box-shadow: rgba(120, 120, 170, 0.15) 0 2px 16px 0;;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    position: relative;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 15px 0;
+    margin: 4% auto;
+font-size: initial;
+}
+.form_2_submit:hover, .form_3_submit:hover, .form_1_submit:hover, .form_7_submit:hover{
+    opacity: 0.6;
+    color: white;
+
+}
+   
     @media(max-width:800px){
         .form-holder .package-holder{
             flex: 0 48%;
@@ -67,7 +95,7 @@
                     autocomplete="new-password">
                 <input id="location-id" name="l_id" type="hidden" value=""> -->
                 
-                <select name="location_influencer" class="input" required>
+                <select name="location_influencer" class="input " id="location_input" >
     
     
                     <option value="" selected="" hidden="" disabled>City - Enter first 3 letters and select from dropdown</option>
@@ -106,7 +134,7 @@
                             States</span></div>
                 </div> -->
             </div>
-            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+            <button type="button" class="submit  form_1_submit">Continue</button>
             <div class="under-btn">I don't see my city<a href="/supported-countries" target="_blank"><span
                         class="link-spanner"></span></a></div>
             </div>
@@ -128,8 +156,8 @@
             <input type="hidden" name=""
                 value="">
             <input class="input" type="text" name="title_influencer" placeholder="E.g. Fitness Content Creator & Student Athlete"
-                minlength="10" maxlength="75" value="" required="">
-            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+                 maxlength="75" value="" required="" id="form_2_input" >
+            <button type="button" class="submit  form_2_submit">Continue</button>
         </div>
     </div>
     <!-- form3 -->
@@ -149,8 +177,8 @@
                 value="">
             <textarea class="input textarea" name="description_influencer"
                 placeholder="Who are you and what type of content do you create? Who is your audience? Be specific as this will help you show up in searches."
-                minlength="5" maxlength="800" required=""></textarea>
-            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+                 maxlength="800" id="form_3_input"  ></textarea>
+            <button type="button" class="submit  form_3_submit">Continue</button>
         </div>
     </div>
     <!-- form4 -->
@@ -488,7 +516,7 @@
                 <div class="upload-img-overlay">
                     <div class="upload-btn-overlay">
                         <input type="file" class="img-file-input file-input js-img-file-input" name="img-files"
-                            accept="image/*" multiple="">
+                            accept="image/*" multiple="" id="cover_image_input">
                         <div class="upload-img-btn btn">
                             <img class="upload-btn-img"
                                 src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/upload.svg">Upload
@@ -586,7 +614,7 @@
 
         <input type="hidden" name="del_img_list">
 
-        <button type="button" class="submit btn profile-submit-btn">Continue</button>
+        <button type="button" class="submit  form_7_submit">Continue</button>
    </div>
 </div>
 <!-- form 8 -->
@@ -3437,6 +3465,7 @@
     });
     // allforms
     $('.profile-submit-btn').click(function () {
+ 
         var active = $(".form-holder.active").attr("data-step")
         var next = parseInt(active) + 1
         console.log(next)
@@ -3465,7 +3494,54 @@
     $('.location-option').click(function () {
         $('#location-dropdown-content').css("display", "none")
     });
-
+    $('.form_1_submit').click(function () {
+            forminput= $('#location_input').val()
+            console.log('for,input::::::::::::', forminput)
+            if( !forminput ) {
+                alert('Please Select your Location')
+console.log('input is not  present') 
+     }
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
+    //  ___________________________________________________form 2
+    $('.form_2_submit').click(function () {
+            forminput= $('#form_2_input').val()
+            if( !forminput ) {
+                alert('Input Box is Empty Please Write Something about You')
+console.log('input is not  present please write something') 
+     }
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
+// ________________________________________________________form 3
+$('.form_3_submit').click(function () {
+            forminput= $('#form_3_input').val()
+            if( !forminput ) {
+                alert('Input Box is Empty please write a description about yourself')
+console.log('input is not  present') 
+     }
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
     // 
 
     // $('.profile-submit-btn').click(function () {
@@ -3502,6 +3578,23 @@
     });
     // #################################################
     // form 7 upload images
+    $('.form_7_submit').click(function () {
+            forminput1= $('#file-input').val()
+            forminput2= $('#cover_image_input').val()
+            if( !forminput || !forminput2 ) {
+                alert('Please Upload Profile and Cover Picture')
+console.log('input is not  present') 
+     }
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
+    
     $(function () {
         $('#file-input').change(function (event) {
             var x = URL.createObjectURL(event.target.files[0]);

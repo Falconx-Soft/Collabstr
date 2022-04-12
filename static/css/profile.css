@@ -32,6 +32,11 @@
     height: 440px;
     justify-content: space-between;
 }
+.img-row-mobile{
+    display: none;
+    height: 440px;
+    justify-content: space-between;
+}
 .listing-holder .primary-img {
     width: 57.5%;
 }
