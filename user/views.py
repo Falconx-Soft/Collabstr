@@ -167,6 +167,7 @@ def join_influencer_profile(request):
 		website= request.POST.get('website')
 		niches= request.POST.get('niches_val')
 		profile_image= request.FILES.get('profile_img')
+		print('profile image join_________________', profile_image)
 		cover_image= request.FILES.get('img-files')
 		img2= request.FILES.get('img2')
 		img3= request.FILES.get('img3')
@@ -926,8 +927,8 @@ def join_influencer_profile(request):
 
 
 def influencer_profile(request):
-	username = None
-	try:
+		username = None
+	# try:
 		if request.user.is_authenticated:
 			print("User is logged in :)")
 			username= request.user.username
@@ -940,13 +941,13 @@ def influencer_profile(request):
 		else:
 			print("User is not logged in :(")
 			# return redirect(request, 'User/influencer_profile.html')
-	except Exception as e:
+	# except Exception as e:
 			# messages.success(request, 'Superuser logged in')
 			return redirect('home')
 
 
 def influencer_profile_edit(request):
-	try:
+	# try:
 		if request.user.is_authenticated:
 			print("User is logged in :)")
 			username= request.user.username
@@ -974,6 +975,33 @@ def influencer_profile_edit(request):
 				twitch_username= request.POST.get('twitch_username')
 				twitch_followers= request.POST.get('twitch_followers')
 				website= request.POST.get('website')
+				profile_img= request.FILES.get('profile_img_edit')
+				print('profile image edit_____', profile_img)
+				cover_image= request.FILES.get('cover_image')
+				img2= request.FILES.get('img2')
+				img3= request.FILES.get('img3')
+				img4= request.FILES.get('img4')
+
+				package_platform_0= request.POST.get('package_category_0')
+				package_platform_1= request.POST.get('package_category_1')
+				package_platform_2= request.POST.get('package_category_2')
+				package_platform_3= request.POST.get('package_category_3')
+				package_platform_4= request.POST.get('package_category_4')
+				package_platform_5= request.POST.get('package_category_5')
+				package_platform_6= request.POST.get('package_category_6')
+				package_platform_7= request.POST.get('package_category_7')
+				package_platform_8= request.POST.get('package_category_8')
+				package_platform_9= request.POST.get('package_category_9')
+				package_platform_10= request.POST.get('package_category_10')
+				package_platform_11= request.POST.get('package_category_11')
+				package_platform_12= request.POST.get('package_category_12')
+				package_platform_13= request.POST.get('package_category_13')
+				package_platform_14= request.POST.get('package_category_14')
+				package_platform_15= request.POST.get('package_category_15')
+				package_platform_16= request.POST.get('package_category_16')
+				package_platform_17= request.POST.get('package_category_17')
+				package_platform_18= request.POST.get('package_category_18')
+				package_platform_19= request.POST.get('package_category_19')
 				
 				
 				if influencer_fullname != "":
@@ -1019,7 +1047,603 @@ def influencer_profile_edit(request):
 					joined_influencer.instagram_username=website
 					
 					joined_influencer.save()
-				return redirect('influencer_profile_edit')
+				# if profile_img!= "":
+				# 	joined_influencer.profile_image=profile_img
+					
+				# 	joined_influencer.save()
+				# if cover_image!= "":
+				# 	joined_influencer.cover_image=cover_image
+					
+				# 	joined_influencer.save()
+				# if img2!= "":
+				# 	joined_influencer.image3=img2
+					
+				# 	joined_influencer.save()
+				# if img3!= "":
+				# 	joined_influencer.image4=img3
+					
+				# 	joined_influencer.save()
+				# if img4!= "":
+				# 	joined_influencer.image5=img4
+					
+				# 	joined_influencer.save()
+				# __________________________________ Packages
+				if package_platform_0 is not None:
+					package_content_type_0= request.POST.get('package_content_type_0')
+					package_title_0= request.POST.get('package_title_0')
+					package_description_0= request.POST.get('package_description_0')
+					package_price_0= request.POST.get('package_price_0')
+					if package_platform_0 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+						influencer_package.save()
+					if package_platform_0 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+						influencer_package.save()
+						
+					if package_platform_0 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+						influencer_package.save()
+						
+					if package_platform_0 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+						influencer_package.save()
+						
+					if package_platform_0 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+						influencer_package.save()
+						
+					if package_platform_0 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+						influencer_package.save()
+						
+					
+					print('##########################')
+					print('package_content_type_0',package_content_type_0)
+					print('**************************')
+					print('package_title_0',package_title_0)
+					print('**************************')
+					print('package_description_0',package_description_0)
+					print('**************************')
+					print('package_price_0',package_price_0)
+					print('package_platform_0',package_platform_0)
+				if package_platform_1 is not None:
+					package_content_type_1= request.POST.get('package_content_type_1')
+					package_title_1= request.POST.get('package_title_1')
+					package_description_1= request.POST.get('package_description_1')
+					package_price_1= request.POST.get('package_price_1')
+					if package_platform_1 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_1,package_offering=package_title_1,package_include=package_description_1,package_price=package_price_1)
+						influencer_package.save()
+					if package_platform_1 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_1,package_offering=package_title_1,package_include=package_description_1,package_price=package_price_1)
+						influencer_package.save()
+						
+					if package_platform_1 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_1,package_offering=package_title_1,package_include=package_description_1,package_price=package_price_1)
+						influencer_package.save()
+						
+					if package_platform_1 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_1,package_offering=package_title_1,package_include=package_description_1,package_price=package_price_1)
+						influencer_package.save()
+						
+					if package_platform_1 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_1,package_offering=package_title_1,package_include=package_description_1,package_price=package_price_1)
+						influencer_package.save()
+						
+					if package_platform_1 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_1,package_offering=package_title_1,package_include=package_description_1,package_price=package_price_1)
+						influencer_package.save()
+								
+				if package_platform_2 is not None:
+					package_content_type_2= request.POST.get('package_content_type_2')
+					package_title_2= request.POST.get('package_title_2')
+					package_description_2= request.POST.get('package_description_2')
+					package_price_2= request.POST.get('package_price_2')
+					if package_platform_2 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_2,package_offering=package_title_2,package_include=package_description_2,package_price=package_price_2)
+						influencer_package.save()
+					if package_platform_2 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_2,package_offering=package_title_2,package_include=package_description_2,package_price=package_price_2)
+						influencer_package.save()
+						
+					if package_platform_2 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_2,package_offering=package_title_2,package_include=package_description_2,package_price=package_price_2)
+						influencer_package.save()
+						
+					if package_platform_2 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_2,package_offering=package_title_2,package_include=package_description_2,package_price=package_price_2)
+						influencer_package.save()
+						
+					if package_platform_2 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_2,package_offering=package_title_2,package_include=package_description_2,package_price=package_price_2)
+						influencer_package.save()
+						
+					if package_platform_2 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_2,package_offering=package_title_2,package_include=package_description_2,package_price=package_price_2)
+						influencer_package.save()
+				if package_platform_3 is not None:
+					package_content_type_3= request.POST.get('package_content_type_3')
+					package_title_3= request.POST.get('package_title_3')
+					package_description_3= request.POST.get('package_description_3')
+					package_price_3= request.POST.get('package_price_3')
+					if package_platform_3 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_3,package_offering=package_title_3,package_include=package_description_3,package_price=package_price_3)
+						influencer_package.save()
+					if package_platform_3 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_3,package_offering=package_title_3,package_include=package_description_3,package_price=package_price_3)
+						influencer_package.save()
+						
+					if package_platform_3 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_3,package_offering=package_title_3,package_include=package_description_3,package_price=package_price_3)
+						influencer_package.save()
+						
+					if package_platform_3 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_3,package_offering=package_title_3,package_include=package_description_3,package_price=package_price_3)
+						influencer_package.save()
+						
+					if package_platform_3 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_3,package_offering=package_title_3,package_include=package_description_3,package_price=package_price_3)
+						influencer_package.save()
+						
+					if package_platform_3 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_3,package_offering=package_title_3,package_include=package_description_3,package_price=package_price_3)
+						influencer_package.save()	
+				if package_platform_4 is not None:
+					package_content_type_4= request.POST.get('package_content_type_4')
+					package_title_4= request.POST.get('package_title_4')
+					package_description_4= request.POST.get('package_description_4')
+					package_price_4= request.POST.get('package_price_4')
+					if package_platform_4 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_4,package_offering=package_title_4,package_include=package_description_4,package_price=package_price_4)
+						influencer_package.save()
+					if package_platform_4 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_4,package_offering=package_title_4,package_include=package_description_4,package_price=package_price_4)
+						influencer_package.save()
+						
+					if package_platform_4 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_4,package_offering=package_title_4,package_include=package_description_4,package_price=package_price_4)
+						influencer_package.save()
+						
+					if package_platform_4 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_4,package_offering=package_title_4,package_include=package_description_4,package_price=package_price_4)
+						influencer_package.save()
+						
+					if package_platform_4 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_4,package_offering=package_title_4,package_include=package_description_4,package_price=package_price_4)
+						influencer_package.save()
+						
+					if package_platform_4 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_4,package_offering=package_title_4,package_include=package_description_4,package_price=package_price_4)
+						influencer_package.save()
+				if package_platform_5 is not None:
+					package_content_type_5= request.POST.get('package_content_type_5')
+					package_title_5= request.POST.get('package_title_5')
+					package_description_5= request.POST.get('package_description_5')
+					package_price_5= request.POST.get('package_price_5')
+					if package_platform_5 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_5,package_offering=package_title_5,package_include=package_description_5,package_price=package_price_5)
+						influencer_package.save()
+					if package_platform_5 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_5,package_offering=package_title_5,package_include=package_description_5,package_price=package_price_5)
+						influencer_package.save()
+						
+					if package_platform_5 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_5,package_offering=package_title_5,package_include=package_description_5,package_price=package_price_5)
+						influencer_package.save()
+						
+					if package_platform_5 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_5,package_offering=package_title_5,package_include=package_description_5,package_price=package_price_5)
+						influencer_package.save()
+						
+					if package_platform_5 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_5,package_offering=package_title_5,package_include=package_description_5,package_price=package_price_5)
+						influencer_package.save()
+						
+					if package_platform_5 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_5,package_offering=package_title_5,package_include=package_description_5,package_price=package_price_5)
+						influencer_package.save()
+				if package_platform_6 is not None:
+					package_content_type_6= request.POST.get('package_content_type_6')
+					package_title_6= request.POST.get('package_title_6')
+					package_description_6= request.POST.get('package_description_6')
+					package_price_6= request.POST.get('package_price_6')
+					if package_platform_6 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_6,package_offering=package_title_6,package_include=package_description_6,package_price=package_price_6)
+						influencer_package.save()
+					if package_platform_6 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_6,package_offering=package_title_6,package_include=package_description_6,package_price=package_price_6)
+						influencer_package.save()
+						
+					if package_platform_6 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_6,package_offering=package_title_6,package_include=package_description_6,package_price=package_price_6)
+						influencer_package.save()
+						
+					if package_platform_6 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_6,package_offering=package_title_6,package_include=package_description_6,package_price=package_price_6)
+						influencer_package.save()
+						
+					if package_platform_6 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_6,package_offering=package_title_6,package_include=package_description_6,package_price=package_price_6)
+						influencer_package.save()
+						
+					if package_platform_6 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_6,package_offering=package_title_6,package_include=package_description_6,package_price=package_price_6)
+						influencer_package.save()	
+				if package_platform_7 is not None:
+					package_content_type_7= request.POST.get('package_content_type_7')
+					package_title_7= request.POST.get('package_title_7')
+					package_description_7= request.POST.get('package_description_7')
+					package_price_7= request.POST.get('package_price_7')
+					if package_platform_7 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_7,package_offering=package_title_7,package_include=package_description_7,package_price=package_price_7)
+						influencer_package.save()
+					if package_platform_7 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_7,package_offering=package_title_7,package_include=package_description_7,package_price=package_price_7)
+						influencer_package.save()
+						
+					if package_platform_7 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_7,package_offering=package_title_7,package_include=package_description_7,package_price=package_price_7)
+						influencer_package.save()
+						
+					if package_platform_7 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_7,package_offering=package_title_7,package_include=package_description_7,package_price=package_price_7)
+						influencer_package.save()
+						
+					if package_platform_7 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_7,package_offering=package_title_7,package_include=package_description_7,package_price=package_price_7)
+						influencer_package.save()
+						
+					if package_platform_7 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_7,package_offering=package_title_7,package_include=package_description_7,package_price=package_price_7)
+						influencer_package.save()
+				if package_platform_8 is not None:
+					package_content_type_8= request.POST.get('package_content_type_8')
+					package_title_8= request.POST.get('package_title_8')
+					package_description_8= request.POST.get('package_description_8')
+					package_price_8= request.POST.get('package_price_8')
+					if package_platform_8 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_8,package_offering=package_title_8,package_include=package_description_8,package_price=package_price_8)
+						influencer_package.save()
+					if package_platform_8 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_8,package_offering=package_title_8,package_include=package_description_8,package_price=package_price_8)
+						influencer_package.save()
+						
+					if package_platform_8 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_8,package_offering=package_title_8,package_include=package_description_8,package_price=package_price_8)
+						influencer_package.save()
+						
+					if package_platform_8 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_8,package_offering=package_title_8,package_include=package_description_8,package_price=package_price_8)
+						influencer_package.save()
+						
+					if package_platform_8 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_8,package_offering=package_title_8,package_include=package_description_8,package_price=package_price_8)
+						influencer_package.save()
+						
+					if package_platform_8 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_8,package_offering=package_title_8,package_include=package_description_8,package_price=package_price_8)
+						influencer_package.save()
+				if package_platform_9 is not None:
+					package_content_type_9= request.POST.get('package_content_type_9')
+					package_title_9= request.POST.get('package_title_9')
+					package_description_9= request.POST.get('package_description_9')
+					package_price_9= request.POST.get('package_price_9')
+					if package_platform_9 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_9,package_offering=package_title_9,package_include=package_description_9,package_price=package_price_9)
+						influencer_package.save()
+					if package_platform_9 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_9,package_offering=package_title_9,package_include=package_description_9,package_price=package_price_9)
+						influencer_package.save()
+						
+					if package_platform_9 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_9,package_offering=package_title_9,package_include=package_description_9,package_price=package_price_9)
+						influencer_package.save()
+						
+					if package_platform_9 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_9,package_offering=package_title_9,package_include=package_description_9,package_price=package_price_9)
+						influencer_package.save()
+						
+					if package_platform_9 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_9,package_offering=package_title_9,package_include=package_description_9,package_price=package_price_9)
+						influencer_package.save()
+						
+					if package_platform_9 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_9,package_offering=package_title_9,package_include=package_description_9,package_price=package_price_9)
+						influencer_package.save()
+				if package_platform_10 is not None:
+					package_content_type_10= request.POST.get('package_content_type_10')
+					package_title_10= request.POST.get('package_title_10')
+					package_description_10= request.POST.get('package_description_10')
+					package_price_10= request.POST.get('package_price_10')
+					if package_platform_10 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_10,package_offering=package_title_10,package_include=package_description_10,package_price=package_price_10)
+						influencer_package.save()
+					if package_platform_10 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_10,package_offering=package_title_10,package_include=package_description_10,package_price=package_price_10)
+						influencer_package.save()
+						
+					if package_platform_10 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_10,package_offering=package_title_10,package_include=package_description_10,package_price=package_price_10)
+						influencer_package.save()
+						
+					if package_platform_10 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_10,package_offering=package_title_10,package_include=package_description_10,package_price=package_price_10)
+						influencer_package.save()
+						
+					if package_platform_10 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_10,package_offering=package_title_10,package_include=package_description_10,package_price=package_price_10)
+						influencer_package.save()
+						
+					if package_platform_10 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_10,package_offering=package_title_10,package_include=package_description_10,package_price=package_price_10)
+						influencer_package.save()
+				if package_platform_11 is not None:
+					package_content_type_11= request.POST.get('package_content_type_11')
+					package_title_11= request.POST.get('package_title_11')
+					package_description_11= request.POST.get('package_description_11')
+					package_price_11= request.POST.get('package_price_11')
+					if package_platform_11 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_11,package_offering=package_title_11,package_include=package_description_11,package_price=package_price_11)
+						influencer_package.save()
+					if package_platform_11 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_11,package_offering=package_title_11,package_include=package_description_11,package_price=package_price_11)
+						influencer_package.save()
+						
+					if package_platform_11 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_11,package_offering=package_title_11,package_include=package_description_11,package_price=package_price_11)
+						influencer_package.save()
+						
+					if package_platform_11 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_11,package_offering=package_title_11,package_include=package_description_11,package_price=package_price_11)
+						influencer_package.save()
+						
+					if package_platform_11 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_11,package_offering=package_title_11,package_include=package_description_11,package_price=package_price_11)
+						influencer_package.save()
+						
+					if package_platform_11 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_11,package_offering=package_title_11,package_include=package_description_11,package_price=package_price_11)
+						influencer_package.save()
+				if package_platform_12 is not None:
+					package_content_type_12= request.POST.get('package_content_type_12')
+					package_title_12= request.POST.get('package_title_12')
+					package_description_12= request.POST.get('package_description_12')
+					package_price_12= request.POST.get('package_price_12')
+					if package_platform_12 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_12,package_offering=package_title_12,package_include=package_description_12,package_price=package_price_12)
+						influencer_package.save()
+					if package_platform_12 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_12,package_offering=package_title_12,package_include=package_description_12,package_price=package_price_12)
+						influencer_package.save()
+						
+					if package_platform_12 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_12,package_offering=package_title_12,package_include=package_description_12,package_price=package_price_12)
+						influencer_package.save()
+						
+					if package_platform_12 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_12,package_offering=package_title_12,package_include=package_description_12,package_price=package_price_12)
+						influencer_package.save()
+						
+					if package_platform_12 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_12,package_offering=package_title_12,package_include=package_description_12,package_price=package_price_12)
+						influencer_package.save()
+						
+					if package_platform_12 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_12,package_offering=package_title_12,package_include=package_description_12,package_price=package_price_12)
+						influencer_package.save()
+				if package_platform_13 is not None:
+					package_content_type_13= request.POST.get('package_content_type_13')
+					package_title_13= request.POST.get('package_title_13')
+					package_description_13= request.POST.get('package_description_13')
+					package_price_13= request.POST.get('package_price_13')
+					if package_platform_13 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_13,package_offering=package_title_13,package_include=package_description_13,package_price=package_price_13)
+						influencer_package.save()
+					if package_platform_13 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_13,package_offering=package_title_13,package_include=package_description_13,package_price=package_price_13)
+						influencer_package.save()
+						
+					if package_platform_13 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_13,package_offering=package_title_13,package_include=package_description_13,package_price=package_price_13)
+						influencer_package.save()
+						
+					if package_platform_13 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_13,package_offering=package_title_13,package_include=package_description_13,package_price=package_price_13)
+						influencer_package.save()
+						
+					if package_platform_13 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_13,package_offering=package_title_13,package_include=package_description_13,package_price=package_price_13)
+						influencer_package.save()
+						
+					if package_platform_13 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_13,package_offering=package_title_13,package_include=package_description_13,package_price=package_price_13)
+						influencer_package.save()
+				if package_platform_14 is not None:
+					package_content_type_14= request.POST.get('package_content_type_14')
+					package_title_14= request.POST.get('package_title_14')
+					package_description_14= request.POST.get('package_description_14')
+					package_price_14= request.POST.get('package_price_14')
+					if package_platform_14 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_14,package_offering=package_title_14,package_include=package_description_14,package_price=package_price_14)
+						influencer_package.save()
+					if package_platform_14 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_14,package_offering=package_title_14,package_include=package_description_14,package_price=package_price_14)
+						influencer_package.save()
+						
+					if package_platform_14 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_14,package_offering=package_title_14,package_include=package_description_14,package_price=package_price_14)
+						influencer_package.save()
+						
+					if package_platform_14 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_14,package_offering=package_title_14,package_include=package_description_14,package_price=package_price_14)
+						influencer_package.save()
+						
+					if package_platform_14 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_14,package_offering=package_title_14,package_include=package_description_14,package_price=package_price_14)
+						influencer_package.save()
+						
+					if package_platform_14 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_14,package_offering=package_title_14,package_include=package_description_14,package_price=package_price_14)
+						influencer_package.save()
+				if package_platform_15 is not None:
+					package_content_type_15= request.POST.get('package_content_type_15')
+					package_title_15= request.POST.get('package_title_15')
+					package_description_15= request.POST.get('package_description_15')
+					package_price_15= request.POST.get('package_price_15')
+					if package_platform_15 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_15,package_offering=package_title_15,package_include=package_description_15,package_price=package_price_15)
+						influencer_package.save()
+					if package_platform_15 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_15,package_offering=package_title_15,package_include=package_description_15,package_price=package_price_15)
+						influencer_package.save()
+						
+					if package_platform_15 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_15,package_offering=package_title_15,package_include=package_description_15,package_price=package_price_15)
+						influencer_package.save()
+						
+					if package_platform_15 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_15,package_offering=package_title_15,package_include=package_description_15,package_price=package_price_15)
+						influencer_package.save()
+						
+					if package_platform_15 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_15,package_offering=package_title_15,package_include=package_description_15,package_price=package_price_15)
+						influencer_package.save()
+						
+					if package_platform_15 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_15,package_offering=package_title_15,package_include=package_description_15,package_price=package_price_15)
+						influencer_package.save()
+				if package_platform_16 is not None:
+					package_content_type_16= request.POST.get('package_content_type_16')
+					package_title_16= request.POST.get('package_title_16')
+					package_description_16= request.POST.get('package_description_16')
+					package_price_16= request.POST.get('package_price_16')
+					if package_platform_16 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_16,package_offering=package_title_16,package_include=package_description_16,package_price=package_price_16)
+						influencer_package.save()
+					if package_platform_16 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_16,package_offering=package_title_16,package_include=package_description_16,package_price=package_price_16)
+						influencer_package.save()
+						
+					if package_platform_16 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_16,package_offering=package_title_16,package_include=package_description_16,package_price=package_price_16)
+						influencer_package.save()
+						
+					if package_platform_16 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_16,package_offering=package_title_16,package_include=package_description_16,package_price=package_price_16)
+						influencer_package.save()
+						
+					if package_platform_16 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_16,package_offering=package_title_16,package_include=package_description_16,package_price=package_price_16)
+						influencer_package.save()
+						
+					if package_platform_16 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_16,package_offering=package_title_16,package_include=package_description_16,package_price=package_price_16)
+						influencer_package.save()
+				if package_platform_17 is not None:
+					package_content_type_17= request.POST.get('package_content_type_17')
+					package_title_17= request.POST.get('package_title_17')
+					package_description_17= request.POST.get('package_description_17')
+					package_price_17= request.POST.get('package_price_17')
+					if package_platform_17 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_17,package_offering=package_title_17,package_include=package_description_17,package_price=package_price_17)
+						influencer_package.save()
+					if package_platform_17 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_17,package_offering=package_title_17,package_include=package_description_17,package_price=package_price_17)
+						influencer_package.save()
+						
+					if package_platform_17 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_17,package_offering=package_title_17,package_include=package_description_17,package_price=package_price_17)
+						influencer_package.save()
+						
+					if package_platform_17 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_17,package_offering=package_title_17,package_include=package_description_17,package_price=package_price_17)
+						influencer_package.save()
+						
+					if package_platform_17 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_17,package_offering=package_title_17,package_include=package_description_17,package_price=package_price_17)
+						influencer_package.save()
+						
+					if package_platform_17 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_17,package_offering=package_title_17,package_include=package_description_17,package_price=package_price_17)
+						influencer_package.save()
+				if package_platform_18 is not None:
+					package_content_type_18= request.POST.get('package_content_type_18')
+					package_title_18= request.POST.get('package_title_18')
+					package_description_18= request.POST.get('package_description_18')
+					package_price_18= request.POST.get('package_price_18')
+					if package_platform_18 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_18,package_offering=package_title_18,package_include=package_description_18,package_price=package_price_18)
+						influencer_package.save()
+					if package_platform_18 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_18,package_offering=package_title_18,package_include=package_description_18,package_price=package_price_18)
+						influencer_package.save()
+						
+					if package_platform_18 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_18,package_offering=package_title_18,package_include=package_description_18,package_price=package_price_18)
+						influencer_package.save()
+						
+					if package_platform_18 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_18,package_offering=package_title_18,package_include=package_description_18,package_price=package_price_18)
+						influencer_package.save()
+						
+					if package_platform_18 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_18,package_offering=package_title_18,package_include=package_description_18,package_price=package_price_18)
+						influencer_package.save()
+						
+					if package_platform_18 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_18,package_offering=package_title_18,package_include=package_description_18,package_price=package_price_18)
+						influencer_package.save()
+				if package_platform_19 is not None:
+					package_content_type_19= request.POST.get('package_content_type_19')
+					package_title_19= request.POST.get('package_title_19')
+					package_description_19= request.POST.get('package_description_19')
+					package_price_19= request.POST.get('package_price_19')
+					if package_platform_19 == '1':
+						print('Inside package platform::::::::::::::::::::::')
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Instagram' , content_category=package_content_type_19,package_offering=package_title_19,package_include=package_description_19,package_price=package_price_19)
+						influencer_package.save()
+					if package_platform_19 == '2':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'TikTok' , content_category=package_content_type_19,package_offering=package_title_19,package_include=package_description_19,package_price=package_price_19)
+						influencer_package.save()
+						
+					if package_platform_19 == '3':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_19,package_offering=package_title_19,package_include=package_description_19,package_price=package_price_19)
+						influencer_package.save()
+						
+					if package_platform_19 == '4':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'YouTube' , content_category=package_content_type_19,package_offering=package_title_19,package_include=package_description_19,package_price=package_price_19)
+						influencer_package.save()
+						
+					if package_platform_19 == '5':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitter' , content_category=package_content_type_19,package_offering=package_title_19,package_include=package_description_19,package_price=package_price_19)
+						influencer_package.save()
+						
+					if package_platform_19 == '6':
+						influencer_package= InfluencerPackage.objects.create(influencer_username= joined_influencer,choose_platform= 'Twitch' , content_category=package_content_type_19,package_offering=package_title_19,package_include=package_description_19,package_price=package_price_19)
+						influencer_package.save()
+				# Form No 8 End
+
+				
+				return redirect('influencer_profile')
 			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
 			return render(request, 'User/infl_profile_edit.html', context)
 				
@@ -1027,7 +1651,7 @@ def influencer_profile_edit(request):
 		else:
 			print("User is not logged in :(")
 			# return redirect(request, 'User/influencer_profile.html')
-	except Exception as e:
+	# except Exception as e:
 			# messages.success(request, 'Superuser logged in')
-			print(e)
-	return render(request, 'User/infl_profile_edit.html')
+			# print(e)
+		return render(request, 'User/infl_profile_edit.html')

@@ -37,7 +37,7 @@
 </div>
        
         {% endif %} -->
-<form action="{% url 'influencer_profile_edit' %}" method="post">
+<form action="{% url 'influencer_profile_edit' %}" method="post" enctype="multipart/form-data" >
     {% csrf_token %}
     <div class="edit-main-div">
         <h1 class="edit-main-headding">Edit Your Page</h1>
@@ -93,7 +93,7 @@
         </div>
 
         <div id="div-options" class="social-media-div hide">
-            <form class="form" style="margin-top: 40px;">
+            <div class="form" style="margin-top: 40px;">
                 <input type="hidden" name=""
                     value="">
                 <div class="platform-holder">
@@ -297,23 +297,24 @@
                 <div class="save-btn-div">
                     <button class="save-btn">Save</button>
                 </div>
-            </form>
+            </div>
         </div>
 
      <div id="div-options" class="image-div hide"> 
 
             <div class="profile-pic-div" style="position: relative;">
+               
                 <img class="profile-pic"
                         src="{{joined_influencer.profile_image.url}}">
-                            <input id="file-input" type="file" name="profile_img" accept="image/*">
-
+                            <input id="file-input" type="file" name="profile_img_edit" accept="image/*" value="{{joined_influencer.profile_image.url}}">
+                
             </div>
             <div class="img-row">
                 <div class="primary-img">
                     <div class="file-area">
                         <div class="cover-img-badge">Cover Photo</div>
                         <input id="required-img" onchange="showImg(this,0)" class="img-input js-img-file-input" type="file"
-                            name="cover_image" accept="image/*">
+                            name="cover_image" accept="image/*" value="{{joined_influencer.cover_image.url}}">
                         <img class="img img1"
                             src="{{joined_influencer.cover_image.url}}">
                     </div>
@@ -321,22 +322,22 @@
                 <div class="img-col">
                     <div class="img-row-sq">
                         <div class="file-area" style="width: 50%;">
-                            
-                            <picture>
+                            <input onchange="" class="img-input" type="file" id="img2_edit" name="img2"
+                            accept="image/*">
+                           
                                 {% if joined_influencer.image3 %}}
-                                <input onchange="showImg(this,1)" class="img-input" type="file" name="img2"
-                                accept="image/*">
+                                <!-- <input onchange="showImg(this,1)" class="img-input" type="file" name="img2"
+                                accept="image/*"> -->
                                 <img style="width: 100%;" class="img img2"
                                     src="{{joined_influencer.image3.url}}"
                                     alt="Photo of Nigel Kabvina">
                                 {% else %}
-                                <input onchange="showImg(this,1)" class="img-input" type="file" name="img2"
-                                accept="image/*">
+                               
                                 <img style="width: 100%;" class="img img2"
                                 src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png"
                                 alt="Photo of Nigel Kabvina">
                                 {% endif %}
-                            </picture>
+                            
                         </div>
                         <div class="file-area" style="width: 50%;">
                             <input onchange="showImg(this,2)" class="img-input" type="file" name="img3"
@@ -349,7 +350,7 @@
                                     alt="Photo of Nigel Kabvina">
                                 {% else %}
                                 
-                                <img style="width: 100%;" class="img img2"
+                                <img style="width: 100%;" class="img img3"
                                 src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png"
                                 alt="Photo of Nigel Kabvina">
                                 {% endif %}
@@ -368,7 +369,7 @@
                             {% else %}
                              <input onchange="showImg(this,3)" class="img-input" type="file" name="img4"
                             accept="image/*">
-                            <img style="width: 100%;" class="img img2"
+                            <img style="width: 100%;" class="img img4"
                             src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png"
                             alt="Photo of Nigel Kabvina">
                             {% endif %}
@@ -382,7 +383,7 @@
         </div> -->
 
         <div id="div-options" class="packages-div hide">
-            <form class="form">
+            <div class="form">
                 <input type="hidden" name=""
                     value="">
                 <div class="scroll-holder scroll-holder-wide">
@@ -393,7 +394,7 @@
     
                         <select class="input package-category-select" name="package_category_0">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -499,7 +500,7 @@
     
                         <select class="input package-category-select" name="package_category_1">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -605,7 +606,7 @@
     
                         <select class="input package-category-select" name="package_category_2">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -711,7 +712,7 @@
     
                         <select class="input package-category-select" name="package_category_3">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -817,7 +818,7 @@
     
                         <select class="input package-category-select" name="package_category_4">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -923,7 +924,7 @@
     
                         <select class="input package-category-select" name="package_category_5">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1029,7 +1030,7 @@
     
                         <select class="input package-category-select" name="package_category_6">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1135,7 +1136,7 @@
     
                         <select class="input package-category-select" name="package_category_7">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1241,7 +1242,7 @@
     
                         <select class="input package-category-select" name="package_category_8">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1347,7 +1348,7 @@
     
                         <select class="input package-category-select" name="package_category_9">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1453,7 +1454,7 @@
     
                         <select class="input package-category-select" name="package_category_10">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled> Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1559,7 +1560,7 @@
     
                         <select class="input package-category-select" name="package_category_11">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1665,7 +1666,7 @@
     
                         <select class="input package-category-select" name="package_category_12">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1771,7 +1772,7 @@
     
                         <select class="input package-category-select" name="package_category_13">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1877,7 +1878,7 @@
     
                         <select class="input package-category-select" name="package_category_14">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -1983,7 +1984,7 @@
     
                         <select class="input package-category-select" name="package_category_15">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -2089,7 +2090,7 @@
     
                         <select class="input package-category-select" name="package_category_16">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -2195,7 +2196,7 @@
     
                         <select class="input package-category-select" name="package_category_17">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -2301,7 +2302,7 @@
     
                         <select class="input package-category-select" name="package_category_18">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -2407,7 +2408,7 @@
     
                         <select class="input package-category-select" name="package_category_19">
     
-                            <option value="" selected="" hidden="">Choose Platform</option>
+                            <option value="" selected="" hidden="" disabled>Choose Platform</option>
     
     
                             <option value="1">Instagram</option>
@@ -2513,11 +2514,11 @@
                 <div class="save-btn-div">
                     <button class="save-btn">Save</button>
                 </div>
-            </form>
+            </div>
         </div>
 
         <div id="div-options" class="faq-div hide">
-            <form class="">
+            <div class="">
                 <input type="hidden" name=""
                     value="">
                 
@@ -2634,7 +2635,7 @@
                 <div class="save-btn-div">
                     <button class="save-btn">Save</button>
                 </div>
-            </form>
+            </div>
         </div>
 
         <div id="div-options" class="portfolio-div hide">
@@ -2791,6 +2792,7 @@
     $(function () {
         $('#file-input').change(function (event) {
             var x = URL.createObjectURL(event.target.files[0]);
+            console.log('FIle input url_____', x)
             $('.profile-pic').attr("src", x);
 
         });

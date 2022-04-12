@@ -3598,6 +3598,7 @@ else{
     $(function () {
         $('#file-input').change(function (event) {
             var x = URL.createObjectURL(event.target.files[0]);
+            console.log('File input join______', x)
             $('.profile-img').attr("src", x);
 
         });
