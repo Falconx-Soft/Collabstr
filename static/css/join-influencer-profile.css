@@ -750,7 +750,7 @@ option {
 }
 .price-disclaimer {
     position: absolute;
-    bottom: 10px;
+    bottom: 0px;
     right: 15px;
     color: rgb(151, 163, 197);
     font-size: 61%;
@@ -790,4 +790,40 @@ option {
 .sms-input {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
+}
+
+@media only screen and (max-width: 800px){
+    .form-holder{
+        margin: 0px;
+        margin-top: 62px;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        width: 100% !important;
+        margin-right: 5px !important;
+    }
+
+    .img-row{
+        display: block !important;
+    }
+
+    .niches-holder {
+        display: block !important;
+    }
+
+    .primary-img{
+        width: 100% !important;
+    }
+
+    .img1,.img2,.img3,.img4{
+        border-radius: 10px !important;
+    }
+
+    .img2,.img3{
+        height: 161px !important;
+    }
+
+    .img-col{
+        width: 100% !important;
+        margin-top: 4px !important;
+    }
 }
