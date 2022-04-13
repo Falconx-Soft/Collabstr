@@ -350,7 +350,7 @@
                             <input onchange="" class="img-input" type="file" id="img2_edit" name="img2"
                             accept="image/*">
                            
-                                {% if joined_influencer.image3 %}}
+                                {% if joined_influencer.image3 %}
                                 <!-- <input onchange="showImg(this,1)" class="img-input" type="file" name="img2"
                                 accept="image/*"> -->
                                 <img style="width: 100%;" class="img img2"
@@ -368,7 +368,7 @@
                             <input onchange="showImg(this,2)" class="img-input" type="file" name="img3"
                             accept="image/*">
                             <picture>
-                                {% if joined_influencer.image4 %}}
+                                {% if joined_influencer.image4 %}
                                 
                                 <img style="width: 100%;" class="img img3"
                                     src="{{joined_influencer.image4.url}}"
@@ -385,7 +385,7 @@
                     <div class="file-area file-area4">
                        
                         <picture>
-                            {% if joined_influencer.image5 %}}
+                            {% if joined_influencer.image5 %}
                              <input onchange="showImg(this,3)" class="img-input" type="file" name="img4"
                             accept="image/*">
                             <img class="img img4"
@@ -2663,9 +2663,9 @@
         <div id="div-options" class="portfolio-div hide">
             <div class="upload-btn-wrapper">
                 <button class="upload-btn"><i class="fa fa-upload" aria-hidden="true"></i>Click to upload Image or video</button>
-                <input type="file" name="portfolio_pic" accept="image/*" >
+                <input type="file" name="portfolio_pic" accept="image/*" multiple >
             </div>
-            <input type="text" id="portfolio_input" name="portfolio_input" value="" hidden>
+            <input type="file" multiple id="portfolio_input" name="portfolio_input" value="" hidden="" style="display: none;">
             <div class="portfolio_upload_holder" style="display: flex;">
                 
 			</div>

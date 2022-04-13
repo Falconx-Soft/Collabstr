@@ -113,4 +113,10 @@ class InfluencerFaq(models.Model):
 
 class EditPortfolioImages(models.Model):
     influencer_username=models.ForeignKey(JoinInfluencer, on_delete=models.CASCADE)
-    image_portfolio= models.ImageField(null=True, blank=True,upload_to="images/")
+    image_url= models.ImageField(max_length=300, default="", null=True, blank=True)
+   
+   
+   
+   
+    def __str__(self):
+            return self.influencer_username.influencer_username

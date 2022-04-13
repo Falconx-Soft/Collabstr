@@ -939,8 +939,9 @@ def influencer_profile(request):
 			joined_influencer=JoinInfluencer.objects.get(influencer_username=username)
 			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
 			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
+			edit_portfolio=EditPortfolioImages.objects.filter(influencer_username__influencer_username=username)
 			print('joined_influencer::::::::::',joined_influencer)
-			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
+			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
 			return render(request, 'User/influencer_profile.html', context)
 		else:
 			print("User is not logged in :(")
@@ -1710,9 +1711,14 @@ def influencer_profile_edit(request):
 
 
 				# portfolio images
-				image_portfolio= request.POST.get('portfolio_pic') 
+				image_portfolio= request.POST.get('portfolio_input') 
 				print('portfolio_pic::::::::::', image_portfolio) 
-
+				images_portfolio_url = image_portfolio.split(",")
+				length_images= len(images_portfolio_url)
+				print('images_portfolio_url************************',images_portfolio_url[0])
+				for i in range(1, length_images):
+					edit_port_folio= EditPortfolioImages.objects.create(influencer_username=joined_influencer, image_url=images_portfolio_url[i])
+					edit_port_folio.save()
 
 				return redirect('influencer_profile')
 			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}

@@ -478,7 +478,7 @@ form {
 
     .listing-cols {
         display: block;
-        margin-top: 2%;
+        margin-top: 7%;
     }
 
     .listing-col-l {
@@ -503,8 +503,14 @@ form {
         height: 77%;
         margin: 0px;
     }
+    .img_row_holder{
+        height: auto !important;
+    }
     .listing-holder .img-row-sq .file-area:first-child {
         margin-right: 0px;
+    }
+    .img-row-sq{
+        margin-top: 4px !important;
     }
 
     .listing-holder .img2 {
