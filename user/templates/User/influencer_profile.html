@@ -108,15 +108,7 @@
                     </picture>
                 </div>
             </div>
-            <!-- <div class="file-area file-area4">
-                <picture>
-                    <source media="(max-width: 800px)"
-                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
-                    <img class="img img4"
-                        src="{{joined_influencer.image5.url}}"
-                        alt="Photo of Nigel Kabvina">
-                </picture>
-            </div> -->
+            
         </div>
             {% elif joined_influencer.image3 and not joined_influencer.image4 and not joined_influencer.image5  %}
         <div class="primary-img" style="">
@@ -138,23 +130,9 @@
                             alt="Photo of Nigel Kabvina">
                     </picture>
                 </div>
-                <!-- <div class="file-area" style="width: 50%; height: 200%;">
-                    <picture>
-                        <img style="width: 100%;" class="img img3"
-                        src="{{joined_influencer.image4.url}}"
-                        alt="Photo of Nigel Kabvina">
-                    </picture>
-                </div> -->
+                
             </div>
-            <!-- <div class="file-area file-area4">
-                <picture>
-                    <source media="(max-width: 800px)"
-                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
-                    <img class="img img4"
-                        src="{{joined_influencer.image5.url}}"
-                        alt="Photo of Nigel Kabvina">
-                </picture>
-            </div> -->
+           
         </div>
         {% elif not  joined_influencer.image3 and  joined_influencer.image4 and not joined_influencer.image5  %}
         <div class="primary-img" style="">
@@ -169,13 +147,7 @@
         </div>
         <div class="img-col">
             <div class="img-row-sq">
-                <!-- <div class="file-area" style="width: 200%; height: 200%;">
-                    <picture>
-                        <img style="width: 100%;" class="img img2"
-                            src="{{joined_influencer.image3.url}}"
-                            alt="Photo of Nigel Kabvina">
-                    </picture>
-                </div> -->
+                
                 <div class="file-area" style="width: 200%; height: 200%;">
                     <picture>
                         <img style="width: 100%;" class="img img3"
@@ -184,15 +156,7 @@
                     </picture>
                 </div>
             </div>
-            <!-- <div class="file-area file-area4">
-                <picture>
-                    <source media="(max-width: 800px)"
-                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
-                    <img class="img img4"
-                        src="{{joined_influencer.image5.url}}"
-                        alt="Photo of Nigel Kabvina">
-                </picture>
-            </div> -->
+           
         </div>
         {% elif not joined_influencer.image3 and not  joined_influencer.image4 and  joined_influencer.image5  %}
         <div class="primary-img" style="">
@@ -206,22 +170,7 @@
             </div>
         </div>
         <div class="img-col">
-            <!-- <div class="img-row-sq">
-                <div class="file-area" style="width: 200%; height: 200%;">
-                    <picture>
-                        <img style="width: 100%;" class="img img2"
-                            src="{{joined_influencer.image3.url}}"
-                            alt="Photo of Nigel Kabvina">
-                    </picture>
-                </div>
-                <div class="file-area" style="width: 50%; height: 200%;">
-                    <picture>
-                        <img style="width: 100%;" class="img img3"
-                        src="{{joined_influencer.image4.url}}"
-                        alt="Photo of Nigel Kabvina">
-                    </picture>
-                </div>
-            </div> -->
+            
             <div class="file-area file-area4" style="height: 204%;">
                 <picture>
                     <source media="(max-width: 800px)"
@@ -366,7 +315,7 @@
                 <div class="portfolio-section-slider">
                     {% for image in edit_portfolio %}
                     <div class="portfolio-section-slider-image-div">
-                        <img src="{{image.image_url}}"
+                        <img src="{{image.image_url.url}}"
                         alt="Photo of Nigel Kabvina">
                     </div>
                     {% endfor %}

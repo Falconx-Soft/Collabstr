@@ -1052,26 +1052,35 @@ def influencer_profile_edit(request):
 					joined_influencer.instagram_username=website
 					
 					joined_influencer.save()
-				# if profile_img!= "":
-				# 	joined_influencer.profile_image=profile_img
+				
+				
+				
+				# _________________________________________images
+				if profile_img:
+					print('^^^^^^^ Inside 1 ^^^^^^^^^^^^^^')
+					joined_influencer.profile_image=profile_img
 					
-				# 	joined_influencer.save()
-				# if cover_image!= "":
-				# 	joined_influencer.cover_image=cover_image
+					joined_influencer.save()
+				if cover_image:
+					print('^^^^^^^ Inside 2 ^^^^^^^^^^^^^^')
+					joined_influencer.cover_image=cover_image
 					
-				# 	joined_influencer.save()
-				# if img2!= "":
-				# 	joined_influencer.image3=img2
+					joined_influencer.save()
+				if img2:
+					print('^^^^^^^ Inside 3 ^^^^^^^^^^^^^^')
+					joined_influencer.image3=img2
 					
-				# 	joined_influencer.save()
-				# if img3!= "":
-				# 	joined_influencer.image4=img3
+					joined_influencer.save()
+				if img3:
+					print('^^^^^^^ Inside 4 ^^^^^^^^^^^^^^')
+					joined_influencer.image4=img3
 					
-				# 	joined_influencer.save()
-				# if img4!= "":
-				# 	joined_influencer.image5=img4
+					joined_influencer.save()
+				if img4:
+					print('^^^^^^^ Inside 5 ^^^^^^^^^^^^^^')
+					joined_influencer.image5=img4
 					
-				# 	joined_influencer.save()
+					joined_influencer.save()
 				# __________________________________ Packages
 				if package_platform_0 is not None:
 					package_content_type_0= request.POST.get('package_content_type_0')
@@ -1711,14 +1720,20 @@ def influencer_profile_edit(request):
 
 
 				# portfolio images
-				image_portfolio= request.POST.get('portfolio_input') 
-				print('portfolio_pic::::::::::', image_portfolio) 
-				images_portfolio_url = image_portfolio.split(",")
-				length_images= len(images_portfolio_url)
-				print('images_portfolio_url************************',images_portfolio_url[0])
-				for i in range(1, length_images):
-					edit_port_folio= EditPortfolioImages.objects.create(influencer_username=joined_influencer, image_url=images_portfolio_url[i])
+				portfolio_pic= request.FILES.getlist('portfolio_pic')
+				print('portfolio_pic:::::::::-------------------------------:', portfolio_pic)
+				for image in portfolio_pic:
+					edit_port_folio= EditPortfolioImages.objects.create(influencer_username=joined_influencer, image_url=image)
 					edit_port_folio.save()
+				# print('portfolio_pic::::::::::', portfolio_pic)
+				# image_portfolio= request.POST.get('portfolio_input') 
+				# print('image_portfolio::::::::::', image_portfolio) 
+				# images_portfolio_url = image_portfolio.split(",")
+				# length_images= len(images_portfolio_url)
+				# print('images_portfolio_url************************',images_portfolio_url[0])
+				# for i in range(1, length_images):
+				# 	edit_port_folio= EditPortfolioImages.objects.create(influencer_username=joined_influencer, image_url=images_portfolio_url[i])
+				# 	edit_port_folio.save()
 
 				return redirect('influencer_profile')
 			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}

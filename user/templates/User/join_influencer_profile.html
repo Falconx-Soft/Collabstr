@@ -563,7 +563,7 @@ font-size: initial;
                             </div>
                             <!-- menu btn end -->
 
-                            <input onchange="showImg(this,1)" class="img-input" type="file" name="img2"
+                            <input onchange="showImg(this,1)" class="img-input" type="file" name="img2" id="img2"
                                 accept="image/*">
                             <img class="img img2"
                                 src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
@@ -583,7 +583,7 @@ font-size: initial;
                             </div>
                             <!-- menu btn end -->
 
-                            <input onchange="showImg(this,2)" class="img-input" type="file" name="img3"
+                            <input onchange="showImg(this,2)" class="img-input" type="file" name="img3" id="img3"
                                 accept="image/*">
                             <img class="img img3"
                                 src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
@@ -603,7 +603,7 @@ font-size: initial;
                         </div>
                         <!-- menu btn end -->
 
-                        <input onchange="showImg(this,3)" class="img-input" type="file" name="img4"
+                        <input onchange="showImg(this,3)" class="img-input" type="file" name="img4" id="img4"
                             accept="image/*">
                         <img class="img img4"
                             src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
@@ -3581,7 +3581,10 @@ else{
     $('.form_7_submit').click(function () {
             forminput1= $('#file-input').val()
             forminput2= $('#cover_image_input').val()
-            if( !forminput1 || !forminput2 ) {
+            forminput3= $('#img2').val()
+            forminput4= $('#img3').val()
+            forminput5= $('#img4').val()
+            if( !forminput1 || !forminput2 || !forminput3 || !forminput4 || !forminput5 ) {
                 alert('Please Upload Profile and Cover Picture')
 console.log('input is not  present') 
      }
