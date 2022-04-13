@@ -9,7 +9,8 @@
 <!-- <link rel="stylesheet" href="{% static '/css/join-influencer-earnings.css' %}"> -->
 <link rel="stylesheet" href="{% static '/css/profile.css' %}">
 <style>
-    
+ 
+
 </style>
 
 {% endblock extrastyle %}
@@ -80,6 +81,7 @@
             </div>
         </div>
         {% elif joined_influencer.image3 and joined_influencer.image4 and not joined_influencer.image5  %}
+     
         
         <div class="primary-img" style="">
             <div class="file-area">
@@ -91,7 +93,7 @@
                 </picture>
             </div>
         </div>
-        <div class="img-col d-lg-none">
+        <div class="img-col ">
             <div class="img-row-sq">
                 <div class="file-area" style="width: 50%; height: 200%;">
                     <picture>
@@ -108,10 +110,15 @@
                     </picture>
                 </div>
             </div>
+           
             
         </div>
             {% elif joined_influencer.image3 and not joined_influencer.image4 and not joined_influencer.image5  %}
-        <div class="primary-img" style="">
+        <style>
+      
+    
+        </style>
+            <div class="primary-img" style="">
             <div class="file-area">
                 <picture>
                     
@@ -134,7 +141,12 @@
             </div>
            
         </div>
+
         {% elif not  joined_influencer.image3 and  joined_influencer.image4 and not joined_influencer.image5  %}
+        <style>
+    
+   
+        </style>
         <div class="primary-img" style="">
             <div class="file-area">
                 <picture>
@@ -158,7 +170,10 @@
             </div>
            
         </div>
+       
         {% elif not joined_influencer.image3 and not  joined_influencer.image4 and  joined_influencer.image5  %}
+      
+       
         <div class="primary-img" style="">
             <div class="file-area">
                 <picture>
@@ -173,14 +188,14 @@
             
             <div class="file-area file-area4" style="height: 204%;">
                 <picture>
-                    <source media="(max-width: 800px)"
-                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    
                     <img class="img img4"
                         src="{{joined_influencer.image5.url}}"
                         alt="Photo of Nigel Kabvina">
                 </picture>
             </div>
         </div>
+       
         {% elif not joined_influencer.image3 and   joined_influencer.image4 and  joined_influencer.image5  %}
         <div class="primary-img" style="">
             <div class="file-area">
@@ -211,8 +226,7 @@
             </div>
             <div class="file-area file-area4" style="">
                 <picture>
-                    <source media="(max-width: 800px)"
-                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    
                     <img class="img img4"
                         src="{{joined_influencer.image5.url}}"
                         alt="Photo of Nigel Kabvina">
@@ -249,8 +263,7 @@
             </div>
             <div class="file-area file-area4" style="">
                 <picture>
-                    <source media="(max-width: 800px)"
-                        srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+                    
                     <img class="img img4"
                         src="{{joined_influencer.image5.url}}"
                         alt="Photo of Nigel Kabvina">
@@ -327,14 +340,14 @@
             </div>
 
 
-            <div class="faq-section">
+            <!-- <div class="faq-section">
                 <h3>FAQ</h3>
                 {% for faq in faq_influencer %}
                 <div class="faq-holder">
                     <h3 class="faq-question">{{faq.faq_question}}</h3>
                     <div class="faq-answer" style="display: none;">{{faq.faq_answer}}</div>
                 </div>
-                {% endfor %}
+                {% endfor %} -->
                 <!-- <div class="faq-holder">
                     <h3 class="faq-question">Are you willing to travel internationally?</h3>
                     <div class="faq-answer" style="display: none;">Yes. Absolutely. </div>
@@ -346,7 +359,7 @@
                         rate or project.</div>
                 </div> -->
 
-            </div>
+            <!-- </div> -->
 
 
         </div>
@@ -433,7 +446,7 @@
 
                 </div>
 
-                <div class="how-it-works-btn"><img alt="How Collabstr works" class="how-it-works-btn-img"
+                <div class="how-it-works-btn"><img alt="How INFUL works" class="how-it-works-btn-img"
                         src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/howItWorks.svg">How does it work?</div>
 
             </div>
@@ -667,14 +680,14 @@
 
             <div class="footer-section">
                 <div class="footer-title">Support</div>
-                <a href="mailto:hello@collabstr.com" class="footer-txt">hello@collabstr.com</a>
+                <a href="mailto:hello@INFUL.com" class="footer-txt">hello@INFUL.com</a>
                 <a href="/#how-it-works" class="footer-txt">How It Works</a>
                 <a href="/faq" class="footer-txt">FAQ</a>
             </div>
         </div>
         <div class="footer-btm-row">
             <div class="footer-btm-row-left">
-                <div class="footer-item">© Collabstr Inc.</div>
+                <div class="footer-item">© INFUL Inc.</div>
                 <a href="/privacy" class="footer-item">Privacy</a>
                 <a href="/terms" class="footer-item">Terms</a>
                 <a href="/sitemap" class="footer-item">Sitemap</a>
@@ -682,19 +695,19 @@
 
             <div class="footer-btm-row-right">
                 <div class="footer-img">
-                    <a href="https://instagram.com/collabstr" target="_blank"><span class="link-spanner"></span></a>
+                    <a href="https://instagram.com/INFUL" target="_blank"><span class="link-spanner"></span></a>
                     <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
                         alt="Instagram logo" loading="lazy">
                 </div>
                 <div class="footer-img">
-                    <a href="https://tiktok.com/@collabstr.com" target="_blank"><span
+                    <a href="https://tiktok.com/@INFUL.com" target="_blank"><span
                             class="link-spanner"></span></a>
                     <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
                         alt="TikTok logo" loading="lazy">
                 </div>
 
                 <div class="footer-img">
-                    <a href="https://twitter.com/@usecollabstr" target="_blank"><span
+                    <a href="https://twitter.com/@useINFUL" target="_blank"><span
                             class="link-spanner"></span></a>
                     <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
                         alt="Twitter logo" loading="lazy">

@@ -169,7 +169,11 @@ def join_influencer_profile(request):
 			niches= request.POST.get('niches_val')
 			profile_image= request.FILES.get('profile_img')
 			print('profile image join_________________', profile_image)
-			cover_image= request.FILES.get('img-files')
+			all_image= request.FILES.getlist('img-files')
+			print('all_________________', all_image)
+			print('length of all_________________', len(all_image))
+			print('image0 allimage&&&&&&&&&&&&&', all_image[0])
+			cover_image= request.FILES.get('cover_image')
 			img2= request.FILES.get('img2')
 			img3= request.FILES.get('img3')
 			img4= request.FILES.get('img4')
@@ -212,10 +216,81 @@ def join_influencer_profile(request):
 			influencer.twitch_followers=twitch_followers
 			influencer.website=website
 			influencer.profile_image=profile_image
-			influencer.cover_image=cover_image
-			influencer.image3=img2
-			influencer.image4=img3
-			influencer.image5=img4
+			if len(all_image) == 1:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+			if len(all_image) == 2:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+			if len(all_image) == 3:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+				influencer.image4=all_image[2]
+			if len(all_image) == 4:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+				influencer.image4=all_image[2]
+				influencer.image5=all_image[3]
+
+			if len(all_image) == 5:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+				influencer.image4=all_image[2]
+				influencer.image5=all_image[3]
+			if len(all_image) == 6:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+				influencer.image4=all_image[2]
+				influencer.image5=all_image[3]
+			if len(all_image) == 7:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+				influencer.image4=all_image[2]
+				influencer.image5=all_image[3]
+			if len(all_image) == 8:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+				influencer.image4=all_image[2]
+				influencer.image5=all_image[3]
+			if len(all_image) == 9:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+				influencer.image4=all_image[2]
+				influencer.image5=all_image[3]
+			if len(all_image) == 10:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				influencer.cover_image=all_image[0]
+				influencer.image3=all_image[1]
+				influencer.image4=all_image[2]
+				influencer.image5=all_image[3]
+			if cover_image:
+
+				influencer.cover_image=cover_image
+			
+			if img2:
+				influencer.image3=img2
+			if img3:
+				influencer.image4=img3
+			if img4:
+				influencer.image5=img4
 			if "Lifestyle" in niches:
 				influencer.lifestyle= True
 			if "Fashion" in niches:
@@ -1735,7 +1810,7 @@ def influencer_profile_edit(request):
 				# 	edit_port_folio= EditPortfolioImages.objects.create(influencer_username=joined_influencer, image_url=images_portfolio_url[i])
 				# 	edit_port_folio.save()
 
-				return redirect('influencer_profile')
+				return redirect('url {influencer_profile}')
 			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
 			return render(request, 'User/infl_profile_edit.html', context)
 				

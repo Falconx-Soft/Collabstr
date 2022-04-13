@@ -548,8 +548,14 @@ body{
     }
     
     .dropdown-section{
-        display: block;
+        display: flex;
+        position: relative;
         width: 90% !important;
+    }
+    .home_search_button{
+        position: absolute;
+        right: 30px;
+        top: 9px;
     }
     .dropdown-menu{
         width: -webkit-fill-available;
@@ -562,7 +568,7 @@ body{
         padding: 10px;
     }
     .search-btn{
-        width: 100%;
+        width: 190%;
     }
     .navbar-right{
         display: none;
@@ -789,6 +795,9 @@ body{
 
 @media only screen and (max-width: 800px){
     .navbar-header{
-        margin-left: 20px !important;
+        margin-left: none !important;
+    }
+    .header-right{
+        margin-right: 2px !important;
     }
 }
