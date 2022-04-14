@@ -57,6 +57,18 @@ body{
   .title-section{
       margin-top: 60px;
   }
+  .dropdown-section-modal{
+      display: none !important;
+  }
+  .dropdown-section-inful{
+    width: 788px;
+    display: flex;
+    padding-left: 0;
+  border-radius: 28px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 0%), 0 6px 20px 0 rgb(0 0 0 / 15%);
+      display: none !important;
+  }
   .dropdown-section{
       width: 788px;
       display: flex;
@@ -546,12 +558,17 @@ body{
     .navbar-header {
         width: 100%;
     }
-    
+    .dropdown-section-inful{
+        display: flex;
+        position: relative;
+        width: 90% !important;
+    }
     .dropdown-section{
         display: flex;
         position: relative;
         width: 90% !important;
     }
+
     .home_search_button{
         position: absolute;
         right: 30px;
@@ -560,8 +577,8 @@ body{
     .dropdown-menu{
         width: -webkit-fill-available;
         margin-left: 0;
-        margin-top: 0;
-        border-radius: 0px;
+        margin-top: 5px;
+        border-radius: 15px;
     }
 
     .dropdown-section > .dropdown{
@@ -799,5 +816,26 @@ body{
     }
     .header-right{
         margin-right: 2px !important;
+    }
+    .content-drop-modal {
+        border-radius: 5px !important;
+        margin-top: 0px !important;
+        width: 100%;
+        background-color: #ebebeb !important;
+        padding-top: 10px !important;
+        font-size: xx-large !important;
+        border: 1px solid rgb(168, 168, 168);
+    }
+    .dropdown-menu-modal{
+        display: block !important;
+    }
+    .dropdown-section{
+        display: none !important;
+    }
+    .dropdown-section-modal{
+        display: block !important;
+    }
+    .dropdown-section-inful{
+        display: block !important;
     }
 }

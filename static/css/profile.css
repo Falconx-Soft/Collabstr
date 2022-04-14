@@ -1,5 +1,6 @@
 /* buttons row */
 .btn-row {
+    position: relative;
     width: 85%;
     margin: 2% auto 1% auto;
     display: flex;
@@ -11,7 +12,7 @@
     align-items: center;
     width: fit-content;
     padding: 10px 16px;
-    font-size: 90%;
+    font-size: 110%;
     font-weight: 600;
     cursor: pointer;
     margin: 0 0 0 1%;
@@ -28,9 +29,7 @@
     margin: 0 auto 4% auto;
 }
 .listing-holder .img-row {
-    display: flex;
-    height: 440px;
-    justify-content: space-between;
+    
 }
 .img-row-mobile{
     display: none;
@@ -38,7 +37,7 @@
     justify-content: space-between;
 }
 .listing-holder .primary-img {
-    width: 57.5%;
+    width: 100%;
 }
 .listing-holder .file-area {
     height: 100%;

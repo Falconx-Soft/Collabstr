@@ -87,7 +87,7 @@
           
 
         </div> 
-            
+           
 
         
     </div>
@@ -135,6 +135,93 @@
         </button></div>
 
 </div>
+ <div class="dropdown-section dropdown-section-modal container d-flex mt-5 mb-5" style="width: 318px">
+    <div class="dropdown">
+        <button class="  dropdown-toggle" type="button" data-toggle="modal" data-target="#myModal">
+            <div class="text-dark dropdown-btn-title    ">Category</div>
+            <div class="dropdown-btn-text">Choose a Category</div>
+        </button>
+         
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="dropdown-menu " id="dropdown-menu-modal" style="display: block !important; height: 800px !important;">
+                            <div class="dropdown-content">
+                                <div class="row" style="">
+                                    <div class="content-drop  content-drop-modal col-sm-4"> All</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Lifestyle</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Fashion</div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="content-drop content-drop-modal col-sm-4">Beauty</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Health& Fitness</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Travel</div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="content-drop content-drop-modal col-sm-4">Food & Drink</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Model</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Comedy and Entertainment</div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="content-drop content-drop-modal col-sm-4">Music And Dance </div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Art and Phototgraphy</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Entrepreneur & Buisness</div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="content-drop content-drop-modal col-sm-4">Family & Children</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Animals & Pets</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Athlete & Sports</div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="content-drop content-drop-modal col-sm-4">Celebrity and public figure</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Adventure & Outdoors</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Actor</div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="content-drop content-drop-modal col-sm-4">Education</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Gaming</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">LGBTQ2+</div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="content-drop content-drop-modal col-sm-4">Technology </div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Healthcare</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Vegan</div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="content-drop content-drop-modal col-sm-4">Cannabis</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Skill Trades</div>
+                                    <div class="content-drop content-drop-modal col-sm-4">Automotive</div>
+                                </div>
+                               
+                            </div>
+                          
+                
+                        </div> 
+                        
+                            
+                                    
+                               
+                          
+                
+                      
+                    </div>
+
+                </div>
+               
+                
+            </div> 
+        </div>     
+
+        
+    </div>
+  
+    <div class="home_search_button"><button type="button" class="search-btn">
+            <img alt="Search" class="search-img"
+                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/search.svg">
+        </button></div>
+
+</div> 
 <div class="container div-titel" style="padding-left: 100px; padding-right: 100px; width: 100%;">
     <h1 class="featured-title">Categories</h1>
     <p class="featured-text">Hire top influencers accross all platforms</p>
@@ -907,5 +994,21 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block extrajavascript %}
+<script>
+    $(".content-drop-modal").on('click', function (e) {
+        $('.dropdown-menu').hide()
+        // $('#myModal').css('display', '')
+        
+        
+    });
+    $(".dropdown-toggle").on('click', function (e) {
+        $('#dropdown-menu-modal').show()
+        // $('#myModal').css('display', '')
+        
+        
+    });
+
+</script>
+
 
 {% endblock extrajavascript %}
