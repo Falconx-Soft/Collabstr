@@ -1,5 +1,6 @@
 from distutils.command.upload import upload
 from email.mime import image
+from hashlib import blake2s
 from operator import truediv
 from pickle import TRUE
 from pyexpat import model
@@ -88,11 +89,11 @@ class JoinInfluencer(models.Model):
 
 class InfluencerPackage(models.Model):
     influencer_username= models.ForeignKey(JoinInfluencer,on_delete=models.CASCADE)
-    choose_platform=models.CharField(max_length=100, default="")
-    content_category= models.CharField(max_length=50, default="")
-    package_offering=models.CharField(max_length=500, default="")
-    package_include=models.CharField(max_length=1000, default="")
-    package_price=models.IntegerField(default=0)
+    choose_platform=models.CharField(max_length=100, default="",null=True, blank=True)
+    content_category= models.CharField(max_length=50, default="",null=True, blank=True)
+    package_offering=models.CharField(max_length=500, default="",null=True, blank=True)
+    package_include=models.CharField(max_length=1000, default="", null=True, blank=True)
+    package_price=models.IntegerField(default=0, null=True, blank=True)
     
     
     

@@ -487,6 +487,7 @@ form {
 
     .listing-col-r {
         width: 100%;
+        margin-top: 15px;
     }
 
     .listing-holder .img-row {

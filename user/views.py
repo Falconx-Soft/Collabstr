@@ -356,28 +356,29 @@ def join_influencer_profile(request):
 				package_title_0= request.POST.get('package_title_0')
 				package_description_0= request.POST.get('package_description_0')
 				package_price_0= request.POST.get('package_price_0')
+				package_price_0_int = int(package_price_0)
 				if package_platform_0 == '1':
 					print('Inside package platform::::::::::::::::::::::')
-					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'Instagram' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'Instagram' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0_int)
 					influencer_package.save()
 				if package_platform_0 == '2':
-					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'TikTok' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'TikTok' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0_int)
 					influencer_package.save()
 					
 				if package_platform_0 == '3':
-					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'User Generated Content' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0_int)
 					influencer_package.save()
 					
 				if package_platform_0 == '4':
-					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'YouTube' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'YouTube' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0_int)
 					influencer_package.save()
 					
 				if package_platform_0 == '5':
-					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'Twitter' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'Twitter' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0_int)
 					influencer_package.save()
 					
 				if package_platform_0 == '6':
-					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'Twitch' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0)
+					influencer_package= InfluencerPackage.objects.create(influencer_username= influencer,choose_platform= 'Twitch' , content_category=package_content_type_0,package_offering=package_title_0,package_include=package_description_0,package_price=package_price_0_int)
 					influencer_package.save()
 					
 				
@@ -388,7 +389,7 @@ def join_influencer_profile(request):
 				print('**************************')
 				print('package_description_0',package_description_0)
 				print('**************************')
-				print('package_price_0',package_price_0)
+				print('package_price_0_int',package_price_0_int)
 				print('package_platform_0',package_platform_0)
 			if package_platform_1 is not None:
 				package_content_type_1= request.POST.get('package_content_type_1')
@@ -926,66 +927,66 @@ def join_influencer_profile(request):
 			# Form No 8 End
 			# _________________________________________________________________
 			# Form No 9 Faqs
-			faq_question_0= request.POST.get('faq_question_0')
-			faq_answer_0= request.POST.get('faq_answer_0')
-			faq_question_1= request.POST.get('faq_question_1')
-			faq_answer_1= request.POST.get('faq_answer_1')
-			faq_question_2= request.POST.get('faq_question_2')
-			faq_answer_2= request.POST.get('faq_answer_2')
-			faq_question_3= request.POST.get('faq_question_3')
-			faq_answer_3= request.POST.get('faq_answer_3')
-			faq_question_4= request.POST.get('faq_question_4')
-			faq_answer_4= request.POST.get('faq_answer_4')
-			faq_question_5= request.POST.get('faq_question_5')
-			faq_answer_5= request.POST.get('faq_answer_5')
-			faq_question_6= request.POST.get('faq_question_6')
-			faq_answer_6= request.POST.get('faq_answer_6')
-			faq_question_7= request.POST.get('faq_question_7')
-			faq_answer_7= request.POST.get('faq_answer_7')
-			faq_question_8= request.POST.get('faq_question_8')
-			faq_answer_8= request.POST.get('faq_answer_8')
-			faq_question_9= request.POST.get('faq_question_9')
-			faq_answer_9= request.POST.get('faq_answer_9')
-			if ((faq_question_0 != "") and  (faq_answer_0 != "")):
-				print('In if statement of FAqs 1########')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_0, faq_answer=faq_answer_0)
-				Influencer_faq.save()
-			if ((faq_question_1 != "") and  (faq_answer_1 != "")):
-				print('In if statement of FAqs2')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_1, faq_answer=faq_answer_1)
-				Influencer_faq.save()
-			if ((faq_question_2 != "") and  (faq_answer_2 != "")):
-				print('In if statement of FAqs3')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_2, faq_answer=faq_answer_2)
-				Influencer_faq.save()
-			if ((faq_question_3 != "") and  (faq_answer_3 != "")):
-				print('In if statement of FAqs4')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_3, faq_answer=faq_answer_3)	
-				Influencer_faq.save()
-			if ((faq_question_4 != "") and  (faq_answer_4 != "")):
-				print('In if statement of FAqs5')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_4, faq_answer=faq_answer_4)	
-				Influencer_faq.save()
-			if ((faq_question_5 != "") and  (faq_answer_5 != "")):
-				print('In if statement of FAqs')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_5, faq_answer=faq_answer_5)	
-				Influencer_faq.save()
-			if ((faq_question_6 != "") and  (faq_answer_6 != "")):
-				print('In if statement of FAqs')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_6, faq_answer=faq_answer_6)	
-				Influencer_faq.save()
-			if ((faq_question_7 != "") and  (faq_answer_7 != "")):
-				print('In if statement of FAqs')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_7, faq_answer=faq_answer_7)	
-				Influencer_faq.save()
-			if ((faq_question_8 != "") and  (faq_answer_8 != "")):
-				print('In if statement of FAqs')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_8, faq_answer=faq_answer_8)	
-				Influencer_faq.save()
-			if ((faq_question_9 != "") and  (faq_answer_9 != "")):
-				print('In if statement of FAqs')
-				Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_9, faq_answer=faq_answer_9)	
-				Influencer_faq.save()
+			# faq_question_0= request.POST.get('faq_question_0')
+			# faq_answer_0= request.POST.get('faq_answer_0')
+			# faq_question_1= request.POST.get('faq_question_1')
+			# faq_answer_1= request.POST.get('faq_answer_1')
+			# faq_question_2= request.POST.get('faq_question_2')
+			# faq_answer_2= request.POST.get('faq_answer_2')
+			# faq_question_3= request.POST.get('faq_question_3')
+			# faq_answer_3= request.POST.get('faq_answer_3')
+			# faq_question_4= request.POST.get('faq_question_4')
+			# faq_answer_4= request.POST.get('faq_answer_4')
+			# faq_question_5= request.POST.get('faq_question_5')
+			# faq_answer_5= request.POST.get('faq_answer_5')
+			# faq_question_6= request.POST.get('faq_question_6')
+			# faq_answer_6= request.POST.get('faq_answer_6')
+			# faq_question_7= request.POST.get('faq_question_7')
+			# faq_answer_7= request.POST.get('faq_answer_7')
+			# faq_question_8= request.POST.get('faq_question_8')
+			# faq_answer_8= request.POST.get('faq_answer_8')
+			# faq_question_9= request.POST.get('faq_question_9')
+			# faq_answer_9= request.POST.get('faq_answer_9')
+			# if ((faq_question_0 != "") and  (faq_answer_0 != "")):
+			# 	print('In if statement of FAqs 1########')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_0, faq_answer=faq_answer_0)
+			# 	Influencer_faq.save()
+			# if ((faq_question_1 != "") and  (faq_answer_1 != "")):
+			# 	print('In if statement of FAqs2')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_1, faq_answer=faq_answer_1)
+			# 	Influencer_faq.save()
+			# if ((faq_question_2 != "") and  (faq_answer_2 != "")):
+			# 	print('In if statement of FAqs3')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_2, faq_answer=faq_answer_2)
+			# 	Influencer_faq.save()
+			# if ((faq_question_3 != "") and  (faq_answer_3 != "")):
+			# 	print('In if statement of FAqs4')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_3, faq_answer=faq_answer_3)	
+			# 	Influencer_faq.save()
+			# if ((faq_question_4 != "") and  (faq_answer_4 != "")):
+			# 	print('In if statement of FAqs5')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_4, faq_answer=faq_answer_4)	
+			# 	Influencer_faq.save()
+			# if ((faq_question_5 != "") and  (faq_answer_5 != "")):
+			# 	print('In if statement of FAqs')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_5, faq_answer=faq_answer_5)	
+			# 	Influencer_faq.save()
+			# if ((faq_question_6 != "") and  (faq_answer_6 != "")):
+			# 	print('In if statement of FAqs')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_6, faq_answer=faq_answer_6)	
+			# 	Influencer_faq.save()
+			# if ((faq_question_7 != "") and  (faq_answer_7 != "")):
+			# 	print('In if statement of FAqs')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_7, faq_answer=faq_answer_7)	
+			# 	Influencer_faq.save()
+			# if ((faq_question_8 != "") and  (faq_answer_8 != "")):
+			# 	print('In if statement of FAqs')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_8, faq_answer=faq_answer_8)	
+			# 	Influencer_faq.save()
+			# if ((faq_question_9 != "") and  (faq_answer_9 != "")):
+			# 	print('In if statement of FAqs')
+			# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=influencer, faq_question=faq_question_9, faq_answer=faq_answer_9)	
+			# 	Influencer_faq.save()
 			
 			
 			
@@ -1731,66 +1732,66 @@ def influencer_profile_edit(request):
 						influencer_package.save()
 				# Form No 8 End
 				# Form No 9 Faqs
-				faq_question_0= request.POST.get('faq_question_0')
-				faq_answer_0= request.POST.get('faq_answer_0')
-				faq_question_1= request.POST.get('faq_question_1')
-				faq_answer_1= request.POST.get('faq_answer_1')
-				faq_question_2= request.POST.get('faq_question_2')
-				faq_answer_2= request.POST.get('faq_answer_2')
-				faq_question_3= request.POST.get('faq_question_3')
-				faq_answer_3= request.POST.get('faq_answer_3')
-				faq_question_4= request.POST.get('faq_question_4')
-				faq_answer_4= request.POST.get('faq_answer_4')
-				faq_question_5= request.POST.get('faq_question_5')
-				faq_answer_5= request.POST.get('faq_answer_5')
-				faq_question_6= request.POST.get('faq_question_6')
-				faq_answer_6= request.POST.get('faq_answer_6')
-				faq_question_7= request.POST.get('faq_question_7')
-				faq_answer_7= request.POST.get('faq_answer_7')
-				faq_question_8= request.POST.get('faq_question_8')
-				faq_answer_8= request.POST.get('faq_answer_8')
-				faq_question_9= request.POST.get('faq_question_9')
-				faq_answer_9= request.POST.get('faq_answer_9')
-				if ((faq_question_0 != "") and  (faq_answer_0 != "")):
-					print('In if statement of FAqs 1########')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_0, faq_answer=faq_answer_0)
-					Influencer_faq.save()
-				if ((faq_question_1 != "") and  (faq_answer_1 != "")):
-					print('In if statement of FAqs2')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_1, faq_answer=faq_answer_1)
-					Influencer_faq.save()
-				if ((faq_question_2 != "") and  (faq_answer_2 != "")):
-					print('In if statement of FAqs3')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_2, faq_answer=faq_answer_2)
-					Influencer_faq.save()
-				if ((faq_question_3 != "") and  (faq_answer_3 != "")):
-					print('In if statement of FAqs4')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_3, faq_answer=faq_answer_3)	
-					Influencer_faq.save()
-				if ((faq_question_4 != "") and  (faq_answer_4 != "")):
-					print('In if statement of FAqs5')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_4, faq_answer=faq_answer_4)	
-					Influencer_faq.save()
-				if ((faq_question_5 != "") and  (faq_answer_5 != "")):
-					print('In if statement of FAqs')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_5, faq_answer=faq_answer_5)	
-					Influencer_faq.save()
-				if ((faq_question_6 != "") and  (faq_answer_6 != "")):
-					print('In if statement of FAqs')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_6, faq_answer=faq_answer_6)	
-					Influencer_faq.save()
-				if ((faq_question_7 != "") and  (faq_answer_7 != "")):
-					print('In if statement of FAqs')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_7, faq_answer=faq_answer_7)	
-					Influencer_faq.save()
-				if ((faq_question_8 != "") and  (faq_answer_8 != "")):
-					print('In if statement of FAqs')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_8, faq_answer=faq_answer_8)	
-					Influencer_faq.save()
-				if ((faq_question_9 != "") and  (faq_answer_9 != "")):
-					print('In if statement of FAqs')
-					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_9, faq_answer=faq_answer_9)	
-					Influencer_faq.save()
+				# faq_question_0= request.POST.get('faq_question_0')
+				# faq_answer_0= request.POST.get('faq_answer_0')
+				# faq_question_1= request.POST.get('faq_question_1')
+				# faq_answer_1= request.POST.get('faq_answer_1')
+				# faq_question_2= request.POST.get('faq_question_2')
+				# faq_answer_2= request.POST.get('faq_answer_2')
+				# faq_question_3= request.POST.get('faq_question_3')
+				# faq_answer_3= request.POST.get('faq_answer_3')
+				# faq_question_4= request.POST.get('faq_question_4')
+				# faq_answer_4= request.POST.get('faq_answer_4')
+				# faq_question_5= request.POST.get('faq_question_5')
+				# faq_answer_5= request.POST.get('faq_answer_5')
+				# faq_question_6= request.POST.get('faq_question_6')
+				# faq_answer_6= request.POST.get('faq_answer_6')
+				# faq_question_7= request.POST.get('faq_question_7')
+				# faq_answer_7= request.POST.get('faq_answer_7')
+				# faq_question_8= request.POST.get('faq_question_8')
+				# faq_answer_8= request.POST.get('faq_answer_8')
+				# faq_question_9= request.POST.get('faq_question_9')
+				# faq_answer_9= request.POST.get('faq_answer_9')
+				# if ((faq_question_0 != "") and  (faq_answer_0 != "")):
+				# 	print('In if statement of FAqs 1########')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_0, faq_answer=faq_answer_0)
+				# 	Influencer_faq.save()
+				# if ((faq_question_1 != "") and  (faq_answer_1 != "")):
+				# 	print('In if statement of FAqs2')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_1, faq_answer=faq_answer_1)
+				# 	Influencer_faq.save()
+				# if ((faq_question_2 != "") and  (faq_answer_2 != "")):
+				# 	print('In if statement of FAqs3')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_2, faq_answer=faq_answer_2)
+				# 	Influencer_faq.save()
+				# if ((faq_question_3 != "") and  (faq_answer_3 != "")):
+				# 	print('In if statement of FAqs4')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_3, faq_answer=faq_answer_3)	
+				# 	Influencer_faq.save()
+				# if ((faq_question_4 != "") and  (faq_answer_4 != "")):
+				# 	print('In if statement of FAqs5')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_4, faq_answer=faq_answer_4)	
+				# 	Influencer_faq.save()
+				# if ((faq_question_5 != "") and  (faq_answer_5 != "")):
+				# 	print('In if statement of FAqs')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_5, faq_answer=faq_answer_5)	
+				# 	Influencer_faq.save()
+				# if ((faq_question_6 != "") and  (faq_answer_6 != "")):
+				# 	print('In if statement of FAqs')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_6, faq_answer=faq_answer_6)	
+				# 	Influencer_faq.save()
+				# if ((faq_question_7 != "") and  (faq_answer_7 != "")):
+				# 	print('In if statement of FAqs')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_7, faq_answer=faq_answer_7)	
+				# 	Influencer_faq.save()
+				# if ((faq_question_8 != "") and  (faq_answer_8 != "")):
+				# 	print('In if statement of FAqs')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_8, faq_answer=faq_answer_8)	
+				# 	Influencer_faq.save()
+				# if ((faq_question_9 != "") and  (faq_answer_9 != "")):
+				# 	print('In if statement of FAqs')
+				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_9, faq_answer=faq_answer_9)	
+				# 	Influencer_faq.save()
 				
 
 

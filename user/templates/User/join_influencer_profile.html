@@ -20,7 +20,7 @@
     .profile-submit-btn{
         font-size: initial;
     }
-    .form_2_submit , .form_3_submit , .form_1_submit, .form_7_submit{
+    .form_2_submit , .form_3_submit , .form_1_submit, .form_7_submit, .form_4_submit{
     
     font-size: initial;
     display: block;
@@ -42,11 +42,31 @@
     margin: 4% auto;
 font-size: initial;
 }
-.form_2_submit:hover, .form_3_submit:hover, .form_1_submit:hover, .form_7_submit:hover{
+.form_2_submit:hover, .form_3_submit:hover, .form_1_submit:hover, .form_7_submit:hover, .form_4_submit:hover{
     opacity: 0.6;
     color: white;
 
 }
+.messages{
+        display: flex;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 366px;
+    padding: 12px;
+    border-radius: 8px;
+    /* color: var(--black); */
+    background-color: white;
+    /* box-shadow: var(--mediumBoxShadow); */
+    font-size: 90%;
+    z-index: 9999999999;
+    box-shadow: rgb(120 120 170 / 20%) 0 2px 10px 0;
+    color: black;
+    }
    
     @media(max-width:800px){
         .form-holder .package-holder{
@@ -66,6 +86,15 @@ font-size: initial;
 {% endblock extrastyle %}
 
 {% block content %}	
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style=" padding: 2px; display: flex;">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div>{{ message }}</div>
+            {% endfor %}
+    </ul>
+</div>
 <form action="{% url 'join_influencer_profile' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="influencer_username_3"
@@ -208,7 +237,7 @@ font-size: initial;
             </div>
 
 
-            <button type="button" class="submit btn profile-submit-btn">Continue</button>
+            <button type="button" class="submit form_4_submit ">Continue</button>
             <div class="under-btn tooltip">Why do you ask this?<img class="tooltip-img"
                     src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/tooltip.svg">
                 <div class="tooltip-txt">Brands sometimes look for specific gender(s) when searching. This is how they
@@ -3555,6 +3584,28 @@ else{
     // });
 
     // });
+    // ____________________________________________________________________________ form 4
+    $('.form_4_submit').click(function () {
+//             forminput= $('#form_3_input').val()
+//             if( !forminput ) {
+//                 alert('Input Box is Empty please write a description about yourself')
+// console.log('input is not  present') 
+//      }
+var checked_gender = document.querySelector('input[name = "gender_influencer"]:checked');
+
+if(checked_gender == null){  //Test if something was checked
+alert('Please select a gender'); //Alert the value of the checked.
+}
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
+ 
     // ###############################################################################
     // form 5
     $('.platform-option').click(function () {

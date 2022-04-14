@@ -804,6 +804,7 @@ option {
     }
 
     .img-row{
+        height: auto !important;
         display: block !important;
     }
 
