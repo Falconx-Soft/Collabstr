@@ -1,4 +1,4 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% block title %} Dashboard {% endblock %} 
 
@@ -49,10 +49,14 @@
 
             <!-- Indicators/dots -->
             <div class="carousel-indicators">
+           
               <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
               <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
               <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
               <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+            
+              
+              
             </div>
             
             <!-- The slideshow/carousel -->
@@ -70,6 +74,7 @@
                     </div>
                 </div>
             </div>
+            {% if joined_influencer.image3 and joined_influencer.image4 and   joined_influencer.image5  %}
               <div class="carousel-item">
                 <div class="primary-img" style="">
                     <div class="file-area">
@@ -105,6 +110,124 @@
                         </div>
                     </div>             
                  </div>
+                 {% elif joined_influencer.image3 and joined_influencer.image4 and not  joined_influencer.image5  %}
+                 <div class="carousel-item">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_influencer.image3.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>             </div>
+                  <div class="carousel-item ">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_influencer.image4.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>   
+                    </div>
+                {% elif joined_influencer.image3 and not joined_influencer.image4 and not  joined_influencer.image5  %}
+                <div class="carousel-item">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_influencer.image3.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>             </div>
+                 
+                    {% elif not joined_influencer.image3 and  joined_influencer.image4 and not  joined_influencer.image5  %}
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_influencer.image4.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    {% elif not joined_influencer.image3 and not joined_influencer.image4 and   joined_influencer.image5  %}
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_influencer.image5.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    {% elif not joined_influencer.image3 and  joined_influencer.image4 and   joined_influencer.image5  %}
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_influencer.image4.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_influencer.image5.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    {% elif  joined_influencer.image3 and not joined_influencer.image4 and   joined_influencer.image5  %}
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_influencer.image3.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_influencer.image5.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    
+                    
+                     
+                     
+                 {% endif %}
             </div>
             
             <!-- Left and right controls/icons -->

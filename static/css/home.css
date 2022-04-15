@@ -67,7 +67,7 @@ body{
   border-radius: 28px;
   margin-bottom: 10px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 0%), 0 6px 20px 0 rgb(0 0 0 / 15%);
-      display: none !important;
+      /* display: none !important; */
   }
   .dropdown-section{
       width: 788px;
@@ -835,7 +835,7 @@ body{
     .dropdown-section-modal{
         display: block !important;
     }
-    .dropdown-section-inful{
+    /* .dropdown-section-inful{
         display: block !important;
-    }
+    } */
 }

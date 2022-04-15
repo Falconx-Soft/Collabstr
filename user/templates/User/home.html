@@ -137,7 +137,7 @@
 </div>
  <div class="dropdown-section dropdown-section-modal container d-flex mt-5 mb-5" style="width: 318px">
     <div class="dropdown">
-        <button class="  dropdown-toggle" type="button" data-toggle="modal" data-target="#myModal">
+        <button class="  dropdown-toggle" type="button" data-toggle="modal"  data-target="#myModal">
             <div class="text-dark dropdown-btn-title    ">Category</div>
             <div class="dropdown-btn-text">Choose a Category</div>
         </button>
@@ -998,12 +998,14 @@
     $(".content-drop-modal").on('click', function (e) {
         $('.dropdown-menu').hide()
         // $('#myModal').css('display', '')
+        // $('#myModal').hide()
         
         
     });
     $(".dropdown-toggle").on('click', function (e) {
         $('#dropdown-menu-modal').show()
         // $('#myModal').css('display', '')
+        // $('#myModal').show()
         
         
     });
