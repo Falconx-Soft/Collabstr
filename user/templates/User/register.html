@@ -3,23 +3,59 @@
 {% block title %} Register {% endblock %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static '/css/join-brand-signup.css' %}">
+	<style>
+		.form-holder {
+        margin-top: 10%;
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+	</style>
 {% endblock %}
 
 {% block content %} 
 
 	<!-- [ auth-signup ] start -->
-	<div class="form-holder login-form">
+	<div class="form-holder login-form" style="display: block !important;">
         <h1 class="form-title">Welcome Back</h1>
 		<p>{{msg}}</p>
 		<form class = "form" method="POST" action="{% url 'register' %}">
 			{% csrf_token %} 
-			<input class="input input-login mt-3" type="text" placeholder="Fullname" name="fullname" required="">
+			<!-- <input class="input input-login mt-3" type="text" placeholder="Fullname" name="fullname" required="">
 			<input class="input input-login mt-3" type="text" placeholder="Brand Name" name="brand-name" required="">
             <input class="input input-login mt-3" type="email" placeholder="Email" name="email" required="">
             <input class="input input-login mt-3" type="password" placeholder="Password" name="password" required="">
-            <button class="submit btn login-btn mt-5">Signup</button>
+            <button class="submit btn login-btn mt-5">Signup</button> -->
             <div class="login-forgot forgot mt-4" style="color: rgba(37, 35, 35, 0.329);">
 				<a style="color: rgb(151, 163, 197);;" href="{% url 'login' %}">Already have an account? login</a>
+			</div>
+			<div class="form-holder active" data-step="1">
+				
+				
+				<div class="form">
+					<input class="input input-login input-login-form1 mt-3" type="text" placeholder="Fullname" name="fullname" required="">
+					<input class="input input-login input-login-form2 mt-3" type="text" placeholder="Brand Name" name="brand-name" required="">
+					<input class="input input-login input-login-form3 mt-3" type="email" placeholder="Email" name="email" required="">
+					<input class="input input-login input-login-form4 mt-3" type="password" placeholder="Password" name="password" required="">
+					
+					
+					<button type="button" class="submit  form_2_submit">Continue</button>
+				</div>
+			</div>
+			<div class="form-holder" data-step="2">
+				
+				
+				<div class="form">
+					<input class="input input-login mt-3" type="text" placeholder="Fullname" name="fullname" required="">
+					<input class="input input-login mt-3" type="text" placeholder="Brand Name" name="brand-name" required="">
+					<input class="input input-login mt-3" type="email" placeholder="Email" name="email" required="">
+					<input class="input input-login mt-3" type="password" placeholder="Password" name="password" required="">
+					
+					
+					<button type="button" class="submit  form_3_submit">Continue</button>
+				</div>
 			</div>
         </form>
     </div>
@@ -31,5 +67,22 @@
 {% block extrajavascript %}
 
 	<script src="/static/assets/js/waves.min.js"></script>
+	<script>
+		$('.form_2_submit').click(function () {
+            forminput= $('#input-login-form1').val()
+            if( !forminput ) {
+                alert('Input Box is Empty Please Write Something about You')
+console.log('input is not  present please write something') 
+     }
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
+	</script>
 
 {% endblock extrajavascript %} 

@@ -8,6 +8,20 @@
 <!-- Specific CSS goes HERE -->
 {% block extrastyle %}
 <style>
+    .dropdown-btn-input{
+        opacity: 1 !important;
+        outline: none !important;
+        border: none !important;
+        bottom: 2px;
+    }
+    .dropdown-btn-input-modal{
+        left: 18px;
+    }
+    .dropdown-btn-title-home{
+        left: 20px !important;
+        position: absolute !important;
+        top: 8px !important;
+    }
     /* Hide the browser's default radio button */
 .container input {
   position: absolute;
@@ -84,8 +98,8 @@
 <div class="dropdown-section container d-flex mt-5 mb-5" style="width: 318px">
     <div class="dropdown">
         <button class="  dropdown-toggle" type="button" data-toggle="dropdown">
-            <div class="text-dark dropdown-btn-title    ">Category</div>
-            <div class="dropdown-btn-text">Choose a Category</div>
+            <div class="text-dark dropdown-btn-title dropdown-btn-title-home    ">Category</div>
+            <input type="text" value="" class="dropdown-btn-text dropdown-btn-input" id="dropdown-btn-input" placeholder="Choose a Category"></input>
         </button>
         <div class="dropdown-menu" style="">
             <div class="dropdown-content">
@@ -190,8 +204,8 @@
  <div class="dropdown-section dropdown-section-modal container d-flex mt-5 mb-5" style="width: 318px">
     <div class="dropdown">
         <button class="  dropdown-toggle" type="button" data-toggle="modal"  data-target="#myModal">
-            <div class="text-dark dropdown-btn-title    ">Category</div>
-            <div class="dropdown-btn-text">Choose a Category</div>
+            <div class="text-dark dropdown-btn-title dropdown-btn-title-home    ">Category</div>
+            <input type="text" value="" class="dropdown-btn-text dropdown-btn-input dropdown-btn-input-modal" id="dropdown-btn-input-modal" placeholder="Choose a Category"></input>
         </button>
         
         <div class="modal fade" id="myModal" role="dialog">
@@ -1193,13 +1207,44 @@
 <!-- Specific Page JS goes HERE  -->
 {% block extrajavascript %}
 <script>
-    // $(".content-drop-modal").on('click', function (e) {
-    //     $('.dropdown-menu').hide()
-    //     // $('#myModal').css('display', '')
-    //     // $('#myModal').hide()
+    // --------------------------------------------------------- to select multiple inputs in category
+    var input_value = $('#dropdown-btn-input').val()
+    var str = ""
+    $(".content-drop").on('click', function (e) {
+        var value = $(this).text()
+        console.log('content-drop!!!!!!!', value)
+        if ($('#dropdown-btn-input').val().includes(value)) {
+            console.log('if statement')
+        }
+
+        else {
+        str = str + value + ','
+            console.log('string value', str)
+
+            $('#dropdown-btn-input').val(str)
+        }
+        console.log('dropdown-btn-input)))))', $('#dropdown-btn-input').val())
         
         
-    // });
+    });
+    var input_value1 = $('#dropdown-btn-input-modal').val()
+    var str1 = ""
+    $(".content-drop-modal").on('click', function (e) {
+        var value = $(this).text()
+        console.log('content-drop!!!!!!!', value)
+        if ($('#dropdown-btn-input-modal').val().includes(value)) {
+            console.log('if statement')
+        }
+
+        else {
+        str1 = str1 + value + ','
+            console.log('string value', str1)
+
+            $('#dropdown-btn-input-modal').val(str1)
+        console.log('dropdown-btn-input-modal)))))', $('#dropdown-btn-input-modal').val())
+        }
+        
+    });
     // $(".dropdown-toggle").on('click', function (e) {
     //     $('#dropdown-menu-modal').show()
     //     // $('#myModal').css('display', '')

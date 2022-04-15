@@ -21,6 +21,11 @@
     color: white;
     opacity: 1;
 }
+@media only screen and (max-width: 800px){
+.row-btn-profile{
+    position: absolute;
+    left: -39px !important;
+}}
 </style>
 
 {% endblock extrastyle %}
@@ -36,7 +41,7 @@
 <!-- body content -->
 <input type="hidden" name="influencer_username_3" value="{{influencer_username_3}}">
 <div class="btn-row">
-    <div class="share-btn row-btn" style="position: absolute; left: 0;">{{joined_influencer.full_name}}</div>
+    <div class="share-btn row-btn row-btn-profile" style="position: absolute; left: 0;">{{joined_influencer.full_name}}</div>
 
 
     <div class="share-btn row-btn" onclick="location.href='/influenceredit'"><img class="row-btn-img"
