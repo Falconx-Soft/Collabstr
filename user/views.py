@@ -50,21 +50,22 @@ def loginUser(request):
 
 def register(request):
 	if request.method== 'POST':
-		username= request.POST.get('username')
-		email= request.POST.get('email')
-		password= request.POST.get('password')
+		brand_fullname= request.POST.get('brand_fullname')
+		brand_name= request.POST.get('brand_name')
+		brand_email= request.POST.get('brand_email')
+		brand_password= request.POST.get('brand_password')
 		try:
-			if User.objects.filter(username=username):
-				messages.success(request, 'Username is taken')
-				return redirect(request, 'signup.html')
-			if User.objects.filter(email=email):
+			if User.objects.filter(email=brand_email):
 				messages.success(request, 'Email is already in use')
 				return redirect(request, 'signup.html')
 			
 		
-			user_obj= User(username=username, email=email)
-			user_obj.set_password(password)
+			user_obj= User(username=brand_fullname, email=brand_email)
+			user_obj.set_password(brand_password)
 			user_obj.save()
+			join_brand_obj= JoinBrand.objects.create(full_name=brand_fullname, brand_name=brand_name, brand_email=brand_email )
+			join_brand_obj.save()
+			return redirect('login')
 		except Exception as e:
 			print(e)
 	return render(request,'User/register.html')
