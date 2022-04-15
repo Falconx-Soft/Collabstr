@@ -7,6 +7,58 @@
 
 <!-- Specific CSS goes HERE -->
 {% block extrastyle %}
+<style>
+    /* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: white;
+  border: 3px solid;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+</style>
 
 {% endblock extrastyle %}
 
@@ -141,7 +193,7 @@
             <div class="text-dark dropdown-btn-title    ">Category</div>
             <div class="dropdown-btn-text">Choose a Category</div>
         </button>
-         
+        
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-dialog modal-sm">
@@ -149,49 +201,195 @@
                         <div class="dropdown-menu " id="dropdown-menu-modal" style="display: block !important; height: 800px !important;">
                             <div class="dropdown-content">
                                 <div class="row" style="">
-                                    <div class="content-drop  content-drop-modal col-sm-4"> All</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Lifestyle</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Fashion</div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">All </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Lifestyle </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Fashion </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                    
                                 </div>
                                 <div class="row" style="">
-                                    <div class="content-drop content-drop-modal col-sm-4">Beauty</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Health& Fitness</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Travel</div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Beauty </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4"> Health& Fitness </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Travel </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                   
+                                    
                                 </div>
                                 <div class="row" style="">
-                                    <div class="content-drop content-drop-modal col-sm-4">Food & Drink</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Model</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Comedy and Entertainment</div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Food & Drink </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div><div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Model </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div><div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Comedy and Entertainment </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                
                                 </div>
                                 <div class="row" style="">
-                                    <div class="content-drop content-drop-modal col-sm-4">Music And Dance </div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Art and Phototgraphy</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Entrepreneur & Buisness</div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Music And Dance  </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                    
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Art and Phototgraphy </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    
+                                    </div>
+                                    <div style="position: relative;">
+                                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Entrepreneur & Buisness </div>
+                                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                            <span class="checkmark"></span></div>
+
+                                    </div>
+                                            
                                 </div>
                                 <div class="row" style="">
-                                    <div class="content-drop content-drop-modal col-sm-4">Family & Children</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Animals & Pets</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Athlete & Sports</div>
+                                               <div style="position: relative;">
+                                                    <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Family & Children </div>
+                                                    <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                                        <span class="checkmark"></span></div>
+                        
+                                                </div>
+                                            <div style="position: relative;">
+                                                <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Animals & Pets </div>
+                                                <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                                    <span class="checkmark"></span></div>
+                    
+                                            </div>
+                                      <div style="position: relative;">
+                                            <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Athlete & Sports </div>
+                                            <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                                <span class="checkmark"></span></div>
+
+                                        </div>
+                                   
                                 </div>
                                 <div class="row" style="">
-                                    <div class="content-drop content-drop-modal col-sm-4">Celebrity and public figure</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Adventure & Outdoors</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Actor</div>
+                                        <div style="position: relative;">
+                                            <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Celebrity and public figure </div>
+                                            <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                                <span class="checkmark"></span></div>
+                
+                                        </div>
+                                       <div style="position: relative;">
+                                            <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Adventure & Outdoors </div>
+                                            <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                                <span class="checkmark"></span></div>
+                
+                                        </div>
+                                       <div style="position: relative;">
+                                            <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Actor </div>
+                                            <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                                <span class="checkmark"></span></div>
+
+                                        </div>
+                                   
                                 </div>
                                 <div class="row" style="">
-                                    <div class="content-drop content-drop-modal col-sm-4">Education</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Gaming</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">LGBTQ2+</div>
+                             <div style="position: relative;">
+                                    <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Education </div>
+                                    <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                        <span class="checkmark"></span></div>
+        
+                                </div>
+                            <div style="position: relative;">
+                                <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Gaming </div>
+                                <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                    <span class="checkmark"></span></div>
+    
+                            </div>
+                        <div style="position: relative;">
+                            <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">LGBTQ2 </div>
+                            <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                <span class="checkmark"></span></div>
+
+                        </div>
+                                   
                                 </div>
                                 <div class="row" style="">
-                                    <div class="content-drop content-drop-modal col-sm-4">Technology </div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Healthcare</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Vegan</div>
+                           
+                            <div style="position: relative;">
+                                <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Technology </div>
+                                <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                    <span class="checkmark"></span></div>
+    
+                            </div>
+                        <div style="position: relative;">
+                            <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Healthcare </div>
+                            <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                <span class="checkmark"></span></div>
+
+                        </div>
+                    <div style="position: relative;">
+                        <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Vegan </div>
+                        <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                            <span class="checkmark"></span></div>
+
+                    </div>
+                                  
                                 </div>
                                 <div class="row" style="">
-                                    <div class="content-drop content-drop-modal col-sm-4">Cannabis</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Skill Trades</div>
-                                    <div class="content-drop content-drop-modal col-sm-4">Automotive</div>
+                               <div style="position: relative;">
+                                    <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Cannabis </div>
+                                    <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                        <span class="checkmark"></span></div>
+        
+                                </div>
+                            <div style="position: relative;">
+                                <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Skill Trades </div>
+                                <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                    <span class="checkmark"></span></div>
+    
+                            </div>
+                        <div style="position: relative;">
+                            <div data-dismiss="modal" class="content-drop  content-drop-modal col-sm-4">Automotive </div>
+                            <div style="position: absolute; top: 20px; right: 25px;"><label for="">All</label> <input type="radio" name="radio" id="1">
+                                <span class="checkmark"></span></div>
+
+                        </div>
+                                    
                                 </div>
                                
                             </div>
@@ -995,20 +1193,45 @@
 <!-- Specific Page JS goes HERE  -->
 {% block extrajavascript %}
 <script>
-    $(".content-drop-modal").on('click', function (e) {
-        $('.dropdown-menu').hide()
-        // $('#myModal').css('display', '')
-        // $('#myModal').hide()
+    // $(".content-drop-modal").on('click', function (e) {
+    //     $('.dropdown-menu').hide()
+    //     // $('#myModal').css('display', '')
+    //     // $('#myModal').hide()
         
         
-    });
-    $(".dropdown-toggle").on('click', function (e) {
-        $('#dropdown-menu-modal').show()
-        // $('#myModal').css('display', '')
-        // $('#myModal').show()
+    // });
+    // $(".dropdown-toggle").on('click', function (e) {
+    //     $('#dropdown-menu-modal').show()
+    //     // $('#myModal').css('display', '')
+    //     // $('#myModal').show()
         
         
-    });
+    // });
+    // ---------------------------------------------------- for modal
+//     $(document).ready(function(){
+//  $('[data-toggle="popover"]').popover();
+
+//  $(function () {
+//  $('.example-popover').popover({
+//  container: 'body'
+//  })
+//  })
+
+//  $(function() {
+//  function reposition() {
+//  var modal = $(this),
+//  dialog = modal.find('.modal-dialog');
+//  modal.css('display', 'block');
+//  dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+//  }
+
+//  $('.modal').on('show.bs.modal', reposition);
+
+//  $(window).on('resize', function() {
+//  $('.modal:visible').each(reposition);
+//  });
+//  });
+//  });
 
 </script>
 
