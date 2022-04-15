@@ -131,7 +131,7 @@ class EditPortfolioImages(models.Model):
 class JoinBrand(models.Model):
     full_name= models.CharField(max_length=50)
     brand_name=models.CharField(max_length=50)
-    brand_email=models.EmailField(max_length=300)
+    brand_email=models.CharField(max_length=300)
     brand_website=models.URLField(max_length=300, null=True, blank=True)
     brand_instagram= models.CharField(max_length=50, blank=True, null=True)
     brand_tiktok=models.CharField(max_length=50, blank=True, null=True)

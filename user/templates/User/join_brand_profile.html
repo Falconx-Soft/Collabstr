@@ -1,0 +1,636 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}">
+<style>
+    .form-holder {
+        margin-top: 10%;
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+    .gender-option{
+        padding: 8px;
+    }
+    .profile-submit-btn{
+        font-size: initial;
+    }
+    .form_2_submit , .form_3_submit , .form_1_submit, .form_7_submit, .form_4_submit{
+    
+    font-size: initial;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    font-size: 95%;
+    font-family: inherit;
+    border-radius: 8px;
+    box-shadow: rgba(120, 120, 170, 0.15) 0 2px 16px 0;;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    position: relative;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 15px 0;
+    margin: 4% auto;
+font-size: initial;
+}
+.form_2_submit:hover, .form_3_submit:hover, .form_1_submit:hover, .form_7_submit:hover, .form_4_submit:hover{
+    opacity: 0.6;
+    color: white;
+
+}
+.messages{
+        display: flex;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 366px;
+    padding: 12px;
+    border-radius: 8px;
+    /* color: var(--black); */
+    background-color: white;
+    /* box-shadow: var(--mediumBoxShadow); */
+    font-size: 90%;
+    z-index: 9999999999;
+    box-shadow: rgb(120 120 170 / 20%) 0 2px 10px 0;
+    color: black;
+    }
+   
+    @media(max-width:800px){
+        .form-holder .package-holder{
+            flex: 0 48%;
+        }
+    }
+    @media(max-width:400px){
+        .form-holder{
+            min-width: 350px;
+        }
+        .form-holder .package-holder{
+            flex: 0 100%;
+        }
+    }
+</style>
+
+{% endblock extrastyle %}
+
+{% block content %}	
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style=" padding: 2px; display: flex;">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div>{{ message }}</div>
+            {% endfor %}
+    </ul>
+</div>
+<form action="{% url 'join_brand_profile' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- <input type="hidden" name="influencer_username_3"
+                value="{{influencer_username_2}}"> -->
+    <!-- form1 -->
+    <div class="form-holder active" data-step="1">
+        <!-- <div class="top-btn-holder" style="visibility:hidden;">
+            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+                </path>
+            </svg>
+            <div class="example-profile-btn">View Example Profile</div> -->
+        <!-- </div> -->
+        <h2 class="form-title">Let's Complete Your Profile. Where are you located?</h2>
+        
+        <div class="form" >
+            
+            <input type="hidden" name=""
+                value="" required>
+    
+    
+    
+            <div id="location-dropdown">
+                <!-- <input id="location-input" name="l" class="input" type="text"
+                    placeholder="City - Enter first 3 letters and select from dropdown" value=""
+                    autocomplete="new-password">
+                <input id="location-id" name="l_id" type="hidden" value=""> -->
+                
+                <select name="location_brand" class="input " id="location_input" >
+    
+    
+                    <option value="" selected="" hidden="" disabled>City - Enter first 3 letters and select from dropdown</option>
+    
+    
+                    <option value="New Albany">New Albany</option>
+    
+                    <option value="Alabama">Alabama</option>
+    
+                    <option value="Alice">Alice</option>
+    
+                    <option value="Alicia">Alicia</option>
+    
+                    <option value="Alief">Alief</option>
+    
+                    <!-- <option value="5">500k-1m</option>
+    
+                    <option value="6">1m-5m</option>
+    
+                    <option value="7">5m-10m</option>
+    
+                    <option value="8">10m+</option> -->
+    
+    
+                </select>
+                <!-- <div id="location-dropdown-content" style="display: none;">
+                    <div class="location-option" data-id="101090"><b>New Albany</b><span class="region-country"> IN,
+                            United States</span></div>
+                    <div class="location-option" data-id="101090"><b>Alabama</b><span class="region-country"> NY, United
+                            States</span></div>
+                    <div class="location-option" data-id="101090"><b>Alice</b><span class="region-country"> TX, United
+                            States</span></div>
+                    <div class="location-option" data-id="101090"><b>Alicia</b><span class="region-country"> MI, United
+                            States</span></div>
+                    <div class="location-option" data-id="101090"><b>Alief</b><span class="region-country"> TX, United
+                            States</span></div>
+                </div> -->
+            </div>
+            <button type="button" class="submit  form_1_submit">Continue</button>
+            <div class="under-btn">I don't see my city<a href="/supported-countries" target="_blank"><span
+                        class="link-spanner"></span></a></div>
+            </div>
+           
+           
+    </div>
+    <!-- form2 -->
+    <div class="form-holder" data-step="2">
+        <div class="top-btn-holder">
+            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+                </path>
+            </svg>
+            <div class="example-profile-btn">View Example Profile</div>
+            <div class="step-holder">2/4</div>
+        </div>
+        <h2 class="form-title">Describe Your Brand</h2>
+        <div class="form">
+            
+            <input type="hidden" name=""
+                value="">
+                <textarea class="input textarea" name="description_brand"
+                placeholder="Who are you and what type of content do you create? Who is your audience? Be specific as this will help you show up in searches."
+                  id="form_3_input"  ></textarea>
+            <button type="button" class="submit  form_2_submit">Continue</button>
+        </div>
+    </div>
+    <!-- form3 -->
+    <div class="form-holder" data-step="3" style="">
+        <div class="top-btn-holder">
+            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+                </path>
+            </svg>
+            <div class="example-profile-btn">View Example Profile</div>
+            <div class="step-holder">3/4</div>
+        </div>
+        <h2 class="form-title" style="margin-top: inherit;">Select the categories that descibe your content</h2>
+            <div class="form">
+                <input type="hidden" id="niches_input" name="brand_niches_value" value="">
+                <div class="niches-holder scroll-holder">
+        
+        
+                    <div class="niche-holder " data-id="35">Lifestyle</div>
+                    <div class="niche-holder " data-id="36">Fashion</div>
+                    <div class="niche-holder " data-id="37">Beauty</div>
+                    <div class="niche-holder " data-id="26">Health & Fitness</div>
+                    <div class="niche-holder " data-id="34">Travel</div>
+                    <div class="niche-holder " data-id="23">Food & Drink</div>
+                    <div class="niche-holder " data-id="39">Model</div>
+                    <div class="niche-holder " data-id="38">Comedy & Entertainment</div>
+                    <div class="niche-holder " data-id="28">Art & Photography</div>
+                    <div class="niche-holder " data-id="31">Music & Dance</div>
+                    <div class="niche-holder " data-id="24">Entrepreneur & Business</div>
+                    <div class="niche-holder " data-id="29">Family & Children</div>
+                    <div class="niche-holder " data-id="30">Animals & Pets</div>
+                    <div class="niche-holder " data-id="33">Athlete & Sports</div>
+                    <div class="niche-holder " data-id="43">Celebrity & Public Figure</div>
+                    <div class="niche-holder " data-id="45">Adventure & Outdoors</div>
+                    <div class="niche-holder " data-id="40">Actor</div>
+                    <div class="niche-holder " data-id="42">Education</div>
+                    <div class="niche-holder " data-id="32">Gaming</div>
+                    <div class="niche-holder " data-id="44">LGBTQ2+</div>
+                    <div class="niche-holder " data-id="41">Technology</div>
+                    <div class="niche-holder " data-id="49">Healthcare</div>
+                    <div class="niche-holder " data-id="46">Vegan</div>
+                    <div class="niche-holder " data-id="50">Cannabis</div>
+                    <div class="niche-holder " data-id="48">Skilled Trades</div>
+                    <div class="niche-holder " data-id="47">Automotive</div>
+        
+        
+                </div>
+                <input type="hidden" name="niches" value="">
+                <button type="button" class="submit  form_3_submit">Continue</button>
+                <!-- <button type="button" class="submit btn profile-submit-btn">Continue</button> -->
+           </div>
+    </div>
+  
+
+<!-- form7 -->
+<div class="form-holder " data-step="4" style=" width: 75%;">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">4/4</div>
+    </div>
+    <h2 class="form-title">Add up to 5 images of you and your content</h2>
+    <div class="form">
+        <input type="hidden" name=""
+            value="">
+        <div class="scroll-holder scroll-holder-wide">
+            <div id="file-area-prof-pic">
+                <img class="profile-img"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/addProfPic.png">
+                <input id="file-input" type="file" name="profile_img" accept="image/*" required> 
+            </div>
+
+            <div class="img-row">
+                <!-- overlay -->
+
+                <div class="upload-img-overlay">
+                    <div class="upload-btn-overlay">
+                        <input type="file" class="img-file-input file-input js-img-file-input" name="img-files"
+                            accept="image/*" multiple="" id="cover_image_input" required>
+                        <div class="upload-img-btn btn">
+                            <img class="upload-btn-img"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/upload.svg">Upload
+                            Photos
+                        </div>
+                    </div>
+                    <div class="primary-img">
+                        <div class="file-area"></div>
+                    </div>
+                    <div class="img-col">
+                        <div class="img-row-sq">
+                            <div class="file-area"></div>
+                            <div class="file-area"></div>
+                        </div>
+                        <div class="file-area file-area4"></div>
+                    </div>
+                </div>
+
+                <!-- overlay end -->
+
+                <div class="primary-img">
+                    <div class="file-area">
+                        <div class="cover-img-badge">Cover Photo</div>
+                        <input id="required-img" onchange="" class="img-input" type="file"
+                            name="cover_image" accept="image/*">
+                        <img class="img img1"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/defaultCover.png">
+                    </div>
+                </div>
+                <div class="img-col">
+                    <div class="img-row-sq">
+                        <div class="file-area">
+                            <!-- menu btn -->
+                            <div class="more-img-holder">
+                                <div class="more-img-badge">•••</div>
+                                <div class="more-img-dropdown-holder">
+
+                                    <div class="more-img-dropdown-item" data-action="cover" data-id="2">Make cover
+                                        photo</div>
+
+                                    <div class="more-img-dropdown-item" data-action="delete" data-id="2">Delete
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- menu btn end -->
+
+                            <input onchange="" class="img-input" type="file" name="img2" id="img2"
+                                accept="image/*">
+                            <img class="img img2"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                        </div>
+                        <div class="file-area">
+                            <!-- menu btn -->
+                            <div class="more-img-holder">
+                                <div class="more-img-badge">•••</div>
+                                <div class="more-img-dropdown-holder">
+
+                                    <div class="more-img-dropdown-item" data-action="cover" data-id="3">Make cover
+                                        photo</div>
+
+                                    <div class="more-img-dropdown-item" data-action="delete" data-id="3">Delete
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- menu btn end -->
+
+                            <input onchange="showImg(this,2)" class="img-input" type="file" name="img3" id="img3"
+                                accept="image/*">
+                            <img class="img img3"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                        </div>
+                    </div>
+                    <div class="file-area file-area4">
+                        <!-- menu btn -->
+                        <div class="more-img-holder">
+                            <div class="more-img-badge">•••</div>
+                            <div class="more-img-dropdown-holder">
+
+                                <div class="more-img-dropdown-item" data-action="cover" data-id="4">Make cover photo
+                                </div>
+
+                                <div class="more-img-dropdown-item" data-action="delete" data-id="4">Delete</div>
+                            </div>
+                        </div>
+                        <!-- menu btn end -->
+
+                        <input onchange="showImg(this,3)" class="img-input" type="file" name="img4" id="img4"
+                            accept="image/*">
+                        <img class="img img4"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="del_img_list">
+
+        <button type="submit" class="submit  form_7_submit">Continue</button>
+   </div>
+</div>
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+<script>
+    // $(document).ready(function () {
+    // navbar
+    $(".dashboard-menu-holder").hover(function () {
+        $('.dashboard-menu').show();
+    }, function () {
+        $('.dashboard-menu').hide();
+    });
+    // allforms
+    $('.profile-submit-btn').click(function () {
+ 
+        var active = $(".form-holder.active").attr("data-step")
+        var next = parseInt(active) + 1
+        console.log(next)
+        $("[data-step]").removeClass('active')
+        var next_select = `[data-step=${next}]`
+        $(next_select).addClass("active")
+
+
+    });
+    $('.back-btn').click(function () {
+        var active = $(".form-holder.active").attr("data-step")
+        var previous = parseInt(active) - 1
+        console.log(previous)
+        $("[data-step]").removeClass('active')
+        var previous_select = `[data-step=${previous}]`
+        $(previous_select).addClass("active")
+
+
+    });
+    // form 1
+    $('#location-input').click(function () {
+        $('#location-dropdown-content').css("display", "block")
+
+
+    });
+    $('.location-option').click(function () {
+        $('#location-dropdown-content').css("display", "none")
+    });
+    $('.form_1_submit').click(function () {
+            forminput= $('#location_input').val()
+            
+          
+            console.log('for,input::::::::::::', forminput)
+            if( !forminput) {
+                alert('Please Select your Location')
+console.log('input is not  present') 
+     }
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
+    //  ___________________________________________________form 2
+    $('.form_2_submit').click(function () {
+            forminput= $('#form_3_input').val()
+            if( !forminput ) {
+                alert('Input Box is Empty Please Write Something about Your Brand')
+console.log('input is not  present please write something') 
+     }
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
+// ________________________________________________________form 3
+$('.form_3_submit').click(function () {
+    forminput1= $('#niches_input').val()
+            if( !forminput1 ) {
+                alert('Please Select atleast one Category')
+console.log('input is not  present') 
+     }
+else{
+    var active = $(".form-holder.active").attr("data-step")
+            var next = parseInt(active) + 1
+            console.log(next)
+            $("[data-step]").removeClass('active')
+            var next_select = `[data-step=${next}]`
+            $(next_select).addClass("active")
+      console.log(' input::::::::::::::::::')
+   }})
+    // 
+
+    // $('.profile-submit-btn').click(function () {
+    //     $(this).parent().parent().removeClass("form-holder-active")
+    //     $(this).parent().parent().addClass("form-holder")
+
+    //     $(this).parent().parent().next().addClass("form-holder-active")
+    //     $(this).parent().parent().next().removeClass("form-holder")
+
+    // });
+
+    // });
+    // ____________________________________________________________________________ form 4
+ 
+ 
+    // ###############################################################################
+    // form 5
+    
+
+    // ##################################################
+    // form 6
+
+    $('.niche-holder').click(function () {
+
+        if ($(this).hasClass("niche-selected")) {
+            $(this).removeClass("niche-selected")
+        }
+        else {
+            $(this).addClass("niche-selected")
+
+        }
+
+
+    });
+    // #################################################
+    // form 7 upload images
+//     $('.form_7_submit').click(function () {
+//             forminput1= $('#file-input').val()
+//             // length0fimages= $('.js-img-file-input').files.length
+//             forminput2= $('#cover_image_input').val()
+//             forminput3= $('#img2').val()
+//             forminput4= $('#img3').val()
+//             forminput5= $('#img4').val()
+//             if( !forminput1 || !forminput2  ) {
+//                 alert('Please Upload Profile and Cover Picture')
+// console.log('input is not  present') 
+//      }
+// else{
+//     var active = $(".form-holder.active").attr("data-step")
+//             var next = parseInt(active) + 1
+//             console.log(next)
+//             $("[data-step]").removeClass('active')
+//             var next_select = `[data-step=${next}]`
+//             $(next_select).addClass("active")
+//       console.log(' input::::::::::::::::::')
+//     }})
+    
+    $(function () {
+        $('#file-input').change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            console.log('File input join______', x)
+            $('.profile-img').attr("src", x);
+
+        });
+    })
+    $(function () {
+        $('.js-img-file-input').change(function (event) {
+            var total_file=this.files.length;
+                console.log('total_file_____________-----',total_file)
+                M=1
+                for(var i=0;i<total_file;i++){
+                    console.log('iiiiiiiiiiiiiiiiiiii', i)
+                    var x = URL.createObjectURL(event.target.files[i]);
+                $('.img'+M).attr("src", x);
+                M++
+                    // $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'><br>");
+                    }
+
+            // var x = URL.createObjectURL(event.target.files[0]);
+            // $('.img1').attr("src", x);
+            $('.upload-img-overlay').css("display", "none")
+
+        });
+    })
+    $(function () {
+        $("input[name='cover_image']").change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.img1').attr("src", x);
+
+
+        });
+    })
+    $(function () {
+        $("input[name='img2']").change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.img2').attr("src", x);
+
+
+        });
+    })
+    $(function () {
+        $("input[name='img3']").change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.img3').attr("src", x);
+
+
+        });
+    })
+    $(function () {
+        $("input[name='img4']").change(function (event) {
+            var x = URL.createObjectURL(event.target.files[0]);
+            $('.img4').attr("src", x);
+
+
+        });
+    })
+    // #########################################################
+    // form 8
+
+    // ############################################################
+   
+
+
+
+    // ##############################################################
+    // form 9
+  
+    // #########################################
+    // to select the niches
+    var input_value = $('#niches_input').val()
+    var str = ""
+    $(".niche-holder").click(function () {
+        console.log('niche holder clicked::::::::::::::::::::')
+        var id = $(this).text();
+        console.log('text inside the niche', id)
+        console.log(id)
+        if ($('#niches_input').val().includes(id)) {
+            console.log('in if statement')
+            str = str.replace(id + ',', '')
+            $('#niches_input').val(str)
+        }
+
+        else {
+            str = str + id + ','
+            console.log('string value', str)
+
+            $('#niches_input').val(str)
+        }
+        console.log('niches_input', $('#niches_input').val())
+        });
+
+</script>
+
+{% endblock extrajavascript %}

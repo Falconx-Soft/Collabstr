@@ -1,5 +1,6 @@
 from multiprocessing import context
 from urllib.parse import uses_netloc
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -1824,3 +1825,173 @@ def influencer_profile_edit(request):
 			messages.success(request, 'Superuser logged in')
 			print(e)
 	return render(request, 'User/infl_profile_edit.html')
+
+
+
+
+def join_brand_profile(request):
+	user= request.user
+	user_email=user.email
+	loggendin_brand= JoinBrand.objects.get(brand_email=user_email)
+	print('_--_---------------------------------------')
+	print('user_email::-------------------------------------------""::"""', loggendin_brand)
+	if request.method== 'POST':
+		location_brand=request.POST.get('location_brand')
+		description_brand=request.POST.get('description_brand')
+		brand_niches_value=request.POST.get('brand_niches_value')
+		
+		loggendin_brand.brand_location=location_brand
+		loggendin_brand.brand_description=description_brand
+		
+
+
+
+		if "Lifestyle" in brand_niches_value:
+			loggendin_brand.lifestyle= True
+		if "Fashion" in brand_niches_value:
+			loggendin_brand.fashion= True
+		if "Beauty" in brand_niches_value:
+			loggendin_brand.beauty= True
+		
+		if "Health & Fitness" in brand_niches_value:
+			loggendin_brand.health_fitness= True
+		if "Travel" in brand_niches_value:
+			loggendin_brand.travel= True
+		if "Food & Drink" in brand_niches_value:
+			loggendin_brand.food_drink= True
+		if "Model" in brand_niches_value:
+			loggendin_brand.model= True
+		if "Comedy & Entertainment" in brand_niches_value:
+			loggendin_brand.comedy_entertainment= True
+		if "Art & Photography" in brand_niches_value:
+			loggendin_brand.art_photography= True
+		
+		if "Music & Dance" in brand_niches_value:
+			loggendin_brand.music_dance= True
+		if "Entrepreneur & Business" in brand_niches_value:
+			loggendin_brand.entrepreneur_business= True
+		if "Family & Children" in brand_niches_value:
+			loggendin_brand.family_children= True
+		if "Animals & Pets" in brand_niches_value:
+			loggendin_brand.animals_pets= True
+		if "Athlete & Sports" in brand_niches_value:
+			loggendin_brand.athlete_sports= True
+		if "Celebrity & Public Figure" in brand_niches_value:
+			loggendin_brand.celebrity_public_pigure= True
+		
+		if "Adventure & Outdoors" in brand_niches_value:
+			loggendin_brand.adventure_outdoors= True
+		if "Actor" in brand_niches_value:
+			loggendin_brand.actor= True
+		if "Education" in brand_niches_value:
+			loggendin_brand.education= True
+		if "Gaming" in brand_niches_value:
+			loggendin_brand.gaming= True
+		if "LGBTQ2" in brand_niches_value:
+			loggendin_brand.lgbtq= True
+		if "Technology" in brand_niches_value:
+			loggendin_brand.technology= True
+		
+		if "Healthcare" in brand_niches_value:
+			loggendin_brand.healthcare= True
+		if "Vegan" in brand_niches_value:
+			loggendin_brand.vegan= True
+		if "Cannabis" in brand_niches_value:
+			loggendin_brand.cannabis= True
+		if "Skilled Trades" in brand_niches_value:
+			loggendin_brand.skilled_trades= True
+		if "Automotive" in brand_niches_value:
+			loggendin_brand.automotive= True
+
+		profile_image= request.FILES.get('profile_img')
+		print('profile image join_________________', profile_image)
+		all_image= request.FILES.getlist('img-files')
+		print('all_________________', all_image)
+		print('length of all_________________', len(all_image))
+		print('image0 allimage&&&&&&&&&&&&&', all_image[0])
+		cover_image= request.FILES.get('cover_image')
+		img2= request.FILES.get('img2')
+		img3= request.FILES.get('img3')
+		img4= request.FILES.get('img4')
+
+
+
+		if len(all_image) == 1:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+		if len(all_image) == 2:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+		if len(all_image) == 3:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+			loggendin_brand.image4=all_image[2]
+		if len(all_image) == 4:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+			loggendin_brand.image4=all_image[2]
+			loggendin_brand.image5=all_image[3]
+
+		if len(all_image) == 5:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+			loggendin_brand.image4=all_image[2]
+			loggendin_brand.image5=all_image[3]
+		if len(all_image) == 6:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+			loggendin_brand.image4=all_image[2]
+			loggendin_brand.image5=all_image[3]
+		if len(all_image) == 7:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+			loggendin_brand.image4=all_image[2]
+			loggendin_brand.image5=all_image[3]
+		if len(all_image) == 8:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+			loggendin_brand.image4=all_image[2]
+			loggendin_brand.image5=all_image[3]
+		if len(all_image) == 9:
+			print('_______________________________')
+			print('length of allimage&&&&&&&&&&&&&', all_image[0])
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+			loggendin_brand.image4=all_image[2]
+			loggendin_brand.image5=all_image[3]
+		if len(all_image) == 10:
+			loggendin_brand.cover_image=all_image[0]
+			loggendin_brand.image3=all_image[1]
+			loggendin_brand.image4=all_image[2]
+			loggendin_brand.image5=all_image[3]
+
+		if cover_image:
+
+			loggendin_brand.cover_image=cover_image
+			
+		if img2:
+			loggendin_brand.image3=img2
+		if img3:
+			loggendin_brand.image4=img3
+		if img4:
+			loggendin_brand.image5=img4
+
+		loggendin_brand.save()
+		return render(request,'User/login.html')
+
+	return render(request, 'user/join_brand_profile.html')
