@@ -140,6 +140,8 @@ def create_your_page(request):
 				influencer_obj.email_address=email_influencer
 				influencer_obj.password=password_influencer
 				influencer_obj.save()
+				is_brand_obj= BrandorInfluencer.objects.create(user=influencer, brand=False)
+				is_brand_obj.save()
 			context= {'influencer_username_2': influencer_username_2}
 			return render(request,'User/join_influencer_profile.html', context)
 		except Exception as e:
