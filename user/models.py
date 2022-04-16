@@ -23,7 +23,9 @@ class accountsCheck(models.Model):
 class BrandorInfluencer(models.Model):
     user= models.OneToOneField(User,on_delete=models.CASCADE)
     brand= models.BooleanField(default=False)
-    influencer=models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
 
 class JoinInfluencer(models.Model):
     influencer_username= models.CharField(max_length=200)
@@ -175,6 +177,8 @@ class JoinBrand(models.Model):
     image4=models.ImageField(null=True,blank=True,upload_to="images/")
     image5=models.ImageField(null=True, blank=True,upload_to="images/")
 
+
+    is_added= models.BooleanField(default=False)
 
     def __str__(self):
             return self.full_name

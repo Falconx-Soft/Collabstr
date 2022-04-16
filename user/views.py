@@ -66,6 +66,8 @@ def register(request):
 			user_obj.save()
 			join_brand_obj= JoinBrand.objects.create(full_name=brand_fullname, brand_name=brand_name, brand_email=brand_email )
 			join_brand_obj.save()
+			is_brand_obj= BrandorInfluencer.objects.create(user=user_obj, brand=True)
+			is_brand_obj.save()
 			return redirect('login')
 		except Exception as e:
 			print(e)
@@ -1010,10 +1012,18 @@ def join_influencer_profile(request):
 
 def influencer_profile(request):
 	username = None
+
 	try:
+
 		if request.user.is_authenticated:
 			print("User is logged in :)")
 			username= request.user.username
+			is_brand=BrandorInfluencer.objects.get(user__username=username)
+			is_brand_value= is_brand.brand
+			print("User is is_brand___________________________--- :)", is_brand_value)
+			print("User is is_brand_value--------------------------- :)", is_brand)
+			if is_brand_value:
+				return redirect('/brandprofile/')
 			joined_influencer=JoinInfluencer.objects.get(influencer_username=username)
 			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
 			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
@@ -1991,8 +2001,11 @@ def join_brand_profile(request):
 		if img4:
 			loggendin_brand.image5=img4
 
+
+
+		loggendin_brand.is_added= True
 		loggendin_brand.save()
-		return render(request,'User/login.html')
+		return render(request,'User/home.html')
 
 	return render(request, 'user/join_brand_profile.html')
 
@@ -2006,11 +2019,15 @@ def brand_profile(request):
 			print("brand is logged in :)")
 			user= request.user
 			user_email=user.email
-			print('user_email::::::::::',user_email)
+			
 			joined_brand=JoinBrand.objects.get(brand_email=user_email)
-			print('joined_influencer::::::::::',joined_brand)
-			context={'joined_brand': joined_brand}
-			return render(request, 'User/brand_profile.html', context)
+			print('joined_brand.brand_location::::::::::',joined_brand.brand_location)
+			if joined_brand.brand_location is None:
+				return redirect('/joinbrandprofile/')
+				print('joined_influencer::::::::::',joined_brand)
+			else:
+				context={'joined_brand': joined_brand}
+				return render(request, 'User/brand_profile.html', context)
 		else:
 			print("brand is not logged in :(")
 			# return redirect(request, 'User/influencer_profile.html')
