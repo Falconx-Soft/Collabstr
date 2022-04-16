@@ -1995,3 +1995,25 @@ def join_brand_profile(request):
 		return render(request,'User/login.html')
 
 	return render(request, 'user/join_brand_profile.html')
+
+
+
+
+def brand_profile(request):
+		user_email = None
+	# try:
+		if request.user.is_authenticated:
+			print("brand is logged in :)")
+			user= request.user
+			user_email=user.email
+			print('user_email::::::::::',user_email)
+			joined_brand=JoinBrand.objects.get(brand_email=user_email)
+			print('joined_influencer::::::::::',joined_brand)
+			context={'joined_brand': joined_brand}
+			return render(request, 'User/brand_profile.html', context)
+		else:
+			print("brand is not logged in :(")
+			# return redirect(request, 'User/influencer_profile.html')
+	# except Exception as e:
+			messages.success(request, 'Superuser logged in')
+			return redirect('home')

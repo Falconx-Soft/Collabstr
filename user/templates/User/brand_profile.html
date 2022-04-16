@@ -1,0 +1,640 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- <link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}"> -->
+<!-- <link rel="stylesheet" href="{% static '/css/join-influencer-earnings.css' %}"> -->
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+<style>
+ 
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: inline-block;
+    width: 50px;
+    height: 7rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 100%;
+    color: white;
+    opacity: 1;
+}
+.modal-btn-brand {
+    background-color: black;
+    color: white;
+    width: 35%;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: medium;
+    font-weight: 600;
+    border-radius: 13px;
+}
+.modal-btn-brand:hover{
+    color: white;
+    opacity: 0.6;
+}
+@media only screen and (max-width: 800px){
+.row-btn-profile{
+    position: absolute;
+    left: -39px !important;
+}}
+</style>
+
+{% endblock extrastyle %}
+<style>
+
+</style>
+
+{% block content %}	
+
+
+
+<!-- ________________________________________ -->
+<!-- body content -->
+<!-- <input type="hidden" name="influencer_username_3" value="{{influencer_username_3}}"> -->
+<div class="btn-row">
+    <div class="share-btn row-btn row-btn-profile" style="position: absolute; left: 0;">{{joined_brand.full_name}}</div>
+
+
+    <div class="share-btn row-btn" onclick="location.href='/brandedit'"><img class="row-btn-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/edit.svg">Edit</div>
+
+
+
+
+    <!-- <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/save.svg"><span
+            class="save-btn-txt">Save</span></div> -->
+
+</div>
+
+<div class="listing-holder">
+
+    <div class="img-row img_row_holder">
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+           
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+            
+              
+              
+            </div>
+            
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+              <div class="carousel-item  active">
+                <!-- <img src="{{joined_brand.cover_image.url}}" alt="Los Angeles" class="d-block" style="width:100%"> -->
+                <div class="primary-img" style="">
+                    <div class="file-area">
+                        <picture>
+                           
+                            <img class="img img1"
+                                src="{{joined_brand.cover_image.url}}"
+                                alt="Photo of Nigel Kabvina">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            {% if joined_brand.image3 and joined_brand.image4 and   joined_brand.image5  %}
+              <div class="carousel-item">
+                <div class="primary-img" style="">
+                    <div class="file-area">
+                        <picture>
+                           
+                            <img class="img img1"
+                                src="{{joined_brand.image3.url}}"
+                                alt="Photo of Nigel Kabvina">
+                        </picture>
+                    </div>
+                </div>             </div>
+              <div class="carousel-item ">
+                <div class="primary-img" style="">
+                    <div class="file-area">
+                        <picture>
+                           
+                            <img class="img img1"
+                                src="{{joined_brand.image4.url}}"
+                                alt="Photo of Nigel Kabvina">
+                        </picture>
+                    </div>
+                </div>   
+                </div>
+                <div class="carousel-item ">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_brand.image5.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>             
+                 </div>
+                 {% elif joined_brand.image3 and joined_brand.image4 and not  joined_brand.image5  %}
+                 <div class="carousel-item">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_brand.image3.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>             </div>
+                  <div class="carousel-item ">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_brand.image4.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>   
+                    </div>
+                {% elif joined_brand.image3 and not joined_brand.image4 and not  joined_brand.image5  %}
+                <div class="carousel-item">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_brand.image3.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>             </div>
+                 
+                    {% elif not joined_brand.image3 and  joined_brand.image4 and not  joined_brand.image5  %}
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_brand.image4.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    {% elif not joined_brand.image3 and not joined_brand.image4 and   joined_brand.image5  %}
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_brand.image5.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    {% elif not joined_brand.image3 and  joined_brand.image4 and   joined_brand.image5  %}
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_brand.image4.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_brand.image5.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    {% elif  joined_brand.image3 and not joined_brand.image4 and   joined_brand.image5  %}
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_brand.image3.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    <div class="carousel-item">
+                        <div class="primary-img" style="">
+                            <div class="file-area">
+                                <picture>
+                                   
+                                    <img class="img img1"
+                                        src="{{joined_brand.image5.url}}"
+                                        alt="Photo of Nigel Kabvina">
+                                </picture>
+                            </div>
+                        </div>             
+                    </div>
+                    
+                    
+                     
+                     
+                 {% endif %}
+            </div>
+            
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+
+        
+      
+    </div>
+   
+
+    <div class="listing-cols">
+
+        <div class="listing-col-l">
+
+            <h1 class="listing-title" style="font-size: calc(1rem + 1.5vw);">{{joined_brand.brand_name| title}}</h1>
+            <div class="listing-description" style="font-size: 16px;">{{joined_brand.brand_description | title}}</div>
+
+
+           
+
+           
+
+
+            <div class="portfolio-section">
+                <h3 style="    font-size: x-large;font-weight: 600;">Compaigns</h3>
+
+                <button class="btn modal-btn-brand">Create Compaign</button>
+                   
+
+
+               
+
+            </div>
+
+
+            <!-- <div class="faq-section">
+                <h3>FAQ</h3>
+                {% for faq in faq_influencer %}
+                <div class="faq-holder">
+                    <h3 class="faq-question">{{faq.faq_question}}</h3>
+                    <div class="faq-answer" style="display: none;">{{faq.faq_answer}}</div>
+                </div>
+                {% endfor %} -->
+                <!-- <div class="faq-holder">
+                    <h3 class="faq-question">Are you willing to travel internationally?</h3>
+                    <div class="faq-answer" style="display: none;">Yes. Absolutely. </div>
+                </div>
+
+                <div class="faq-holder">
+                    <h3 class="faq-question">Do you have any flexibility with package options?</h3>
+                    <div class="faq-answer" style="display: none;">Yes, I would be happy to discuss a negotiated
+                        rate or project.</div>
+                </div> -->
+
+            <!-- </div> -->
+
+
+        </div>
+        <div class="listing-col-r">
+
+            <div class="profile-holder">
+                <div class="profile-info-holder">
+                    <img class="profile-pic"
+                        src="{{joined_brand.profile_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    <div class="profile-name">{{joined_brand.brand_name | title}}</div>
+                    <div class="profile-location">{{joined_brand.brand_location}}</div>
+                    <div class="platform-img-holder">
+                        {% if joined_brand.brand_instagram != "" %}
+                        <div class="platform-img">
+                            <a rel="nofollow" href="https://instagram.com/{{joined_brand.brand_instagram}}" target="_blank"
+                                data-platform="instagram" class="intercept"><span class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                                alt="Instagram logo">
+                        </div>
+                        {% endif %}
+
+                        {% if joined_brand.brand_tiktok != "" %}
+                        <div class="platform-img">
+                            <a rel="nofollow" href="https://tiktok.com/@{{joined_brand.brand_tiktok}}" target="_blank"
+                                data-platform="tiktok" class="intercept"><span class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                                alt="TikTok logo">
+                        </div>
+                        {% endif %}
+                        {% if joined_brand.brand_youtube != "" %}
+                        <div class="platform-img">
+                            <a rel="nofollow" href="{{joined_brand.brand_youtube}}"
+                                target="_blank" data-platform="youtube" class="intercept"><span
+                                    class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/youtube.svg"
+                                alt="YouTube logo">
+                        </div>
+                        {% endif %}
+                       
+                       
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="checkout-area">
+
+                <div class="checkout-holder">
+
+                    <div class="checkout-title">{{joined_brand.title_influencer|title}}
+                    </div>
+                    <select class="input package-input" onchange="changePackage(this)">
+                        {% for package in package_influencer %}
+                        <option value="{{package.content_category}}">{{package.content_category}}</option>
+                        {% endfor %}
+
+                    </select>
+                    <div class="checkout-price">${{package.package_price}}</div>
+                    <div class="checkout-description-holder">I will create a tailored TikTok video using your
+                        product to create something, with unique music and an eye catching hook (intro) to keep
+                        viewers watching. </div>
+
+                    <button class="buy-btn btn" data-id="checkout">Continue</button>
+                    <div class="msg-btn checkout-description-holder" data-id="message">Send Custom Offer</div>
+
+
+                </div>
+
+                <div class="how-it-works-btn"><img alt="How INFUL works" class="how-it-works-btn-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/howItWorks.svg">How does it work?</div>
+
+            </div> -->
+
+        </div>
+
+    </div>
+
+
+</div>
+<!-- <h3 class="sim-padding">Similar Influencers</h3>
+<div class="influencers-div" style="    grid-template-columns: repeat(5, 24%);"> 
+
+
+    <div class="card img-fluid f-image" style="margin-right: 0px;">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/7075/16276318856345878.jpg"
+            alt="Card image" style="width:100%">
+
+        </div>
+        
+        <div class="card-img-overlay">
+            <h4 class="card-title">Isaiah Lamb</h4>
+            <p class="card-text">Baltimore, MD, US </p>
+
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color:grey">Instagram</div>
+            <div style="font-size: initial; color: black; font-weight: 600;">$100</div>
+        </div>
+        <h3 class="profile-text">Verified fitness content creator and Professional</h3>
+    </div>
+
+    <div class="card img-fluid f-image" >
+        <div class="img-background">
+            <img class="card-img-top"  src="https://d5ik1gor6xydq.cloudfront.net/sellers/13709/16276331921042554.jpg"
+            alt="Card image" style="width:100% ">
+        </div>
+       
+        <div class="card-img-overlay">
+            <h4 class="card-title">Jhony Valentine</h4>
+            <p class="card-text">California, CA, US </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">TikTok</div>
+            <div style="font-size: initial; color: black; font-weight: 600;">$5000</div>
+        </div>
+        <h3 class="profile-text">Verified fitness content creator and Professional</h3>
+
+        
+    </div>
+    <div class="card img-fluid f-image">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/27767/16314533827067404.jpg"
+            alt="Card image" style="width:100%">
+        </div>
+        
+        <div class="card-img-overlay">
+            <h4 class="card-title">Mona-Lisa Di-Macio</h4>
+            <p class="card-text">London, LND, GB </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">Instagram</div>
+            <div style="font-size: initial; color: black; font-weight: 600;">$560</div>
+        </div>
+        <h3 class="profile-text">Verified fitness content creator and Professional</h3>
+    </div>
+    <div class="card img-fluid f-image">
+        <div class="img-background">
+            <img class="card-img-top" src="https://d5ik1gor6xydq.cloudfront.net/sellers/30078/1633620831978466.jpg"
+            alt="Card image" style="width:100%">
+        </div>
+        
+        <div class="card-img-overlay">
+            <h4 class="card-title">Jenelle Eason</h4>
+            <p class="card-text">Wellmington, NC, US </p>
+        </div>
+        <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+            <div style="color: grey;">YouTube</div>
+            <div style="font-size: initial; color: black; font-weight: 600;">$1000</div>
+        </div>
+        <h3 class="profile-text">Verified fitness content creator and Professional</h3>
+    </div>
+
+
+
+</div> -->
+
+<!-- Sign Up modals -->
+
+
+
+<div class="container" style="width: 100%;">
+    <div class="footer">
+        <div class="footer-top-row">
+            <div class="footer-section">
+                <div class="footer-title">Resources</div>
+                <a href="/blog" class="footer-txt">Blog</a>
+                <a href="/creator-hub" class="footer-txt">Creator Hub</a>
+                <a href="/referral-program" class="footer-txt">Affiliate Program</a>
+                <a href="/ultimate-guide-to-tiktok-for-brands" class="footer-txt">TikTok Ebook For Brands</a>
+                <a href="/2022-influencer-marketing-report" class="footer-txt">2022 Influencer Marketing Report</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Tools</div>
+                <a href="/influencer-price-calculator" class="footer-txt">Influencer Price Calculator</a>
+                <a href="/influencer-campaign-brief-template" class="footer-txt">Influencer Campaign Brief
+                    Template</a>
+                <a href="/influencer-contract-template" class="footer-txt">Influencer Contract Generator</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Discover</div>
+                <a href="/find-influencers" class="footer-txt">Find Influencers</a>
+                <a href="/hire-influencers" class="footer-txt">Hire Influencers</a>
+                <a href="/search-influencers" class="footer-txt">Search Influencers</a>
+                <a href="/influencer-shoutouts" class="footer-txt">Buy Shoutouts</a>
+                <a href="/influencer-marketplace" class="footer-txt">Influencer Marketplace</a>
+                <a href="/top-influencers" class="footer-txt">Top Influencers</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Support</div>
+                <a href="mailto:hello@INFUL.com" class="footer-txt">hello@INFUL.com</a>
+                <a href="/#how-it-works" class="footer-txt">How It Works</a>
+                <a href="/faq" class="footer-txt">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-btm-row">
+            <div class="footer-btm-row-left">
+                <div class="footer-item">© INFUL Inc.</div>
+                <a href="/privacy" class="footer-item">Privacy</a>
+                <a href="/terms" class="footer-item">Terms</a>
+                <a href="/sitemap" class="footer-item">Sitemap</a>
+            </div>
+
+            <div class="footer-btm-row-right">
+                <div class="footer-img">
+                    <a href="https://instagram.com/INFUL" target="_blank"><span class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                        alt="Instagram logo" loading="lazy">
+                </div>
+                <div class="footer-img">
+                    <a href="https://tiktok.com/@INFUL.com" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                        alt="TikTok logo" loading="lazy">
+                </div>
+
+                <div class="footer-img">
+                    <a href="https://twitter.com/@useINFUL" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
+                        alt="Twitter logo" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+       $('.faq-holder').click(function () {
+            let answer = $(this).children('.faq-answer');
+            if (answer.is(":visible")) {
+                answer.slideUp();
+            } else {
+                answer.slideDown();
+            }
+        });
+        // for selecting package holders
+        $('.package-holder').click(function () {
+            $('.package-btn').removeClass('btn-active');
+            $('.package-holder').removeClass('package-active');
+            $(this).find('.package-btn').addClass('btn-active');
+            $(this).addClass('package-active');
+            $('.package-input').val($(this).data('id'));
+
+            // update info on checkout box
+            $('.checkout-price').html($(this).find('.package-price').html());
+            $('.checkout-description-holder').html($(this).find('.package-description').html());
+        });
+
+        function changePackage(el) {
+            let packageID = $(el).find(":selected").val();
+            $(".packages-holder").find(`[data-id='${packageID}']`).click();
+        }
+
+        function changeFilter(el) {
+            let cat = $(el).find(":selected").val();
+
+            $('.package-holder').show();
+            if (cat !== 'All') {
+                $(".package-category").each(function () {
+                    if ($(this).text().toLowerCase() !== cat) {
+                        $(this).parent('.package-holder').hide();
+                    }
+                });
+            }
+        }
+        $(document).on('click', '.login-btn', function () {
+            $('.form-holder-forgot').hide();
+            $('.form-holder-signup').hide();
+            $('.form-holder-login').show();
+        });
+        $(document).on('click', '.forgot-btn', function () {
+            $('.form-holder-login').hide();
+            $('.form-holder-forgot').show();
+        });
+        $(document).on('click', '.signup-btn', function () {
+            $('.form-holder-login').hide();
+            $('.form-holder-signup').show();
+        });
+        $('.msg-btn, .buy-btn, .save-btn').click(function () {
+
+            $(".modal").css("display", "flex");
+        });
+        $('.close-modal').click(function () {
+
+            $(".modal").css("display", "none");
+            $(".form-1").css("display", "block");
+                $(".form-2").css("display", "none");
+        });
+            $('.modal-btn').click(function () {
+
+                $(".form-1").css("display", "none");
+                $(".form-2").css("display", "block");
+
+            });
+
+        
+
+    </script>
+</script>
+{% endblock extrajavascript %}
