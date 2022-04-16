@@ -1914,7 +1914,7 @@ def join_brand_profile(request):
 		img3= request.FILES.get('img3')
 		img4= request.FILES.get('img4')
 
-
+		loggendin_brand.profile_image=profile_image
 
 		if len(all_image) == 1:
 			print('_______________________________')
@@ -2017,3 +2017,117 @@ def brand_profile(request):
 	# except Exception as e:
 			messages.success(request, 'Superuser logged in')
 			return redirect('home')
+
+
+def brand_profile_edit(request):
+	user_email= request.user.email
+	user_brand=User.objects.get(email= user_email)
+	
+	loggendin_brand=JoinBrand.objects.get(brand_email=user_email)
+	print('joined_brand edit', loggendin_brand)
+	if request.method == 'POST':
+		brand_location= request.POST.get('brand_location')
+		print('brand_location edit', brand_location)
+		brand_niches_value= request.POST.get('brand_niches_value')
+		print('brand_niches_value edit', brand_niches_value)
+		brand_description= request.POST.get('brand_description')
+		print('brand_description edit', brand_description)
+		
+		
+		
+		loggendin_brand.brand_location=brand_location
+		loggendin_brand.brand_description= brand_description
+
+		if "Lifestyle" in brand_niches_value:
+			loggendin_brand.lifestyle= True
+		if "Fashion" in brand_niches_value:
+			loggendin_brand.fashion= True
+		if "Beauty" in brand_niches_value:
+			loggendin_brand.beauty= True
+		
+		if "Health & Fitness" in brand_niches_value:
+			loggendin_brand.health_fitness= True
+		if "Travel" in brand_niches_value:
+			loggendin_brand.travel= True
+		if "Food & Drink" in brand_niches_value:
+			loggendin_brand.food_drink= True
+		if "Model" in brand_niches_value:
+			loggendin_brand.model= True
+		if "Comedy & Entertainment" in brand_niches_value:
+			loggendin_brand.comedy_entertainment= True
+		if "Art & Photography" in brand_niches_value:
+			loggendin_brand.art_photography= True
+		
+		if "Music & Dance" in brand_niches_value:
+			loggendin_brand.music_dance= True
+		if "Entrepreneur & Business" in brand_niches_value:
+			loggendin_brand.entrepreneur_business= True
+		if "Family & Children" in brand_niches_value:
+			loggendin_brand.family_children= True
+		if "Animals & Pets" in brand_niches_value:
+			loggendin_brand.animals_pets= True
+		if "Athlete & Sports" in brand_niches_value:
+			loggendin_brand.athlete_sports= True
+		if "Celebrity & Public Figure" in brand_niches_value:
+			loggendin_brand.celebrity_public_pigure= True
+		
+		if "Adventure & Outdoors" in brand_niches_value:
+			loggendin_brand.adventure_outdoors= True
+		if "Actor" in brand_niches_value:
+			loggendin_brand.actor= True
+		if "Education" in brand_niches_value:
+			loggendin_brand.education= True
+		if "Gaming" in brand_niches_value:
+			loggendin_brand.gaming= True
+		if "LGBTQ2" in brand_niches_value:
+			loggendin_brand.lgbtq= True
+		if "Technology" in brand_niches_value:
+			loggendin_brand.technology= True
+		
+		if "Healthcare" in brand_niches_value:
+			loggendin_brand.healthcare= True
+		if "Vegan" in brand_niches_value:
+			loggendin_brand.vegan= True
+		if "Cannabis" in brand_niches_value:
+			loggendin_brand.cannabis= True
+		if "Skilled Trades" in brand_niches_value:
+			loggendin_brand.skilled_trades= True
+		if "Automotive" in brand_niches_value:
+			loggendin_brand.automotive= True
+
+
+
+
+		profile_img= request.FILES.get('profile_img_edit')
+		print('profile image edit_____', profile_img)
+		cover_image= request.FILES.get('cover_image')
+		img2= request.FILES.get('img2')
+		img3= request.FILES.get('img3')
+		img4= request.FILES.get('img4')
+
+		if profile_img:
+			print('^^^^^^^ Inside 1 ^^^^^^^^^^^^^^')
+			loggendin_brand.profile_image=profile_img
+			
+			loggendin_brand.save()
+		if cover_image:
+			print('^^^^^^^ Inside 2 ^^^^^^^^^^^^^^')
+			loggendin_brand.cover_image=cover_image
+			
+			loggendin_brand.save()
+		if img2:
+			print('^^^^^^^ Inside 3 ^^^^^^^^^^^^^^')
+			loggendin_brand.image3=img2
+			
+			loggendin_brand.save()
+		if img3:
+			print('^^^^^^^ Inside 4 ^^^^^^^^^^^^^^')
+			loggendin_brand.image4=img3
+			
+			loggendin_brand.save()
+		if img4:
+			print('^^^^^^^ Inside 5 ^^^^^^^^^^^^^^')
+			loggendin_brand.image5=img4
+			
+			loggendin_brand.save()
+	return render(request, 'User/brand_edit.html')
