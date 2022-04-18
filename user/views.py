@@ -2043,8 +2043,8 @@ def brand_profile_edit(request):
 	user_email= request.user.email
 	user_brand=User.objects.get(email= user_email)
 	
-	loggendin_brand=JoinBrand.objects.get(brand_email=user_email)
-	print('joined_brand edit', loggendin_brand)
+	loggendin_brand_1=JoinBrand.objects.get(brand_email=user_email)
+	print('joined_brand edit', loggendin_brand_1)
 	if request.method == 'POST':
 		brand_location= request.POST.get('brand_location')
 		print('brand_location edit', brand_location)
@@ -2054,66 +2054,95 @@ def brand_profile_edit(request):
 		print('brand_description edit', brand_description)
 		
 		
-		
-		loggendin_brand.brand_location=brand_location
-		loggendin_brand.brand_description= brand_description
+		if brand_location:
+			loggendin_brand_1.brand_location=brand_location
+			loggendin_brand_1.save()
+		if brand_description:
+			loggendin_brand_1.brand_description= brand_description
+			loggendin_brand_1.save()
 
 		if "Lifestyle" in brand_niches_value:
-			loggendin_brand.lifestyle= True
+			loggendin_brand_1.lifestyle= True
+			loggendin_brand_1.save()
 		if "Fashion" in brand_niches_value:
-			loggendin_brand.fashion= True
+			loggendin_brand_1.fashion= True
+			loggendin_brand_1.save()
 		if "Beauty" in brand_niches_value:
-			loggendin_brand.beauty= True
+			loggendin_brand_1.beauty= True
+			loggendin_brand_1.save()
 		
 		if "Health & Fitness" in brand_niches_value:
-			loggendin_brand.health_fitness= True
+			loggendin_brand_1.health_fitness= True
+			loggendin_brand_1.save()
 		if "Travel" in brand_niches_value:
-			loggendin_brand.travel= True
+			loggendin_brand_1.travel= True
+			loggendin_brand_1.save()
 		if "Food & Drink" in brand_niches_value:
-			loggendin_brand.food_drink= True
+			loggendin_brand_1.food_drink= True
+			loggendin_brand_1.save()
 		if "Model" in brand_niches_value:
-			loggendin_brand.model= True
+			loggendin_brand_1.model= True
+			loggendin_brand_1.save()
 		if "Comedy & Entertainment" in brand_niches_value:
-			loggendin_brand.comedy_entertainment= True
+			loggendin_brand_1.comedy_entertainment= True
+			loggendin_brand_1.save()
 		if "Art & Photography" in brand_niches_value:
-			loggendin_brand.art_photography= True
+			loggendin_brand_1.art_photography= True
+			loggendin_brand_1.save()
 		
 		if "Music & Dance" in brand_niches_value:
-			loggendin_brand.music_dance= True
+			loggendin_brand_1.music_dance= True
+			loggendin_brand_1.save()
 		if "Entrepreneur & Business" in brand_niches_value:
-			loggendin_brand.entrepreneur_business= True
+			loggendin_brand_1.entrepreneur_business= True
+			loggendin_brand_1.save()
 		if "Family & Children" in brand_niches_value:
-			loggendin_brand.family_children= True
+			loggendin_brand_1.family_children= True
+			loggendin_brand_1.save()
 		if "Animals & Pets" in brand_niches_value:
-			loggendin_brand.animals_pets= True
+			loggendin_brand_1.animals_pets= True
+			loggendin_brand_1.save()
 		if "Athlete & Sports" in brand_niches_value:
-			loggendin_brand.athlete_sports= True
+			loggendin_brand_1.athlete_sports= True
+			loggendin_brand_1.save()
 		if "Celebrity & Public Figure" in brand_niches_value:
-			loggendin_brand.celebrity_public_pigure= True
+			loggendin_brand_1.celebrity_public_pigure= True
+			loggendin_brand_1.save()
 		
 		if "Adventure & Outdoors" in brand_niches_value:
-			loggendin_brand.adventure_outdoors= True
+			loggendin_brand_1.adventure_outdoors= True
+			loggendin_brand_1.save()
 		if "Actor" in brand_niches_value:
-			loggendin_brand.actor= True
+			loggendin_brand_1.actor= True
+			loggendin_brand_1.save()
 		if "Education" in brand_niches_value:
-			loggendin_brand.education= True
+			loggendin_brand_1.education= True
+			loggendin_brand_1.save()
 		if "Gaming" in brand_niches_value:
-			loggendin_brand.gaming= True
+			loggendin_brand_1.gaming= True
+			loggendin_brand_1.save()
 		if "LGBTQ2" in brand_niches_value:
-			loggendin_brand.lgbtq= True
+			loggendin_brand_1.lgbtq= True
+			loggendin_brand_1.save()
 		if "Technology" in brand_niches_value:
-			loggendin_brand.technology= True
+			loggendin_brand_1.technology= True
+			loggendin_brand_1.save()
 		
 		if "Healthcare" in brand_niches_value:
-			loggendin_brand.healthcare= True
+			loggendin_brand_1.healthcare= True
+			loggendin_brand_1.save()
 		if "Vegan" in brand_niches_value:
-			loggendin_brand.vegan= True
+			loggendin_brand_1.vegan= True
+			loggendin_brand_1.save()
 		if "Cannabis" in brand_niches_value:
-			loggendin_brand.cannabis= True
+			loggendin_brand_1.cannabis= True
+			loggendin_brand_1.save()
 		if "Skilled Trades" in brand_niches_value:
-			loggendin_brand.skilled_trades= True
+			loggendin_brand_1.skilled_trades= True
+			loggendin_brand_1.save()
 		if "Automotive" in brand_niches_value:
-			loggendin_brand.automotive= True
+			loggendin_brand_1.automotive= True
+			loggendin_brand_1.save()
 
 
 
@@ -2127,29 +2156,29 @@ def brand_profile_edit(request):
 
 		if profile_img:
 			print('^^^^^^^ Inside 1 ^^^^^^^^^^^^^^')
-			loggendin_brand.profile_image=profile_img
+			loggendin_brand_1.profile_image=profile_img
 			
-			loggendin_brand.save()
+			loggendin_brand_1.save()
 		if cover_image:
 			print('^^^^^^^ Inside 2 ^^^^^^^^^^^^^^')
-			loggendin_brand.cover_image=cover_image
+			loggendin_brand_1.cover_image=cover_image
 			
-			loggendin_brand.save()
+			loggendin_brand_1.save()
 		if img2:
 			print('^^^^^^^ Inside 3 ^^^^^^^^^^^^^^')
-			loggendin_brand.image3=img2
+			loggendin_brand_1.image3=img2
 			
-			loggendin_brand.save()
+			loggendin_brand_1.save()
 		if img3:
 			print('^^^^^^^ Inside 4 ^^^^^^^^^^^^^^')
-			loggendin_brand.image4=img3
+			loggendin_brand_1.image4=img3
 			
-			loggendin_brand.save()
+			loggendin_brand_1.save()
 		if img4:
 			print('^^^^^^^ Inside 5 ^^^^^^^^^^^^^^')
-			loggendin_brand.image5=img4
+			loggendin_brand_1.image5=img4
 			
-			loggendin_brand.save()
+			loggendin_brand_1.save()
 	return render(request, 'User/brand_edit.html')
 
 
@@ -2164,3 +2193,6 @@ def brand_compaign(request):
 
 def brand_order(request):
 	return render(request, 'User/brand_orders.html')
+
+def brand_pricing(request):
+	return render(request, 'User/brand_pricing.html')

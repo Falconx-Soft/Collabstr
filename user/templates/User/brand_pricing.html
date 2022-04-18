@@ -1,0 +1,425 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+<!-- <link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}"> -->
+<!-- <link rel="stylesheet" href="{% static '/css/join-influencer-earnings.css' %}"> -->
+<!-- <link rel="stylesheet" href="{% static '/css/profile.css' %}"> -->
+<link rel="stylesheet" href="{% static '/css/join-as-brand.css' %}">
+<link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}">
+<link rel="stylesheet" href="{% static '/css/brand-pricing.css' %}">
+
+<style>
+    .m-20{
+        margin: 20px;
+    }
+    .rotate .faq-title-holder .faq-btn{
+        -webkit-transform: rotate(-180deg) !important;
+        transform: rotate(-180deg) !important;
+        -webkit-transition: all 0.2s ease-in-out !important;
+        transition: all 0.2s ease-in-out !important;
+    }
+    .content-holder{
+        min-width: 170px;
+    }
+    .scrollbar-d-none{
+        overflow-x: scroll;
+    }
+    .scrollbar-d-none::-webkit-scrollbar {
+        display: none;
+      }
+    @media(min-width:800px){
+        .m-lg-auto{
+            margin: auto;
+        }
+    }
+
+    @media(max-width:800px){
+        .example-img-holder{
+            width: 100%;
+        }
+        .example-steps-holder{
+            width: 95%;
+        }
+        .flex-col-reverse{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+</style>
+
+{% endblock extrastyle %}
+
+
+{% block content %}	
+<div class="container text-center title-section">
+    <h1 class="brand-pricing-Title">Put Your Influencer Marketing on Autopilot</h1>
+
+
+    <h2 class="subtitle">Save hours by having influencers come to you. Upgrade to post campaigns and have
+        influencers apply.
+    </h2>
+</div>
+
+
+
+<div class="billing-periods-holder">
+    <div class=" Monthly billing-period-active" data-period="m">Billed Monthly</div>
+    <div class="yearly-period-holder">
+        <div class="billing-period-holder Yearly" data-period="y">Billed Yearly</div>
+        <div class="yearly-discount">2 months free</div>
+    </div>
+</div>
+<div class="plans-holder">
+
+    <div class="plan-holder">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price">Free Forever</div>
+        <div class="plan-feature-holder">
+            <div class="plan-feature">Create and share campaigns</div>
+            <div class="plan-feature">Search thousands of influencers</div>
+            <div class="plan-feature">Purchase content securely</div>
+            <div class="plan-feature">&nbsp;</div>
+        </div>
+        <div class="plan-btn">Current Plan</div>
+    </div>
+
+
+
+    <div class="plan-holder plan-preferred">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price monthly-plan-price">$<span class="monthly-price"
+                style="display: inline-block;">199</span><span class="annual-price"
+                style="display: none;">165</span>/mo</div>
+        <div class="plan-feature-holder">
+            <div class="plan-feature plan-feature-bold">Everything included in Basic</div>
+            <div class="plan-feature">Post unlimited campaigns</div>
+            <div class="plan-feature">12 influencers apply per month</div>
+            <div class="plan-feature">Dedicated account manager</div>
+
+        </div>
+        <div class="plan-btn plan-btn-active plan-btn-preferred" data-id="1">Upgrade</div>
+    </div>
+
+
+
+    <div class="plan-holder">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price monthly-plan-price">$<span class="monthly-price"
+                style="display: inline-block;">299</span><span class="annual-price"
+                style="display: none;">249</span>/mo</div>
+        <div class="plan-feature-holder">
+            <div class="plan-feature plan-feature-bold">Everything included in Pro</div>
+            <div class="plan-feature">20 influencers apply per month</div>
+            <div class="plan-feature">Dedicated account manager</div>
+            <div class="plan-feature">Priority support</div>
+        </div>
+        <div class="plan-btn plan-btn-active" data-id="2">Upgrade</div>
+    </div>
+
+
+</div>
+
+</div>
+<div class="logo-title">Trusted by 5,000+ teams</div>
+<div class="logo-holder" style="flex-wrap: wrap;">
+    <img class="logo-img"
+        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/wealthsimple.svg"
+        alt="Wealthsimple logo" loading="lazy">
+    <img class="logo-img"
+        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/clickup.svg"
+        alt="ClickUp logo" loading="lazy">
+    <img class="logo-img"
+        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/anese.svg" alt="Anese logo"
+        loading="lazy">
+    <img class="logo-img" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/un.svg"
+        alt="United Nations logo" loading="lazy">
+    <img class="logo-img"
+        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/logos/deezer.svg"
+        alt="Deezer logo" loading="lazy">
+</div>
+<!-- row title -->
+<div style="text-align: center;margin-top: 12%;">
+    <h1 style="font-size: 200%; font-weight: 600;">Included in Pro & Premium Plan</h1>
+</div>
+
+<!-- Image example holder left side -->
+<div class="container">
+    <div class="example-row-holder row-holder example-row-holder-reverse" style="flex-wrap: wrap;">
+        <div class="example-img-holder">
+            <picture>
+                <source media="(max-width: 800px)"
+                    srcset="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/brandPage/campaignSmall.png">
+                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/brandPage/campaign.png"
+                    class="example-img" alt="Influencer campaign brief" loading="lazy">
+            </picture>
+        </div>
+        <div class="example-steps-holder">
+            <h2 class="example-row-title">Save Hours With Campaigns and Work With Influencers at Scale</h2>
+
+            <div class="example-step">
+                <h3 class="example-step-title">Create Campaigns</h3>
+                <div class="example-step-txt">Centralize your images, requirements, content examples, and more in a
+                    campaign brief.</div>
+            </div>
+            <div class="example-step">
+                <h3 class="example-step-title">Add Influencers</h3>
+                <div class="example-step-txt">Search and add influencers to your campaign in seconds.</div>
+            </div>
+            <div class="example-step">
+                <h3 class="example-step-title">Send to Influencers</h3>
+                <div class="example-step-txt">Order from influencers in a single click by sending your campaign.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- image on right side -->
+<div class="container">
+    <div class="example-row-holder row-holder example-row-holder-reverse flex-col-reverse" >
+        <div class="example-steps-holder">
+            <h2 class="example-row-title">One Place for All of Your Content Needs</h2>
+
+            <div class="example-step">
+                <h3 class="example-step-title">Sponsored Posts</h3>
+                <div class="example-step-txt">Purchase sponsored content on Instagram, TikTok, and YouTube.</div>
+            </div>
+            <div class="example-step">
+                <h3 class="example-step-title">Product Tutorials</h3>
+                <div class="example-step-txt">Use influencers to create high-quality product tutorials.</div>
+            </div>
+            <div class="example-step">
+                <h3 class="example-step-title">Testimonials</h3>
+                <div class="example-step-txt">Get influencers to generate testimonials for your product or business.
+                </div>
+            </div>
+        </div>
+
+        <div class="example-img-holder content-holder-row scrollbar-d-none" style="display: flex;">
+                <div class="content-holder">
+                    <a rel="nofollow" href="https://www.instagram.com/p/CN546zuBXwr/" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img loading="lazy" class="content-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/2.png" alt="Influencer content">
+                </div>
+
+                <div class="content-holder">
+                    <div class="play-btn-holder">
+                        <img class="play-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/play.svg"
+                            loading="lazy">
+                    </div>
+                    <video class="content-img content-vid" playsinline="" preload="metadata">
+                        <source src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/3.mp4#t=0.1">
+                    </video>
+                </div>
+
+                <div class="content-holder">
+                    <div class="play-btn-holder">
+                        <img class="play-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/play.svg"
+                            loading="lazy">
+                    </div>
+                    <video class="content-img content-vid" playsinline="" preload="metadata">
+                        <source src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/content/5.mp4#t=0.1">
+                    </video>
+                </div>
+            </div>
+
+
+    </div>
+</div>
+
+<!-- Faqs -->
+<div class="container">
+    <div class="faqs-holder">
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">What if I need more influencers?</h3>
+                <img class="faq-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg" loading="lazy" style="transform: rotateZ(0deg);">
+            </div>
+            <div class="faq-answer" style="display: none;">If you need a larger number of influencers for a campaign, email us at <a href="mailto:hello@collabstr.com">hello@collabstr.com</a> and we will be happy to help.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">Can I cancel my subscription at any time?</h3>
+                <img class="faq-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg" loading="lazy">
+            </div>
+            <div class="faq-answer">Yes, you can cancel your subscription at any time from your account page.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">What are the responsibilities of the account manager?</h3>
+                <img class="faq-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg" loading="lazy">
+            </div>
+            <div class="faq-answer">When you sign up for Collabstr Pro or Premium, your account manager will be your primary point of contact for any support required while running campaigns. Account managers are available to help review campaigns and ensure that campaigns are completed successfully.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">How are influencers vetted before joining Collabstr?</h3>
+                <img class="faq-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg" loading="lazy">
+            </div>
+            <div class="faq-answer">We verify the identity of each influencer that is listed on the platform. We also do a full audit of their social media to look for signs of fake followers &amp; engagement. We also take into consideration their previous brand deals.</div>
+        </div>
+
+        <div class="faq-holder">
+            <div class="faq-title-holder">
+                <h3 class="faq-question">What types of payment do you accept?</h3>
+                <img class="faq-btn" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/plus.svg" loading="lazy">
+            </div>
+            <div class="faq-answer">We use <a rel="nofollow" href="https://stripe.com/" target="_blank">Stripe</a> as our payment processor, this allows us to accept all major credit &amp; debit cards.</div>
+        </div>
+    </div>
+</div>
+<!-- cta holder -->
+<div class="container m-20 m-lg-auto" >
+    <div class="cta-holder">
+        <div class="cta-overlay-holder">
+            <div class="cta-txt-holder" style="padding: 20px;">
+                <h2 class="cta-title">Put Your Influencer Marketing on Autopilot</h2>
+                <h3 class="cta-txt">Save hours by having influencers come to you. Upgrade to post campaigns and have influencers apply.</h3>
+                <a class="cta-btn btn">Get Started</a>
+            </div>
+        </div>
+        <img loading="lazy" alt="top influencers" class="cta-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/cta.png">
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="container" style="width: 100%;">
+    <div class="footer">
+        <div class="footer-top-row">
+            <div class="footer-section">
+                <div class="footer-title">Resources</div>
+                <a href="/blog" class="footer-txt">Blog</a>
+                <a href="/creator-hub" class="footer-txt">Creator Hub</a>
+                <a href="/referral-program" class="footer-txt">Affiliate Program</a>
+                <a href="/ultimate-guide-to-tiktok-for-brands" class="footer-txt">TikTok Ebook For Brands</a>
+                <a href="/2022-influencer-marketing-report" class="footer-txt">2022 Influencer Marketing Report</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Tools</div>
+                <a href="/influencer-price-calculator" class="footer-txt">Influencer Price Calculator</a>
+                <a href="/influencer-campaign-brief-template" class="footer-txt">Influencer Campaign Brief
+                    Template</a>
+                <a href="/influencer-contract-template" class="footer-txt">Influencer Contract Generator</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Discover</div>
+                <a href="/find-influencers" class="footer-txt">Find Influencers</a>
+                <a href="/hire-influencers" class="footer-txt">Hire Influencers</a>
+                <a href="/search-influencers" class="footer-txt">Search Influencers</a>
+                <a href="/influencer-shoutouts" class="footer-txt">Buy Shoutouts</a>
+                <a href="/influencer-marketplace" class="footer-txt">Influencer Marketplace</a>
+                <a href="/top-influencers" class="footer-txt">Top Influencers</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Support</div>
+                <a href="mailto:hello@INFUL.com" class="footer-txt">hello@INFUL.com</a>
+                <a href="/#how-it-works" class="footer-txt">How It Works</a>
+                <a href="/faq" class="footer-txt">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-btm-row">
+            <div class="footer-btm-row-left">
+                <div class="footer-item">© INFUL Inc.</div>
+                <a href="/privacy" class="footer-item">Privacy</a>
+                <a href="/terms" class="footer-item">Terms</a>
+                <a href="/sitemap" class="footer-item">Sitemap</a>
+            </div>
+
+            <div class="footer-btm-row-right">
+                <div class="footer-img">
+                    <a href="https://instagram.com/INFUL" target="_blank"><span class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                        alt="Instagram logo" loading="lazy">
+                </div>
+                <div class="footer-img">
+                    <a href="https://tiktok.com/@INFUL.com" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                        alt="TikTok logo" loading="lazy">
+                </div>
+
+                <div class="footer-img">
+                    <a href="https://twitter.com/@useINFUL" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
+                        alt="Twitter logo" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('.faq-holder').click(function () {
+            let answer = $(this).children('.faq-answer');
+            if (answer.is(":visible")) {
+                $(this).removeClass("rotate")
+                answer.slideUp();
+            } else {
+                $(this).addClass("rotate")
+                answer.slideDown();
+            }
+                });
+            });
+
+        $('.content-vid').click(function () {
+            if ($(this).prop('paused')) {
+                $(this).trigger('play');
+                $(this).parent().find('.play-btn').css('visibility', 'hidden');
+            } else {
+                $(this).trigger('pause');
+                $(this).parent().find('.play-btn').css('visibility', 'visible');
+            }
+        });
+        $(".dashboard-menu-holder").hover(function () {
+            $('.dashboard-menu').show();
+        }, function () {
+            $('.dashboard-menu').hide();
+        });
+        $(document).ready(function () {
+            $(".Monthly").click(function () {
+                $(".Monthly").addClass("billing-period-active");
+                $(".Monthly").removeClass("billing-period-holder");
+                $(".Yearly").addClass("billing-period-holder");
+            });
+            $(".Yearly").click(function () {
+                $(".Yearly").addClass("billing-period-active");
+                $(".Yearly").removeClass("billing-period-holder");
+                $(".Monthly").addClass("billing-period-holder");
+            });
+        });
+</script>
+
+{% endblock extrajavascript %}
