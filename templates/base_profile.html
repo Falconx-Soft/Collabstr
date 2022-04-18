@@ -28,6 +28,8 @@
     <style>
         .navbar-nav{
             flex-direction: row !important;
+            font-size: 15px;
+            font-weight: 600;
         }
         .navbar-header-brand{
             width: 25%;
@@ -53,28 +55,32 @@
         <div class="container-fluid ">
             <div class="container navbar_content mt-5" style="">
                 <div class="navbar-header navbar-header-brand" style="">
-                    <a class="navbar-brand" style="" href="{% url 'home' %}">
-                        <div class="" style="display: flex; justify-content: left; margin-top: -23px;">
-                            <h3 style="font-weight: 700; color: black;">I N F U L</h3>
-                            <!-- <div style="margin-right: 14px;"><h1 style="font-weight: 700;">N</h1></div>
-                            <div style="margin-right: 14px;"><h1 style="font-weight: 700;">F</h1></div>
-                            <div style="margin-right: 14px;"><h1 style="font-weight: 700;">U</h1></div>
-                            <div style="margin-right: 14px;"><h1 style="font-weight: 700;">L</h1></div> -->
-                            <!-- <h1 class="title">Find and Hire Influencers in Seconds</h1>
-                            <h2 class="subtitle">Find Instagram, TikTok, and YouTube influencers to create unique content for your brand
-                            </h2> -->
-                        </div>
-                    
-                        <!-- <img class="collabstr-logo"
-                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/logo.svg" alt=""> -->
-                    </a>
+                    <div>
+                        <a class="navbar-brand" style="font-weight: 700; color: black; display: flex; justify-content: left; font-size: x-large; margin-top: 8px;" href="{% url 'home' %}">
+                 
+                            I N F U L
+                           <!-- <div style="margin-right: 14px;"><h1 style="font-weight: 700;">N</h1></div>
+                           <div style="margin-right: 14px;"><h1 style="font-weight: 700;">F</h1></div>
+                           <div style="margin-right: 14px;"><h1 style="font-weight: 700;">U</h1></div>
+                           <div style="margin-right: 14px;"><h1 style="font-weight: 700;">L</h1></div> -->
+                           <!-- <h1 class="title">Find and Hire Influencers in Seconds</h1>
+                           <h2 class="subtitle">Find Instagram, TikTok, and YouTube influencers to create unique content for your brand
+                           </h2> -->
+                     
+                   
+                       <!-- <img class="collabstr-logo"
+                           src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/logo.svg" alt=""> -->
+                   </a>
+
+                    </div>
+                   
                 </div>
                 <div class="header-right header-right-brand" style="margin-right: 0;">
                     <div>
                         <ul class="nav navbar-nav navbar-right " style="margin-right: 0px; ">
                             <li><a class="navbar-right-links text-dark" style="text-decoration: none;" href="{% url 'home' %}">Explore</a></li>
                             <li><a class="navbar-right-links" style="text-decoration: none;" href="#">Pricing</a></li>
-                            <li><a class="navbar-right-links" style="text-decoration: none;" href="{% url 'brand_order' %}">Order</a></li>
+                            <li><a class="navbar-right-links" style="text-decoration: none;" href="{% url 'login' %}">Order</a></li>
                             <li><a class="navbar-right-links" style="text-decoration: none;" href="{% url 'brand_compaign' %}">Compaigns</a></li>
                             <li><a class="navbar-right-links" style="text-decoration: none;" href="{% url 'join_as_brand' %}">List</a></li>
 

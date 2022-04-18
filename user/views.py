@@ -61,7 +61,7 @@ def register(request):
 				return redirect(request, 'signup.html')
 			
 		
-			user_obj= User(username=brand_fullname, email=brand_email)
+			user_obj= User(username=brand_fullname, email=brand_email, is_brand= True)
 			user_obj.set_password(brand_password)
 			user_obj.save()
 			join_brand_obj= JoinBrand.objects.create(full_name=brand_fullname, brand_name=brand_name, brand_email=brand_email )
@@ -2038,6 +2038,7 @@ def brand_profile(request):
 			return redirect('home')
 
 
+
 def brand_profile_edit(request):
 	user_email= request.user.email
 	user_brand=User.objects.get(email= user_email)
@@ -2150,3 +2151,16 @@ def brand_profile_edit(request):
 			
 			loggendin_brand.save()
 	return render(request, 'User/brand_edit.html')
+
+
+
+
+
+
+
+
+def brand_compaign(request):
+	return render(request, 'User/brand_compaign.html')
+
+def brand_order(request):
+	return render(request, 'User/brand_orders.html')

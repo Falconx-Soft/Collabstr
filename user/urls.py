@@ -25,7 +25,9 @@ urlpatterns = [
 
       path('joinbrandprofile/', views.join_brand_profile, name="join_brand_profile"),  
       path('brandprofile/', views.brand_profile, name="brand_profile"),   
-      path('brandedit/', views.brand_profile_edit, name="influencer_profile_edit"),
+      path('brandedit/', views.brand_profile_edit, name="brand_profile_edit"),
+      path('brandcompaign/', views.brand_compaign, name="brand_compaign"),
+      path('brandorder/', views.brand_order, name="brand_order"),
       
 
 	path('reset_password/', auth_views.PasswordResetView.as_view(template_name="User/restPassword/restPassword.html"), name="reset_password"),
