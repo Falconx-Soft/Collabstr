@@ -23,6 +23,11 @@ urlpatterns = [
 
 
 
+      path('influencerhomeprofile/', views.influencer_home_profile, name="influencer_home_profile"),
+      path('checkout/', views.influencer_home_profile, name="checkout"),
+
+
+
 
       path('joinbrandprofile/', views.join_brand_profile, name="join_brand_profile"),  
       path('brandprofile/', views.brand_profile, name="brand_profile"),   

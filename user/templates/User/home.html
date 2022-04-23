@@ -440,6 +440,33 @@
 </div>
 <!-- *************************************************************************************************************************change -->
 <div class="influencers-div"> 
+    {% for influencer in all_influencer %}
+    <form action="{% url 'influencer_home_profile' %}" method="POST">
+        {% csrf_token %}
+        <div class="card img-fluid f-image" style="margin-right: 0px;">
+            <input type="text" hidden name="influencer" value="{{influencer.email_address}}">
+            <div class="img-background" onClick="javascript:this.parentNode.parentNode.submit();">
+                
+                <img class="card-img-top" src="{{influencer.cover_image.url}}"
+                alt="Card image" style="width:100%">
+    
+            </div>
+            
+            <div class="card-img-overlay">
+                <h4 class="card-title">{{influencer.full_name |title}}</h4>
+                <p class="card-text">{{influencer.location}}</p>
+    
+            </div>
+            <div class="profile-info" style="display: flex; justify-content: space-between; text-align: center;">
+                <div style="color:grey">Instagram</div>
+                <div style="font-size: initial; color: black; font-weight: 600;">$100</div>
+            </div>
+            <h3 class="profile-text">{{influencer.title_influencer| title}}</h3>
+        </div>
+
+    </form>
+    
+    {% endfor %}
 
 
     <div class="card img-fluid f-image" style="margin-right: 0px;">

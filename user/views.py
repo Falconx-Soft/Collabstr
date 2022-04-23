@@ -18,8 +18,13 @@ from django.core.mail import send_mail
 # Create your views here.
 # @login_required(login_url='login')
 def home(request):
+	all_influencer=JoinInfluencer.objects.all()
+	all_packages=InfluencerPackage.objects.all()
+	print('all_packages___________________',all_packages)
+	print('all_packages_________________0000__',all_packages[0])
+	context= {'all_influencer': all_influencer,'all_packages':all_packages}
 
-	return render(request,'User/home.html')
+	return render(request,'User/home.html', context)
 
 def ater_brand_signup(request):
 
@@ -2202,3 +2207,33 @@ def brand_order(request):
 
 def brand_pricing(request):
 	return render(request, 'User/brand_pricing.html')
+
+
+
+def influencer_home_profile(request):
+	username = None
+
+	try:
+
+		if request.method== 'POST':
+			print("User is logged in :)")
+			influencer_email= request.POST.get('influencer')
+			
+			print("User is Home page--- :)", influencer_email)
+			joined_influencer=JoinInfluencer.objects.get(email_address=influencer_email)
+			username=joined_influencer.influencer_username
+			print("User is Home page username--- :)", joined_influencer.influencer_username)
+			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
+			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
+			edit_portfolio=EditPortfolioImages.objects.filter(influencer_username__influencer_username=username)
+			print('joined_influencer::::::::::',joined_influencer)
+			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
+			return render(request, 'User/influencer_home_profile.html', context)
+		else:
+			print("User is not logged in :(")
+
+			
+			return redirect(request, 'User/home.html')
+	except Exception as e:
+			messages.success(request, 'Superuser logged in')
+			return redirect('home')
