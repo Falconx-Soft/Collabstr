@@ -21,14 +21,32 @@ a{
 a:hover{
     text-decoration: none;
 }
-.secure-holder{
-            font-size: 11px;
-    display: flex;
-    color: rgb(42, 43, 46);
-    align-items: baseline;
-    margin-bottom: 5px;
-        }
+.box-holder{
+    box-shadow: none !important;
+    border-left: none;
+}
+.box_subtitle{
+    margin-bottom: 2%;
+    font-size: 15px;
+    color: gray;
+}
+.input{
+    margin-top: 10px;
+}
+.container_custom{
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.profile-submit-btn{
+   float: right;
+    width: 170px;
+}
 @media only screen and (max-width: 800px){
+    .container_custom{
+    padding-left: 15px;
+    padding-right: 15px;
+}
 .row-btn-profile{
     position: absolute;
     left: -39px !important;
@@ -44,94 +62,68 @@ a:hover{
 <div class="progress-bar">
     <div class="progress-step step-active" data-id="0">
         <div class="step-num num-active">1</div>
-        <div class="step-txt">Place Order</div>
+        <div class="step-txt">Create Offer</div>
     </div>
     <div class="progress-step" data-id="1">
         <div class="step-num">2</div>
-        <div class="step-txt">Submit Requirements</div>
+        <div class="step-txt">Send Offer</div>
     </div>
 </div>
-
-
-<div class="form-holder-checkout">
-    <div>
-        <div class="form-section-checkout">
-            <div class="form-title-checkout">Place Order</div>
+<form action="{% url 'checkout' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="influencer_email" hidden value="{{influencer_email}}">
+    <div class="container container_custom" style="">
+        <div class="package-holder box-holder package-holder-1">
+            <div class="package-title box-title" style="font-size: 21px !important; margin-bottom: 0.5%;">Create an Offer</div>
+            <div class="box_subtitle" style="">Create an offer. Be specific to ensure they understand your request.</div>
+        
+        
+        
+            <select class="input package-category-select" name="package_platform_0">
+        
+                <option value="" selected="" hidden="" disabled>Choose Platform</option>
+        
+        
+                <option value="1">Instagram</option>
+        
+                <option value="2">TikTok</option>
+        
+                <option value="3">User Generated Content</option>
+        
+                <option value="4">YouTube</option>
+        
+                <option value="5">Twitter</option>
+        
+                <option value="6">Twitch</option>
+        
+            </select>
+        
+           
+        
+        
+            <input class="input" type="text" name="package_category" placeholder="Summarize your request. E.g 1 TikTok Video"
+                 value="">
+        
+        
+            <textarea class="input textarea" name="package_description_0"
+                placeholder="What are the details of this request? How many posts or photos? What will the influencer be expected to deliver? E.g. 1 TikTok Video promoting our product to your audience"
+                ></textarea>
+        
+            <input class="input price-input" type="number" name="checkout_price" placeholder="Price (USD)"
+                value="">
             
-                <div class="form-desc-checkout">A hold on your card will be placed for 72 hours. You will only be charged if Noelia accepts your request.</div>
+            <div style=" ">
+                <button type="submit" class="submit btn profile-submit-btn">Continue</button>
+            </div>
             
-
-            <div class="checkout-row">
-                <form class="checkout-col checkout-form">
-
-                    <div class="new-card-holder">
-                        <div class="card-input-holder">
-                            <input class="input" type="text" name="postal_code" id="postal-code-input" placeholder="" style="width: 75%;">
-                            <!-- <div id="card-element" aria-placeholder="" class="StripeElement StripeElement--empty"><div class="__PrivateStripeElement" style="margin: 0px !important; padding: 0px !important; border: none !important; display: block !important; background: transparent !important; position: relative !important; opacity: 1 !important;"><iframe name="__privateStripeFrame1305" frameborder="0" allowtransparency="true" scrolling="no" allow="payment *" src="" title="Secure card payment input frame" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; user-select: none !important; transform: translate(0px) !important; color-scheme: normal !important; height: 16.8px;"></iframe><input class="__PrivateStripeElement-input" aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1" style="border: none !important; display: block !important; position: absolute !important; height: 1px !important; top: -1px !important; left: 0px !important; padding: 0px !important; margin: 0px !important; width: 100% !important; opacity: 0 !important; background: transparent !important; pointer-events: none !important; font-size: 16px !important;"></div></div> -->
-                            <input class="input" type="text" name="postal_code" id="postal-code-input" placeholder="Zip/Postal Code">
-                        </div>
-
-                        <div class="disclaimer-holder">
-                            <div class="secure-holder"><img alt="" class="lock" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/password.svg"> Secure payments with Stripe</div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="idempotency_key" value="1648157127">
-                    <input type="hidden" name="payment_method_id">
-
-                    <button class="btn">Place Order</button>
-                </form>
-                <div class="checkout-col">
-                    <div class="package-holder-checkout">
-                        <div>
-                            <img class="package-checkout-img" src="{{joined_influencer.cover_image.url}}">
-                        </div>
-                        <div class="package-detail-holder">
-                            <div class="package-title">{{package_category}}</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="price-row">
-                            <div>Subtotal</div>
-                            <div>${{checkout_price}}</div>
-                        </div>
-                        <div class="price-row">
-                            <div class="tooltip-checkout">Fee<img class="tooltip-checkout-img" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/tooltip.svg"><div class="tooltip-txt">This helps us operate our platform and cover payment processing fees.</div></div>
-                            <div>${{ten_percent_price}}</div>
-                        </div>
-                        <div class="price-row tax-row">
-                            <div>Tax</div>
-                            <div id="tax-price"></div>
-                        </div>
-                        <div class="price-row total-price-row">
-                            <div>Total</div>
-                            <div id="total-price">${{total_price}} USD</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="guides-holder">
-                <div class="guide-holder">
-                    <div class="guide-title"><div class="guide-num">1</div>Place Order</div>
-                    <div class="guide-txt">Submit the requirements for the collaboration. Noelia has 72 hours to accept your request before the hold on your card is removed.</div>
-                </div>
-
-                <div class="guide-holder">
-                    <div class="guide-title"><div class="guide-num">2</div>Chat With Influencer</div>
-                    <div class="guide-txt">Chat with Noelia and arrange the collaboration. Your funds are held securely until they complete the work.</div>
-                </div>
-
-                <div class="guide-holder">
-                    <div class="guide-title"><div class="guide-num">3</div>Receive Content</div>
-                    <div class="guide-txt">Receive your content to review and approve. The collaboration is complete and payment is released to the influencer.</div>
-                </div>
-            </div>
-
         </div>
-
-       
+    
     </div>
-</div>
+</form>
+
+
+
+
 
 
 

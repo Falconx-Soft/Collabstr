@@ -30,7 +30,15 @@ a{
 a:hover{
     text-decoration: none;
 }
+.share-btn, .save-btn{
+    font-size: 15px !important;
+   
+}
 @media only screen and (max-width: 800px){
+    .share-btn, .save-btn{
+   
+    padding-right: 0;
+}
 .row-btn-profile{
     position: absolute;
     left: -39px !important;
@@ -52,8 +60,8 @@ a:hover{
 <div class="btn-row">
     <div class="share-btn row-btn row-btn-profile" style="position: absolute; left: 0;">{{joined_influencer.full_name |title}}</div>
 
-
-    <div class="share-btn row-btn" onclick="location.href='#'"><img class="row-btn-img"
+    <div style="display: flex;">
+        <div class="share-btn row-btn" onclick="location.href='#'"><img class="row-btn-img"
             src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/share.svg">Share</div>
 
 
@@ -62,6 +70,9 @@ a:hover{
     <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
             src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/save.svg"><span
             class="save-btn-txt">Save</span></div>
+
+    </div>
+    
 
 </div>
 
@@ -379,37 +390,45 @@ a:hover{
                     </div>
                 </div>
             </div>
+            <form action="{% url 'checkout' %}" method="post">
+                {% csrf_token %}
+                <div class="checkout-area">
 
-            <div class="checkout-area">
-
-                <div class="checkout-holder">
-
-                    <div class="checkout-title">{{joined_influencer.title_influencer|title}}
+                    <div class="checkout-holder">
+    
+                        <div class="checkout-title">{{joined_influencer.title_influencer|title}}
+                        </div>
+                        <input type="text" name="influencer_email" hidden value="{{joined_influencer.email_address}}">
+                        <select class="input package-input" name="package_category" onchange="changePackage(this)">
+                            {% for package in package_influencer %}
+                            <option value="{{package.content_category}}">{{package.content_category}}</option>
+                            {% endfor %}
+    
+                        </select>
+                        <input class="checkout-price-input" type="text" hidden name="checkout_price" value="">
+                        <div class="checkout-price"></div>
+                        <div class="checkout-description-holder">I will create a tailored TikTok video using your
+                            product to create something, with unique music and an eye catching hook (intro) to keep
+                            viewers watching. </div>
+                            
+                        {% if user.is_authenticated and user.is_brand %}
+                        <button type="submit" class="buy-btn btn" data-id="checkout" style="font-size: large;border-radius: 15px;font-weight: 500;">Continue</button>
+                    </form>
+                    <form action="{% url 'custom_offer' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="influencer_email_custom" hidden value="{{joined_influencer.email_address}}">
+                        <div class="msg-btn checkout-description-holder-custom" data-id="message" onClick="javascript:this.parentNode.submit();">Send Custom Offer</div>
+                    </form>
+    
+                            {% endif %}
                     </div>
-                    
-                    <select class="input package-input" name="" onchange="changePackage(this)">
-                        {% for package in package_influencer %}
-                        <option value="{{package.content_category}}">{{package.content_category}}</option>
-                        {% endfor %}
-
-                    </select>
-                    <input type="text" hidden name="checkout_price" value="{{package.package_price}}">
-                    <div class="checkout-price"></div>
-                    <div class="checkout-description-holder">I will create a tailored TikTok video using your
-                        product to create something, with unique music and an eye catching hook (intro) to keep
-                        viewers watching. </div>
-                        
-                    {% if user.is_authenticated and user.is_brand %}
-                    <button class="buy-btn btn" data-id="checkout" style="font-size: large;border-radius: 15px;font-weight: 500;">Continue</button>
-                    <div class="msg-btn checkout-description-holder" data-id="message">Send Custom Offer</div>
-
-                        {% endif %}
+    
+                    <div class="how-it-works-btn"><img alt="How INFUL works" class="how-it-works-btn-img"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/howItWorks.svg">How does it work?</div>
+    
                 </div>
-
-                <div class="how-it-works-btn"><img alt="How INFUL works" class="how-it-works-btn-img"
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/howItWorks.svg">How does it work?</div>
-
-            </div>
+            
+           
 
         </div>
 
@@ -702,6 +721,9 @@ a:hover{
             }
         });
         // for selecting package holders
+        $(document).ready(function(){
+    $(".packages-holder").find(">:first-child").click(); 
+});
         $('.package-holder').click(function () {
             $('.package-btn').removeClass('btn-active');
             $('.package-holder').removeClass('package-active');
@@ -711,6 +733,7 @@ a:hover{
 
             // update info on checkout box
             $('.checkout-price').html($(this).find('.package-price').html());
+            $('.checkout-price-input').val($(this).find('.package-price').html());
             $('.checkout-description-holder').html($(this).find('.package-description').html());
         });
 

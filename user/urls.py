@@ -24,7 +24,8 @@ urlpatterns = [
 
 
       path('influencerhomeprofile/', views.influencer_home_profile, name="influencer_home_profile"),
-      path('checkout/', views.influencer_home_profile, name="checkout"),
+      path('checkout/', views.checkout, name="checkout"),
+      path('customoffer/', views.custom_offer, name="custom_offer"),
 
 
 
