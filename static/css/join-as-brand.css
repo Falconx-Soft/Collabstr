@@ -28,7 +28,7 @@
     padding: 5px;
 }
 .signup-btn{
-    margin-top: 40px;
+    margin-top: 30px;
     background: black;
     border-radius: 10px;
     width: 210px;
@@ -47,7 +47,7 @@
     justify-content: space-between;
 }
 .row-holder {
-    margin: 10% auto;
+    margin: 7% auto;
 }
 .example-steps-holder {
     width: 42%;
@@ -222,7 +222,7 @@
     display: none;
   }
   .navbar-header{
-    width: 40%;
+    width: 42%;
 }
 @media only screen and (max-width: 932px){
     .navbar-header{
