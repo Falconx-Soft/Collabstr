@@ -11,7 +11,7 @@ import uuid
 from .models import*
 from django.conf import settings
 from django.core.mail import send_mail
-from sms import send_sms
+
 
 # from .models import join_influencer
 
@@ -20,6 +20,10 @@ from sms import send_sms
 def home(request):
 
 	return render(request,'User/home.html')
+
+def ater_brand_signup(request):
+
+	return render(request,'User/after_brand_signup.html')
 
 def loginUser(request):
 
@@ -68,7 +72,9 @@ def register(request):
 			join_brand_obj.save()
 			is_brand_obj= BrandorInfluencer.objects.create(user=user_obj, brand=True)
 			is_brand_obj.save()
-			return redirect('login')
+			user = authenticate(username=brand_fullname, password=brand_password)
+			login(request, user)
+			return redirect('after_brand_signup')
 		except Exception as e:
 			print(e)
 	return render(request,'User/register.html')

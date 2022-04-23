@@ -23,15 +23,15 @@
 .signup-txt{
     margin-top: 8px;
     color: white;
-    font-weight: 400;
+    font-weight: 600;
     font-size: initial;
-    padding: 0px;
+    padding: 5px;
 }
 .signup-btn{
     margin-top: 40px;
     background: black;
     border-radius: 10px;
-    width: 200px;
+    width: 210px;
 }
 .change-txt{
     background: linear-gradient(to right, #fd749f 0%, #c33ab9 100%);    
