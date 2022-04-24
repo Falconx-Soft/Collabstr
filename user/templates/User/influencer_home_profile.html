@@ -34,15 +34,46 @@ a:hover{
     font-size: 15px !important;
    
 }
+.platform-img-holder-mobile{
+    display: none !important;
+}
+
+.btn-row-mobile{
+    display: none !important;
+}
 @media only screen and (max-width: 800px){
     .share-btn, .save-btn{
    
     padding-right: 0;
 }
 .row-btn-profile{
-    position: absolute;
-    left: -39px !important;
-}}
+    width: -webkit-fill-available !important;
+}
+.platform-img-holder{
+    margin-bottom: 10px !important;
+}
+.profile-holder{
+    display: none;
+}
+.platform-img-holder-mobile{
+    display: flex !important;
+    justify-content: flex-start !important;
+}
+
+.btn-row-mobile{
+    display: flex !important;
+    position: relative !important;
+}
+.btn-row-big{
+    display: none !important;
+}
+}
+@media only screen and (max-width: 380px){
+    .row-btn-profile{
+    width: auto !important;
+    margin-bottom: 30px !important;
+}
+}
 </style>
 
 {% endblock extrastyle %}
@@ -57,8 +88,80 @@ a:hover{
 <!-- ________________________________________ -->
 <!-- body content -->
 <input type="hidden" name="influencer_username_3" value="{{influencer_username_3}}">
-<div class="btn-row">
-    <div class="share-btn row-btn row-btn-profile" style="position: absolute; left: 0;">{{joined_influencer.full_name |title}}</div>
+<div class="btn-row btn-row-mobile">
+    <div style="width: 281px;display: flex;position: absolute;left: -20px;">
+        <div class=" row-btn row-btn-profile" >{{joined_influencer.full_name |title}}</div>
+        <div class="platform-img-holder platform-img-holder-mobile">
+            {% if joined_influencer.instagram_username != "" %}
+            <div class="platform-img">
+                <a rel="nofollow" href="https://instagram.com/{{joined_influencer.instagram_username}}" target="_blank"
+                    data-platform="instagram" class="intercept"><span class="link-spanner"></span></a>
+                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                    alt="Instagram logo">
+            </div>
+            {% endif %}
+    
+            {% if joined_influencer.tiktok_username != "" %}
+            <div class="platform-img">
+                <a rel="nofollow" href="https://tiktok.com/{{joined_influencer.tiktok_username}}" target="_blank"
+                    data-platform="tiktok" class="intercept"><span class="link-spanner"></span></a>
+                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                    alt="TikTok logo">
+            </div>
+            {% endif %}
+            {% if joined_influencer.youtube_url != "" %}
+            <div class="platform-img">
+                <a rel="nofollow" href="{{joined_influencer.youtube_url}}"
+                    target="_blank" data-platform="youtube" class="intercept"><span
+                        class="link-spanner"></span></a>
+                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/youtube.svg"
+                    alt="YouTube logo">
+            </div>
+            {% endif %}
+            {% if joined_influencer.twitter_username != "" %}
+            <div class="platform-img">
+                <a rel="nofollow" href="https://twitter.com/{{joined_influencer.twitter_username}}"
+                    target="_blank" data-platform="youtube" class="intercept"><span
+                        class="link-spanner"></span></a>
+                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
+                    alt="Twitter logo">
+            </div>
+            {% endif %}
+            {% if joined_influencer.twitch_username != "" %}
+            <div class="platform-img">
+                <a rel="nofollow" href="https://www.twitch.tv/{{twitch_username}}"
+                    target="_blank" data-platform="youtube" class="intercept"><span
+                        class="link-spanner"></span></a>
+                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitch.svg"
+                    alt="Twitch logo">
+            </div>
+            {% endif %}
+    
+    
+        </div>
+    </div>
+    
+    
+
+    <div style="display: flex;">
+        <div class="share-btn row-btn" onclick="location.href='#'"><img class="row-btn-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/share.svg">Share</div>
+
+
+
+
+    <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/save.svg"><span
+            class="save-btn-txt">Save</span></div>
+
+    </div>
+    
+
+</div>
+<div class="btn-row btn-row-big">
+    
+    <div class=" row-btn row-btn-profile" style="position: absolute; left: 0;">{{joined_influencer.full_name |title}}</div>
+    
 
     <div style="display: flex;">
         <div class="share-btn row-btn" onclick="location.href='#'"><img class="row-btn-img"
@@ -419,6 +522,12 @@ a:hover{
                         <input type="text" name="influencer_email_custom" hidden value="{{joined_influencer.email_address}}">
                         <div class="msg-btn checkout-description-holder-custom" data-id="message" onClick="javascript:this.parentNode.submit();">Send Custom Offer</div>
                     </form>
+    
+                            {% endif %}
+                            {% if not user.is_authenticated %}
+                        <button  class="buy-btn btn" data-id="checkout" style="font-size: large;border-radius: 15px;font-weight: 500;"  onclick="location.href='/login'">Continue</button>
+                        <div class="msg-btn checkout-description-holder-custom" data-id="message"  onclick="location.href='/login'">Send Custom Offer</div>
+                    
     
                             {% endif %}
                     </div>

@@ -34,23 +34,37 @@
         .navbar-header-brand{
             width: 25%;
         }
+        .navbar-header-logout{
+            width: 20%;
+        }
         .dashboard-btn-brand{
             padding: 6px !important;
         }
-        @media only screen and (mminax-width: 1200px){
+        @media only screen and (min-width: 1200px){
 .navbar-header-brand{
     width: 50%;
-}}
+}
+.navbar-header-logout{
+            width: 50% !important;
+        }
+}
         @media only screen and (min-width: 992px){
 .navbar-header-brand{
     width: 45%;
-}}
+}
+.navbar-header-logout{
+            width: 42% !important;
+        }
+}
         @media only screen and (max-width: 800px){
 .navbar-header-brand{
     width: 100%;
 }
 .header-right-brand{
     display: none;
+}
+.navbar-right{
+    display: none !important;
 }
 }
     </style>
@@ -163,7 +177,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid ">
             <div class="container mt-5 navbar-conatainer">
-                <div class="navbar-header navbar-header-brand" style="">
+                <div class="navbar-header navbar-header-logout " style="">
                     <div>
                         <a class="navbar-brand" style="font-weight: 700; color: black; display: flex; justify-content: left; font-size: x-large; margin-top: 8px;" href="{% url 'home' %}">
                  
