@@ -24,7 +24,7 @@ urlpatterns = [
 
 
       path('influencerhomeprofile/', views.influencer_home_profile, name="influencer_home_profile"),
-      path('checkout/', views.checkout, name="checkout"),
+      path('checkout/', views.checkout, name="checkout_page"),
       path('customoffer/', views.custom_offer, name="custom_offer"),
 
 
@@ -36,6 +36,9 @@ urlpatterns = [
       path('brandcompaign/', views.brand_compaign, name="brand_compaign"),
       path('brandorder/', views.brand_order, name="brand_order"),
       path('brandpricing/', views.brand_pricing, name="brand_pricing"),
+
+
+      path('create-checkout-session/', views.create_checkout_session, name="checkout"),
       
 
 	path('reset_password/', auth_views.PasswordResetView.as_view(template_name="User/restPassword/restPassword.html"), name="reset_password"),

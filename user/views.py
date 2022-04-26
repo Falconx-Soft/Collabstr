@@ -11,9 +11,10 @@ import uuid
 from .models import*
 from django.conf import settings
 from django.core.mail import send_mail
-
+import stripe
 
 # from .models import join_influencer
+stripe.api_key= 'sk_test_51KhIAhGppnrRkU6FOSJWqqiDXogb03Zh0gF9tEg9ov0aCIHdPsN4ptPDlEM5pkRAzuYv30LRiwSG9e2bOvnr5rZH00Wv7Ifh6t'
 
 # Create your views here.
 # @login_required(login_url='login')
@@ -2253,9 +2254,45 @@ def checkout(request):
 		joined_influencer=JoinInfluencer.objects.get(email_address=influencer_email)
 		context= {'joined_influencer': joined_influencer , 'package_category':package_category, 'checkout_price':checkout_price_int, 'ten_percent_price':ten_percent_price,'total_price': total_price}
 		return render(request, 'User/checkout.html', context)
+	else:
+		return redirect(request, 'User/home.html')
 
 def custom_offer(request):
 	if request.method== 'POST':
 		influencer_email= request.POST.get('influencer_email_custom')
 		context={'influencer_email': influencer_email}
 	return render(request, 'User/custom_offer.html', context)
+
+
+def create_checkout_session(request):
+		if request.method== 'POST':
+			total_checkout_price=request.POST.get('total_checkout_price')
+			package_category=request.POST.get('package_category')
+			total= total_checkout_price.split('.')
+			print('total_checkout_price@@@@@@@', total_checkout_price)
+			checkout_session=stripe.checkout.Session.create(
+				payment_method_types= ['card'],
+				line_items=[{
+      'price_data': {
+        'currency': 'usd',
+        'product_data': {
+          'name': package_category,
+        },
+        'unit_amount': int(total[0])*100,
+      },
+      'quantity': 1,
+    }],
+				# line_items=[
+				# # {
+				# # 	# Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+				# # 	'price': 'price_1Ksvf3GppnrRkU6FcbHEkX4r',
+				# # 	'quantity': 1,
+				# # },
+				
+				# ],
+
+				mode='payment',
+				success_url='http://127.0.0.1:8000' + '/',
+				cancel_url='http://127.0.0.1:8000' + '/cancel',
+			)
+			return redirect(checkout_session.url)
