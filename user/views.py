@@ -2292,7 +2292,11 @@ def create_checkout_session(request):
 				# ],
 
 				mode='payment',
-				success_url='http://127.0.0.1:8000' + '/',
+				success_url='http://127.0.0.1:8000' + '/success',
 				cancel_url='http://127.0.0.1:8000' + '/cancel',
 			)
 			return redirect(checkout_session.url)
+
+
+def success_view(request):
+    return render(request, 'User/success.html')
