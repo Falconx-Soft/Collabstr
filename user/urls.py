@@ -40,6 +40,7 @@ urlpatterns = [
 
       path('create-checkout-session/', views.create_checkout_session, name="checkout"),
       path('success/',views.success_view, name="success"),
+      path('cancel/',views.cancel_view, name="cancel"),
       
 
 	path('reset_password/', auth_views.PasswordResetView.as_view(template_name="User/restPassword/restPassword.html"), name="reset_password"),

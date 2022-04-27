@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+	{% block title %}Inful{% endblock %}
+
+	{% block extrastyle %}
+    <link rel="stylesheet" href="{% static '/css/join-brand-signup.css' %}">
+	<style>
+		  .messages{
+        display: flex;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 366px;
+    padding: 12px;
+    border-radius: 8px;
+    /* color: var(--black); */
+    background-color: white;
+    /* box-shadow: var(--mediumBoxShadow); */
+    font-size: 90%;
+    z-index: 9999999999;
+    box-shadow: rgb(120 120 170 / 20%) 0 2px 10px 0;
+    color: black;
+    }
+    .join_brand_login, .join_influencer_login{
+        display: block;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    font-size: 115%;
+    font-family: inherit;
+    border-radius: 8px;
+    box-shadow: rgb(120 120 170 / 15%) 0 2px 16px 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    position: relative;
+    background: black;
+    color: azure;
+   
+    background-color: black;
+    color: white;
+    width: 49%;
+    padding: 15px;
+    margin: 4% auto;
+    color: rgba(37, 35, 35, 0.329);
+    }
+    .form-title-success,.form-subtitle-success{
+        font-style: oblique;
+    font-family: auto;
+    }
+	</style>
+	{% endblock %}
+
+{% block content %} 
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style=" padding: 2px; display: flex;">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div>{{ message }}</div>
+            {% endfor %}
+    </ul>
+</div>
+    <div class="form-holder login-form" style="display: flex; flex-direction: column; justify-content: center; width: 98%; text-align: center;">
+        <h1 class="form-title-success">Unsuccessfull!!</h1>
+        <h2 class="form-subtitle-success">Your Order has been Cancelled</h2>
+		
+		
+    </div>
+
+	<!-- [ auth-signin ] start -->
+
+	<!-- [ auth-signin ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+
+	<script src=" /static/assets/js/waves.min.js"></script>
+
+{% endblock extrajavascript %} 

@@ -2300,3 +2300,6 @@ def create_checkout_session(request):
 
 def success_view(request):
     return render(request, 'User/success.html')
+
+def cancel_view(request):
+    return render(request, 'User/cancel.html')

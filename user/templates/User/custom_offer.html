@@ -69,7 +69,7 @@ a:hover{
         <div class="step-txt">Send Offer</div>
     </div>
 </div>
-<form action="{% url 'checkout' %}" method="post">
+<form action="{% url 'checkout_page' %}" method="post">
     {% csrf_token %}
     <input type="text" name="influencer_email" hidden value="{{influencer_email}}">
     <div class="container container_custom" style="">
