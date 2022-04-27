@@ -2296,8 +2296,11 @@ def create_checkout_session(request):
 				# ],
 
 				mode='payment',
-				success_url='http://127.0.0.1:8000' + '/success',
-				cancel_url='http://127.0.0.1:8000' + '/cancel',
+				
+				success_url='http://164.90.199.198:8000' + '/success',
+				cancel_url='http://164.90.199.198:8000' + '/cancel',
+				# success_url='http://127.0.0.1:8000' + '/success',
+				# cancel_url='http://127.0.0.1:8000' + '/cancel',
 			)
 			return redirect(checkout_session.url)
 
