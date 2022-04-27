@@ -2240,22 +2240,26 @@ def influencer_home_profile(request):
 			return redirect('home')
 	
 def checkout(request):
-	if request.method== 'POST':
-		influencer_email= request.POST.get('influencer_email')
-		package_category= request.POST.get('package_category')
-		checkout_price= request.POST.get('checkout_price')
-		checkout_price_int= checkout_price.replace('$','')
-		ten_percent_price= int(checkout_price_int)/10
-		total_price= int(checkout_price_int)+ ten_percent_price
-		print('checkout_price:::::::::::::::::::',checkout_price_int)
-		print('influencer_email:::::::::::::::::::',influencer_email)
-		print('tenpercent:::::::::::::::::::',ten_percent_price)
-		print('total:::::::::::::::::::',total_price)
-		joined_influencer=JoinInfluencer.objects.get(email_address=influencer_email)
-		context= {'joined_influencer': joined_influencer , 'package_category':package_category, 'checkout_price':checkout_price_int, 'ten_percent_price':ten_percent_price,'total_price': total_price}
-		return render(request, 'User/checkout.html', context)
-	else:
-		return redirect(request, 'User/home.html')
+	try:
+		if request.method== 'POST':
+			influencer_email= request.POST.get('influencer_email')
+			package_category= request.POST.get('package_category')
+			checkout_price= request.POST.get('checkout_price')
+			checkout_price_int= checkout_price.replace('$','')
+			ten_percent_price= int(checkout_price_int)/10
+			total_price= int(checkout_price_int)+ ten_percent_price
+			print('checkout_price:::::::::::::::::::',checkout_price_int)
+			print('influencer_email:::::::::::::::::::',influencer_email)
+			print('tenpercent:::::::::::::::::::',ten_percent_price)
+			print('total:::::::::::::::::::',total_price)
+			joined_influencer=JoinInfluencer.objects.get(email_address=influencer_email)
+			context= {'joined_influencer': joined_influencer , 'package_category':package_category, 'checkout_price':checkout_price_int, 'ten_percent_price':ten_percent_price,'total_price': total_price}
+			return render(request, 'User/checkout.html', context)
+		else:
+			return redirect(request, 'User/home.html')
+	except Exception as e:
+			messages.success(request, 'Oops There is some problem. Place order again')
+			return redirect('home')
 
 def custom_offer(request):
 	if request.method== 'POST':
