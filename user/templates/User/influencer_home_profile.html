@@ -47,6 +47,7 @@ a:hover{
 }
 .row-btn-profile{
     width: -webkit-fill-available !important;
+    margin-bottom: 30px !important;
 }
 .platform-img-holder{
     margin-bottom: 10px !important;
@@ -67,7 +68,7 @@ a:hover{
     display: none !important;
 }
 }
-@media only screen and (max-width: 380px){
+@media only screen and (max-width: 450px){
     .row-btn-profile{
     width: auto !important;
     margin-bottom: 30px !important;
@@ -387,8 +388,8 @@ a:hover{
 
         <div class="listing-col-l">
 
-            <h1 class="listing-title">Bio</h1>
-            <div class="listing-description">{{joined_influencer.description_influencer | title}} Content Creator</div>
+            <h1 class="listing-title">{{joined_influencer.description_influencer | title |slice:":-1"}} Content Creator</h1>
+            <div class="listing-description">Hi my name is {{joined_influencer.full_name | title}} and I am part of INFUL community. I can create personalized Instagram and Tiktok content to boost your brand.</div>
 
 
             <div class="section-title">
@@ -854,6 +855,9 @@ a:hover{
         $(document).ready(function(){
     $(".packages-holder").find(">:first-child").click(); 
 });
+
+
+
         $('.package-holder').click(function () {
             $('.package-btn').removeClass('btn-active');
             $('.package-holder').removeClass('package-active');

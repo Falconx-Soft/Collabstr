@@ -743,7 +743,7 @@ font-size: initial;
 
 
 
-                <select class="input package-category-select" name="package_platform_0">
+                <select class="input package-category-select"  name="package_platform_0">
 
                     <option value="" selected="" hidden="" disabled>Choose Platform</option>
 
@@ -762,7 +762,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type"  class="input package-content-type-select" name="package_content_type_0">
+                <select id="content_type" onchange="changecontenttype(this)"  class="input package-content-type-select" name="package_content_type_0">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -869,7 +869,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type" class="input package-content-type-select" name="package_content_type_1">
+                <select id="content_type" onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_1">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -976,7 +976,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type" class="input package-content-type-select" name="package_content_type_2">
+                <select id="content_type" onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_2">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -1082,7 +1082,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type" class="input package-content-type-select" name="package_content_type_3">
+                <select id="content_type" onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_3">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -1188,7 +1188,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type" class="input package-content-type-select" name="package_content_type_4">
+                <select id="content_type" onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_4">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -1294,7 +1294,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type" class="input package-content-type-select" name="package_content_type_5">
+                <select id="content_type" onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_5">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -1401,7 +1401,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type" class="input package-content-type-select" name="package_content_type_6">
+                <select id="content_type" onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_6">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -1508,7 +1508,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type" class="input package-content-type-select" name="package_content_type_7">
+                <select id="content_type" onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_7">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -1615,7 +1615,7 @@ font-size: initial;
 
                 </select>
 
-                <select id="content_type" class="input package-content-type-select" name="package_content_type_8">
+                <select id="content_type" onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_8">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -3889,27 +3889,50 @@ else{
 
 
         // For checking the content type and assigning price
-        $("#content_type").change(function(){
-    console.log("The text has been changed.");
-    content_type=$('#content_type').val()
+        function changecontenttype(content){
+            console.log("The text has been changed.");
+    content_type=content.value
     console.log('content_type',content_type)
         if (content_type== 'Reel'){
-            value=$(this).parent().children('.price-input');
+            value=$(content).parent().find(".price-input")
+            // value=content.parent.children('.price-input');
             value.val(300);
         }
         if (content_type== 'Post'){
-            value=$(this).parent().children('.price-input');
+            value=$(content).parent().find(".price-input")
             value.val(300);
         }
         if (content_type== 'Story'){
-            value=$(this).parent().children('.price-input');
+            value=$(content).parent().find(".price-input")
             value.val(100);
         }
         if (content_type== 'Video'){
-            value=$(this).parent().children('.price-input');
+            value=$(content).parent().find(".price-input")
             value.val(400);
         }
-  });
+
+        }
+//         $("#content_type").change(function(){
+//     console.log("The text has been changed.");
+//     content_type=$('#content_type').val()
+//     console.log('content_type',content_type)
+//         if (content_type== 'Reel'){
+//             value=$(this).parent().children('.price-input');
+//             value.val(300);
+//         }
+//         if (content_type== 'Post'){
+//             value=$(this).parent().children('.price-input');
+//             value.val(300);
+//         }
+//         if (content_type== 'Story'){
+//             value=$(this).parent().children('.price-input');
+//             value.val(100);
+//         }
+//         if (content_type== 'Video'){
+//             value=$(this).parent().children('.price-input');
+//             value.val(400);
+//         }
+//   });
 
 </script>
 

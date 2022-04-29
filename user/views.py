@@ -1054,7 +1054,7 @@ def influencer_profile(request):
 			print("User is not logged in :(")
 			# return redirect(request, 'User/influencer_profile.html')
 	except Exception as e:
-			messages.success(request, 'Superuser logged in')
+			messages.success(request, 'oops there was problem')
 			return redirect('home')
 
 
@@ -2052,7 +2052,7 @@ def brand_profile(request):
 			print("brand is not logged in :(")
 			# return redirect(request, 'User/influencer_profile.html')
 	# except Exception as e:
-			messages.success(request, 'Superuser logged in')
+			messages.success(request, 'oops there was a problem')
 			return redirect('home')
 
 
@@ -2242,7 +2242,7 @@ def influencer_home_profile(request):
 			
 			return redirect(request, 'User/home.html')
 	except Exception as e:
-			messages.success(request, 'Superuser logged in')
+			messages.success(request, 'Oops there was a problem')
 			return redirect('home')
 	
 def checkout(request):
@@ -2275,6 +2275,7 @@ def custom_offer(request):
 
 
 def create_checkout_session(request):
+	try:
 		if request.method== 'POST':
 			total_checkout_price=request.POST.get('total_checkout_price')
 			package_category=request.POST.get('package_category')
@@ -2309,7 +2310,11 @@ def create_checkout_session(request):
 				# cancel_url='http://127.0.0.1:8000' + '/cancel',
 			)
 			return redirect(checkout_session.url)
-
+	except Exception as e:
+		print(e)
+		messages.success(request, 'Oops There is some problem. Place order again')
+		return redirect('checkout_page')
+		
 
 def success_view(request):
     return render(request, 'User/success.html')

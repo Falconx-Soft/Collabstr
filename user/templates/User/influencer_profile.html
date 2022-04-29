@@ -519,7 +519,7 @@
 
             <div class="packages-holder">
                 {% for package in package_influencer %}
-                <div class="package-holder " style="border-left: 8px solid rgba(117, 86, 118, 0.65);" data-id="53018">
+                <div class="package-holder " style="border-left: 8px solid rgba(117, 86, 118, 0.65);" data-id="{{package.content_category}}">
                     <div class="package-category">{{package.choose_platform}}</div>
                     <div class="package-row">
                     <div class="package-title">{{package.content_category}}</div>
@@ -650,7 +650,7 @@
                         {% endfor %}
 
                     </select>
-                    <div class="checkout-price">${{package.package_price}}</div>
+                    <div class="checkout-price"></div>
                     <div class="checkout-description-holder">I will create a tailored TikTok video using your
                         product to create something, with unique music and an eye catching hook (intro) to keep
                         viewers watching. </div>
@@ -956,6 +956,10 @@
                 answer.slideDown();
             }
         });
+        // Clicking first child
+        $(document).ready(function(){
+    $(".packages-holder").find(">:first-child").click(); 
+});
         // for selecting package holders
         $('.package-holder').click(function () {
             $('.package-btn').removeClass('btn-active');
