@@ -89,7 +89,7 @@
                 <input class="details-input-field" type="text" name="influencer_location" placeholder="City - Enter first 3 letters and select from deopdown">
             </div>
 
-            <div class="details-input-div">
+            <!-- <div class="details-input-div">
                 <label class="details-input-field-head">Title</label>
                 <br>
                 <input name="influencer_title" class="details-input-field" type="text" placeholder="E.g. Fitness Content Creator & Student Athlete">
@@ -99,7 +99,7 @@
                 <label class="details-input-field-head">Description</label>
                 <br>
                 <textarea name="influencer_description" style="height: 115px;" class="details-input-field" placeholder="Who are you? What type of content do you create and you post? Who is your audience? Be specific as this will help you show up in searches"></textarea>
-            </div>
+            </div> -->
 
             <div class="details-input-div">
                 <label class="details-input-field-head">Gender</label>
@@ -426,23 +426,25 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
-                            <option value="6">Twitch</option>
+                            <option value="6">Twitch</option> -->
     
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_0">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_0">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
+
+
+                    
+
+                    <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
                     <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
 
@@ -460,25 +462,25 @@
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -499,7 +501,6 @@
                     <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
 
                     <option data-platform-id="6" hidden="" value="Other">Other</option>
-
     
                         </select>
     
@@ -532,77 +533,81 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
-                            <option value="6">Twitch</option>
+                            <option value="6">Twitch</option> -->
     
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_1">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_1">
     
     
-                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
-                            <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
-        
-                            <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
-        
-                            <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
-        
-                            <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
-        
-                            <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
-        
-                            <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
-        
-                            <option data-platform-id="3" hidden="" value="Blog">Blog</option>
-        
-                            <option data-platform-id="3" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
-        
-                            <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
-        
-                            <option data-platform-id="1" hidden="" value="Reel">Reel</option>
-        
-                            <option data-platform-id="1" hidden="" value="Story">Story</option>
-        
-                            <option data-platform-id="1" hidden="" value="Live">Live</option>
-        
-                            <option data-platform-id="1" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="2" hidden="" value="Video">Video</option>
-        
-                            <option data-platform-id="2" hidden="" value="Story">Story</option>
-        
-                            <option data-platform-id="2" hidden="" value="Live">Live</option>
-        
-                            <option data-platform-id="2" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="4" hidden="" value="Video">Video</option>
-        
-                            <option data-platform-id="4" hidden="" value="Short">Short</option>
-        
-                            <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
-        
-                            <option data-platform-id="4" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
-        
-                            <option data-platform-id="5" hidden="" value="Thread">Thread</option>
-        
-                            <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
-        
-                            <option data-platform-id="5" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
-        
-                            <option data-platform-id="6" hidden="" value="Other">Other</option>
-            
+
+                    
+
+                    <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="Blog">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
+
+                    <option data-platform-id="1" hidden="" value="Reel">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="Story">Story</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="2" hidden="" value="Video">Video</option>
+
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="4" hidden="" value="Video">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="Short">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Thread">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="Other">Other</option>
     
                         </select>
     
@@ -635,24 +640,26 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
-                            <option value="6">Twitch</option>
+                            <option value="6">Twitch</option> -->
     
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_2">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_2">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
+
+                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+        
                             <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
         
                             <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
@@ -669,25 +676,25 @@
         
                             <option data-platform-id="3" hidden="" value="Other">Other</option>
         
-                            <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                            <option data-platform-id="1" hidden="" value="Post">Post</option>
         
-                            <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
         
                             <option data-platform-id="1" hidden="" value="Reel">Reel</option>
         
                             <option data-platform-id="1" hidden="" value="Story">Story</option>
         
-                            <option data-platform-id="1" hidden="" value="Live">Live</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
         
-                            <option data-platform-id="1" hidden="" value="Other">Other</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
         
                             <option data-platform-id="2" hidden="" value="Video">Video</option>
         
-                            <option data-platform-id="2" hidden="" value="Story">Story</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
         
-                            <option data-platform-id="2" hidden="" value="Live">Live</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
         
-                            <option data-platform-id="2" hidden="" value="Other">Other</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
         
                             <option data-platform-id="4" hidden="" value="Video">Video</option>
         
@@ -708,7 +715,6 @@
                             <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
         
                             <option data-platform-id="6" hidden="" value="Other">Other</option>
-            
     
                         </select>
     
@@ -741,80 +747,81 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
-                            <option value="6">Twitch</option>
+                            <option value="6">Twitch</option> -->
     
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_3">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_3">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
-                            <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
-        
-                            <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
-        
-                            <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
-        
-                            <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
-        
-                            <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
-        
-                            <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
-        
-                            <option data-platform-id="3" hidden="" value="Blog">Blog</option>
-        
-                            <option data-platform-id="3" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
-        
-                            <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
-        
-                            <option data-platform-id="1" hidden="" value="Reel">Reel</option>
-        
-                            <option data-platform-id="1" hidden="" value="Story">Story</option>
-        
-                            <option data-platform-id="1" hidden="" value="Live">Live</option>
-        
-                            <option data-platform-id="1" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="2" hidden="" value="Video">Video</option>
-        
-                            <option data-platform-id="2" hidden="" value="Story">Story</option>
-        
-                            <option data-platform-id="2" hidden="" value="Live">Live</option>
-        
-                            <option data-platform-id="2" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="4" hidden="" value="Video">Video</option>
-        
-                            <option data-platform-id="4" hidden="" value="Short">Short</option>
-        
-                            <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
-        
-                            <option data-platform-id="4" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
-        
-                            <option data-platform-id="5" hidden="" value="Thread">Thread</option>
-        
-                            <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
-        
-                            <option data-platform-id="5" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
-        
-                            <option data-platform-id="6" hidden="" value="Other">Other</option>
-            
+
+                    
+
+                    <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="Blog">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
+
+                    <option data-platform-id="1" hidden="" value="Reel">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="Story">Story</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="2" hidden="" value="Video">Video</option>
+
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="4" hidden="" value="Video">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="Short">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Thread">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="Other">Other</option>
     
                         </select>
     
@@ -847,24 +854,26 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
                             <option value="6">Twitch</option>
-    
+     -->
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_4">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_4">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
+
+                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+        
                             <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
         
                             <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
@@ -881,25 +890,25 @@
         
                             <option data-platform-id="3" hidden="" value="Other">Other</option>
         
-                            <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                            <option data-platform-id="1" hidden="" value="Post">Post</option>
         
-                            <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
         
                             <option data-platform-id="1" hidden="" value="Reel">Reel</option>
         
                             <option data-platform-id="1" hidden="" value="Story">Story</option>
         
-                            <option data-platform-id="1" hidden="" value="Live">Live</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
         
-                            <option data-platform-id="1" hidden="" value="Other">Other</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
         
                             <option data-platform-id="2" hidden="" value="Video">Video</option>
         
-                            <option data-platform-id="2" hidden="" value="Story">Story</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
         
-                            <option data-platform-id="2" hidden="" value="Live">Live</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
         
-                            <option data-platform-id="2" hidden="" value="Other">Other</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
         
                             <option data-platform-id="4" hidden="" value="Video">Video</option>
         
@@ -920,7 +929,6 @@
                             <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
         
                             <option data-platform-id="6" hidden="" value="Other">Other</option>
-            
     
                         </select>
     
@@ -953,80 +961,81 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
                             <option value="6">Twitch</option>
-    
+     -->
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_5">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_5">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
-                            <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
-        
-                            <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
-        
-                            <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
-        
-                            <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
-        
-                            <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
-        
-                            <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
-        
-                            <option data-platform-id="3" hidden="" value="Blog">Blog</option>
-        
-                            <option data-platform-id="3" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
-        
-                            <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
-        
-                            <option data-platform-id="1" hidden="" value="Reel">Reel</option>
-        
-                            <option data-platform-id="1" hidden="" value="Story">Story</option>
-        
-                            <option data-platform-id="1" hidden="" value="Live">Live</option>
-        
-                            <option data-platform-id="1" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="2" hidden="" value="Video">Video</option>
-        
-                            <option data-platform-id="2" hidden="" value="Story">Story</option>
-        
-                            <option data-platform-id="2" hidden="" value="Live">Live</option>
-        
-                            <option data-platform-id="2" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="4" hidden="" value="Video">Video</option>
-        
-                            <option data-platform-id="4" hidden="" value="Short">Short</option>
-        
-                            <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
-        
-                            <option data-platform-id="4" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
-        
-                            <option data-platform-id="5" hidden="" value="Thread">Thread</option>
-        
-                            <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
-        
-                            <option data-platform-id="5" hidden="" value="Other">Other</option>
-        
-                            <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
-        
-                            <option data-platform-id="6" hidden="" value="Other">Other</option>
-            
+
+                    
+
+                    <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="Blog">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
+
+                    <option data-platform-id="1" hidden="" value="Reel">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="Story">Story</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="2" hidden="" value="Video">Video</option>
+
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="4" hidden="" value="Video">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="Short">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Thread">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="Other">Other</option>
     
                         </select>
     
@@ -1059,24 +1068,26 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
-                            <option value="6">Twitch</option>
+                            <option value="6">Twitch</option> -->
     
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_6">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_6">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
+
+                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+        
                             <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
         
                             <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
@@ -1093,25 +1104,25 @@
         
                             <option data-platform-id="3" hidden="" value="Other">Other</option>
         
-                            <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                            <option data-platform-id="1" hidden="" value="Post">Post</option>
         
-                            <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
         
                             <option data-platform-id="1" hidden="" value="Reel">Reel</option>
         
                             <option data-platform-id="1" hidden="" value="Story">Story</option>
         
-                            <option data-platform-id="1" hidden="" value="Live">Live</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
         
-                            <option data-platform-id="1" hidden="" value="Other">Other</option>
+                            <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
         
                             <option data-platform-id="2" hidden="" value="Video">Video</option>
         
-                            <option data-platform-id="2" hidden="" value="Story">Story</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
         
-                            <option data-platform-id="2" hidden="" value="Live">Live</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
         
-                            <option data-platform-id="2" hidden="" value="Other">Other</option>
+                            <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
         
                             <option data-platform-id="4" hidden="" value="Video">Video</option>
         
@@ -1132,8 +1143,6 @@
                             <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
         
                             <option data-platform-id="6" hidden="" value="Other">Other</option>
-            
-    
                         </select>
     
     
@@ -1165,80 +1174,81 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
-                            <option value="6">Twitch</option>
+                            <option value="6">Twitch</option> -->
     
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_7">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_7">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="1">Product Video</option>
-    
-                            <option data-platform-id="3" hidden="" value="2">Product Photo</option>
-    
-                            <option data-platform-id="3" hidden="" value="3">Video Ad</option>
-    
-                            <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
-    
-                            <option data-platform-id="3" hidden="" value="5">Tutorial</option>
-    
-                            <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
-    
-                            <option data-platform-id="3" hidden="" value="7">Unboxing</option>
-    
-                            <option data-platform-id="3" hidden="" value="8">Blog</option>
-    
-                            <option data-platform-id="3" hidden="" value="9">Other</option>
-    
-                            <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
-    
-                            <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
-    
-                            <option data-platform-id="1" hidden="" value="12">Reel</option>
-    
-                            <option data-platform-id="1" hidden="" value="13">Story</option>
-    
-                            <option data-platform-id="1" hidden="" value="14">Live</option>
-    
-                            <option data-platform-id="1" hidden="" value="15">Other</option>
-    
-                            <option data-platform-id="2" hidden="" value="16">Video</option>
-    
-                            <option data-platform-id="2" hidden="" value="17">Story</option>
-    
-                            <option data-platform-id="2" hidden="" value="18">Live</option>
-    
-                            <option data-platform-id="2" hidden="" value="19">Other</option>
-    
-                            <option data-platform-id="4" hidden="" value="20">Video</option>
-    
-                            <option data-platform-id="4" hidden="" value="21">Short</option>
-    
-                            <option data-platform-id="4" hidden="" value="22">Livestream</option>
-    
-                            <option data-platform-id="4" hidden="" value="23">Other</option>
-    
-                            <option data-platform-id="5" hidden="" value="24">Tweet</option>
-    
-                            <option data-platform-id="5" hidden="" value="25">Thread</option>
-    
-                            <option data-platform-id="5" hidden="" value="26">Retweet</option>
-    
-                            <option data-platform-id="5" hidden="" value="27">Other</option>
-    
-                            <option data-platform-id="6" hidden="" value="28">Livestream</option>
-    
-                            <option data-platform-id="6" hidden="" value="29">Other</option>
-    
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
+
+
+                    
+
+                    <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="Blog">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
+
+                    <option data-platform-id="1" hidden="" value="Reel">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="Story">Story</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="2" hidden="" value="Video">Video</option>
+
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="4" hidden="" value="Video">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="Short">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Thread">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="Other">Other</option>
     
                         </select>
     
@@ -1271,80 +1281,81 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
                             <option value="6">Twitch</option>
-    
+     -->
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_8">
+                        <select  onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_8">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="1">Product Video</option>
-    
-                            <option data-platform-id="3" hidden="" value="2">Product Photo</option>
-    
-                            <option data-platform-id="3" hidden="" value="3">Video Ad</option>
-    
-                            <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
-    
-                            <option data-platform-id="3" hidden="" value="5">Tutorial</option>
-    
-                            <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
-    
-                            <option data-platform-id="3" hidden="" value="7">Unboxing</option>
-    
-                            <option data-platform-id="3" hidden="" value="8">Blog</option>
-    
-                            <option data-platform-id="3" hidden="" value="9">Other</option>
-    
-                            <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
-    
-                            <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
-    
-                            <option data-platform-id="1" hidden="" value="12">Reel</option>
-    
-                            <option data-platform-id="1" hidden="" value="13">Story</option>
-    
-                            <option data-platform-id="1" hidden="" value="14">Live</option>
-    
-                            <option data-platform-id="1" hidden="" value="15">Other</option>
-    
-                            <option data-platform-id="2" hidden="" value="16">Video</option>
-    
-                            <option data-platform-id="2" hidden="" value="17">Story</option>
-    
-                            <option data-platform-id="2" hidden="" value="18">Live</option>
-    
-                            <option data-platform-id="2" hidden="" value="19">Other</option>
-    
-                            <option data-platform-id="4" hidden="" value="20">Video</option>
-    
-                            <option data-platform-id="4" hidden="" value="21">Short</option>
-    
-                            <option data-platform-id="4" hidden="" value="22">Livestream</option>
-    
-                            <option data-platform-id="4" hidden="" value="23">Other</option>
-    
-                            <option data-platform-id="5" hidden="" value="24">Tweet</option>
-    
-                            <option data-platform-id="5" hidden="" value="25">Thread</option>
-    
-                            <option data-platform-id="5" hidden="" value="26">Retweet</option>
-    
-                            <option data-platform-id="5" hidden="" value="27">Other</option>
-    
-                            <option data-platform-id="6" hidden="" value="28">Livestream</option>
-    
-                            <option data-platform-id="6" hidden="" value="29">Other</option>
-    
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
+
+
+                    
+
+                    <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+
+                    <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
+
+                    <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
+
+                    <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
+
+                    <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
+
+                    <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
+
+                    <option data-platform-id="3" hidden="" value="Blog">Blog</option>
+
+                    <option data-platform-id="3" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
+
+                    <option data-platform-id="1" hidden="" value="Reel">Reel</option>
+
+                    <option data-platform-id="1" hidden="" value="Story">Story</option>
+
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="2" hidden="" value="Video">Video</option>
+
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
+
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
+
+                    <option data-platform-id="4" hidden="" value="Video">Video</option>
+
+                    <option data-platform-id="4" hidden="" value="Short">Short</option>
+
+                    <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="4" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Thread">Thread</option>
+
+                    <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
+
+                    <option data-platform-id="5" hidden="" value="Other">Other</option>
+
+                    <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
+
+                    <option data-platform-id="6" hidden="" value="Other">Other</option>
     
                         </select>
     
@@ -1377,80 +1388,81 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
-                            <option value="6">Twitch</option>
+                            <option value="6">Twitch</option> -->
     
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_9">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_9">
     
     
-                            <option value="" selected="" hidden="">Choose Content Type</option>
-    
-    
-                            <option data-platform-id="3" hidden="" value="1">Product Video</option>
-    
-                            <option data-platform-id="3" hidden="" value="2">Product Photo</option>
-    
-                            <option data-platform-id="3" hidden="" value="3">Video Ad</option>
-    
-                            <option data-platform-id="3" hidden="" value="4">Photo Ad</option>
-    
-                            <option data-platform-id="3" hidden="" value="5">Tutorial</option>
-    
-                            <option data-platform-id="3" hidden="" value="6">Testimonial/Review</option>
-    
-                            <option data-platform-id="3" hidden="" value="7">Unboxing</option>
-    
-                            <option data-platform-id="3" hidden="" value="8">Blog</option>
-    
-                            <option data-platform-id="3" hidden="" value="9">Other</option>
-    
-                            <option data-platform-id="1" hidden="" value="10">Photo Feed Post</option>
-    
-                            <option data-platform-id="1" hidden="" value="11">Video Feed Post</option>
-    
-                            <option data-platform-id="1" hidden="" value="12">Reel</option>
-    
-                            <option data-platform-id="1" hidden="" value="13">Story</option>
-    
-                            <option data-platform-id="1" hidden="" value="14">Live</option>
-    
-                            <option data-platform-id="1" hidden="" value="15">Other</option>
-    
-                            <option data-platform-id="2" hidden="" value="16">Video</option>
-    
-                            <option data-platform-id="2" hidden="" value="17">Story</option>
-    
-                            <option data-platform-id="2" hidden="" value="18">Live</option>
-    
-                            <option data-platform-id="2" hidden="" value="19">Other</option>
-    
-                            <option data-platform-id="4" hidden="" value="20">Video</option>
-    
-                            <option data-platform-id="4" hidden="" value="21">Short</option>
-    
-                            <option data-platform-id="4" hidden="" value="22">Livestream</option>
-    
-                            <option data-platform-id="4" hidden="" value="23">Other</option>
-    
-                            <option data-platform-id="5" hidden="" value="24">Tweet</option>
-    
-                            <option data-platform-id="5" hidden="" value="25">Thread</option>
-    
-                            <option data-platform-id="5" hidden="" value="26">Retweet</option>
-    
-                            <option data-platform-id="5" hidden="" value="27">Other</option>
-    
-                            <option data-platform-id="6" hidden="" value="28">Livestream</option>
-    
-                            <option data-platform-id="6" hidden="" value="29">Other</option>
-    
+                            <option value="" selected="" hidden="" disabled>Choose Content Type</option>
+
+
+                    
+
+                            <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
+        
+                            <option data-platform-id="3" hidden="" value="Product Photo">Product Photo</option>
+        
+                            <option data-platform-id="3" hidden="" value="Video Ad">Video Ad</option>
+        
+                            <option data-platform-id="3" hidden="" value="Photo Ad">Photo Ad</option>
+        
+                            <option data-platform-id="3" hidden="" value="Tutorial">Tutorial</option>
+        
+                            <option data-platform-id="3" hidden="" value="Testimonial/Review">Testimonial/Review</option>
+        
+                            <option data-platform-id="3" hidden="" value="Unboxing">Unboxing</option>
+        
+                            <option data-platform-id="3" hidden="" value="Blog">Blog</option>
+        
+                            <option data-platform-id="3" hidden="" value="Other">Other</option>
+        
+                            <option data-platform-id="1" hidden="" value="Post">Post</option>
+        
+                            <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
+        
+                            <option data-platform-id="1" hidden="" value="Reel">Reel</option>
+        
+                            <option data-platform-id="1" hidden="" value="Story">Story</option>
+        
+                            <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
+        
+                            <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
+        
+                            <option data-platform-id="2" hidden="" value="Video">Video</option>
+        
+                            <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
+        
+                            <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
+        
+                            <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
+        
+                            <option data-platform-id="4" hidden="" value="Video">Video</option>
+        
+                            <option data-platform-id="4" hidden="" value="Short">Short</option>
+        
+                            <option data-platform-id="4" hidden="" value="Livestream">Livestream</option>
+        
+                            <option data-platform-id="4" hidden="" value="Other">Other</option>
+        
+                            <option data-platform-id="5" hidden="" value="Tweet">Tweet</option>
+        
+                            <option data-platform-id="5" hidden="" value="Thread">Thread</option>
+        
+                            <option data-platform-id="5" hidden="" value="Retweet">Retweet</option>
+        
+                            <option data-platform-id="5" hidden="" value="Other">Other</option>
+        
+                            <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
+        
+                            <option data-platform-id="6" hidden="" value="Other">Other</option>
     
                         </select>
     
@@ -1483,17 +1495,17 @@
     
                             <option value="2">TikTok</option>
     
-                            <option value="3">User Generated Content</option>
+                            <!-- <option value="3">User Generated Content</option>
     
                             <option value="4">YouTube</option>
     
                             <option value="5">Twitter</option>
     
-                            <option value="6">Twitch</option>
+                            <option value="6">Twitch</option> -->
     
                         </select>
     
-                        <select class="input package-content-type-select" name="package_content_type_10">
+                        <select onchange="changecontenttype(this)" class="input package-content-type-select" name="package_content_type_10">
     
     
                             <option value="" selected="" hidden="">Choose Content Type</option>
@@ -2954,6 +2966,30 @@ $(function () {
         
         
 //*************************************************************************** portfolio end 
+// ************************************************************************** For checking content type and price
+function changecontenttype(content){
+            console.log("The text has been changed.");
+    content_type=content.value
+    console.log('content_type',content_type)
+        if (content_type== 'Reel'){
+            value=$(content).parent().find(".price-input")
+            // value=content.parent.children('.price-input');
+            value.val(300);
+        }
+        if (content_type== 'Post'){
+            value=$(content).parent().find(".price-input")
+            value.val(300);
+        }
+        if (content_type== 'Story'){
+            value=$(content).parent().find(".price-input")
+            value.val(100);
+        }
+        if (content_type== 'Video'){
+            value=$(content).parent().find(".price-input")
+            value.val(400);
+        }
+
+        }
 </script>
 
 {% endblock extrajavascript %}
