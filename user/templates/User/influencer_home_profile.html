@@ -387,8 +387,8 @@ a:hover{
 
         <div class="listing-col-l">
 
-            <h1 class="listing-title">{{joined_influencer.title_influencer| title}}</h1>
-            <div class="listing-description">{{joined_influencer.description_influencer | title}}</div>
+            <h1 class="listing-title">Bio</h1>
+            <div class="listing-description">{{joined_influencer.description_influencer | title}} Content Creator</div>
 
 
             <div class="section-title">
@@ -432,7 +432,26 @@ a:hover{
                 </div>
 
             </div>
+            <div style="    margin-top: 25px;" class="faq-section">
+                <h3>FAQ</h3>
+                {% for faq in faq_influencer %}
+                <div class="faq-holder">
+                    <h3 class="faq-question">{{faq.faq_question}}</h3>
+                    <div class="faq-answer" style="display: none;">{{faq.faq_answer}}</div>
+                </div>
+                {% endfor %} 
+                <!-- <div class="faq-holder">
+                    <h3 class="faq-question">Are you willing to travel internationally?</h3>
+                    <div class="faq-answer" style="display: none;">Yes. Absolutely. </div>
+                </div>
 
+                <div class="faq-holder">
+                    <h3 class="faq-question">Do you have any flexibility with package options?</h3>
+                    <div class="faq-answer" style="display: none;">Yes, I would be happy to discuss a negotiated
+                        rate or project.</div>
+                </div> -->
+
+             </div>
 
            
         </div>

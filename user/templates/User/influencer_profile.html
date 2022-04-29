@@ -508,8 +508,8 @@
 
         <div class="listing-col-l">
 
-            <h1 class="listing-title">{{joined_influencer.title_influencer| title}}</h1>
-            <div class="listing-description">{{joined_influencer.description_influencer | title}}</div>
+            <h1 class="listing-title">{{joined_influencer.description_influencer | title |slice:":-1"}} Content Creator</h1>
+            <div class="listing-description">Hi my name is {{joined_influencer.full_name | title}} and I am part of INFUL community. I can create personalized Instagram and Tiktok content to boost your brand.</div>
 
 
             <div class="section-title">
@@ -555,14 +555,14 @@
             </div>
 
 
-            <!-- <div class="faq-section">
+            <div style="    margin-top: 25px;" class="faq-section">
                 <h3>FAQ</h3>
                 {% for faq in faq_influencer %}
                 <div class="faq-holder">
                     <h3 class="faq-question">{{faq.faq_question}}</h3>
                     <div class="faq-answer" style="display: none;">{{faq.faq_answer}}</div>
                 </div>
-                {% endfor %} -->
+                {% endfor %} 
                 <!-- <div class="faq-holder">
                     <h3 class="faq-question">Are you willing to travel internationally?</h3>
                     <div class="faq-answer" style="display: none;">Yes. Absolutely. </div>
@@ -574,7 +574,7 @@
                         rate or project.</div>
                 </div> -->
 
-            <!-- </div> -->
+             </div>
 
 
         </div>

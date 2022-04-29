@@ -106,19 +106,19 @@ def join_as_influencer(request):
 		try:
 			influencer_username= request.POST.get('influencer_username')
 			print('Influencer username:::::@@@@',influencer_username)
-			# if JoinInfluencer.objects.filter(username=influencer_username):
-			# 	messages.success(request, 'Username Not Available')
-			# 	return redirect(request, 'join_as_influencer.html')
-			# else:
+			if JoinInfluencer.objects.filter(influencer_username=influencer_username):
+				messages.success(request, 'Username Not Available')
+				return redirect(request, 'join_as_influencer.html')
+			else:
 
 			
-			influencer_obj2= JoinInfluencer.objects.create(influencer_username= influencer_username)
-			influencer_obj2.save()
-			request.session['username_session'] = influencer_username
-			username_session = request.session.get('username_session')
-			print('Fav username_session::::::@@@@',username_session)
-			context= {'influencer_username': influencer_username}
-			return render(request,'User/social_signup.html', context)
+				influencer_obj2= JoinInfluencer.objects.create(influencer_username= influencer_username)
+				influencer_obj2.save()
+				request.session['username_session'] = influencer_username
+				username_session = request.session.get('username_session')
+				print('join as inful username_session::::::@@@@',username_session)
+				context= {'influencer_username': influencer_username}
+				return render(request,'User/social_signup.html', context)
 		except Exception as e:
 			print(e)
 	return render(request,'User/join_as_influencer.html')
@@ -168,10 +168,12 @@ def join_influencer_profile(request):
 			username_session = request.session.get('username_session')
 			print('Fav username_session create page::::::@@@@',username_session)
 			influencer_username_3= request.POST.get('influencer_username_3')
-			influencer=JoinInfluencer.objects.get(influencer_username= username_session)
+			# influencer=JoinInfluencer.objects.get(influencer_username= username_session)
+			user_email_inful=request.user.email
+			influencer=JoinInfluencer.objects.get(email_address= user_email_inful)
 			location= request.POST.get('location_influencer')
-			title_influencer= request.POST.get('title_influencer')
-			description_influencer= request.POST.get('description_influencer')
+			# title_influencer= request.POST.get('title_influencer')
+			# description_influencer= request.POST.get('description_influencer')
 			gender_influencer= request.POST.get('gender_influencer')
 			instagram_username= request.POST.get('instagram_username')
 			instagram_followers= request.POST.get('instagram_followers')
@@ -184,7 +186,7 @@ def join_influencer_profile(request):
 			twitch_username= request.POST.get('twitch_username')
 			twitch_followers= request.POST.get('twitch_followers')
 			website= request.POST.get('website')
-			niches= request.POST.get('niches_val')
+			# niches= request.POST.get('niches_val')
 			profile_image= request.FILES.get('profile_img')
 			print('profile image join_________________', profile_image)
 			all_image= request.FILES.getlist('img-files')
@@ -219,8 +221,8 @@ def join_influencer_profile(request):
 
 			
 			influencer.location=location
-			influencer.title_influencer=title_influencer
-			influencer.description_influencer=description_influencer
+			# influencer.title_influencer=title_influencer
+			# influencer.description_influencer=description_influencer
 			influencer.gender_influencer=gender_influencer
 			influencer.instagram_username=instagram_username
 			influencer.instagram_followers=instagram_followers
@@ -309,62 +311,62 @@ def join_influencer_profile(request):
 				influencer.image4=img3
 			if img4:
 				influencer.image5=img4
-			if "Lifestyle" in niches:
-				influencer.lifestyle= True
-			if "Fashion" in niches:
-				influencer.fashion= True
-			if "Beauty" in niches:
-				influencer.beauty= True
+			# if "Lifestyle" in niches:
+			# 	influencer.lifestyle= True
+			# if "Fashion" in niches:
+			# 	influencer.fashion= True
+			# if "Beauty" in niches:
+			# 	influencer.beauty= True
 			
-			if "Health & Fitness" in niches:
-				influencer.health_fitness= True
-			if "Travel" in niches:
-				influencer.travel= True
-			if "Food & Drink" in niches:
-				influencer.food_drink= True
-			if "Model" in niches:
-				influencer.model= True
-			if "Comedy & Entertainment" in niches:
-				influencer.comedy_entertainment= True
-			if "Art & Photography" in niches:
-				influencer.art_photography= True
+			# if "Health & Fitness" in niches:
+			# 	influencer.health_fitness= True
+			# if "Travel" in niches:
+			# 	influencer.travel= True
+			# if "Food & Drink" in niches:
+			# 	influencer.food_drink= True
+			# if "Model" in niches:
+			# 	influencer.model= True
+			# if "Comedy & Entertainment" in niches:
+			# 	influencer.comedy_entertainment= True
+			# if "Art & Photography" in niches:
+			# 	influencer.art_photography= True
 			
-			if "Music & Dance" in niches:
-				influencer.music_dance= True
-			if "Entrepreneur & Business" in niches:
-				influencer.entrepreneur_business= True
-			if "Family & Children" in niches:
-				influencer.family_children= True
-			if "Animals & Pets" in niches:
-				influencer.animals_pets= True
-			if "Athlete & Sports" in niches:
-				influencer.athlete_sports= True
-			if "Celebrity & Public Figure" in niches:
-				influencer.celebrity_public_pigure= True
+			# if "Music & Dance" in niches:
+			# 	influencer.music_dance= True
+			# if "Entrepreneur & Business" in niches:
+			# 	influencer.entrepreneur_business= True
+			# if "Family & Children" in niches:
+			# 	influencer.family_children= True
+			# if "Animals & Pets" in niches:
+			# 	influencer.animals_pets= True
+			# if "Athlete & Sports" in niches:
+			# 	influencer.athlete_sports= True
+			# if "Celebrity & Public Figure" in niches:
+			# 	influencer.celebrity_public_pigure= True
 			
-			if "Adventure & Outdoors" in niches:
-				influencer.adventure_outdoors= True
-			if "Actor" in niches:
-				influencer.actor= True
-			if "Education" in niches:
-				influencer.education= True
-			if "Gaming" in niches:
-				influencer.gaming= True
-			if "LGBTQ2" in niches:
-				influencer.lgbtq= True
-			if "Technology" in niches:
-				influencer.technology= True
+			# if "Adventure & Outdoors" in niches:
+			# 	influencer.adventure_outdoors= True
+			# if "Actor" in niches:
+			# 	influencer.actor= True
+			# if "Education" in niches:
+			# 	influencer.education= True
+			# if "Gaming" in niches:
+			# 	influencer.gaming= True
+			# if "LGBTQ2" in niches:
+			# 	influencer.lgbtq= True
+			# if "Technology" in niches:
+			# 	influencer.technology= True
 			
-			if "Healthcare" in niches:
-				influencer.healthcare= True
-			if "Vegan" in niches:
-				influencer.vegan= True
-			if "Cannabis" in niches:
-				influencer.cannabis= True
-			if "Skilled Trades" in niches:
-				influencer.skilled_trades= True
-			if "Automotive" in niches:
-				influencer.automotive= True
+			# if "Healthcare" in niches:
+			# 	influencer.healthcare= True
+			# if "Vegan" in niches:
+			# 	influencer.vegan= True
+			# if "Cannabis" in niches:
+			# 	influencer.cannabis= True
+			# if "Skilled Trades" in niches:
+			# 	influencer.skilled_trades= True
+			# if "Automotive" in niches:
+			# 	influencer.automotive= True
 			
 			influencer.save()
 			# ____________________________________________________________________________
@@ -1031,6 +1033,7 @@ def influencer_profile(request):
 
 		if request.user.is_authenticated:
 			print("User is logged in :)")
+			user_email_inful=request.user.email
 			username= request.user.username
 			is_brand=BrandorInfluencer.objects.get(user__username=username)
 			is_brand_value= is_brand.brand
@@ -1038,10 +1041,12 @@ def influencer_profile(request):
 			print("User is is_brand_value--------------------------- :)", is_brand)
 			if is_brand_value:
 				return redirect('/brandprofile/')
-			joined_influencer=JoinInfluencer.objects.get(influencer_username=username)
-			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
-			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
-			edit_portfolio=EditPortfolioImages.objects.filter(influencer_username__influencer_username=username)
+			joined_influencer=JoinInfluencer.objects.get(email_address=user_email_inful)
+			username_inful=joined_influencer.influencer_username
+			print('joined_influencer::::::::::',username_inful)
+			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username_inful)
+			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username_inful)
+			edit_portfolio=EditPortfolioImages.objects.filter(influencer_username__influencer_username=username_inful)
 			print('joined_influencer::::::::::',joined_influencer)
 			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
 			return render(request, 'User/influencer_profile.html', context)
@@ -1057,13 +1062,14 @@ def influencer_profile_edit(request):
 	try:
 		if request.user.is_authenticated:
 			print("User is logged in :)")
-			username= request.user.username
-			influencer=User.objects.get(username= username)
+			username= request.user.email
+			influencer=User.objects.get(email= username)
 			
-			joined_influencer=JoinInfluencer.objects.get(influencer_username=username)
-			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
-			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
-			print('joined_influencer::::::::::',joined_influencer)
+			joined_influencer=JoinInfluencer.objects.get(email_address=username)
+			username_inful=joined_influencer.influencer_username
+			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username_inful)
+			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username_inful)
+			print('joined_influencer edit::::::::::',joined_influencer)
 			if request.method == 'POST':
 				print('influencer firstname', influencer.first_name)
 				influencer_fullname= request.POST.get('influencer_fullname')
@@ -1758,66 +1764,66 @@ def influencer_profile_edit(request):
 						influencer_package.save()
 				# Form No 8 End
 				# Form No 9 Faqs
-				# faq_question_0= request.POST.get('faq_question_0')
-				# faq_answer_0= request.POST.get('faq_answer_0')
-				# faq_question_1= request.POST.get('faq_question_1')
-				# faq_answer_1= request.POST.get('faq_answer_1')
-				# faq_question_2= request.POST.get('faq_question_2')
-				# faq_answer_2= request.POST.get('faq_answer_2')
-				# faq_question_3= request.POST.get('faq_question_3')
-				# faq_answer_3= request.POST.get('faq_answer_3')
-				# faq_question_4= request.POST.get('faq_question_4')
-				# faq_answer_4= request.POST.get('faq_answer_4')
-				# faq_question_5= request.POST.get('faq_question_5')
-				# faq_answer_5= request.POST.get('faq_answer_5')
-				# faq_question_6= request.POST.get('faq_question_6')
-				# faq_answer_6= request.POST.get('faq_answer_6')
-				# faq_question_7= request.POST.get('faq_question_7')
-				# faq_answer_7= request.POST.get('faq_answer_7')
-				# faq_question_8= request.POST.get('faq_question_8')
-				# faq_answer_8= request.POST.get('faq_answer_8')
-				# faq_question_9= request.POST.get('faq_question_9')
-				# faq_answer_9= request.POST.get('faq_answer_9')
-				# if ((faq_question_0 != "") and  (faq_answer_0 != "")):
-				# 	print('In if statement of FAqs 1########')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_0, faq_answer=faq_answer_0)
-				# 	Influencer_faq.save()
-				# if ((faq_question_1 != "") and  (faq_answer_1 != "")):
-				# 	print('In if statement of FAqs2')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_1, faq_answer=faq_answer_1)
-				# 	Influencer_faq.save()
-				# if ((faq_question_2 != "") and  (faq_answer_2 != "")):
-				# 	print('In if statement of FAqs3')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_2, faq_answer=faq_answer_2)
-				# 	Influencer_faq.save()
-				# if ((faq_question_3 != "") and  (faq_answer_3 != "")):
-				# 	print('In if statement of FAqs4')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_3, faq_answer=faq_answer_3)	
-				# 	Influencer_faq.save()
-				# if ((faq_question_4 != "") and  (faq_answer_4 != "")):
-				# 	print('In if statement of FAqs5')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_4, faq_answer=faq_answer_4)	
-				# 	Influencer_faq.save()
-				# if ((faq_question_5 != "") and  (faq_answer_5 != "")):
-				# 	print('In if statement of FAqs')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_5, faq_answer=faq_answer_5)	
-				# 	Influencer_faq.save()
-				# if ((faq_question_6 != "") and  (faq_answer_6 != "")):
-				# 	print('In if statement of FAqs')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_6, faq_answer=faq_answer_6)	
-				# 	Influencer_faq.save()
-				# if ((faq_question_7 != "") and  (faq_answer_7 != "")):
-				# 	print('In if statement of FAqs')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_7, faq_answer=faq_answer_7)	
-				# 	Influencer_faq.save()
-				# if ((faq_question_8 != "") and  (faq_answer_8 != "")):
-				# 	print('In if statement of FAqs')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_8, faq_answer=faq_answer_8)	
-				# 	Influencer_faq.save()
-				# if ((faq_question_9 != "") and  (faq_answer_9 != "")):
-				# 	print('In if statement of FAqs')
-				# 	Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_9, faq_answer=faq_answer_9)	
-				# 	Influencer_faq.save()
+				faq_question_0= request.POST.get('faq_question_0')
+				faq_answer_0= request.POST.get('faq_answer_0')
+				faq_question_1= request.POST.get('faq_question_1')
+				faq_answer_1= request.POST.get('faq_answer_1')
+				faq_question_2= request.POST.get('faq_question_2')
+				faq_answer_2= request.POST.get('faq_answer_2')
+				faq_question_3= request.POST.get('faq_question_3')
+				faq_answer_3= request.POST.get('faq_answer_3')
+				faq_question_4= request.POST.get('faq_question_4')
+				faq_answer_4= request.POST.get('faq_answer_4')
+				faq_question_5= request.POST.get('faq_question_5')
+				faq_answer_5= request.POST.get('faq_answer_5')
+				faq_question_6= request.POST.get('faq_question_6')
+				faq_answer_6= request.POST.get('faq_answer_6')
+				faq_question_7= request.POST.get('faq_question_7')
+				faq_answer_7= request.POST.get('faq_answer_7')
+				faq_question_8= request.POST.get('faq_question_8')
+				faq_answer_8= request.POST.get('faq_answer_8')
+				faq_question_9= request.POST.get('faq_question_9')
+				faq_answer_9= request.POST.get('faq_answer_9')
+				if ((faq_question_0 != "") and  (faq_answer_0 != "")):
+					print('In if statement of FAqs 1########')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_0, faq_answer=faq_answer_0)
+					Influencer_faq.save()
+				if ((faq_question_1 != "") and  (faq_answer_1 != "")):
+					print('In if statement of FAqs2')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_1, faq_answer=faq_answer_1)
+					Influencer_faq.save()
+				if ((faq_question_2 != "") and  (faq_answer_2 != "")):
+					print('In if statement of FAqs3')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_2, faq_answer=faq_answer_2)
+					Influencer_faq.save()
+				if ((faq_question_3 != "") and  (faq_answer_3 != "")):
+					print('In if statement of FAqs4')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_3, faq_answer=faq_answer_3)	
+					Influencer_faq.save()
+				if ((faq_question_4 != "") and  (faq_answer_4 != "")):
+					print('In if statement of FAqs5')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_4, faq_answer=faq_answer_4)	
+					Influencer_faq.save()
+				if ((faq_question_5 != "") and  (faq_answer_5 != "")):
+					print('In if statement of FAqs')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_5, faq_answer=faq_answer_5)	
+					Influencer_faq.save()
+				if ((faq_question_6 != "") and  (faq_answer_6 != "")):
+					print('In if statement of FAqs')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_6, faq_answer=faq_answer_6)	
+					Influencer_faq.save()
+				if ((faq_question_7 != "") and  (faq_answer_7 != "")):
+					print('In if statement of FAqs')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_7, faq_answer=faq_answer_7)	
+					Influencer_faq.save()
+				if ((faq_question_8 != "") and  (faq_answer_8 != "")):
+					print('In if statement of FAqs')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_8, faq_answer=faq_answer_8)	
+					Influencer_faq.save()
+				if ((faq_question_9 != "") and  (faq_answer_9 != "")):
+					print('In if statement of FAqs')
+					Influencer_faq=InfluencerFaq.objects.create(influencer_username=joined_influencer, faq_question=faq_question_9, faq_answer=faq_answer_9)	
+					Influencer_faq.save()
 				
 
 
@@ -2317,6 +2323,10 @@ def social_signup(request):
 	return render(request,'User/social_signup.html')
 
 def categories(request):
+	user_email_inful=request.user.email
+	print('user_email_inful::::::@@@@',user_email_inful)
+	if JoinInfluencer.objects.filter(email_address= user_email_inful):
+		return redirect('/joininfluencerprofilepage')
 	if request.method== 'POST':
 		try:
 			if request.user.is_authenticated:
@@ -2395,6 +2405,8 @@ def categories(request):
 					influencer_obj.skilled_trades= True
 				if "Automotive" in niches:
 					influencer_obj.automotive= True
+				niches_updated = niches.rstrip(',')
+				influencer_obj.description_influencer=niches
 			
 				influencer_obj.save()
 				is_brand_obj= BrandorInfluencer.objects.create(user=influencer, brand=False)
@@ -2405,4 +2417,9 @@ def categories(request):
 	return render(request,'User/categories.html')
 
 def join_influencer_profile_page(request):
+	user_email_inful=request.user.email
+	print('user_email_inful::::::@@@@',user_email_inful)
+	inful=JoinInfluencer.objects.get(email_address= user_email_inful)
+	if inful.location:
+		return redirect('/')
 	return render(request,'User/join_influencer_profile.html')

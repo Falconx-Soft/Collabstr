@@ -89,8 +89,15 @@ font-size: initial;
 <div style="    display: flex;justify-content: center;">
     <ul class="messages" style=" padding: 2px; display: flex;">
         {% for message in messages %}
+        {% if 'signed in as' in message %}
         <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
-            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/succ.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div>
+        </div>
+        {% else %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div>
+        </div>
+        {% endif %}
             <div>{{ message }}</div>
             {% endfor %}
     </ul>
@@ -226,14 +233,143 @@ font-size: initial;
         
         
                 </div>
-                <input type="hidden" name="niches" value="">
+                <input type="hidden" name="niches" value="">-->
                 <button type="button" class="submit  form_1_submit">Continue</button>
                 <!-- <button type="button" class="submit btn profile-submit-btn">Continue</button> -->
           
-            </div> -->
+            <!-- </div>  -->
     </div>
+    <!-- form7 -->
+<div class="form-holder " data-step="2" style=" width: 75%;">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">2/4</div>
+    </div>
+    <h2 class="form-title">Add up to 5 images of you and your content</h2>
+    <div class="form">
+        <input type="hidden" name=""
+            value="">
+        <div class="scroll-holder scroll-holder-wide">
+            <div id="file-area-prof-pic">
+                <img class="profile-img"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/addProfPic.png">
+                <input id="file-input" type="file" name="profile_img" accept="image/*">
+            </div>
+
+            <div class="img-row">
+                <!-- overlay -->
+
+                <div class="upload-img-overlay">
+                    <div class="upload-btn-overlay">
+                        <input type="file" class="img-file-input file-input js-img-file-input" name="img-files"
+                            accept="image/*" multiple="" id="cover_image_input">
+                        <div class="upload-img-btn btn">
+                            <img class="upload-btn-img"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/upload.svg">Upload
+                            Photos
+                        </div>
+                    </div>
+                    <div class="primary-img">
+                        <div class="file-area"></div>
+                    </div>
+                    <div class="img-col">
+                        <div class="img-row-sq">
+                            <div class="file-area"></div>
+                            <div class="file-area"></div>
+                        </div>
+                        <div class="file-area file-area4"></div>
+                    </div>
+                </div>
+
+                <!-- overlay end -->
+
+                <div class="primary-img">
+                    <div class="file-area">
+                        <div class="cover-img-badge">Cover Photo</div>
+                        <input id="required-img" onchange="" class="img-input" type="file"
+                            name="cover_image" accept="image/*">
+                        <img class="img img1"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/defaultCover.png">
+                    </div>
+                </div>
+                <div class="img-col">
+                    <div class="img-row-sq">
+                        <div class="file-area">
+                            <!-- menu btn -->
+                            <div class="more-img-holder">
+                                <div class="more-img-badge">•••</div>
+                                <div class="more-img-dropdown-holder">
+
+                                    <div class="more-img-dropdown-item" data-action="cover" data-id="2">Make cover
+                                        photo</div>
+
+                                    <div class="more-img-dropdown-item" data-action="delete" data-id="2">Delete
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- menu btn end -->
+
+                            <input onchange="showImg(this,1)" class="img-input" type="file" name="img2" id="img2"
+                                accept="image/*">
+                            <img class="img img2"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                        </div>
+                        <div class="file-area">
+                            <!-- menu btn -->
+                            <div class="more-img-holder">
+                                <div class="more-img-badge">•••</div>
+                                <div class="more-img-dropdown-holder">
+
+                                    <div class="more-img-dropdown-item" data-action="cover" data-id="3">Make cover
+                                        photo</div>
+
+                                    <div class="more-img-dropdown-item" data-action="delete" data-id="3">Delete
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- menu btn end -->
+
+                            <input onchange="showImg(this,2)" class="img-input" type="file" name="img3" id="img3"
+                                accept="image/*">
+                            <img class="img img3"
+                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                        </div>
+                    </div>
+                    <div class="file-area file-area4">
+                        <!-- menu btn -->
+                        <div class="more-img-holder">
+                            <div class="more-img-badge">•••</div>
+                            <div class="more-img-dropdown-holder">
+
+                                <div class="more-img-dropdown-item" data-action="cover" data-id="4">Make cover photo
+                                </div>
+
+                                <div class="more-img-dropdown-item" data-action="delete" data-id="4">Delete</div>
+                            </div>
+                        </div>
+                        <!-- menu btn end -->
+
+                        <input onchange="showImg(this,3)" class="img-input" type="file" name="img4" id="img4"
+                            accept="image/*">
+                        <img class="img img4"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="del_img_list">
+
+        <button type="button" class="submit  form_7_submit">Continue</button>
+   </div>
+</div>
     <!-- form2 -->
-    <div class="form-holder" data-step="2">
+    <!-- <div class="form-holder" data-step="2">
         <div class="top-btn-holder">
             <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -252,9 +388,9 @@ font-size: initial;
                  value="" required="" id="form_2_input" >
             <button type="button" class="submit  form_2_submit">Continue</button>
         </div>
-    </div>
+    </div> -->
     <!-- form3 -->
-    <div class="form-holder" data-step="3" style="">
+    <!-- <div class="form-holder" data-step="3" style="">
         <div class="top-btn-holder">
             <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -273,7 +409,7 @@ font-size: initial;
                   id="form_3_input"  ></textarea>
             <button type="button" class="submit  form_3_submit">Continue</button>
         </div>
-    </div>
+    </div> -->
     <!-- form4 -->
     <!-- <div class="form-holder " data-step="4" style="">
         <div class="top-btn-holder">
@@ -310,7 +446,7 @@ font-size: initial;
         </div>
     </div> -->
     <!-- form 5 -->
-    <div class="form-holder" data-step="4" style="">
+    <div class="form-holder" data-step="3" style="">
         <div class="top-btn-holder">
             <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -318,7 +454,7 @@ font-size: initial;
                 </path>
             </svg>
             <div class="example-profile-btn">View Example Profile</div>
-            <div class="step-holder">4/6</div>
+            <div class="step-holder">3/4</div>
         </div>
         <h2 class="form-title">Add your social channels</h2>
         <div class="form">
@@ -581,137 +717,9 @@ font-size: initial;
         <button type="button" class="submit btn profile-submit-btn">Continue</button>
    </div>
 </div> -->
-<!-- form7 -->
-<div class="form-holder " data-step="5" style=" width: 75%;">
-    <div class="top-btn-holder">
-        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-            </path>
-        </svg>
-        <div class="example-profile-btn">View Example Profile</div>
-        <div class="step-holder">5/6</div>
-    </div>
-    <h2 class="form-title">Add up to 5 images of you and your content</h2>
-    <div class="form">
-        <input type="hidden" name=""
-            value="">
-        <div class="scroll-holder scroll-holder-wide">
-            <div id="file-area-prof-pic">
-                <img class="profile-img"
-                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/addProfPic.png">
-                <input id="file-input" type="file" name="profile_img" accept="image/*">
-            </div>
 
-            <div class="img-row">
-                <!-- overlay -->
-
-                <div class="upload-img-overlay">
-                    <div class="upload-btn-overlay">
-                        <input type="file" class="img-file-input file-input js-img-file-input" name="img-files"
-                            accept="image/*" multiple="" id="cover_image_input">
-                        <div class="upload-img-btn btn">
-                            <img class="upload-btn-img"
-                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/upload.svg">Upload
-                            Photos
-                        </div>
-                    </div>
-                    <div class="primary-img">
-                        <div class="file-area"></div>
-                    </div>
-                    <div class="img-col">
-                        <div class="img-row-sq">
-                            <div class="file-area"></div>
-                            <div class="file-area"></div>
-                        </div>
-                        <div class="file-area file-area4"></div>
-                    </div>
-                </div>
-
-                <!-- overlay end -->
-
-                <div class="primary-img">
-                    <div class="file-area">
-                        <div class="cover-img-badge">Cover Photo</div>
-                        <input id="required-img" onchange="" class="img-input" type="file"
-                            name="cover_image" accept="image/*">
-                        <img class="img img1"
-                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/defaultCover.png">
-                    </div>
-                </div>
-                <div class="img-col">
-                    <div class="img-row-sq">
-                        <div class="file-area">
-                            <!-- menu btn -->
-                            <div class="more-img-holder">
-                                <div class="more-img-badge">•••</div>
-                                <div class="more-img-dropdown-holder">
-
-                                    <div class="more-img-dropdown-item" data-action="cover" data-id="2">Make cover
-                                        photo</div>
-
-                                    <div class="more-img-dropdown-item" data-action="delete" data-id="2">Delete
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- menu btn end -->
-
-                            <input onchange="showImg(this,1)" class="img-input" type="file" name="img2" id="img2"
-                                accept="image/*">
-                            <img class="img img2"
-                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
-                        </div>
-                        <div class="file-area">
-                            <!-- menu btn -->
-                            <div class="more-img-holder">
-                                <div class="more-img-badge">•••</div>
-                                <div class="more-img-dropdown-holder">
-
-                                    <div class="more-img-dropdown-item" data-action="cover" data-id="3">Make cover
-                                        photo</div>
-
-                                    <div class="more-img-dropdown-item" data-action="delete" data-id="3">Delete
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- menu btn end -->
-
-                            <input onchange="showImg(this,2)" class="img-input" type="file" name="img3" id="img3"
-                                accept="image/*">
-                            <img class="img img3"
-                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
-                        </div>
-                    </div>
-                    <div class="file-area file-area4">
-                        <!-- menu btn -->
-                        <div class="more-img-holder">
-                            <div class="more-img-badge">•••</div>
-                            <div class="more-img-dropdown-holder">
-
-                                <div class="more-img-dropdown-item" data-action="cover" data-id="4">Make cover photo
-                                </div>
-
-                                <div class="more-img-dropdown-item" data-action="delete" data-id="4">Delete</div>
-                            </div>
-                        </div>
-                        <!-- menu btn end -->
-
-                        <input onchange="showImg(this,3)" class="img-input" type="file" name="img4" id="img4"
-                            accept="image/*">
-                        <img class="img img4"
-                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/default.png">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <input type="hidden" name="del_img_list">
-
-        <button type="button" class="submit  form_7_submit">Continue</button>
-   </div>
-</div>
 <!-- form 8 -->
-<div class="form-holder " data-step="6" style=" width: 75%;">
+<div class="form-holder " data-step="4" style=" width: 75%;">
     <div class="top-btn-holder">
         <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -719,7 +727,7 @@ font-size: initial;
             </path>
         </svg>
         <div class="example-profile-btn">View Example Profile</div>
-        <div class="step-holder">6/6</div>
+        <div class="step-holder">4/4</div>
     </div>
     <h2 class="form-title" style="margin-bottom: 10px;">Add your packages</h2>
     <div style="margin-bottom: 30px;">These are services brands can purchase from you. This can be anything from a
@@ -744,17 +752,17 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_0">
+                <select id="content_type"  class="input package-content-type-select" name="package_content_type_0">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
@@ -780,25 +788,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -831,7 +839,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                     ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_0" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_0" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -851,21 +859,23 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_1">
+                <select id="content_type" class="input package-content-type-select" name="package_content_type_1">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
 
                     <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
@@ -885,25 +895,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -925,7 +935,6 @@ font-size: initial;
 
                     <option data-platform-id="6" hidden="" value="Other">Other</option>
 
-
                 </select>
 
 
@@ -937,7 +946,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                    ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_1" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_1" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -957,21 +966,23 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_2">
+                <select id="content_type" class="input package-content-type-select" name="package_content_type_2">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
 
                     <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
@@ -991,25 +1002,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -1030,7 +1041,6 @@ font-size: initial;
                     <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
 
                     <option data-platform-id="6" hidden="" value="Other">Other</option>
-
                 </select>
 
 
@@ -1042,7 +1052,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                   ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_2" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_2" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -1062,21 +1072,23 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_3">
+                <select id="content_type" class="input package-content-type-select" name="package_content_type_3">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
 
                     <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
@@ -1096,25 +1108,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -1135,7 +1147,6 @@ font-size: initial;
                     <option data-platform-id="6" hidden="" value="Livestream">Livestream</option>
 
                     <option data-platform-id="6" hidden="" value="Other">Other</option>
-
                 </select>
 
 
@@ -1147,7 +1158,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                     ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_3" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_3" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -1167,21 +1178,23 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_4">
+                <select id="content_type" class="input package-content-type-select" name="package_content_type_4">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
 
                     <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
@@ -1201,25 +1214,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -1251,7 +1264,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                    ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_4" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_4" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -1271,21 +1284,23 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_5">
+                <select id="content_type" class="input package-content-type-select" name="package_content_type_5">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
 
                     <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
@@ -1305,25 +1320,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -1356,7 +1371,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                     ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_5" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_5" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -1376,21 +1391,23 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_6">
+                <select id="content_type" class="input package-content-type-select" name="package_content_type_6">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
 
                     <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
@@ -1410,25 +1427,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -1461,7 +1478,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                     ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_6" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_6" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -1481,21 +1498,23 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_7">
+                <select id="content_type" class="input package-content-type-select" name="package_content_type_7">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
 
                     <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
@@ -1515,25 +1534,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -1566,7 +1585,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                     ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_7" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_7" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -1586,21 +1605,23 @@ font-size: initial;
 
                     <option value="2">TikTok</option>
 
-                    <option value="3">User Generated Content</option>
+                    <!-- <option value="3">User Generated Content</option>
 
                     <option value="4">YouTube</option>
 
                     <option value="5">Twitter</option>
 
-                    <option value="6">Twitch</option>
+                    <option value="6">Twitch</option> -->
 
                 </select>
 
-                <select class="input package-content-type-select" name="package_content_type_8">
+                <select id="content_type" class="input package-content-type-select" name="package_content_type_8">
 
 
                     <option value="" selected="" hidden="" disabled>Choose Content Type</option>
 
+
+                    
 
                     <option data-platform-id="3" hidden="" value="Product Video">Product Video</option>
 
@@ -1620,25 +1641,25 @@ font-size: initial;
 
                     <option data-platform-id="3" hidden="" value="Other">Other</option>
 
-                    <option data-platform-id="1" hidden="" value="Photo Feed Post">Photo Feed Post</option>
+                    <option data-platform-id="1" hidden="" value="Post">Post</option>
 
-                    <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Video Feed Post">Video Feed Post</option> -->
 
                     <option data-platform-id="1" hidden="" value="Reel">Reel</option>
 
                     <option data-platform-id="1" hidden="" value="Story">Story</option>
 
-                    <option data-platform-id="1" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="1" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="1" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="2" hidden="" value="Video">Video</option>
 
-                    <option data-platform-id="2" hidden="" value="Story">Story</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Story">Story</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Live">Live</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Live">Live</option> -->
 
-                    <option data-platform-id="2" hidden="" value="Other">Other</option>
+                    <!-- <option data-platform-id="2" hidden="" value="Other">Other</option> -->
 
                     <option data-platform-id="4" hidden="" value="Video">Video</option>
 
@@ -1671,7 +1692,7 @@ font-size: initial;
                     placeholder="What is included in this package? How many posts or photos? What will the buyer be getting?"
                     ></textarea>
 
-                <input class="input price-input" type="number" name="package_price_8" placeholder="Price (USD)"
+                <input class="input price-input" readonly type="number" name="package_price_8" placeholder="Price (USD)"
                     value="">
                 <div class="price-disclaimer">INFUL takes a 15% fee</div>
             </div>
@@ -3593,7 +3614,7 @@ font-size: initial;
             forminput1= $('#niches_input').val()
             var checked_gender = document.querySelector('input[name = "gender_influencer"]:checked');
             console.log('for,input::::::::::::', forminput)
-            if( !forminput & checked_gender == null & !forminput1) {
+            if( !forminput & checked_gender == null ) {
                 alert('Please Select your Location and Gender and Niches')
 console.log('input is not  present') 
      }
@@ -3606,10 +3627,7 @@ console.log('input is not  present')
 else if(checked_gender == null){  //Test if something was checked
 alert('Please select a gender'); //Alert the value of the checked.
 }
-else if( !forminput1 ) {
-                alert('Please Select Atleast One Niche')
-console.log('input is not  present') 
-     }
+
 else{
     var active = $(".form-holder.active").attr("data-step")
             var next = parseInt(active) + 1
@@ -3868,6 +3886,30 @@ else{
         }
         console.log('niches_input', $('#niches_input').val())
         });
+
+
+        // For checking the content type and assigning price
+        $("#content_type").change(function(){
+    console.log("The text has been changed.");
+    content_type=$('#content_type').val()
+    console.log('content_type',content_type)
+        if (content_type== 'Reel'){
+            value=$(this).parent().children('.price-input');
+            value.val(300);
+        }
+        if (content_type== 'Post'){
+            value=$(this).parent().children('.price-input');
+            value.val(300);
+        }
+        if (content_type== 'Story'){
+            value=$(this).parent().children('.price-input');
+            value.val(100);
+        }
+        if (content_type== 'Video'){
+            value=$(this).parent().children('.price-input');
+            value.val(400);
+        }
+  });
 
 </script>
 
