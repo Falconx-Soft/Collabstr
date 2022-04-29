@@ -97,8 +97,8 @@ font-size: initial;
 </div>
 <form action="{% url 'join_influencer_profile' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="hidden" name="influencer_username_3"
-                value="{{influencer_username_2}}">
+    <!-- <input type="hidden" name="influencer_username_3"
+                value="{{influencer_username_2}}"> -->
     <!-- form1 -->
     <div class="form-holder active" data-step="1">
         <!-- <div class="top-btn-holder" style="visibility:hidden;">
@@ -109,6 +109,7 @@ font-size: initial;
             </svg>
             <div class="example-profile-btn">View Example Profile</div> -->
         <!-- </div> -->
+        
         <h2 class="form-title">Where are you located?</h2>
         
         <div class="form" >
@@ -190,7 +191,7 @@ font-size: initial;
                         can filter for it.</div>
                 </div>
             </div>
-            <h2 class="form-title" style="margin-top: inherit;">Select the niches that match your content</h2>
+            <!-- <h2 class="form-title" style="margin-top: inherit;">Select the niches that match your content</h2>
             <div class="form">
                 <input type="hidden" id="niches_input" name="niches_val" value="">
                 <div class="niches-holder scroll-holder">
@@ -228,7 +229,8 @@ font-size: initial;
                 <input type="hidden" name="niches" value="">
                 <button type="button" class="submit  form_1_submit">Continue</button>
                 <!-- <button type="button" class="submit btn profile-submit-btn">Continue</button> -->
-           </div>
+          
+            </div> -->
     </div>
     <!-- form2 -->
     <div class="form-holder" data-step="2">

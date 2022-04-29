@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}">
+<style>
+    .form-holder {
+        margin-top: 10%;
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+    .gender-option{
+        padding: 8px;
+    }
+    .profile-submit-btn{
+        font-size: initial;
+    }
+    .form_2_submit , .form_3_submit , .form_1_submit, .form_7_submit, .form_4_submit{
+    
+    font-size: initial;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    font-size: 95%;
+    font-family: inherit;
+    border-radius: 8px;
+    box-shadow: rgba(120, 120, 170, 0.15) 0 2px 16px 0;;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    position: relative;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 15px 0;
+    margin: 4% auto;
+font-size: initial;
+}
+.form_2_submit:hover, .form_3_submit:hover, .form_1_submit:hover, .form_7_submit:hover, .form_4_submit:hover{
+    opacity: 0.6;
+    color: white;
+
+}
+.messages{
+        display: flex;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 366px;
+    padding: 12px;
+    border-radius: 8px;
+    /* color: var(--black); */
+    background-color: white;
+    /* box-shadow: var(--mediumBoxShadow); */
+    font-size: 90%;
+    z-index: 9999999999;
+    box-shadow: rgb(120 120 170 / 20%) 0 2px 10px 0;
+    color: black;
+    }
+   
+    @media(max-width:800px){
+        .form-holder .package-holder{
+            flex: 0 48%;
+        }
+    }
+    @media(max-width:400px){
+        .form-holder{
+            min-width: 350px;
+        }
+        .form-holder .package-holder{
+            flex: 0 100%;
+        }
+    }
+</style>
+
+{% endblock extrastyle %}
+
+{% block content %}	
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style=" padding: 2px; display: flex;">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/succ.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div>{{ message }}</div>
+            {% endfor %}
+    </ul>
+</div>
+<form action="{% url 'categories' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    
+    
+   
+    <!-- form 6 -->
+<div class="form-holder active" data-step="6" style="">
+    <div class="top-btn-holder">
+        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
+            </path>
+        </svg>
+        <div class="example-profile-btn">View Example Profile</div>
+        <div class="step-holder">1/1</div>
+    </div>
+    <h2 class="form-title">Select the niches that match your content</h2>
+    <div class="form">
+        <input type="hidden" id="niches_input" name="niches_val" required value="">
+        <div class="niches-holder scroll-holder">
+
+
+            <div class="niche-holder " data-id="35">Lifestyle</div>
+            <div class="niche-holder " data-id="36">Fashion</div>
+            <div class="niche-holder " data-id="37">Beauty</div>
+            <div class="niche-holder " data-id="26">Health & Fitness</div>
+            <div class="niche-holder " data-id="34">Travel</div>
+            <div class="niche-holder " data-id="23">Food & Drink</div>
+            <div class="niche-holder " data-id="39">Model</div>
+            <div class="niche-holder " data-id="38">Comedy & Entertainment</div>
+            <div class="niche-holder " data-id="28">Art & Photography</div>
+            <div class="niche-holder " data-id="31">Music & Dance</div>
+            <div class="niche-holder " data-id="24">Entrepreneur & Business</div>
+            <div class="niche-holder " data-id="29">Family & Children</div>
+            <div class="niche-holder " data-id="30">Animals & Pets</div>
+            <div class="niche-holder " data-id="33">Athlete & Sports</div>
+            <div class="niche-holder " data-id="43">Celebrity & Public Figure</div>
+            <div class="niche-holder " data-id="45">Adventure & Outdoors</div>
+            <div class="niche-holder " data-id="40">Actor</div>
+            <div class="niche-holder " data-id="42">Education</div>
+            <div class="niche-holder " data-id="32">Gaming</div>
+            <div class="niche-holder " data-id="44">LGBTQ2+</div>
+            <div class="niche-holder " data-id="41">Technology</div>
+            <div class="niche-holder " data-id="49">Healthcare</div>
+            <div class="niche-holder " data-id="46">Vegan</div>
+            <div class="niche-holder " data-id="50">Cannabis</div>
+            <div class="niche-holder " data-id="48">Skilled Trades</div>
+            <div class="niche-holder " data-id="47">Automotive</div>
+
+
+        </div>
+        <input type="hidden" name="niches" value="">
+        <button type="submit" class="submit btn profile-submit-btn">Continue</button>
+   </div>
+</form>
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+<script>
+    // $(document).ready(function () {
+    // navbar
+    $(".dashboard-menu-holder").hover(function () {
+        $('.dashboard-menu').show();
+    }, function () {
+        $('.dashboard-menu').hide();
+    });
+    // allforms
+    
+  
+ 
+    
+    // form 6
+
+    $('.niche-holder').click(function () {
+
+        if ($(this).hasClass("niche-selected")) {
+            $(this).removeClass("niche-selected")
+        }
+        else {
+            $(this).addClass("niche-selected")
+
+        }
+
+
+    });
+    // #################################################
+  
+    // ##############################################################
+    // form 9
+ 
+    // #########################################
+    // to select the niches
+    var input_value = $('#niches_input').val()
+    var str = ""
+    $(".niche-holder").click(function () {
+        console.log('niche holder clicked::::::::::::::::::::')
+        var id = $(this).text();
+        console.log('text inside the niche', id)
+        console.log(id)
+        if ($('#niches_input').val().includes(id)) {
+            console.log('in if statement')
+            str = str.replace(id + ',', '')
+            $('#niches_input').val(str)
+        }
+
+        else {
+            str = str + id + ','
+            console.log('string value', str)
+
+            $('#niches_input').val(str)
+        }
+        console.log('niches_input', $('#niches_input').val())
+        });
+
+</script>
+
+{% endblock extrajavascript %}

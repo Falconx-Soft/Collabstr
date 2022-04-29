@@ -439,8 +439,10 @@
     <p class="featured-text">Hire top influencers accross all platforms</p>
 </div>
 <!-- *************************************************************************************************************************change -->
-<div class="influencers-div"> 
+<div class="influencers-div">
+    {% if all_influencer %}
     {% for influencer in all_influencer %}
+    {% if influencer.location %}
     <form action="{% url 'influencer_home_profile' %}" method="POST">
         {% csrf_token %}
         <div class="card img-fluid f-image" style="margin-right: 0px;">
@@ -465,8 +467,10 @@
         </div>
 
     </form>
+    {% endif %}
     
     {% endfor %}
+    {% endif %}
 
 
     <div class="card img-fluid f-image" style="margin-right: 0px;">

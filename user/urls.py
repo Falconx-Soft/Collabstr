@@ -41,6 +41,10 @@ urlpatterns = [
       path('create-checkout-session/', views.create_checkout_session, name="checkout"),
       path('success/',views.success_view, name="success"),
       path('cancel/',views.cancel_view, name="cancel"),
+
+      path('socialsignup/',views.social_signup, name="social_signup"),
+      path('joininfluencerprofilepage/',views.join_influencer_profile_page, name="join_influencer_profile_page"),
+      path('categories/',views.categories, name="categories"),
       
 
 	path('reset_password/', auth_views.PasswordResetView.as_view(template_name="User/restPassword/restPassword.html"), name="reset_password"),
