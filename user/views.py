@@ -1860,173 +1860,176 @@ def influencer_profile_edit(request):
 
 
 def join_brand_profile(request):
-	user= request.user
-	user_email=user.email
-	loggendin_brand= JoinBrand.objects.get(brand_email=user_email)
-	print('_--_---------------------------------------')
-	print('user_email::-------------------------------------------""::"""', loggendin_brand)
-	if request.method== 'POST':
-		location_brand=request.POST.get('location_brand')
-		description_brand=request.POST.get('description_brand')
-		brand_niches_value=request.POST.get('brand_niches_value')
-		
-		loggendin_brand.brand_location=location_brand
-		loggendin_brand.brand_description=description_brand
-		
-
-
-
-		if "Lifestyle" in brand_niches_value:
-			loggendin_brand.lifestyle= True
-		if "Fashion" in brand_niches_value:
-			loggendin_brand.fashion= True
-		if "Beauty" in brand_niches_value:
-			loggendin_brand.beauty= True
-		
-		if "Health & Fitness" in brand_niches_value:
-			loggendin_brand.health_fitness= True
-		if "Travel" in brand_niches_value:
-			loggendin_brand.travel= True
-		if "Food & Drink" in brand_niches_value:
-			loggendin_brand.food_drink= True
-		if "Model" in brand_niches_value:
-			loggendin_brand.model= True
-		if "Comedy & Entertainment" in brand_niches_value:
-			loggendin_brand.comedy_entertainment= True
-		if "Art & Photography" in brand_niches_value:
-			loggendin_brand.art_photography= True
-		
-		if "Music & Dance" in brand_niches_value:
-			loggendin_brand.music_dance= True
-		if "Entrepreneur & Business" in brand_niches_value:
-			loggendin_brand.entrepreneur_business= True
-		if "Family & Children" in brand_niches_value:
-			loggendin_brand.family_children= True
-		if "Animals & Pets" in brand_niches_value:
-			loggendin_brand.animals_pets= True
-		if "Athlete & Sports" in brand_niches_value:
-			loggendin_brand.athlete_sports= True
-		if "Celebrity & Public Figure" in brand_niches_value:
-			loggendin_brand.celebrity_public_pigure= True
-		
-		if "Adventure & Outdoors" in brand_niches_value:
-			loggendin_brand.adventure_outdoors= True
-		if "Actor" in brand_niches_value:
-			loggendin_brand.actor= True
-		if "Education" in brand_niches_value:
-			loggendin_brand.education= True
-		if "Gaming" in brand_niches_value:
-			loggendin_brand.gaming= True
-		if "LGBTQ2" in brand_niches_value:
-			loggendin_brand.lgbtq= True
-		if "Technology" in brand_niches_value:
-			loggendin_brand.technology= True
-		
-		if "Healthcare" in brand_niches_value:
-			loggendin_brand.healthcare= True
-		if "Vegan" in brand_niches_value:
-			loggendin_brand.vegan= True
-		if "Cannabis" in brand_niches_value:
-			loggendin_brand.cannabis= True
-		if "Skilled Trades" in brand_niches_value:
-			loggendin_brand.skilled_trades= True
-		if "Automotive" in brand_niches_value:
-			loggendin_brand.automotive= True
-
-		profile_image= request.FILES.get('profile_img')
-		print('profile image join_________________', profile_image)
-		all_image= request.FILES.getlist('img-files')
-		print('all_________________', all_image)
-		print('length of all_________________', len(all_image))
-		print('image0 allimage&&&&&&&&&&&&&', all_image[0])
-		cover_image= request.FILES.get('cover_image')
-		img2= request.FILES.get('img2')
-		img3= request.FILES.get('img3')
-		img4= request.FILES.get('img4')
-
-		loggendin_brand.profile_image=profile_image
-
-		if len(all_image) == 1:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-		if len(all_image) == 2:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-		if len(all_image) == 3:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-			loggendin_brand.image4=all_image[2]
-		if len(all_image) == 4:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-			loggendin_brand.image4=all_image[2]
-			loggendin_brand.image5=all_image[3]
-
-		if len(all_image) == 5:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-			loggendin_brand.image4=all_image[2]
-			loggendin_brand.image5=all_image[3]
-		if len(all_image) == 6:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-			loggendin_brand.image4=all_image[2]
-			loggendin_brand.image5=all_image[3]
-		if len(all_image) == 7:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-			loggendin_brand.image4=all_image[2]
-			loggendin_brand.image5=all_image[3]
-		if len(all_image) == 8:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-			loggendin_brand.image4=all_image[2]
-			loggendin_brand.image5=all_image[3]
-		if len(all_image) == 9:
-			print('_______________________________')
-			print('length of allimage&&&&&&&&&&&&&', all_image[0])
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-			loggendin_brand.image4=all_image[2]
-			loggendin_brand.image5=all_image[3]
-		if len(all_image) == 10:
-			loggendin_brand.cover_image=all_image[0]
-			loggendin_brand.image3=all_image[1]
-			loggendin_brand.image4=all_image[2]
-			loggendin_brand.image5=all_image[3]
-
-		if cover_image:
-
-			loggendin_brand.cover_image=cover_image
+	try:
+		user= request.user
+		user_email=user.email
+		loggendin_brand= JoinBrand.objects.get(brand_email=user_email)
+		print('_--_---------------------------------------')
+		print('user_email::-------------------------------------------""::"""', loggendin_brand)
+		if request.method== 'POST':
+			location_brand=request.POST.get('location_brand')
+			description_brand=request.POST.get('description_brand')
+			brand_niches_value=request.POST.get('brand_niches_value')
 			
-		if img2:
-			loggendin_brand.image3=img2
-		if img3:
-			loggendin_brand.image4=img3
-		if img4:
-			loggendin_brand.image5=img4
+			loggendin_brand.brand_location=location_brand
+			loggendin_brand.brand_description=description_brand
+			
 
 
 
-		loggendin_brand.is_added= True
-		loggendin_brand.save()
-		return render(request,'User/home.html')
+			if "Lifestyle" in brand_niches_value:
+				loggendin_brand.lifestyle= True
+			if "Fashion" in brand_niches_value:
+				loggendin_brand.fashion= True
+			if "Beauty" in brand_niches_value:
+				loggendin_brand.beauty= True
+			
+			if "Health & Fitness" in brand_niches_value:
+				loggendin_brand.health_fitness= True
+			if "Travel" in brand_niches_value:
+				loggendin_brand.travel= True
+			if "Food & Drink" in brand_niches_value:
+				loggendin_brand.food_drink= True
+			if "Model" in brand_niches_value:
+				loggendin_brand.model= True
+			if "Comedy & Entertainment" in brand_niches_value:
+				loggendin_brand.comedy_entertainment= True
+			if "Art & Photography" in brand_niches_value:
+				loggendin_brand.art_photography= True
+			
+			if "Music & Dance" in brand_niches_value:
+				loggendin_brand.music_dance= True
+			if "Entrepreneur & Business" in brand_niches_value:
+				loggendin_brand.entrepreneur_business= True
+			if "Family & Children" in brand_niches_value:
+				loggendin_brand.family_children= True
+			if "Animals & Pets" in brand_niches_value:
+				loggendin_brand.animals_pets= True
+			if "Athlete & Sports" in brand_niches_value:
+				loggendin_brand.athlete_sports= True
+			if "Celebrity & Public Figure" in brand_niches_value:
+				loggendin_brand.celebrity_public_pigure= True
+			
+			if "Adventure & Outdoors" in brand_niches_value:
+				loggendin_brand.adventure_outdoors= True
+			if "Actor" in brand_niches_value:
+				loggendin_brand.actor= True
+			if "Education" in brand_niches_value:
+				loggendin_brand.education= True
+			if "Gaming" in brand_niches_value:
+				loggendin_brand.gaming= True
+			if "LGBTQ2" in brand_niches_value:
+				loggendin_brand.lgbtq= True
+			if "Technology" in brand_niches_value:
+				loggendin_brand.technology= True
+			
+			if "Healthcare" in brand_niches_value:
+				loggendin_brand.healthcare= True
+			if "Vegan" in brand_niches_value:
+				loggendin_brand.vegan= True
+			if "Cannabis" in brand_niches_value:
+				loggendin_brand.cannabis= True
+			if "Skilled Trades" in brand_niches_value:
+				loggendin_brand.skilled_trades= True
+			if "Automotive" in brand_niches_value:
+				loggendin_brand.automotive= True
 
+			profile_image= request.FILES.get('profile_img')
+			print('profile image join_________________', profile_image)
+			all_image= request.FILES.getlist('img-files')
+			print('all_________________', all_image)
+			print('length of all_________________', len(all_image))
+			print('image0 allimage&&&&&&&&&&&&&', all_image[0])
+			cover_image= request.FILES.get('cover_image')
+			img2= request.FILES.get('img2')
+			img3= request.FILES.get('img3')
+			img4= request.FILES.get('img4')
+
+			loggendin_brand.profile_image=profile_image
+
+			if len(all_image) == 1:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+			if len(all_image) == 2:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+			if len(all_image) == 3:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+				loggendin_brand.image4=all_image[2]
+			if len(all_image) == 4:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+				loggendin_brand.image4=all_image[2]
+				loggendin_brand.image5=all_image[3]
+
+			if len(all_image) == 5:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+				loggendin_brand.image4=all_image[2]
+				loggendin_brand.image5=all_image[3]
+			if len(all_image) == 6:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+				loggendin_brand.image4=all_image[2]
+				loggendin_brand.image5=all_image[3]
+			if len(all_image) == 7:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+				loggendin_brand.image4=all_image[2]
+				loggendin_brand.image5=all_image[3]
+			if len(all_image) == 8:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+				loggendin_brand.image4=all_image[2]
+				loggendin_brand.image5=all_image[3]
+			if len(all_image) == 9:
+				print('_______________________________')
+				print('length of allimage&&&&&&&&&&&&&', all_image[0])
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+				loggendin_brand.image4=all_image[2]
+				loggendin_brand.image5=all_image[3]
+			if len(all_image) == 10:
+				loggendin_brand.cover_image=all_image[0]
+				loggendin_brand.image3=all_image[1]
+				loggendin_brand.image4=all_image[2]
+				loggendin_brand.image5=all_image[3]
+
+			if cover_image:
+
+				loggendin_brand.cover_image=cover_image
+				
+			if img2:
+				loggendin_brand.image3=img2
+			if img3:
+				loggendin_brand.image4=img3
+			if img4:
+				loggendin_brand.image5=img4
+
+
+
+			loggendin_brand.is_added= True
+			loggendin_brand.save()
+			return render(request,'User/home.html')
+	except Exception as e:
+			messages.success(request, 'Ooops There is a problem. Try again!!')
+			print(e)
 	return render(request, 'user/join_brand_profile.html')
 
 
@@ -2058,145 +2061,150 @@ def brand_profile(request):
 
 
 def brand_profile_edit(request):
-	user_email= request.user.email
-	user_brand=User.objects.get(email= user_email)
-	
-	loggendin_brand_1=JoinBrand.objects.get(brand_email=user_email)
-	print('joined_brand edit', loggendin_brand_1)
-	if request.method == 'POST':
-		brand_location= request.POST.get('brand_location')
-		print('brand_location edit', brand_location)
-		brand_niches_value= request.POST.get('brand_niches_value')
-		print('brand_niches_value edit', brand_niches_value)
-		brand_description= request.POST.get('brand_description')
-		print('brand_description edit', brand_description)
-		
-		
-		if brand_location:
-			loggendin_brand_1.brand_location=brand_location
-			loggendin_brand_1.save()
-		if brand_description:
-			loggendin_brand_1.brand_description= brand_description
-			loggendin_brand_1.save()
+	try:
 
-		if "Lifestyle" in brand_niches_value:
-			loggendin_brand_1.lifestyle= True
-			loggendin_brand_1.save()
-		if "Fashion" in brand_niches_value:
-			loggendin_brand_1.fashion= True
-			loggendin_brand_1.save()
-		if "Beauty" in brand_niches_value:
-			loggendin_brand_1.beauty= True
-			loggendin_brand_1.save()
+		user_email= request.user.email
+		user_brand=User.objects.get(email= user_email)
 		
-		if "Health & Fitness" in brand_niches_value:
-			loggendin_brand_1.health_fitness= True
-			loggendin_brand_1.save()
-		if "Travel" in brand_niches_value:
-			loggendin_brand_1.travel= True
-			loggendin_brand_1.save()
-		if "Food & Drink" in brand_niches_value:
-			loggendin_brand_1.food_drink= True
-			loggendin_brand_1.save()
-		if "Model" in brand_niches_value:
-			loggendin_brand_1.model= True
-			loggendin_brand_1.save()
-		if "Comedy & Entertainment" in brand_niches_value:
-			loggendin_brand_1.comedy_entertainment= True
-			loggendin_brand_1.save()
-		if "Art & Photography" in brand_niches_value:
-			loggendin_brand_1.art_photography= True
-			loggendin_brand_1.save()
-		
-		if "Music & Dance" in brand_niches_value:
-			loggendin_brand_1.music_dance= True
-			loggendin_brand_1.save()
-		if "Entrepreneur & Business" in brand_niches_value:
-			loggendin_brand_1.entrepreneur_business= True
-			loggendin_brand_1.save()
-		if "Family & Children" in brand_niches_value:
-			loggendin_brand_1.family_children= True
-			loggendin_brand_1.save()
-		if "Animals & Pets" in brand_niches_value:
-			loggendin_brand_1.animals_pets= True
-			loggendin_brand_1.save()
-		if "Athlete & Sports" in brand_niches_value:
-			loggendin_brand_1.athlete_sports= True
-			loggendin_brand_1.save()
-		if "Celebrity & Public Figure" in brand_niches_value:
-			loggendin_brand_1.celebrity_public_pigure= True
-			loggendin_brand_1.save()
-		
-		if "Adventure & Outdoors" in brand_niches_value:
-			loggendin_brand_1.adventure_outdoors= True
-			loggendin_brand_1.save()
-		if "Actor" in brand_niches_value:
-			loggendin_brand_1.actor= True
-			loggendin_brand_1.save()
-		if "Education" in brand_niches_value:
-			loggendin_brand_1.education= True
-			loggendin_brand_1.save()
-		if "Gaming" in brand_niches_value:
-			loggendin_brand_1.gaming= True
-			loggendin_brand_1.save()
-		if "LGBTQ2" in brand_niches_value:
-			loggendin_brand_1.lgbtq= True
-			loggendin_brand_1.save()
-		if "Technology" in brand_niches_value:
-			loggendin_brand_1.technology= True
-			loggendin_brand_1.save()
-		
-		if "Healthcare" in brand_niches_value:
-			loggendin_brand_1.healthcare= True
-			loggendin_brand_1.save()
-		if "Vegan" in brand_niches_value:
-			loggendin_brand_1.vegan= True
-			loggendin_brand_1.save()
-		if "Cannabis" in brand_niches_value:
-			loggendin_brand_1.cannabis= True
-			loggendin_brand_1.save()
-		if "Skilled Trades" in brand_niches_value:
-			loggendin_brand_1.skilled_trades= True
-			loggendin_brand_1.save()
-		if "Automotive" in brand_niches_value:
-			loggendin_brand_1.automotive= True
-			loggendin_brand_1.save()
-
-
-
-
-		profile_img= request.FILES.get('profile_img_edit')
-		print('profile image edit_____', profile_img)
-		cover_image= request.FILES.get('cover_image')
-		img2= request.FILES.get('img2')
-		img3= request.FILES.get('img3')
-		img4= request.FILES.get('img4')
-
-		if profile_img:
-			print('^^^^^^^ Inside 1 ^^^^^^^^^^^^^^')
-			loggendin_brand_1.profile_image=profile_img
+		loggendin_brand_1=JoinBrand.objects.get(brand_email=user_email)
+		print('joined_brand edit', loggendin_brand_1)
+		if request.method == 'POST':
+			brand_location= request.POST.get('brand_location')
+			print('brand_location edit', brand_location)
+			brand_niches_value= request.POST.get('brand_niches_value')
+			print('brand_niches_value edit', brand_niches_value)
+			brand_description= request.POST.get('brand_description')
+			print('brand_description edit', brand_description)
 			
-			loggendin_brand_1.save()
-		if cover_image:
-			print('^^^^^^^ Inside 2 ^^^^^^^^^^^^^^')
-			loggendin_brand_1.cover_image=cover_image
 			
-			loggendin_brand_1.save()
-		if img2:
-			print('^^^^^^^ Inside 3 ^^^^^^^^^^^^^^')
-			loggendin_brand_1.image3=img2
+			if brand_location:
+				loggendin_brand_1.brand_location=brand_location
+				loggendin_brand_1.save()
+			if brand_description:
+				loggendin_brand_1.brand_description= brand_description
+				loggendin_brand_1.save()
+
+			if "Lifestyle" in brand_niches_value:
+				loggendin_brand_1.lifestyle= True
+				loggendin_brand_1.save()
+			if "Fashion" in brand_niches_value:
+				loggendin_brand_1.fashion= True
+				loggendin_brand_1.save()
+			if "Beauty" in brand_niches_value:
+				loggendin_brand_1.beauty= True
+				loggendin_brand_1.save()
 			
-			loggendin_brand_1.save()
-		if img3:
-			print('^^^^^^^ Inside 4 ^^^^^^^^^^^^^^')
-			loggendin_brand_1.image4=img3
+			if "Health & Fitness" in brand_niches_value:
+				loggendin_brand_1.health_fitness= True
+				loggendin_brand_1.save()
+			if "Travel" in brand_niches_value:
+				loggendin_brand_1.travel= True
+				loggendin_brand_1.save()
+			if "Food & Drink" in brand_niches_value:
+				loggendin_brand_1.food_drink= True
+				loggendin_brand_1.save()
+			if "Model" in brand_niches_value:
+				loggendin_brand_1.model= True
+				loggendin_brand_1.save()
+			if "Comedy & Entertainment" in brand_niches_value:
+				loggendin_brand_1.comedy_entertainment= True
+				loggendin_brand_1.save()
+			if "Art & Photography" in brand_niches_value:
+				loggendin_brand_1.art_photography= True
+				loggendin_brand_1.save()
 			
-			loggendin_brand_1.save()
-		if img4:
-			print('^^^^^^^ Inside 5 ^^^^^^^^^^^^^^')
-			loggendin_brand_1.image5=img4
+			if "Music & Dance" in brand_niches_value:
+				loggendin_brand_1.music_dance= True
+				loggendin_brand_1.save()
+			if "Entrepreneur & Business" in brand_niches_value:
+				loggendin_brand_1.entrepreneur_business= True
+				loggendin_brand_1.save()
+			if "Family & Children" in brand_niches_value:
+				loggendin_brand_1.family_children= True
+				loggendin_brand_1.save()
+			if "Animals & Pets" in brand_niches_value:
+				loggendin_brand_1.animals_pets= True
+				loggendin_brand_1.save()
+			if "Athlete & Sports" in brand_niches_value:
+				loggendin_brand_1.athlete_sports= True
+				loggendin_brand_1.save()
+			if "Celebrity & Public Figure" in brand_niches_value:
+				loggendin_brand_1.celebrity_public_pigure= True
+				loggendin_brand_1.save()
 			
-			loggendin_brand_1.save()
+			if "Adventure & Outdoors" in brand_niches_value:
+				loggendin_brand_1.adventure_outdoors= True
+				loggendin_brand_1.save()
+			if "Actor" in brand_niches_value:
+				loggendin_brand_1.actor= True
+				loggendin_brand_1.save()
+			if "Education" in brand_niches_value:
+				loggendin_brand_1.education= True
+				loggendin_brand_1.save()
+			if "Gaming" in brand_niches_value:
+				loggendin_brand_1.gaming= True
+				loggendin_brand_1.save()
+			if "LGBTQ2" in brand_niches_value:
+				loggendin_brand_1.lgbtq= True
+				loggendin_brand_1.save()
+			if "Technology" in brand_niches_value:
+				loggendin_brand_1.technology= True
+				loggendin_brand_1.save()
+			
+			if "Healthcare" in brand_niches_value:
+				loggendin_brand_1.healthcare= True
+				loggendin_brand_1.save()
+			if "Vegan" in brand_niches_value:
+				loggendin_brand_1.vegan= True
+				loggendin_brand_1.save()
+			if "Cannabis" in brand_niches_value:
+				loggendin_brand_1.cannabis= True
+				loggendin_brand_1.save()
+			if "Skilled Trades" in brand_niches_value:
+				loggendin_brand_1.skilled_trades= True
+				loggendin_brand_1.save()
+			if "Automotive" in brand_niches_value:
+				loggendin_brand_1.automotive= True
+				loggendin_brand_1.save()
+
+
+
+
+			profile_img= request.FILES.get('profile_img_edit')
+			print('profile image edit_____', profile_img)
+			cover_image= request.FILES.get('cover_image')
+			img2= request.FILES.get('img2')
+			img3= request.FILES.get('img3')
+			img4= request.FILES.get('img4')
+
+			if profile_img:
+				print('^^^^^^^ Inside 1 ^^^^^^^^^^^^^^')
+				loggendin_brand_1.profile_image=profile_img
+				
+				loggendin_brand_1.save()
+			if cover_image:
+				print('^^^^^^^ Inside 2 ^^^^^^^^^^^^^^')
+				loggendin_brand_1.cover_image=cover_image
+				
+				loggendin_brand_1.save()
+			if img2:
+				print('^^^^^^^ Inside 3 ^^^^^^^^^^^^^^')
+				loggendin_brand_1.image3=img2
+				
+				loggendin_brand_1.save()
+			if img3:
+				print('^^^^^^^ Inside 4 ^^^^^^^^^^^^^^')
+				loggendin_brand_1.image4=img3
+				
+				loggendin_brand_1.save()
+			if img4:
+				print('^^^^^^^ Inside 5 ^^^^^^^^^^^^^^')
+				loggendin_brand_1.image5=img4
+				
+				loggendin_brand_1.save()
+	except Exception as e:
+			messages.success(request, 'Ooops There is a problem. Try again!!')
+			print(e)
 	return render(request, 'User/brand_edit.html')
 
 
@@ -2328,122 +2336,125 @@ def social_signup(request):
 	return render(request,'User/social_signup.html')
 
 def categories(request):
-	user_email_inful=request.user.email
-	session_user=request.session.get('username_session')
-	print('user_email_inful::::::@@@@',user_email_inful)
-	if JoinInfluencer.objects.filter(email_address= user_email_inful):
-		return redirect('/joininfluencerprofilepage')
-	if session_user is not None:
-		print('------------------------Session User', session_user)
+	try:
+		user_email_inful=request.user.email
+		session_user=request.session.get('username_session')
+		print('user_email_inful::::::@@@@',user_email_inful)
+		if JoinInfluencer.objects.filter(email_address= user_email_inful):
+			return redirect('/joininfluencerprofilepage')
+		if session_user is not None:
+			print('------------------------Session User', session_user)
 
-		join_inful=JoinInfluencer.objects.filter(influencer_username= session_user)
-		if join_inful:
-			print('------------------------join_inful', join_inful)
-			join_inful_0=join_inful[0]
-			if join_inful_0.email_address != '':
-				print('------------------------join_inful.email_address', join_inful_0.email_address)
-				if join_inful_0.email_address == user_email_inful:
-					print('------------------------Inside equal if')
-					return redirect('/joininfluencerprofilepage')
+			join_inful=JoinInfluencer.objects.filter(influencer_username= session_user)
+			if join_inful:
+				print('------------------------join_inful', join_inful)
+				join_inful_0=join_inful[0]
+				if join_inful_0.email_address != '':
+					print('------------------------join_inful.email_address', join_inful_0.email_address)
+					if join_inful_0.email_address == user_email_inful:
+						print('------------------------Inside equal if')
+						return redirect('/joininfluencerprofilepage')
+					else:
+						print('------------------------Inside equal else')
+						messages.success(request, 'Email You trying to login does not exist')
+						return redirect('logout')
 				else:
-					print('------------------------Inside equal else')
-					messages.success(request, 'Email You trying to login does not exist')
-					return redirect('logout')
-			else:
-				print('------------------------join_inful.email_address Else', join_inful_0.email_address)
-				if request.method== 'POST':
-					try:
-						if request.user.is_authenticated:
-							print("brand is logged in :)")
-							user= request.user
-							username = request.user.username
-							user_email=user.email
-							fname_influencer=request.user.first_name
-							lname_influencer=request.user.last_name
-							fullname_influencer= fname_influencer+' '+ lname_influencer
-							print('username::::::@@@@',username)
-							print('user_email::::::@@@@',user_email)
-							print('fname_influencer::::::@@@@',fname_influencer)
-							print('Flname_influencer::::::@@@@',lname_influencer)
-							print('fullname_influencer::::::@@@@',fullname_influencer)
-							username_session = request.session.get('username_session')
-							print('Fav username_session create page::::::@@@@',username_session)
-							influencer=User.objects.get(username= username)
-							influencer_obj= JoinInfluencer.objects.get(influencer_username= username_session)
-							influencer_obj.full_name=fullname_influencer
-							influencer_obj.email_address=user_email
-							niches= request.POST.get('niches_val')
-							if "Lifestyle" in niches:
-								influencer_obj.lifestyle= True
-							if "Fashion" in niches:
-								influencer_obj.fashion= True
-							if "Beauty" in niches:
-								influencer_obj.beauty= True
+					print('------------------------join_inful.email_address Else', join_inful_0.email_address)
+					if request.method== 'POST':
+						try:
+							if request.user.is_authenticated:
+								print("brand is logged in :)")
+								user= request.user
+								username = request.user.username
+								user_email=user.email
+								fname_influencer=request.user.first_name
+								lname_influencer=request.user.last_name
+								fullname_influencer= fname_influencer+' '+ lname_influencer
+								print('username::::::@@@@',username)
+								print('user_email::::::@@@@',user_email)
+								print('fname_influencer::::::@@@@',fname_influencer)
+								print('Flname_influencer::::::@@@@',lname_influencer)
+								print('fullname_influencer::::::@@@@',fullname_influencer)
+								username_session = request.session.get('username_session')
+								print('Fav username_session create page::::::@@@@',username_session)
+								influencer=User.objects.get(username= username)
+								influencer_obj= JoinInfluencer.objects.get(influencer_username= username_session)
+								influencer_obj.full_name=fullname_influencer
+								influencer_obj.email_address=user_email
+								niches= request.POST.get('niches_val')
+								if "Lifestyle" in niches:
+									influencer_obj.lifestyle= True
+								if "Fashion" in niches:
+									influencer_obj.fashion= True
+								if "Beauty" in niches:
+									influencer_obj.beauty= True
+								
+								if "Health & Fitness" in niches:
+									influencer_obj.health_fitness= True
+								if "Travel" in niches:
+									influencer_obj.travel= True
+								if "Food & Drink" in niches:
+									influencer_obj.food_drink= True
+								if "Model" in niches:
+									influencer_obj.model= True
+								if "Comedy & Entertainment" in niches:
+									influencer_obj.comedy_entertainment= True
+								if "Art & Photography" in niches:
+									influencer_obj.art_photography= True
+								
+								if "Music & Dance" in niches:
+									influencer_obj.music_dance= True
+								if "Entrepreneur & Business" in niches:
+									influencer_obj.entrepreneur_business= True
+								if "Family & Children" in niches:
+									influencer_obj.family_children= True
+								if "Animals & Pets" in niches:
+									influencer_obj.animals_pets= True
+								if "Athlete & Sports" in niches:
+									influencer_obj.athlete_sports= True
+								if "Celebrity & Public Figure" in niches:
+									influencer_obj.celebrity_public_pigure= True
+								
+								if "Adventure & Outdoors" in niches:
+									influencer_obj.adventure_outdoors= True
+								if "Actor" in niches:
+									influencer_obj.actor= True
+								if "Education" in niches:
+									influencer_obj.education= True
+								if "Gaming" in niches:
+									influencer_obj.gaming= True
+								if "LGBTQ2" in niches:
+									influencer_obj.lgbtq= True
+								if "Technology" in niches:
+									influencer_obj.technology= True
+								
+								if "Healthcare" in niches:
+									influencer_obj.healthcare= True
+								if "Vegan" in niches:
+									influencer_obj.vegan= True
+								if "Cannabis" in niches:
+									influencer_obj.cannabis= True
+								if "Skilled Trades" in niches:
+									influencer_obj.skilled_trades= True
+								if "Automotive" in niches:
+									influencer_obj.automotive= True
+								niches_updated = niches.rstrip(',')
+								influencer_obj.description_influencer=niches
 							
-							if "Health & Fitness" in niches:
-								influencer_obj.health_fitness= True
-							if "Travel" in niches:
-								influencer_obj.travel= True
-							if "Food & Drink" in niches:
-								influencer_obj.food_drink= True
-							if "Model" in niches:
-								influencer_obj.model= True
-							if "Comedy & Entertainment" in niches:
-								influencer_obj.comedy_entertainment= True
-							if "Art & Photography" in niches:
-								influencer_obj.art_photography= True
-							
-							if "Music & Dance" in niches:
-								influencer_obj.music_dance= True
-							if "Entrepreneur & Business" in niches:
-								influencer_obj.entrepreneur_business= True
-							if "Family & Children" in niches:
-								influencer_obj.family_children= True
-							if "Animals & Pets" in niches:
-								influencer_obj.animals_pets= True
-							if "Athlete & Sports" in niches:
-								influencer_obj.athlete_sports= True
-							if "Celebrity & Public Figure" in niches:
-								influencer_obj.celebrity_public_pigure= True
-							
-							if "Adventure & Outdoors" in niches:
-								influencer_obj.adventure_outdoors= True
-							if "Actor" in niches:
-								influencer_obj.actor= True
-							if "Education" in niches:
-								influencer_obj.education= True
-							if "Gaming" in niches:
-								influencer_obj.gaming= True
-							if "LGBTQ2" in niches:
-								influencer_obj.lgbtq= True
-							if "Technology" in niches:
-								influencer_obj.technology= True
-							
-							if "Healthcare" in niches:
-								influencer_obj.healthcare= True
-							if "Vegan" in niches:
-								influencer_obj.vegan= True
-							if "Cannabis" in niches:
-								influencer_obj.cannabis= True
-							if "Skilled Trades" in niches:
-								influencer_obj.skilled_trades= True
-							if "Automotive" in niches:
-								influencer_obj.automotive= True
-							niches_updated = niches.rstrip(',')
-							influencer_obj.description_influencer=niches
-						
-							influencer_obj.save()
-							is_brand_obj= BrandorInfluencer.objects.create(user=influencer, brand=False)
-							is_brand_obj.save()
-							return render(request,'User/join_influencer_profile.html')
-					except Exception as e:
-						print(e)
-		
-	else:
-		print('------------------------Session User Else')
-		messages.success(request, 'Email You trying to login does not exist')
-		return redirect('logout')
-
+								influencer_obj.save()
+								is_brand_obj= BrandorInfluencer.objects.create(user=influencer, brand=False)
+								is_brand_obj.save()
+								return render(request,'User/join_influencer_profile.html')
+						except Exception as e:
+							print(e)
+			
+		else:
+			print('------------------------Session User Else')
+			messages.success(request, 'Email You trying to login does not exist')
+			return redirect('logout')
+	except Exception as e:
+			messages.success(request, 'Ooops There is a problem. Try again!!')
+			print(e)
 	return render(request,'User/categories.html')
 
 def join_influencer_profile_page(request):
