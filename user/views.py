@@ -1019,7 +1019,7 @@ def join_influencer_profile(request):
 			
 			
 			context={'influencer_username_3': influencer_username_3}
-			return render(request,'User/login.html', context)
+			return render(request,'User/home.html', context)
 		
 	except Exception as e:
 		messages.success(request, 'Something is wrong')
@@ -1074,8 +1074,8 @@ def influencer_profile_edit(request):
 				print('influencer firstname', influencer.first_name)
 				influencer_fullname= request.POST.get('influencer_fullname')
 				influencer_location= request.POST.get('influencer_location')
-				influencer_title= request.POST.get('influencer_title')
-				influencer_description= request.POST.get('influencer_description')
+				# influencer_title= request.POST.get('influencer_title')
+				# influencer_description= request.POST.get('influencer_description')
 				influencer_gender= request.POST.get('influencer_gender')
 				instagram_username= request.POST.get('instagram_username')
 				instagram_followers= request.POST.get('instagram_followers')
@@ -1127,12 +1127,12 @@ def influencer_profile_edit(request):
 				if influencer_location!= "":
 					joined_influencer.location=influencer_location
 					joined_influencer.save()
-				if influencer_title!= "":
-					joined_influencer.title_influencer=influencer_title
-					joined_influencer.save()
-				if influencer_description!= "":
-					joined_influencer.description_influencer=influencer_description
-					joined_influencer.save()
+				# if influencer_title!= "":
+				# 	joined_influencer.title_influencer=influencer_title
+				# 	joined_influencer.save()
+				# if influencer_description!= "":
+				# 	joined_influencer.description_influencer=influencer_description
+				# 	joined_influencer.save()
 				if influencer_gender!= "":
 					joined_influencer.gender_influencer=influencer_gender
 					joined_influencer.save()
@@ -2033,8 +2033,8 @@ def join_brand_profile(request):
 
 
 def brand_profile(request):
-		user_email = None
-	# try:
+	user_email = None
+	try:
 		if request.user.is_authenticated:
 			print("brand is logged in :)")
 			user= request.user
@@ -2050,8 +2050,8 @@ def brand_profile(request):
 				return render(request, 'User/brand_profile.html', context)
 		else:
 			print("brand is not logged in :(")
-			# return redirect(request, 'User/influencer_profile.html')
-	# except Exception as e:
+			return redirect(request, 'User/influencer_profile.html')
+	except Exception as e:
 			messages.success(request, 'oops there was a problem')
 			return redirect('home')
 
@@ -2329,96 +2329,121 @@ def social_signup(request):
 
 def categories(request):
 	user_email_inful=request.user.email
+	session_user=request.session.get('username_session')
 	print('user_email_inful::::::@@@@',user_email_inful)
 	if JoinInfluencer.objects.filter(email_address= user_email_inful):
 		return redirect('/joininfluencerprofilepage')
-	if request.method== 'POST':
-		try:
-			if request.user.is_authenticated:
-				print("brand is logged in :)")
-				user= request.user
-				username = request.user.username
-				user_email=user.email
-				fname_influencer=request.user.first_name
-				lname_influencer=request.user.last_name
-				fullname_influencer= fname_influencer+' '+ lname_influencer
-				print('username::::::@@@@',username)
-				print('user_email::::::@@@@',user_email)
-				print('fname_influencer::::::@@@@',fname_influencer)
-				print('Flname_influencer::::::@@@@',lname_influencer)
-				print('fullname_influencer::::::@@@@',fullname_influencer)
-				username_session = request.session.get('username_session')
-				print('Fav username_session create page::::::@@@@',username_session)
-				influencer=User.objects.get(username= username)
-				influencer_obj= JoinInfluencer.objects.get(influencer_username= username_session)
-				influencer_obj.full_name=fullname_influencer
-				influencer_obj.email_address=user_email
-				niches= request.POST.get('niches_val')
-				if "Lifestyle" in niches:
-					influencer_obj.lifestyle= True
-				if "Fashion" in niches:
-					influencer_obj.fashion= True
-				if "Beauty" in niches:
-					influencer_obj.beauty= True
-				
-				if "Health & Fitness" in niches:
-					influencer_obj.health_fitness= True
-				if "Travel" in niches:
-					influencer_obj.travel= True
-				if "Food & Drink" in niches:
-					influencer_obj.food_drink= True
-				if "Model" in niches:
-					influencer_obj.model= True
-				if "Comedy & Entertainment" in niches:
-					influencer_obj.comedy_entertainment= True
-				if "Art & Photography" in niches:
-					influencer_obj.art_photography= True
-				
-				if "Music & Dance" in niches:
-					influencer_obj.music_dance= True
-				if "Entrepreneur & Business" in niches:
-					influencer_obj.entrepreneur_business= True
-				if "Family & Children" in niches:
-					influencer_obj.family_children= True
-				if "Animals & Pets" in niches:
-					influencer_obj.animals_pets= True
-				if "Athlete & Sports" in niches:
-					influencer_obj.athlete_sports= True
-				if "Celebrity & Public Figure" in niches:
-					influencer_obj.celebrity_public_pigure= True
-				
-				if "Adventure & Outdoors" in niches:
-					influencer_obj.adventure_outdoors= True
-				if "Actor" in niches:
-					influencer_obj.actor= True
-				if "Education" in niches:
-					influencer_obj.education= True
-				if "Gaming" in niches:
-					influencer_obj.gaming= True
-				if "LGBTQ2" in niches:
-					influencer_obj.lgbtq= True
-				if "Technology" in niches:
-					influencer_obj.technology= True
-				
-				if "Healthcare" in niches:
-					influencer_obj.healthcare= True
-				if "Vegan" in niches:
-					influencer_obj.vegan= True
-				if "Cannabis" in niches:
-					influencer_obj.cannabis= True
-				if "Skilled Trades" in niches:
-					influencer_obj.skilled_trades= True
-				if "Automotive" in niches:
-					influencer_obj.automotive= True
-				niches_updated = niches.rstrip(',')
-				influencer_obj.description_influencer=niches
-			
-				influencer_obj.save()
-				is_brand_obj= BrandorInfluencer.objects.create(user=influencer, brand=False)
-				is_brand_obj.save()
-				return render(request,'User/join_influencer_profile.html')
-		except Exception as e:
-			print(e)
+	if session_user is not None:
+		print('------------------------Session User', session_user)
+
+		join_inful=JoinInfluencer.objects.filter(influencer_username= session_user)
+		if join_inful:
+			print('------------------------join_inful', join_inful)
+			join_inful_0=join_inful[0]
+			if join_inful_0.email_address != '':
+				print('------------------------join_inful.email_address', join_inful_0.email_address)
+				if join_inful_0.email_address == user_email_inful:
+					print('------------------------Inside equal if')
+					return redirect('/joininfluencerprofilepage')
+				else:
+					print('------------------------Inside equal else')
+					messages.success(request, 'Email You trying to login does not exist')
+					return redirect('logout')
+			else:
+				print('------------------------join_inful.email_address Else', join_inful_0.email_address)
+				if request.method== 'POST':
+					try:
+						if request.user.is_authenticated:
+							print("brand is logged in :)")
+							user= request.user
+							username = request.user.username
+							user_email=user.email
+							fname_influencer=request.user.first_name
+							lname_influencer=request.user.last_name
+							fullname_influencer= fname_influencer+' '+ lname_influencer
+							print('username::::::@@@@',username)
+							print('user_email::::::@@@@',user_email)
+							print('fname_influencer::::::@@@@',fname_influencer)
+							print('Flname_influencer::::::@@@@',lname_influencer)
+							print('fullname_influencer::::::@@@@',fullname_influencer)
+							username_session = request.session.get('username_session')
+							print('Fav username_session create page::::::@@@@',username_session)
+							influencer=User.objects.get(username= username)
+							influencer_obj= JoinInfluencer.objects.get(influencer_username= username_session)
+							influencer_obj.full_name=fullname_influencer
+							influencer_obj.email_address=user_email
+							niches= request.POST.get('niches_val')
+							if "Lifestyle" in niches:
+								influencer_obj.lifestyle= True
+							if "Fashion" in niches:
+								influencer_obj.fashion= True
+							if "Beauty" in niches:
+								influencer_obj.beauty= True
+							
+							if "Health & Fitness" in niches:
+								influencer_obj.health_fitness= True
+							if "Travel" in niches:
+								influencer_obj.travel= True
+							if "Food & Drink" in niches:
+								influencer_obj.food_drink= True
+							if "Model" in niches:
+								influencer_obj.model= True
+							if "Comedy & Entertainment" in niches:
+								influencer_obj.comedy_entertainment= True
+							if "Art & Photography" in niches:
+								influencer_obj.art_photography= True
+							
+							if "Music & Dance" in niches:
+								influencer_obj.music_dance= True
+							if "Entrepreneur & Business" in niches:
+								influencer_obj.entrepreneur_business= True
+							if "Family & Children" in niches:
+								influencer_obj.family_children= True
+							if "Animals & Pets" in niches:
+								influencer_obj.animals_pets= True
+							if "Athlete & Sports" in niches:
+								influencer_obj.athlete_sports= True
+							if "Celebrity & Public Figure" in niches:
+								influencer_obj.celebrity_public_pigure= True
+							
+							if "Adventure & Outdoors" in niches:
+								influencer_obj.adventure_outdoors= True
+							if "Actor" in niches:
+								influencer_obj.actor= True
+							if "Education" in niches:
+								influencer_obj.education= True
+							if "Gaming" in niches:
+								influencer_obj.gaming= True
+							if "LGBTQ2" in niches:
+								influencer_obj.lgbtq= True
+							if "Technology" in niches:
+								influencer_obj.technology= True
+							
+							if "Healthcare" in niches:
+								influencer_obj.healthcare= True
+							if "Vegan" in niches:
+								influencer_obj.vegan= True
+							if "Cannabis" in niches:
+								influencer_obj.cannabis= True
+							if "Skilled Trades" in niches:
+								influencer_obj.skilled_trades= True
+							if "Automotive" in niches:
+								influencer_obj.automotive= True
+							niches_updated = niches.rstrip(',')
+							influencer_obj.description_influencer=niches
+						
+							influencer_obj.save()
+							is_brand_obj= BrandorInfluencer.objects.create(user=influencer, brand=False)
+							is_brand_obj.save()
+							return render(request,'User/join_influencer_profile.html')
+					except Exception as e:
+						print(e)
+		
+	else:
+		print('------------------------Session User Else')
+		messages.success(request, 'Email You trying to login does not exist')
+		return redirect('logout')
+
 	return render(request,'User/categories.html')
 
 def join_influencer_profile_page(request):

@@ -81,7 +81,7 @@
 <div style="    display: flex;justify-content: center;">
     <ul class="messages" style=" padding: 2px; display: flex;">
         {% for message in messages %}
-        {% if 'Successfully signed in as' in message %}
+        {% if 'Successfully signed in as' in message.tags %}
         <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
             <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/succ.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div>
         </div>
