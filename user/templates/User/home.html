@@ -81,16 +81,20 @@
 <div style="    display: flex;justify-content: center;">
     <ul class="messages" style=" padding: 2px; display: flex;">
         {% for message in messages %}
-        {% if 'Successfully signed in as' in message.tags %}
+        {% if message.tag == 'signed in as'%}
+        <h1>In if</h1>
         <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
             <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/succ.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div>
         </div>
+        <div>{{ message }}</div>
         {% else %}
-        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
-            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div>
+        <div {% if message.tags %} class="{{ message.tags }}"  style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/succ.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div>
         </div>
         {% endif %}
-            <div>{{ message }}</div>
+        <div>{{ message }}</div>
+        {% endif %}
+            
             {% endfor %}
     </ul>
 </div>

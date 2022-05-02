@@ -175,6 +175,7 @@ def join_influencer_profile(request):
 			# title_influencer= request.POST.get('title_influencer')
 			# description_influencer= request.POST.get('description_influencer')
 			gender_influencer= request.POST.get('gender_influencer')
+			print('gender_influencer_________________', gender_influencer)
 			instagram_username= request.POST.get('instagram_username')
 			instagram_followers= request.POST.get('instagram_followers')
 			tiktok_username= request.POST.get('tiktok_username')
@@ -1019,7 +1020,7 @@ def join_influencer_profile(request):
 			
 			
 			context={'influencer_username_3': influencer_username_3}
-			return render(request,'User/home.html', context)
+			return redirect('home')
 		
 	except Exception as e:
 		messages.success(request, 'Something is wrong')

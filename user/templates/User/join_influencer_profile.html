@@ -172,12 +172,30 @@ font-size: initial;
                 </div> -->
             </div>
             <!-- <button type="button" class="submit  form_1_submit">Continue</button> -->
-            <div class="under-btn">I don't see my city<a href="/supported-countries" target="_blank"><span
+            <div class="under-btn">I don't see my city<a href="#" target="_blank"><span
                         class="link-spanner"></span></a></div>
             </div>
             <h2 class="form-title active" style="margin-top: inherit;">What's your gender?</h2>
+           
             <div class="form">
-                <div class="gender-option">
+                <select name="gender_influencer" class="input " id="gender_influencer" >
+    
+    
+                    <option value="" selected="" hidden="" disabled>Select A gender</option>
+    
+    
+                    <option value="female">Female</option>
+    
+                    <option value="male">Male</option>
+    
+                    <option value="other">Other</option>
+    
+                    
+    
+    
+                </select>
+
+                <!-- <div class="gender-option">
                     <input type="radio" id="Female" name="gender_influencer" value="female"><label class="gender-selectors"
                         for="female">Female</label><br>
                 </div>
@@ -188,7 +206,7 @@ font-size: initial;
                 <div class="gender-option">
                     <input type="radio" id="Other" name="gender_influencer" value="other">
                     <label for="other" class="gender-selectors">Other</label>
-                </div>
+                </div> -->
     
     
                 <!-- <button type="button" class="submit form_4_submit ">Continue</button> -->
@@ -248,7 +266,7 @@ font-size: initial;
             </path>
         </svg>
         <div class="example-profile-btn">View Example Profile</div>
-        <div class="step-holder">2/4</div>
+        <div class="step-holder">2/3</div>
     </div>
     <h2 class="form-title">Add up to 5 images of you and your content</h2>
     <div class="form">
@@ -454,7 +472,7 @@ font-size: initial;
                 </path>
             </svg>
             <div class="example-profile-btn">View Example Profile</div>
-            <div class="step-holder">3/4</div>
+            <div class="step-holder">3/3</div>
         </div>
         <h2 class="form-title">Add your social channels</h2>
         <div class="form">
@@ -3612,7 +3630,8 @@ font-size: initial;
     $('.form_1_submit').click(function () {
             forminput= $('#location_input').val()
             forminput1= $('#niches_input').val()
-            var checked_gender = document.querySelector('input[name = "gender_influencer"]:checked');
+            var checked_gender=$('#gender_influencer').val()
+            // var checked_gender = document.querySelector('input[name = "gender_influencer"]:checked');
             console.log('for,input::::::::::::', forminput)
             if( !forminput & checked_gender == null ) {
                 alert('Please Select your Location and Gender and Niches')

@@ -94,6 +94,35 @@
   a:hover{
       text-decoration: none;
   }
+  .loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.navbar-default{
+  display: none !important;
+}
 	</style>
 	{% endblock %}
 
@@ -107,18 +136,24 @@
             {% endfor %}
     </ul>
 </div>
-    <div class="form-holder login-form" style="display: block!important;">
-        <h1 class="form-title">Social Signup</h1>
-		
-		<!-- <form class = "form" method="POST" action="{% url 'login' %}">
-			{% csrf_token %}  -->
-            <!-- <button class="submit btn login-btn mt-5" style="background: linear-gradient(to right, #fd749f 0%, #E33E5C 100%);">Connection With Instagram<i class="fa fa-instagram"></i></button>
-            <button class="submit btn login-btn mt-5" style="    background: #d21e1e;">Connection with TikTok</button> -->
-            <a href="{% provider_login_url 'google' %}" style="width: 100%;margin-bottom: 20px; text-align: center;"><div style="width: 100%;"  class="login-with-google-btn" >
-                Sign in with Google
-            </div> </a>
-        <!-- </form> -->
-    </div>
+<div style="margin-top: 185px;">
+  <div class="form-holder login-form" style="display: block!important;">
+    <h1 style="display: none;" class="form-title">Social Signup</h1>
+
+<!-- <form class = "form" method="POST" action="{% url 'login' %}">
+  {% csrf_token %}  -->
+        <!-- <button class="submit btn login-btn mt-5" style="background: linear-gradient(to right, #fd749f 0%, #E33E5C 100%);">Connection With Instagram<i class="fa fa-instagram"></i></button>
+        <button class="submit btn login-btn mt-5" style="    background: #d21e1e;">Connection with TikTok</button> -->
+        <div class="loader-container">
+          <div class="loader"></div>
+        <a href="{% provider_login_url 'google' %}" style="display: none; width: 100%;margin-bottom: 20px; text-align: center;"><div style="width: 100%;"  class="login-with-google-btn" >
+            Sign in with Google
+        </div> </a>
+    <!-- </form> -->
+</div>
+
+</div>
+   
 
 	<!-- [ auth-signin ] start -->
 
@@ -130,5 +165,12 @@
 {% block extrajavascript %}
 
 	<script src=" /static/assets/js/waves.min.js"></script>
+  <script>
+    $(document).ready(function(){
+    $(".login-with-google-btn").click(); 
+});
+
+  </script>
+  
 
 {% endblock extrajavascript %} 
