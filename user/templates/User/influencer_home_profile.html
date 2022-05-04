@@ -46,8 +46,12 @@ a:hover{
     padding-right: 0;
 }
 .row-btn-profile{
+    padding-bottom: 0px;
+    /* margin-bottom: -10px; */
+    padding-left: 0;
+    padding-right: 0px;
     width: -webkit-fill-available !important;
-    margin-bottom: 30px !important;
+   
 }
 .platform-img-holder{
     margin-bottom: 10px !important;
@@ -56,11 +60,14 @@ a:hover{
     display: none;
 }
 .platform-img-holder-mobile{
+    margin-bottom: -5px !important;
     display: flex !important;
     justify-content: flex-start !important;
 }
 
 .btn-row-mobile{
+    justify-content: end !important;
+    align-items: end !important;
     display: flex !important;
     position: relative !important;
 }
@@ -69,10 +76,8 @@ a:hover{
 }
 }
 @media only screen and (max-width: 450px){
-    .row-btn-profile{
-    width: auto !important;
-    margin-bottom: 30px !important;
-}
+   
+
 }
 </style>
 
@@ -90,7 +95,11 @@ a:hover{
 <input type="hidden" name="influencer_username_3" value="{{influencer_username_3}}">
 <div class="btn-row btn-row-mobile">
     <div style="width: 281px;display: flex;position: absolute;left: -20px;">
-        <div class=" row-btn row-btn-profile" >{{joined_influencer.full_name |title}}</div>
+        <div style="    width: -webkit-fill-available;">
+            <div class=" row-btn row-btn-profile" >{{joined_influencer.full_name |title}}</div>
+            <div class="profile-location">{{joined_influencer.location}}</div>
+
+        </div>
         <div class="platform-img-holder platform-img-holder-mobile">
             {% if joined_influencer.instagram_username != "" %}
             <div class="platform-img">

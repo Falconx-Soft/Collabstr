@@ -332,7 +332,12 @@
                 <img class="profile-pic"
                         src="{{joined_influencer.profile_image.url}}">
                             <input id="file-input" type="file" name="profile_img_edit" accept="image/*" value="{{joined_influencer.profile_image.url}}">
-                
+                            <div class="more-img-holder" style="display: block">
+                                <div class="more-img-badge">•••</div>
+                                <div class="more-img-dropdown-holder" style="display: none;">
+                                    <div class="more-img-dropdown-item" data-action="delete" data-id="2">Delete</div>
+                                </div>
+                            </div>
             </div>
             <div class="img-row">
                 <div class="primary-img">

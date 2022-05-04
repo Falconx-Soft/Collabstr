@@ -147,24 +147,24 @@
                         <div class="details-input-div">
                             <label class="details-input-field-head">Website</label>
                             <br>
-                            <input class="details-input-field" type="text" placeholder="Website" name="influencer_fullname">
+                            <input class="details-input-field" type="text" placeholder="Website" name="brand_website">
                         </div>
             
                         <div class="details-input-div">
                             <label class="details-input-field-head">Instagram</label>
                             <br>
-                            <input class="details-input-field" type="text" name="influencer_location" placeholder="Instagram Username">                       
+                            <input class="details-input-field" type="text" name="brand_instagram" placeholder="Instagram Username">                       
                          </div>
             
                         <div class="details-input-div">
                             <label class="details-input-field-head">TikTok</label>
                             <br>
-                            <input name="influencer_title" class="details-input-field" type="text" placeholder="TikTok Username">
+                            <input name="brand_tiktok" class="details-input-field" type="text" placeholder="TikTok Username">
                         </div>
                         <div class="details-input-div">
                             <label class="details-input-field-head">Youtube</label>
                             <br>
-                            <input name="influencer_title" class="details-input-field" type="text" placeholder="Youtube Url">
+                            <input name="brand_youtube" class="details-input-field" type="text" placeholder="Youtube Url">
                         </div>
             
                         
@@ -177,9 +177,9 @@
             
                   
                 
-                <div class="save-btn-div">
+                <!-- <div class="save-btn-div">
                     <button class="save-btn">Save</button>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -188,8 +188,8 @@
             <div class="profile-pic-div" style="position: relative;">
                
                 <img class="profile-pic"
-                        src="{{joined_influencer.profile_image.url}}">
-                            <input id="file-input" type="file" name="profile_img_edit" accept="image/*" value="{{joined_influencer.profile_image.url}}">
+                        src="{{joined_brand.profile_image.url}}">
+                            <input id="file-input" type="file" name="profile_img_edit" accept="image/*" value="{{joined_brand.profile_image.url}}">
                 
             </div>
             <div class="img-row">
@@ -197,9 +197,9 @@
                     <div class="file-area">
                         <div class="cover-img-badge">Cover Photo</div>
                         <input id="required-img" onchange="showImg(this,0)" class="img-input js-img-file-input" type="file"
-                            name="cover_image" accept="image/*" value="{{joined_influencer.cover_image.url}}">
+                            name="cover_image" accept="image/*" value="{{joined_brand.cover_image.url}}">
                         <img class="img img1"
-                            src="{{joined_influencer.cover_image.url}}">
+                            src="{{joined_brand.cover_image.url}}">
                     </div>
                 </div>
                 <div class="img-col">
@@ -208,11 +208,11 @@
                             <input onchange="" class="img-input" type="file" id="img2_edit" name="img2"
                             accept="image/*">
                            
-                                {% if joined_influencer.image3 %}
+                                {% if joined_brand.image3 %}
                                 <!-- <input onchange="showImg(this,1)" class="img-input" type="file" name="img2"
                                 accept="image/*"> -->
                                 <img style="width: 100%;" class="img img2"
-                                    src="{{joined_influencer.image3.url}}"
+                                    src="{{joined_brand.image3.url}}"
                                     alt="Photo of Nigel Kabvina">
                                 {% else %}
                                
@@ -226,10 +226,10 @@
                             <input onchange="showImg(this,2)" class="img-input" type="file" name="img3"
                             accept="image/*">
                             <picture>
-                                {% if joined_influencer.image4 %}
+                                {% if joined_brand.image4 %}
                                 
                                 <img style="width: 100%;" class="img img3"
-                                    src="{{joined_influencer.image4.url}}"
+                                    src="{{joined_brand.image4.url}}"
                                     alt="Photo of Nigel Kabvina">
                                 {% else %}
                                 
@@ -243,11 +243,11 @@
                     <div class="file-area file-area4">
                        
                         <picture>
-                            {% if joined_influencer.image5 %}
+                            {% if joined_brand.image5 %}
                              <input onchange="showImg(this,3)" class="img-input" type="file" name="img4"
                             accept="image/*">
                             <img class="img img4"
-                                src="{{joined_influencer.image5.url}}"
+                                src="{{joined_brand.image5.url}}"
                                 alt="Photo of Nigel Kabvina">
                             {% else %}
                              <input onchange="showImg(this,3)" class="img-input" type="file" name="img4"

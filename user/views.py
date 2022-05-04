@@ -65,6 +65,10 @@ def register(request):
 		brand_name= request.POST.get('brand_name')
 		brand_email= request.POST.get('brand_email')
 		brand_password= request.POST.get('brand_password')
+		brand_website= request.POST.get('brand_website')
+		brand_instagram= request.POST.get('brand_instagram')
+		brand_tiktok= request.POST.get('brand_tiktok')
+		brand_youtube= request.POST.get('brand_youtube')
 		try:
 			if User.objects.filter(email=brand_email):
 				messages.success(request, 'Email is already in use')
@@ -74,7 +78,7 @@ def register(request):
 			user_obj= User(username=brand_fullname, email=brand_email, is_brand= True)
 			user_obj.set_password(brand_password)
 			user_obj.save()
-			join_brand_obj= JoinBrand.objects.create(full_name=brand_fullname, brand_name=brand_name, brand_email=brand_email )
+			join_brand_obj= JoinBrand.objects.create(full_name=brand_fullname, brand_name=brand_name, brand_email=brand_email, brand_website= brand_website, brand_instagram=brand_instagram, brand_tiktok=brand_tiktok, brand_youtube=brand_youtube)
 			join_brand_obj.save()
 			is_brand_obj= BrandorInfluencer.objects.create(user=user_obj, brand=True)
 			is_brand_obj.save()
@@ -2076,6 +2080,14 @@ def brand_profile_edit(request):
 			print('brand_niches_value edit', brand_niches_value)
 			brand_description= request.POST.get('brand_description')
 			print('brand_description edit', brand_description)
+			brand_website= request.POST.get('brand_website')
+			print('brand_website edit', brand_website)
+			brand_instagram= request.POST.get('brand_instagram')
+			print('brand_instagram edit', brand_instagram)
+			brand_tiktok= request.POST.get('brand_tiktok')
+			print('brand_tiktok edit', brand_tiktok)
+			brand_youtube= request.POST.get('brand_youtube')
+			print('brand_youtube edit', brand_youtube)
 			
 			
 			if brand_location:
@@ -2083,6 +2095,18 @@ def brand_profile_edit(request):
 				loggendin_brand_1.save()
 			if brand_description:
 				loggendin_brand_1.brand_description= brand_description
+				loggendin_brand_1.save()
+			if brand_website:
+				loggendin_brand_1.brand_website=brand_website
+				loggendin_brand_1.save()
+			if brand_instagram:
+				loggendin_brand_1.brand_instagram= brand_instagram
+				loggendin_brand_1.save()
+			if brand_tiktok:
+				loggendin_brand_1.brand_tiktok=brand_tiktok
+				loggendin_brand_1.save()
+			if brand_youtube:
+				loggendin_brand_1.brand_youtube= brand_youtube
 				loggendin_brand_1.save()
 
 			if "Lifestyle" in brand_niches_value:
@@ -2203,6 +2227,8 @@ def brand_profile_edit(request):
 				loggendin_brand_1.image5=img4
 				
 				loggendin_brand_1.save()
+		context={'joined_brand': loggendin_brand_1}
+		return render(request, 'User/brand_edit.html', context)
 	except Exception as e:
 			messages.success(request, 'Ooops There is a problem. Try again!!')
 			print(e)
