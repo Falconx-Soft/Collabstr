@@ -45,6 +45,10 @@ urlpatterns = [
       path('socialsignup/',views.social_signup, name="social_signup"),
       path('joininfluencerprofilepage/',views.join_influencer_profile_page, name="join_influencer_profile_page"),
       path('categories/',views.categories, name="categories"),
+
+
+
+      path('deleteprofilepic/',views.delete_profile_pic, name="delete_profile_pic"),
       
 
 	path('reset_password/', auth_views.PasswordResetView.as_view(template_name="User/restPassword/restPassword.html"), name="reset_password"),

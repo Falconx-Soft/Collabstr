@@ -1,4 +1,5 @@
 from multiprocessing import context
+import profile
 from urllib.parse import uses_netloc
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -2491,3 +2492,13 @@ def join_influencer_profile_page(request):
 	if inful.location:
 		return redirect('/')
 	return render(request,'User/join_influencer_profile.html')
+
+
+def delete_profile_pic(request):
+	user_email_inful=request.user.email
+	# if request.method == 'POST':
+	# profile_pic= request.POST.get('profile_img_edit_2')
+	inful=JoinInfluencer.objects.get(email_address= user_email_inful)
+	inful_profile_pic= inful.profile_image
+	inful_profile_pic.delete()
+	return redirect('/influencerprofile')

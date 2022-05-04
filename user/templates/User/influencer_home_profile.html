@@ -472,9 +472,15 @@ a:hover{
 
             <div class="profile-holder">
                 <div class="profile-info-holder">
+                    {% if joined_influencer.profile_image  %}
                     <img class="profile-pic"
                         src="{{joined_influencer.profile_image.url}}"
-                        alt="Photo of Nigel Kabvina">
+                        alt="Photo of {{joined_influencer.full_name | title}}">
+                    {% else %}
+                    <img class="profile-pic"
+                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/avatar.png"
+                    alt="">
+                    {% endif %}
                     <div class="profile-name">{{joined_influencer.full_name | title}}</div>
                     <div class="profile-location">{{joined_influencer.location}}</div>
                     <div class="platform-img-holder">

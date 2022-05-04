@@ -332,12 +332,18 @@
                 <img class="profile-pic"
                         src="{{joined_influencer.profile_image.url}}">
                             <input id="file-input" type="file" name="profile_img_edit" accept="image/*" value="{{joined_influencer.profile_image.url}}">
-                            <div class="more-img-holder" style="display: block">
-                                <div class="more-img-badge">•••</div>
-                                <div class="more-img-dropdown-holder" style="display: none;">
-                                    <div class="more-img-dropdown-item" data-action="delete" data-id="2">Delete</div>
+                            <form action="{% url 'delete_profile_pic' %}" method="post" class="delete_form">
+                                
+                                <div class="more-img-holder" style="display: block; z-index: 1000;" >
+                                    <!-- <div class="more-img-badge">•••</div> -->
+                                    <a href="/deleteprofilepic"><div class="more-img-badge" >Delete</div></a>
+                                    <!-- <div class="more-img-dropdown-holder" style="display: none;">
+                                        <div class="more-img-dropdown-item" data-action="delete" data-id="2">Delete</div>
+                                    </div> -->
                                 </div>
-                            </div>
+
+                            </form>
+                           
             </div>
             <div class="img-row">
                 <div class="primary-img">
@@ -2995,6 +3001,13 @@ function changecontenttype(content){
         }
 
         }
+
+        $(".more-img-holder").click(function (event) {
+       console.log('delete button clicked')
+       $('.delete_form').submit()
+
+
+    });
 </script>
 
 {% endblock extrajavascript %}
