@@ -11,6 +11,8 @@ admin.site.register(BrandorInfluencer)
 admin.site.register(JoinBrand)
 # admin.site.register(User)
 
+admin.site.register(submit_requirements)
+
 
 class InfluencerAdmin(admin.ModelAdmin):
     list_display = ('influencer_username', 'full_name', 'email_address')

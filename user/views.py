@@ -2282,11 +2282,25 @@ def influencer_home_profile(request):
 			return redirect('home')
 	
 def checkout(request):
+	stripe.api_key = "sk_test_51JjUwfESLCYKQ10LN1j8BbiZN4qYF8bU1GL7U33Xeyr0SHTfseQRahhDz7yB2fCkM1J83rGGBD5nJUKEgMNr1c8h00a491NEQ8"
+
+	# stripe.api_key ="sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+
+	intent = stripe.PaymentIntent.create(
+			amount = 1200,
+			currency = "eur",
+			automatic_payment_methods = {"enabled": True},
+		)
+	context = {
+		'intent':intent
+	}
 	try:
 		if request.method== 'POST':
+
 			influencer_email= request.POST.get('influencer_email')
 			package_category= request.POST.get('package_category')
 			checkout_price= request.POST.get('checkout_price')
+			influencer_id = request.POST.get('influencer_id')
 			checkout_price_int= checkout_price.replace('$','')
 			ten_percent_price= int(checkout_price_int)/10
 			total_price= int(checkout_price_int)+ ten_percent_price
@@ -2294,8 +2308,9 @@ def checkout(request):
 			print('influencer_email:::::::::::::::::::',influencer_email)
 			print('tenpercent:::::::::::::::::::',ten_percent_price)
 			print('total:::::::::::::::::::',total_price)
+			print('influencer_id:::::::::::::::::::::',influencer_id)
 			joined_influencer=JoinInfluencer.objects.get(email_address=influencer_email)
-			context= {'joined_influencer': joined_influencer , 'package_category':package_category, 'checkout_price':checkout_price_int, 'ten_percent_price':ten_percent_price,'total_price': total_price}
+			context= {'intent':intent,'joined_influencer': joined_influencer , 'package_category':package_category, 'checkout_price':checkout_price_int, 'ten_percent_price':ten_percent_price,'total_price': total_price}
 			return render(request, 'User/checkout.html', context)
 		else:
 			return redirect(request, 'User/home.html')
@@ -2303,11 +2318,51 @@ def checkout(request):
 			messages.success(request, 'Oops There is some problem. Place order again')
 			return redirect('home')
 
+def checkout_requirements(request, id):
+	joined_influencer = JoinInfluencer.objects.get(id=id)
+	if request.method== 'POST':
+		discription= request.POST.get('discription')
+		requiremerts = request.POST.get('requirements')
+		need = request.POST.get('need')
+		apply = request.POST.get('group1')
+		product_cost = request.POST.get('cost')
+		additional_info = request.POST.get('additional_info')
+		re_use = request.POST.get('save_answer')
+		name_of_answer = request.POST.get('save_answer_name')
+		
+		print(discription,requiremerts,need,apply,product_cost,additional_info,re_use,name_of_answer,"*******")
+		chk_re_use = False
+		if re_use == "on":
+			chk_re_use=True
+		else:
+			chk_re_use=False
+
+		submit_requirements_objects = submit_requirements.objects.create(
+			description=discription,
+			requiremerts=requiremerts,
+			need=need,
+			apply=apply,
+			re_use=chk_re_use,
+			product_cost=product_cost,
+			additional_info=additional_info,
+			name_of_answer=name_of_answer,
+			user=request.user,
+			influencer=joined_influencer
+		)
+		submit_requirements_objects.save()
+	context={
+		'joined_influencer':joined_influencer
+	}
+	return render(request, 'User/checkout_requirements.html',context)
+
 def custom_offer(request):
 	if request.method== 'POST':
 		influencer_email= request.POST.get('influencer_email_custom')
 		context={'influencer_email': influencer_email}
 	return render(request, 'User/custom_offer.html', context)
+
+def order(request):
+	return render(request, 'User/order.html')
 
 
 def create_checkout_session(request):

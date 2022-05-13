@@ -62,12 +62,11 @@ a:hover{
             
 
             <div class="checkout-row">
-                <div class="checkout-col checkout-form">
+                <!-- <div class="checkout-col checkout-form">
 
                     <div class="new-card-holder">
                         <div class="card-input-holder">
                             <input hidden class="input" type="text" name="postal_code" id="postal-code-input" placeholder="" style="width: 75%;">
-                            <!-- <div id="card-element" aria-placeholder="" class="StripeElement StripeElement--empty"><div class="__PrivateStripeElement" style="margin: 0px !important; padding: 0px !important; border: none !important; display: block !important; background: transparent !important; position: relative !important; opacity: 1 !important;"><iframe name="__privateStripeFrame1305" frameborder="0" allowtransparency="true" scrolling="no" allow="payment *" src="" title="Secure card payment input frame" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; user-select: none !important; transform: translate(0px) !important; color-scheme: normal !important; height: 16.8px;"></iframe><input class="__PrivateStripeElement-input" aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1" style="border: none !important; display: block !important; position: absolute !important; height: 1px !important; top: -1px !important; left: 0px !important; padding: 0px !important; margin: 0px !important; width: 100% !important; opacity: 0 !important; background: transparent !important; pointer-events: none !important; font-size: 16px !important;"></div></div> -->
                             <input hidden class="input" type="text" name="postal_code" id="postal-code-input" placeholder="Zip/Postal Code">
                         </div>
 
@@ -84,7 +83,26 @@ a:hover{
                         
                     <button class="btn" type="submit">Place Order</button>
                 </form>
+                    </div> -->
+
+                    <div class='checkout-col checkout-form'>
+                        <label class="inputLabel">Add card details:</label>
+                        <div class='filedAre'>
+                            <div class='fields'>
+                                <form id="payment-form">
+                                  <div id="payment-element">
+                                    <!-- Elements will create form elements here -->
+                                  </div>
+                                  <button id="submit" class="btn  btn-primary" style="margin-top: 20px; background: black !important;">Submit</button>
+                                  <div id="error-message">
+                                    <!-- Display error message to your customers here -->
+                                  </div>
+                                </form>
+                              </div>
+                          </div>
                     </div>
+                    <a href="{% url 'checkout_requirements' joined_influencer.id %}" id="requirements_page" style="display: none;">click</a>
+
                 <div class="checkout-col">
                     <div class="package-holder-checkout">
                         <div>
@@ -230,7 +248,7 @@ a:hover{
 {% block extrajavascript %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
+<!-- <script>
        $('.faq-holder').click(function () {
             let answer = $(this).children('.faq-answer');
             if (answer.is(":visible")) {
@@ -303,6 +321,98 @@ a:hover{
 
         
 
+    </script> -->
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+      // Set your publishable key: remember to change this to your live publishable key in production
+      // See your keys here: https://dashboard.stripe.com/apikeys
+      
+    //   const stripe = Stripe('pk_live_51KQUjHA4UJLsim4TNzqL21nv9sLlTsqkERkKHDNa6WhA9EBf41CgbdRiSTAUROHrQvuWbuIuI2koIJA6hz4rNXNa00T3g3eDgb');
+        
+        const stripe = Stripe('pk_test_51JjUwfESLCYKQ10LuYcS5op815ibdVIdgy1iOHvzOy2tgk04sW4R7tWfy44PrvjHurcdDl9sizct1uLPuAHmQbtY00w9TKZZj2');
+    
+      const options = {
+      clientSecret: '{{intent.client_secret}}',
+      // Fully customizable with appearance API.
+      appearance: {/*...*/},
+      };
+    
+      // Set up Stripe.js and Elements to use in checkout form, passing the client secret obtained in step 2
+      const elements = stripe.elements(options);
+    
+      // Create and mount the Payment Element
+      const paymentElement = elements.create('payment');
+      //paymentElement.mount('#payment-element');
+    
+      var card = elements.create("card", {
+        iconStyle: "solid",
+        style: {
+          base: {
+            iconColor: "black",
+            color: "black",
+            fontWeight: 400,
+            fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+            fontSize: "15px",
+            fontSmoothing: "antialiased",
+    
+            "::placeholder": {
+              color: "#BFAEF6"
+            },
+            ":-webkit-autofill": {
+              color: "black"
+            }
+            
+          },
+          invalid: {
+            iconColor: "red",
+            color: "red"
+          }
+    
+          
+    
+        }
+      });
+      //paymentElement.mount('#payment-element');
+      card.mount("#payment-element");
+      const form = document.getElementById('payment-form');
+    
+      form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+    
+      stripe.confirmCardPayment('{{intent.client_secret}}', {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: '{{request.user.username}}',
+            email: '{{request.user.email}}'
+          },
+        },
+      })
+      .then(function(result) {
+        console.log("result*******************************", result)
+        if(result.error){
+          window.alert(result.error.code);
+        }
+        console.log("paymentIntent",result['paymentIntent'] , result['paymentIntent']['status'])
+        if(result['paymentIntent']['status'] == 'succeeded'){
+        //   document.getElementById("loading").style.display = 'block';
+        //   alertBoxMessage=false;
+        //   document.getElementById("details-form").submit()
+        document.getElementById("requirements_page").click()
+
+        }else{
+          alert("Transaction failed")
+          
+        }
+        // Handle result.error or result.paymentIntent
+      });
+    
+      });
+    
     </script>
-</script>
+
+
+
 {% endblock extrajavascript %}

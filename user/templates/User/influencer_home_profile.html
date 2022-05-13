@@ -535,6 +535,7 @@ a:hover{
             </div>
             <form action="{% url 'checkout_page' %}" method="post">
                 {% csrf_token %}
+                <input type="hidden" name="influencer_id" value="{{joined_influencer.id}}">
                 <div class="checkout-area">
 
                     <div class="checkout-holder">

@@ -58,4 +58,7 @@ urlpatterns = [
           name="password_reset_confirm"),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="User/restPassword/passwordResetComplete.html"),
           name="password_reset_complete"),
+
+      path('checkout_requirements/<int:id>', views.checkout_requirements, name="checkout_requirements"),
+      path('order/', views.order, name="order"),
 ]

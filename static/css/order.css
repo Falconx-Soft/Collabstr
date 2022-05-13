@@ -1,0 +1,141 @@
+.container{
+    margin: 0px;
+    display: flex;
+    width: 100%;
+}
+
+/****************************************************** Orders */
+
+.orders_list_are{
+    width: 25%;
+    border-right: 1px solid #ccc;
+}
+
+.heading-div{
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.order_list_option{
+    display: flex;
+}
+
+.order_list_option_item{
+    width: 100%;
+    background-color: #ccc;
+    padding: 18px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.active{
+    background-color: rgb(97, 70, 124);
+    color: white;
+}
+
+.chat_list_div{
+    display: flex;
+    padding: 10px;
+}
+
+.chat-profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.chat-details-div{
+    margin-left: 10px;
+}
+
+.chat-details-div>p{
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.active-chat{
+    margin-top: 5px;
+    border-left: 4px solid rgb(97, 70, 124);
+}
+
+/****************************************************** Orders ends */
+
+.heading{
+    margin: 0px;
+}
+
+.chat_area{
+    width: 50%;
+}
+
+.chat-box{
+    padding: 20px;
+    height: 400px;
+}
+
+.message{
+    margin-bottom: 10px;
+}
+
+.message>p{
+    margin: 0px;
+}
+
+.input-div{
+    display: flex;
+    padding: 10px;
+}
+
+.message-input{
+    width: 85%;
+    border-radius: 10px 0px 0px 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.message-input:focus{
+    border: 1px solid #ccc;
+}
+
+
+.input-div>i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    width: 7%;
+}
+
+
+
+/****************************************************** Orders details */
+
+.order_details_area{
+    width: 25%;
+    border-left: 1px solid #ccc;
+}
+
+.status{
+    background-color: rgb(245, 227, 210);
+    padding: 10px;
+}
+
+.status>p{
+    margin: 0px;
+}
+
+.package-div{
+    background-color: rgb(250, 248, 248);
+}
+
+.package-div>p{
+    background-color: rgb(202, 201, 201);
+    padding: 5px;
+    width: 20%;
+}
+
+.details{
+    padding-left: 10px;
+}
+

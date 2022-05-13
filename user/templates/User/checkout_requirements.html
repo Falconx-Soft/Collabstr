@@ -1,0 +1,301 @@
+{% extends "base_profile.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}">
+<link rel="stylesheet" href="{% static '/css/join-as-brand.css' %}">
+<link rel="stylesheet" href="{% static '/css/brand-pricing.css' %}">
+<link rel="stylesheet" href="{% static '/css/checkout.css' %}">
+<style>
+    body{
+        font-size: initial;
+    }
+ 
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+.secure-holder{
+            font-size: 11px;
+    display: flex;
+    color: rgb(42, 43, 46);
+    align-items: baseline;
+    margin-bottom: 5px;
+        }
+@media only screen and (max-width: 800px){
+.row-btn-profile{
+    position: absolute;
+    left: -39px !important;
+}}
+
+.textarea_field{
+    width: 100%;
+    height: 100px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.textarea_field:focus {
+  border: 2px solid #ccc;
+}
+
+.radio_div{
+    display: flex;
+    border: 1px solid #ccc;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.radio_div>p,
+.radio_div>input
+{
+    margin: 0px;
+}
+
+.radio_div>p{
+    margin-left: 10px;
+}
+
+.checkbox_div{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.checkbox_div>p,
+.checkbox_div>input
+{
+    margin: 0px;
+}
+
+.checkbox_div>p{
+    margin-left: 10px;
+}
+
+.input_filed{
+    width: 100%;
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 10px;
+}
+
+.input_filed:focus {
+  border: 2px solid #ccc;
+}
+
+.submit_div{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.submit_div>input{
+  background-color: black;
+  color: white;
+  padding: 10px;  
+  border-radius: 15px;
+  width: 170px;
+}
+
+</style>
+
+{% endblock extrastyle %}
+<style>
+
+</style>
+
+{% block content %}	
+<div class="progress-bar">
+    <div class="progress-step" data-id="0">
+        <div class="step-num">1</div>
+        <div class="step-txt">Place Order</div>
+    </div>
+    <div class="progress-step step-active" data-id="1">
+        <div class="step-num num-active">2</div>
+        <div class="step-txt">Submit Requirements</div>
+    </div>
+</div>
+
+
+<div class="form-holder-checkout">
+
+    <div>
+        <form action="{% url 'checkout_requirements' joined_influencer.id %}" method="post">
+
+            {% csrf_token %}
+
+       <h2><b>Submit Requirements</b></h2>
+       <p>Provide the requirements for {{joined_influencer.influencer_username}} to get started on your collab.</p>
+
+       <h3><b>Describe the product/service you are promoting</b></h3>
+       <textarea class="textarea_field" name="discription" placeholder="E.g We just launched our summer dress collection and want you to promote our sundresses that are 100% handmade"></textarea>
+    
+       <br><br><br>
+
+       <h3><b>What are the content requirements?</b></h3>
+       <textarea class="textarea_field" name="requirements" placeholder="E.g We would like you to style the dress with different accessories and make the content vibrant and colorful"></textarea>
+       
+       <br><br><br>
+
+       <h3><b>What do you need from {{joined_influencer.influencer_username}} to get started?</b></h3>
+       <textarea class="textarea_field" name="need" placeholder="E.g Please send us your dress size and color preference"></textarea>
+       
+
+       <h3><b>Select all that apply</b></h3>
+       <fieldset id="group1">
+        <div class="radio_div">
+            <input type="radio" value="Content approval required before posting" id="Content_approval" name="group1">
+            <p>Content approval required before posting?</p>
+        </div>
+ 
+        <div class="radio_div">
+             <input type="radio" value="Are you shipping a physical product?" id="shipping" name="group1">
+             <p>Are you shipping a physical product?</p>
+        </div>
+       </fieldset>
+       <input id="cost_input" name="cost" class="input_filed" type="number" placeholder="What is your cost on the product (USD)" style="display: none;" >
+
+
+       <br><br><br>
+
+       <h3><b>Any additional info?</b></h3>
+       <textarea class="textarea_field" name="additional_info" placeholder="E.g All of our clothing is handmade in the United States and comes with a 1-year quality guarantee"></textarea>
+
+       <br><br><br>
+
+       <div class="checkbox_div">
+           <input type="checkbox" id="save_answers_checkbox" name="save_answer">
+           <p>Save answers for re-use</p>
+       </div>
+       <input id="save_answer_input" name="save_answer_name" class="input_filed" type="text" placeholder="Give your saved answers a name" style="display: none;" >
+       
+       <div class="submit_div">
+            <input type="submit" value="Continue">
+       </div>
+    </form>
+    </div>
+</div>
+
+
+
+
+<div class="container" style="width: 100%;">
+    <div class="footer">
+        <div class="footer-top-row">
+            <div class="footer-section">
+                <div class="footer-title">Resources</div>
+                <a href="/blog" class="footer-txt">Blog</a>
+                <a href="/creator-hub" class="footer-txt">Creator Hub</a>
+                <a href="/referral-program" class="footer-txt">Affiliate Program</a>
+                <a href="/ultimate-guide-to-tiktok-for-brands" class="footer-txt">TikTok Ebook For Brands</a>
+                <a href="/2022-influencer-marketing-report" class="footer-txt">2022 Influencer Marketing Report</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Tools</div>
+                <a href="/influencer-price-calculator" class="footer-txt">Influencer Price Calculator</a>
+                <a href="/influencer-campaign-brief-template" class="footer-txt">Influencer Campaign Brief
+                    Template</a>
+                <a href="/influencer-contract-template" class="footer-txt">Influencer Contract Generator</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Discover</div>
+                <a href="/find-influencers" class="footer-txt">Find Influencers</a>
+                <a href="/hire-influencers" class="footer-txt">Hire Influencers</a>
+                <a href="/search-influencers" class="footer-txt">Search Influencers</a>
+                <a href="/influencer-shoutouts" class="footer-txt">Buy Shoutouts</a>
+                <a href="/influencer-marketplace" class="footer-txt">Influencer Marketplace</a>
+                <a href="/top-influencers" class="footer-txt">Top Influencers</a>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Support</div>
+                <a href="mailto:hello@INFUL.com" class="footer-txt">hello@INFUL.com</a>
+                <a href="/#how-it-works" class="footer-txt">How It Works</a>
+                <a href="/faq" class="footer-txt">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-btm-row">
+            <div class="footer-btm-row-left">
+                <div class="footer-item">© INFUL Inc.</div>
+                <a href="/privacy" class="footer-item">Privacy</a>
+                <a href="/terms" class="footer-item">Terms</a>
+                <a href="/sitemap" class="footer-item">Sitemap</a>
+            </div>
+
+            <div class="footer-btm-row-right">
+                <div class="footer-img">
+                    <a href="https://instagram.com/INFUL" target="_blank"><span class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                        alt="Instagram logo" loading="lazy">
+                </div>
+                <div class="footer-img">
+                    <a href="https://tiktok.com/@INFUL.com" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                        alt="TikTok logo" loading="lazy">
+                </div>
+
+                <div class="footer-img">
+                    <a href="https://twitter.com/@useINFUL" target="_blank"><span
+                            class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
+                        alt="Twitter logo" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const save_answers_checkbox = document.getElementById("save_answers_checkbox");
+    const save_answer_input = document.getElementById("save_answer_input");
+
+    save_answers_checkbox.addEventListener("click", function(){
+        if(save_answers_checkbox.checked){
+            save_answer_input.style.display = "block";
+        }else{
+            save_answer_input.style.display = "none";
+        }
+    });
+
+    const cost_input = document.getElementById("cost_input");
+    const shipping = document.getElementById("shipping");
+    const Content_approval = document.getElementById("Content_approval");
+
+    shipping.addEventListener("click", function(){
+        cost_input.style.display = "block";
+    });
+
+    Content_approval.addEventListener("click", function(){
+        cost_input.style.display = "none";
+    });
+
+
+</script>
+
+{% endblock extrajavascript %}

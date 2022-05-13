@@ -9,6 +9,7 @@ from tkinter import CASCADE
 from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
+from requests import request
 
 # Create your models here.
 class User(AbstractUser):
@@ -184,3 +185,15 @@ class JoinBrand(models.Model):
 
     def __str__(self):
             return self.full_name
+
+class submit_requirements(models.Model):
+    description = models.CharField(max_length=2000)
+    requiremerts = models.CharField(max_length=2000)
+    need = models.CharField(max_length=2000)
+    apply = models.CharField(max_length=500)
+    product_cost = models.IntegerField()
+    additional_info = models.CharField(max_length=2000)
+    re_use = models.BooleanField()
+    name_of_answer = models.CharField(max_length=500)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    influencer = models.ForeignKey(JoinInfluencer, on_delete=models.CASCADE)
