@@ -79,7 +79,7 @@ def register(request):
 			user_obj= User(username=brand_fullname, email=brand_email, is_brand= True)
 			user_obj.set_password(brand_password)
 			user_obj.save()
-			join_brand_obj= JoinBrand.objects.create(full_name=brand_fullname, brand_name=brand_name, brand_email=brand_email, brand_website= brand_website, brand_instagram=brand_instagram, brand_tiktok=brand_tiktok, brand_youtube=brand_youtube)
+			join_brand_obj= JoinBrand.objects.create(full_name=brand_fullname, brand_name=brand_name, user=user_obj, brand_website= brand_website, brand_instagram=brand_instagram, brand_tiktok=brand_tiktok, brand_youtube=brand_youtube)
 			join_brand_obj.save()
 			is_brand_obj= BrandorInfluencer.objects.create(user=user_obj, brand=True)
 			is_brand_obj.save()
@@ -2318,9 +2318,25 @@ def checkout(request):
 			messages.success(request, 'Oops There is some problem. Place order again')
 			return redirect('home')
 
-def checkout_requirements(request, id):
-	joined_influencer = JoinInfluencer.objects.get(id=id)
+def placeOrder(request):
 	if request.method== 'POST':
+		influencerId= request.POST.get('influencerId')
+		packageId = request.POST.get('packageId')
+		influencer_obj = JoinInfluencer.objects.get(id=influencerId)
+		package_obj = InfluencerPackage.objects.get(id=packageId)
+		brand_obj = JoinBrand.objects.get(user=request.user)
+		order_obj = Orders.objects.create(influencer=influencer_obj, package=package_obj, brand=brand_obj, status="pending")
+		order_obj.save()
+		context={
+		'joined_influencer':influencer_obj.id,
+		'order':order_obj.id
+		}
+		return render(request, 'User/checkout_requirements.html',context)	
+
+def checkout_requirements(request):
+	if request.method== 'POST':
+		joined_influencer = JoinInfluencer.objects.get(id=request.POST.get('influencer_id'))
+		order = Orders.objects.get(id=request.POST.get('order_id'))
 		discription= request.POST.get('discription')
 		requiremerts = request.POST.get('requirements')
 		need = request.POST.get('need')
@@ -2329,31 +2345,24 @@ def checkout_requirements(request, id):
 		additional_info = request.POST.get('additional_info')
 		re_use = request.POST.get('save_answer')
 		name_of_answer = request.POST.get('save_answer_name')
-		
-		print(discription,requiremerts,need,apply,product_cost,additional_info,re_use,name_of_answer,"*******")
 		chk_re_use = False
 		if re_use == "on":
 			chk_re_use=True
 		else:
 			chk_re_use=False
-
 		submit_requirements_objects = submit_requirements.objects.create(
 			description=discription,
 			requiremerts=requiremerts,
 			need=need,
 			apply=apply,
 			re_use=chk_re_use,
-			product_cost=product_cost,
 			additional_info=additional_info,
 			name_of_answer=name_of_answer,
-			user=request.user,
-			influencer=joined_influencer
+			influencer=joined_influencer,
+			orders = order
 		)
 		submit_requirements_objects.save()
-	context={
-		'joined_influencer':joined_influencer
-	}
-	return render(request, 'User/checkout_requirements.html',context)
+		return redirect('order')
 
 def custom_offer(request):
 	if request.method== 'POST':
@@ -2362,6 +2371,7 @@ def custom_offer(request):
 	return render(request, 'User/custom_offer.html', context)
 
 def order(request):
+	
 	return render(request, 'User/order.html')
 
 

@@ -101,7 +101,13 @@ a:hover{
                               </div>
                           </div>
                     </div>
-                    <a href="{% url 'checkout_requirements' joined_influencer.id %}" id="requirements_page" style="display: none;">click</a>
+
+                    <form action="{% url 'placeOrder' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="influencerId" value="{{joined_influencer.id}}">
+                        <input type="hidden" name="packageId" value="6">
+                        <input type="submit" style="display: none;" id="requirements_page">
+                    </form>
 
                 <div class="checkout-col">
                     <div class="package-holder-checkout">

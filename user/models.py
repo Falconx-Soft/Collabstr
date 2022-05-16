@@ -5,6 +5,7 @@ from hashlib import blake2s
 from operator import truediv
 from pickle import TRUE
 from pyexpat import model
+from re import T
 from tkinter import CASCADE
 from unicodedata import category
 from django.db import models
@@ -109,6 +110,7 @@ class InfluencerPackage(models.Model):
     def __str__(self):
           return self.influencer_username.influencer_username
 
+
 class InfluencerFaq(models.Model):
     influencer_username=models.ForeignKey(JoinInfluencer, on_delete=models.CASCADE)
     faq_question=models.CharField(max_length=500)
@@ -136,15 +138,13 @@ class EditPortfolioImages(models.Model):
 class JoinBrand(models.Model):
     full_name= models.CharField(max_length=50)
     brand_name=models.CharField(max_length=50)
-    brand_email=models.CharField(max_length=300)
+    user=models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     brand_website=models.URLField(max_length=300, null=True, blank=True)
     brand_instagram= models.CharField(max_length=50, blank=True, null=True)
     brand_tiktok=models.CharField(max_length=50, blank=True, null=True)
     brand_youtube= models.URLField(max_length=300, null=True, blank=True)
     brand_location= models.CharField(max_length=100, null=True, blank=True)
     brand_description= models.CharField(max_length=400, null=True, blank=True)
-
-
     
     lifestyle=models.BooleanField(default=False)
     fashion=models.BooleanField(default=False)
@@ -186,14 +186,20 @@ class JoinBrand(models.Model):
     def __str__(self):
             return self.full_name
 
+class Orders(models.Model):
+    influencer = models.ForeignKey(JoinInfluencer,on_delete=models.CASCADE)
+    package = models.ForeignKey(InfluencerPackage,on_delete=models.CASCADE)
+    brand = models.ForeignKey(JoinBrand,on_delete=models.CASCADE)
+    status = models.CharField(max_length=500, null=True)
+
 class submit_requirements(models.Model):
     description = models.CharField(max_length=2000)
     requiremerts = models.CharField(max_length=2000)
     need = models.CharField(max_length=2000)
     apply = models.CharField(max_length=500)
-    product_cost = models.IntegerField()
     additional_info = models.CharField(max_length=2000)
     re_use = models.BooleanField()
     name_of_answer = models.CharField(max_length=500)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     influencer = models.ForeignKey(JoinInfluencer, on_delete=models.CASCADE)
+    orders = models.OneToOneField(Orders, on_delete=models.CASCADE, null=True)
+

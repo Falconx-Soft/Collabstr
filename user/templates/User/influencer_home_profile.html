@@ -421,6 +421,7 @@ a:hover{
                         </div>
                     </div>
                     <div class="package-description">{{package.package_include}}</div>
+                    <input type="hidden" class="package_id_holder" value="{{package.id}}" data-id="{{package.content_category}}">
 
                 </div>
                     {% endfor %}
@@ -545,10 +546,13 @@ a:hover{
                         <input type="text" name="influencer_email" hidden value="{{joined_influencer.email_address}}">
                         <select class="input package-input" name="package_category" onchange="changePackage(this)">
                             {% for package in package_influencer %}
-                            <option value="{{package.content_category}}">{{package.content_category}}</option>
+                            <option value="{{package.content_category}}">{{package.id}} {{package.content_category}}</option>
                             {% endfor %}
     
                         </select>
+
+                        <input type="text" name="package_obj" id="package_obj" value="{{package.id}}">
+
                         <input class="checkout-price-input" type="text" hidden name="checkout_price" value="">
                         <div class="checkout-price"></div>
                         <div class="checkout-description-holder">I will create a tailored TikTok video using your
@@ -895,6 +899,8 @@ a:hover{
             let packageID = $(el).find(":selected").val();
             console.log('on change function calls', packageID)
             $(".packages-holder").find(`[data-id='${packageID}']`).click();
+
+            console.log($(".package_id_holder").find(`[data-id='${packageID}']`).val());
         }
 
         function changeFilter(el) {

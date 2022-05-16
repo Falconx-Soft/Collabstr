@@ -12,6 +12,7 @@ admin.site.register(JoinBrand)
 # admin.site.register(User)
 
 admin.site.register(submit_requirements)
+admin.site.register(Orders)
 
 
 class InfluencerAdmin(admin.ModelAdmin):

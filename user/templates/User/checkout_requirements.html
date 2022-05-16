@@ -128,9 +128,13 @@ a:hover{
 <div class="form-holder-checkout">
 
     <div>
-        <form action="{% url 'checkout_requirements' joined_influencer.id %}" method="post">
+        <form action="{% url 'checkout_requirements' %}" method="post">
 
             {% csrf_token %}
+        
+        <input type="hidden" value="{{joined_influencer}}" name="influencer_id">
+
+        <input type="hidden" value="{{order}}" name="order_id">
 
        <h2><b>Submit Requirements</b></h2>
        <p>Provide the requirements for {{joined_influencer.influencer_username}} to get started on your collab.</p>
