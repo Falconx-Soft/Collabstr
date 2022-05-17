@@ -429,7 +429,7 @@ a:hover{
 
             </div>
 
-
+            {% if edit_portfolio %}
             <div class="portfolio-section">
                 <h3>Portfolio</h3>
 
@@ -446,6 +446,11 @@ a:hover{
                 </div>
 
             </div>
+            {% endif %}
+            
+
+
+            {% if faq_influencer %}
             <div style="    margin-top: 25px;" class="faq-section">
                 <h3>FAQ</h3>
                 {% for faq in faq_influencer %}
@@ -466,6 +471,7 @@ a:hover{
                 </div> -->
 
              </div>
+            {% endif %}
 
            
         </div>

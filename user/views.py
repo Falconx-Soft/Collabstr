@@ -1080,6 +1080,7 @@ def influencer_profile(request):
 def influencer_profile_edit(request):
 	try:
 		if request.user.is_authenticated:
+			JoinInfluencerObj = JoinInfluencer.objects.get(email_address=request.user.email)
 			print("User is logged in :)")
 			username= request.user.email
 			influencer=User.objects.get(email= username)
@@ -1863,7 +1864,7 @@ def influencer_profile_edit(request):
 				# 	edit_port_folio.save()
 
 				return redirect('url {influencer_profile}')
-			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
+			context={'nav_profile_image':JoinInfluencerObj.profile_image,'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer}
 			return render(request, 'User/infl_profile_edit.html', context)
 				
 			
@@ -1873,6 +1874,10 @@ def influencer_profile_edit(request):
 	except Exception as e:
 			messages.success(request, 'Superuser logged in')
 			print(e)
+	if not request.user.is_brand:
+		context= {
+			'nav_profile_image':JoinInfluencerObj.profile_image
+		}
 	return render(request, 'User/infl_profile_edit.html')
 
 
@@ -2283,6 +2288,12 @@ def influencer_home_profile(request):
 			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username)
 			edit_portfolio=EditPortfolioImages.objects.filter(influencer_username__influencer_username=username)
 			print('joined_influencer::::::::::',joined_influencer)
+			
+			if request.user.is_authenticated:
+				if not request.user.is_brand:
+					JoinInfluencerObj = JoinInfluencer.objects.get(email_address=request.user.email)
+					context={'nav_profile_image':JoinInfluencerObj.profile_image,'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
+					return render(request, 'User/influencer_home_profile.html', context)
 			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
 			return render(request, 'User/influencer_home_profile.html', context)
 		else:
