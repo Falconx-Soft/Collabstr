@@ -37,6 +37,7 @@
 .chat_list_div{
     display: flex;
     padding: 10px;
+    cursor: pointer;
 }
 
 .chat-profile{

@@ -2371,8 +2371,58 @@ def custom_offer(request):
 	return render(request, 'User/custom_offer.html', context)
 
 def order(request):
-	
-	return render(request, 'User/order.html')
+	if request.method== 'POST':
+		status = request.POST.get('display_order_status')
+		id = request.POST.get('display_order_id')
+		order_T = Orders.objects.get(id=id)
+		order_T.status = status
+		order_T.save()
+	if request.user.is_brand:
+		joinBrandObj = JoinBrand.objects.get(user=request.user)
+		order_obj = Orders.objects.filter(brand=joinBrandObj)
+
+		context = {
+			'pending_orders':order_obj,
+			'display_order':order_obj[0]
+		}
+		return render(request, 'User/order.html',context)
+	else:
+		influencer = JoinInfluencer.objects.get(email_address=request.user.email)
+		order_obj = Orders.objects.filter(influencer=influencer)
+
+		context = {
+			'pending_orders':order_obj,
+			'display_order':order_obj[0]
+		}
+		return render(request, 'User/order.html',context)
+
+def order_by_id(request,id):
+	if request.method== 'POST':
+		status = request.POST.get('display_order_status')
+		id = request.POST.get('display_order_id')
+		order_T = Orders.objects.get(id=id)
+		order_T.status = status
+		order_T.save()
+	if request.user.is_brand:
+		joinBrandObj = JoinBrand.objects.get(user=request.user)
+		order_obj = Orders.objects.filter(brand=joinBrandObj)
+		display_order = Orders.objects.get(id=id)
+
+		context = {
+			'pending_orders':order_obj,
+			'display_order':display_order
+		}
+		return render(request, 'User/order.html',context)
+	else:
+		influencer = JoinInfluencer.objects.get(email_address=request.user.email)
+		order_obj = Orders.objects.filter(influencer=influencer)
+		display_order = Orders.objects.get(id=id)
+
+		context = {
+			'pending_orders':order_obj,
+			'display_order':order_obj[0]
+		}
+		return render(request, 'User/order.html',context)
 
 
 def create_checkout_session(request):

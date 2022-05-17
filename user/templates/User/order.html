@@ -33,22 +33,36 @@
         </div>
 
         <div class="order_list_option">
-            <div class="order_list_option_item active">
+            <div class="order_list_option_item active" id="requests_btn">
                 Requests
             </div>
-            <div class="order_list_option_item">
+            <div class="order_list_option_item" id="in_progress_btn">
                 In-progress
             </div>
-            <div class="order_list_option_item">
+            <div class="order_list_option_item" id="completed_btn">
                 Completed
             </div>
         </div>
 
-        <div class="chat_list_div active-chat">
-            <img class="chat-profile" src="{% static 'images/245446.jpg' %}">
-            <div class="chat-details-div">
-                <p><b>Name</b></p>
-                <p>Lorem ipsum dolor sit amet.</p>
+        <div id="requests_div">
+            {% for order in pending_orders %}
+                <a href="{% url 'order_by_id' order.id %}" class="chat_list_div active-chat">
+                    <img class="chat-profile" src="{{order.influencer.profile_image.url}}">
+                    <div class="chat-details-div">
+                        <p><b>{{order.influencer.influencer_username}}</b></p>
+                        <p>{{order.package.content_category}}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+        <div id="in_progress_div" style="display: none;">
+            <div class="chat_list_div active-chat">
+                <img class="chat-profile" src="{% static 'images/245446.jpg' %}">
+                <div class="chat-details-div">
+                    <p><b>progress</b></p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
             </div>
         </div>
 
@@ -97,8 +111,8 @@
             <h3 class="heading"><b>Order</b></h3>
         </div>
         <div class="status">
-            <p><b>Pending</b></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique.</p>
+            <p><b>{{display_order.status}}</b></p>
+            <p>{{display_order.package.content_category}}</p>
         </div>
 
         <div class="package-div">
@@ -106,12 +120,34 @@
         </div>
 
         <div class="details">
-            <h3><b>$50</b></h3>
-            <p>Instagram</p>
+            <h3><b>{{display_order.package.package_price}}</b></h3>
+            <p>{{display_order.package.choose_platform}}</p>
 
-            <p><b>3 stories with 1 swip up</b></p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque voluptas repudiandae aliquam aperiam ad voluptatem ab eum vel inventore veritatis sapiente atque earum ipsam necessitatibus, cum ratione id modi quidem voluptatum provident beatae, nihil cupiditate. Voluptas, deserunt. Sunt, sint quasi?</p>
+            <p><b>{{display_order.package.package_offering}}</b></p>
+            <p>{{display_order.package.package_include}}</p>
         </div>
+
+        {% if not request.user.is_brand %}
+            <form method="post">
+                {% csrf_token %}
+                <h3><b>Order Status</b></h3>
+                <select class="input package-input" name="display_order_status">
+                    <option value="pending">Pending</option>
+                    <option value="declined">Declined</option>
+                </select>
+                <input type="hidden" value="{{display_order.id}}" name="display_order_id">
+                <button type="submit" class="buy-btn btn" data-id="checkout" 
+                style="
+                    font-size: large;
+                    border-radius: 15px;
+                    font-weight: 500;
+                    width: 100%;
+                    color: white;
+                    background-color: black;
+                    height: 37px;
+                ">Continue</button>
+            </form>
+        {% endif %}
     </div>
 
 </div>
@@ -123,6 +159,30 @@
 <!-- Specific Page JS goes HERE  -->
 {% block extrajavascript %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+    console.log("Hello")
+    requests_btn = document.getElementById("requests_btn");
+    in_progress_btn = document.getElementById("in_progress_btn");
+    completed_btn = document.getElementById("completed_btn");
+
+    requests_div = document.getElementById("requests_div");
+    in_progress_div = document.getElementById("in_progress_div");
+
+    requests_btn.addEventListener("click", function(){
+        in_progress_div.style.display = "none";
+        requests_div.style.display = "block";
+    });
+
+
+    in_progress_btn.addEventListener("click", function(){
+        in_progress_div.style.display = "block";
+        requests_div.style.display = "none";
+    });
+
+</script>
 
 
 {% endblock extrajavascript %}
