@@ -151,9 +151,15 @@
                     <a class="header-btn dashboard-btn">
                         <div class="dashboard-menu-holder">
                             <div class="dashboard-menu-btn">|||</div>
-                            <img class="dashboard-img"
-                                src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/avatar.png"
-                                onclick="location.href=''">
+                            {% if request.user.is_brand %}
+                                <img class="dashboard-img"
+                                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/avatar.png"
+                                    onclick="location.href=''">
+                            {% else %}
+                                <img class="dashboard-img" 
+                                    src="{{nav_profile_image.url}}" 
+                                    onclick="location.href=''">
+                            {% endif %}
                             <div class="dashboard-menu">
     
                                  <div class="dashboard-menu-item"

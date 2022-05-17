@@ -24,7 +24,20 @@ def home(request):
 	all_packages=InfluencerPackage.objects.all()
 	print('all_packages___________________',all_packages)
 	print('all_packages_________________0000__',all_packages[0])
-	context= {'all_influencer': all_influencer,'all_packages':all_packages}
+	context= {
+		'all_influencer': all_influencer,
+		'all_packages':all_packages,
+		'nav_profile_image':"image"
+		}
+	
+	if request.user.is_authenticated:
+		if not request.user.is_brand:
+			JoinInfluencerObj = JoinInfluencer.objects.get(email_address=request.user.email)
+			context= {
+				'all_influencer': all_influencer,
+				'all_packages':all_packages,
+				'nav_profile_image':JoinInfluencerObj.profile_image
+			}
 
 	return render(request,'User/home.html', context)
 
@@ -1054,7 +1067,7 @@ def influencer_profile(request):
 			faq_influencer=InfluencerFaq.objects.filter(influencer_username__influencer_username=username_inful)
 			edit_portfolio=EditPortfolioImages.objects.filter(influencer_username__influencer_username=username_inful)
 			print('joined_influencer::::::::::',joined_influencer)
-			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
+			context={'nav_profile_image':joined_influencer.profile_image,'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
 			return render(request, 'User/influencer_profile.html', context)
 		else:
 			print("User is not logged in :(")

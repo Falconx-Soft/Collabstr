@@ -1015,8 +1015,14 @@
         </div>
         <h3 class="profile-text">Outdoor Enthusiast, Travel & Adventure Photograph</h3>
     </div>
-
 </div>
+
+<div class="see_more_div">
+    <div class="see_more_buton" id="see_more">
+        See More
+    </div>
+</div>
+
 
 <!-- *************************************************************************************************************************change 2 -->
 <div class="container mt-3 div-titel" style="padding-left: 100px; padding-right: 100px; width: 100%;">
@@ -1033,7 +1039,7 @@
         </div>
         
         <div class="card-img-overlay-cat">
-            <h2 style="font-size: 17px; font-weight: 700; margin-left: 13px; margin-top: -82px;" class="card-title">Fashion</h2>
+            <h2 style="font-size: 17px; font-weight: 700; margin: 0px;" class="card-title">Fashion</h2>
     
         </div>
         
@@ -1045,7 +1051,7 @@
         </div>
        
         <div class="card-img-overlay-cat">
-            <h2 style="font-size: 17px; font-weight: 700; margin-left: 13px; margin-top: -82px;" class="card-title">Music & Dance</h2>
+            <h2 style="font-size: 17px; font-weight: 700; margin: 0px;" class="card-title">Music & Dance</h2>
             
 
         </div>
@@ -1058,7 +1064,7 @@
         </div>
         
         <div class="card-img-overlay-cat">
-            <h2 style="font-size: 17px; font-weight: 700; margin-left: 13px; margin-top: -82px;" class="card-title">Beauty</h2>
+            <h2 style="font-size: 17px; font-weight: 700; margin: 0px;" class="card-title">Beauty</h2>
             
 
         </div>
@@ -1071,7 +1077,7 @@
         </div>
        
         <div class="card-img-overlay-cat">
-            <h2 style="font-size: 17px; font-weight: 700; margin-top: -82px; margin-left: 13px;" class="card-title">Travel</h2>
+            <h2 style="font-size: 17px; font-weight: 700; margin: 0px;" class="card-title">Travel</h2>
             
 
         </div>
@@ -1140,20 +1146,6 @@
     </div>
 </div>
 
-<div class="container how-work-outer" style="padding-left: 100px; padding-right: 100px; width: 100%;">
-    <div class="cta-holder">
-        <div class="cta-overlay-holder">
-            <div class="cta-txt-holder">
-                <h2 class="cta-title">Find and Hire Influencers</h2>
-                <h3 class="cta-txt">Search Instagram, TikTok, and YouTube influencers</h3>
-                <div class="cta-btn btn">Search Influencers</div>
-            </div>
-        </div>
-        <img loading="lazy" alt="top influencers" class="cta-img" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/cta.png">
-    </div>
-
-</div>
-
 
 <!-- footer -->
 <div class="container" style="width: 100%;">
@@ -1183,6 +1175,22 @@
                 <a href="/terms" class="footer-txt">Terms</a>
                 <a href="/sitemap" class="footer-txt">Sitemap</a>
             </div>
+
+            <div class="footer-section">
+                <div class="footer-title">Inful Social Medias</div>
+                <div class="footer-img" style="margin: 12px 0;">
+                    <a href="https://instagram.com/INFUL" target="_blank"><span class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg" alt="Instagram logo" loading="lazy">
+                </div>
+                <div class="footer-img" style="margin: 12px 0;">
+                    <a href="https://tiktok.com/@INFUL.com" target="_blank"><span class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg" alt="TikTok logo" loading="lazy">
+                </div>
+                <div class="footer-img" style="margin: 12px 0;">
+                    <a href="https://twitter.com/@useINFUL" target="_blank"><span class="link-spanner"></span></a>
+                    <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg" alt="Twitter logo" loading="lazy">
+                </div>
+            </div>
         </div>
         <div class="footer-btm-row">
             <div class="footer-btm-row-left">
@@ -1208,6 +1216,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
  <!-- mobile navbar -->
@@ -1320,6 +1329,25 @@
 //  });
 //  });
 
+</script>
+
+<script>
+    const f_image = document.getElementsByClassName("f-image");
+    if(f_image.length > 18){
+        for(x=18; x<f_image.length;c=x++){
+            f_image[x].style.display='none';
+        }
+    }
+
+    const see_more = document.getElementById("see_more");
+    see_more.addEventListener("click", function(){
+        if(f_image.length > 18){
+            for(x=18; x<f_image.length;c=x++){
+                f_image[x].style.display='block';
+            }
+        }
+        see_more.style.display="none";
+    });
 </script>
 
 

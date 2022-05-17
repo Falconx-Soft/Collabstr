@@ -547,6 +547,16 @@ body{
     }
 }
 
+.categories-div-item{
+    position: relative;
+}
+
+.card-img-overlay-cat{
+    position: absolute;
+    top: 50%;
+    left: 35%;
+}
+
 @media only screen and (max-width: 800px){
     .navbar-conatainer{
         justify-content: flex-start;
@@ -613,6 +623,10 @@ body{
     .footer-title{
         font-size: 120%;
         font-weight: 600;
+    }
+
+    .footer {
+        margin-bottom: 40px;
     }
 
     .div-titel{
@@ -843,3 +857,19 @@ body{
 }
 
 /* modal for categories */
+
+.see_more_buton{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 9px;
+    border-radius: 20px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.see_more_div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
