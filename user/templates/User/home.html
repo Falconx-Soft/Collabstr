@@ -1333,21 +1333,39 @@
 
 <script>
     const f_image = document.getElementsByClassName("f-image");
-    if(f_image.length > 18){
-        for(x=18; x<f_image.length;c=x++){
-            f_image[x].style.display='none';
-        }
-    }
-
     const see_more = document.getElementById("see_more");
     see_more.addEventListener("click", function(){
         if(f_image.length > 18){
-            for(x=18; x<f_image.length;c=x++){
+            for(x=0; x<f_image.length;c=x++){
                 f_image[x].style.display='block';
             }
         }
         see_more.style.display="none";
     });
+
+    console.log("check");
+
+    function myFunction(x) {
+        if (x.matches) { // If media query matches
+            if(f_image.length > 6){
+                for(x=6; x<f_image.length;c=x++){
+                    f_image[x].style.display='none';
+                    see_more.style.display="block";
+                }
+            }
+        }else{
+            if(f_image.length > 18){
+                for(x=18; x<f_image.length;c=x++){
+                    f_image[x].style.display='none';
+                    see_more.style.display="block";
+                }
+            }
+        }
+    }
+
+    var x = window.matchMedia("(max-width: 552px)")
+    myFunction(x) // Call listener function at run time
+    x.addListener(myFunction) // Attach listener function on state changes
 </script>
 
 
