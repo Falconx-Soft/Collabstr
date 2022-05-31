@@ -35,6 +35,7 @@ class JoinInfluencer(models.Model):
     influencer_username= models.CharField(max_length=200)
     full_name= models.CharField(max_length=150,default="")
     email_address= models.EmailField(max_length=300, default="")
+    user=models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     password= models.CharField(max_length=30,default="")
     location= models.CharField(max_length=100, default="")
     title_influencer= models.CharField(max_length=80,default="")

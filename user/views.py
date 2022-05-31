@@ -13,6 +13,7 @@ from .models import*
 from django.conf import settings
 from django.core.mail import send_mail
 import stripe
+from chat.utils import find_or_create_private_chat
 
 # from .models import join_influencer
 stripe.api_key= 'sk_test_51KhIAhGppnrRkU6FOSJWqqiDXogb03Zh0gF9tEg9ov0aCIHdPsN4ptPDlEM5pkRAzuYv30LRiwSG9e2bOvnr5rZH00Wv7Ifh6t'
@@ -128,8 +129,6 @@ def join_as_influencer(request):
 				messages.success(request, 'Username Not Available')
 				return redirect(request, 'join_as_influencer.html')
 			else:
-
-			
 				influencer_obj2= JoinInfluencer.objects.create(influencer_username= influencer_username)
 				influencer_obj2.save()
 				request.session['username_session'] = influencer_username
@@ -2349,6 +2348,12 @@ def placeOrder(request):
 		influencer_obj = JoinInfluencer.objects.get(id=influencerId)
 		package_obj = InfluencerPackage.objects.get(id=packageId)
 		brand_obj = JoinBrand.objects.get(user=request.user)
+
+		chat = find_or_create_private_chat(brand_obj.user, influencer_obj.user)
+		if not chat.is_active:
+			chat.is_active = True
+			chat.save()
+
 		order_obj = Orders.objects.create(influencer=influencer_obj, package=package_obj, brand=brand_obj, status="pending")
 		order_obj.save()
 		context={
@@ -2503,6 +2508,14 @@ def social_signup(request):
 	return render(request,'User/social_signup.html')
 
 def categories(request):
+
+	try:
+		influencer_obj= JoinInfluencer.objects.get(influencer_username= request.session.get('username_session'))
+		if not influencer_obj.user:
+			influencer_obj.user = request.user
+			influencer_obj.save()
+	except:
+		pass
 	try:
 		user_email_inful=request.user.email
 		session_user=request.session.get('username_session')
