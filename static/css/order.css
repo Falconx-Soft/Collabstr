@@ -73,6 +73,14 @@
 .chat-box{
     padding: 20px;
     height: 400px;
+
+    display: flex;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+    font-size: 0.9em;
+    flex-direction: column-reverse;
 }
 
 .message{

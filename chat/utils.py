@@ -2,6 +2,8 @@ from datetime import datetime
 from django.contrib.humanize.templatetags.humanize import naturalday
 
 from chat.models import PrivateChatRoom
+from django.core.serializers.python import Serializer
+from chat.constants import *
 
 
 def find_or_create_private_chat(user1, user2):
@@ -37,5 +39,14 @@ def calculate_timestamp(timestamp):
 		ts = f"{str_time}"
 	return str(ts)
 
+class LazyRoomChatMessageEncoder(Serializer):
+    def get_dump_object(self, obj):
+        dump_object = {}
+        dump_object.update({'msg_type': MSG_TYPE_MESSAGE})
+        dump_object.update({'msg_id': str(obj.id)})
+        dump_object.update({'user_id': str(obj.user.id)})
+        dump_object.update({'username': str(obj.user.username)})
+        dump_object.update({'message': str(obj.content)})
+        return dump_object
 
 

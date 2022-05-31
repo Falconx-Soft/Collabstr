@@ -10,7 +10,7 @@
 			onSelectFriend("{{pending_orders.0.id}}")
 		{% endif %}
 		// {% for x in m_and_f %}
-		// 	preloadImage("{{x.friend.profile_image.url|safe}}", "id_friend_img_{{x.friend.id}}")
+		// 	preloadImage("{{x.friend..url|safe}}", "id_friend_img_{{x.friend.id}}")
 		// {% endfor %}
 	}
 
@@ -22,6 +22,8 @@
 		if(chatSocket != null){
 			chatSocket.close()
 			chatSocket = null
+			clearChatLog()
+			setPageNumber("1")
 		}
 	}
 
@@ -66,6 +68,8 @@ chatSocket.onmessage = function(message) {
 	if (data.join) {
 		console.log("Joining room " + data.join);
 		getUserInfo()
+		getRoomChatMessages()
+		enableChatLogScrollListener()
 	}
 	// Handle leaving (client perspective)
 	if (data.leave) {
@@ -79,8 +83,13 @@ chatSocket.onmessage = function(message) {
 	}
 
 	// Handle getting a message
-	if (data.msg_type == 0) {
+	if (data.msg_type == 0 || data.msg_type == 1 || data.msg_type == 2) {
 		appendChatMessage(data, false, true)
+	}
+
+	// new payload of messages coming in from backend
+	if(data.messages_payload){
+		handleMessagesPayload(data.messages, data.new_page_number)
 	}
 };
 
@@ -144,7 +153,6 @@ messageInputDom.value = '';
 
 /*
 Retrieve the user information of the user other in the chat.
-1. Profile image
 2. username
 3. etc...
 */
@@ -172,9 +180,29 @@ uName = data['username']
 user_id = data['user_id']
 console.log("append chat message: " + messageType)
 
-username = uName + ": "
-msg = message + '\n'
-createChatMessageElement(msg, msg_id, username, user_id, maintainPosition, isNewMessage)
+	var msg = "";
+	var username = ""
+
+		// determine what type of msg it is
+	switch (messageType) {
+		case 0:
+			// new chatroom msg
+			username = uName + ": "
+			msg = message + '\n'
+			createChatMessageElement(msg, msg_id, username, user_id, maintainPosition, isNewMessage)
+			break;
+		case 1:
+			// User joined room
+			createConnectedDisconnectedElement(message, msg_id, user_id)
+			break;
+		case 2:
+			// User left room
+			createConnectedDisconnectedElement(message, msg_id, user_id)
+			break;
+		default:
+			console.log("Unsupported message type!");
+			return;
+	}
 }
 
 /*
@@ -199,9 +227,6 @@ div2.classList.add("flex-row")
 var usernameSpan = document.createElement("span")
 usernameSpan.innerHTML = username
 usernameSpan.classList.add("username-span")
-usernameSpan.addEventListener("click", function(e){
-	selectUser(user_id)
-})
 div2.appendChild(usernameSpan)
 
 div1.appendChild(div2)
@@ -214,7 +239,7 @@ div1.appendChild(msgP)
 newMessageDiv.appendChild(div1)
 
 if(isNewMessage){
-	chatLog.insertBefore(newMessageDiv, chatLog.firstChild)
+	chatLog.insertBefore(newMessageDiv,chatLog.firstChild)
 }
 else{
 	chatLog.appendChild(newMessageDiv)
@@ -224,7 +249,92 @@ if(!maintainPosition){
 	chatLog.scrollTop = chatLog.scrollHeight
 }
 
+	chatLog.scrollHeight;
+
 }
+
+function createConnectedDisconnectedElement(msg, msd_id, user_id){
+		var chatLog = document.getElementById("id_chat_log")
+
+		var newMessageDiv = document.createElement("div")
+		newMessageDiv.classList.add("d-flex")
+		newMessageDiv.classList.add("flex-row")
+		newMessageDiv.classList.add("message-container")
+
+		var usernameSpan = document.createElement("span")
+		usernameSpan.innerHTML = msg
+		usernameSpan.classList.add("username-span")
+		newMessageDiv.appendChild(usernameSpan)
+
+		chatLog.insertBefore(newMessageDiv, chatLog.firstChild)
+
+ 	}
+
+	 function setPageNumber(pageNumber){
+		document.getElementById("id_page_number").innerHTML = pageNumber
+	}
+
+	function clearChatLog(){
+		document.getElementById("id_chat_log").innerHTML = ""
+	}
+
+
+	function setPaginationExhausted(){
+		setPageNumber("-1")
+	}
+
+ 	/*
+		Retrieve the chat room messages given the page number.
+	*/
+	function getRoomChatMessages(){
+		var pageNumber = document.getElementById("id_page_number").innerHTML
+		if(pageNumber != "-1"){
+			setPageNumber("-1") // loading in progress
+			chatSocket.send(JSON.stringify({
+				"command": "get_room_chat_messages",
+				"room_id": roomId,
+				"page_number": pageNumber,
+			}));
+		}
+	}
+
+
+	function handleMessagesPayload(messages, new_page_number){
+		if(messages != null && messages != "undefined" && messages != "None"){
+			setPageNumber(new_page_number)
+			messages.forEach(function(message){
+				appendChatMessage(message, true, false)
+			})
+		}
+		else{
+			setPaginationExhausted() // no more messages
+		}
+	}
+
+
+/*
+		Get the next page of chat messages when scrolls to bottom
+	*/
+	function chatLogScrollListener(e) {
+		var chatLog = document.getElementById("id_chat_log")
+		if ((Math.abs(chatLog.scrollTop) + 2) >= (chatLog.scrollHeight - chatLog.offsetHeight)) {
+			getRoomChatMessages()
+		}
+	}
+
+	/*
+		Enable the function "chatLogScrollListener"
+	*/
+	function enableChatLogScrollListener(){
+		document.getElementById("id_chat_log").addEventListener("scroll", chatLogScrollListener);
+	}
+
+	/*
+		Disable the function "chatLogScrollListener"
+	*/
+	function disableChatLogScrollListener(){
+		document.getElementById("id_chat_log").removeEventListener("scroll", chatLogScrollListener)
+	}
 	
 
 function createOrReturnPrivateChat(id){
