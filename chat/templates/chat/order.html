@@ -47,9 +47,17 @@
         <div id="requests_div">
             {% for order in pending_orders %}
                 <div class="chat_list_div active-chat" onclick="onSelectFriend('{{order.id}}')">
-                    <img class="chat-profile" src="{{order.influencer.profile_image.url}}">
+                    {% if request.user.is_brand %}
+                        <img class="chat-profile" src="{{order.influencer.profile_image.url}}">
+                    {% else %}
+                        <img class="chat-profile" src="{% static 'images/default.png' %}">
+                    {% endif %}
                     <div class="chat-details-div">
-                        <p><b>{{order.influencer.influencer_username}}</b></p>
+                        {% if request.user.is_brand %}
+                            <p><b>{{order.influencer.influencer_username}}</b></p>
+                        {% else %}
+                            <p><b>{{order.brand.full_name}}</b></p>
+                        {% endif %}
                         <p>{{order.package.content_category}}</p>
                     </div>
                 </div>
