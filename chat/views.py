@@ -58,30 +58,35 @@ def private_chat_room_view(request, *args, **kwargs):
 			}
 		return render(request, 'chat/order.html',context)
 
-def start_chat(request):
-    pass
-
 # Ajax call to return a private chatroom or create one if does not exist
 def create_or_return_private_chat(request, *args, **kwargs):
 	user1 = request.user
 	payload = {}
 	if user1.is_authenticated:
 		if request.method == "POST":
+			order_id = request.POST.get("order_id")
+			print(order_id,"********id**********")
+			order = Orders.objects.get(id=order_id)
 			try:
 				if user1.is_brand:
-					order_id = request.POST.get("order_id")
-					print(order_id,"********id**********")
-					order = Orders.objects.get(id=order_id)
 					user2 = order.influencer.user
 					print(user2,"******************")
 				else:
-					order_id = request.POST.get("order_id")
-					order = Orders.objects.get(id=order_id)
 					user2 = order.brand.user 
 				chat = find_or_create_private_chat(user1, user2)
-				print(chat,"******************")
+				print(order.package.package_include,"**********price********")
+				print(order.package.package_offering,"**********price********")
 				payload['response'] = "Successfully got the chat."
 				payload['chatroom_id'] = chat.id
+
+				payload['choose_platform'] = order.package.choose_platform
+				payload['content_category'] = order.package.content_category
+				payload['package_offering'] = order.package.package_offering
+				payload['package_include'] = order.package.package_include
+				payload['package_price'] = order.package.package_price
+
+				payload['status'] = order.status
+
 			except JoinInfluencer.DoesNotExist:
 				payload['response'] = "Unable to start a chat with that user."
 	else:

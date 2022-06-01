@@ -97,8 +97,8 @@
             <h3 class="heading"><b>Order</b></h3>
         </div>
         <div class="status">
-            <p><b>{{display_order.status}}</b></p>
-            <p>{{display_order.package.content_category}}</p>
+            <p><b id="order-status">{{display_order.status}}</b></p>
+            <p id="order-content_category">{{display_order.package.content_category}}</p>
         </div>
 
         <div class="package-div">
@@ -106,11 +106,11 @@
         </div>
 
         <div class="details">
-            <h3><b>{{display_order.package.package_price}}</b></h3>
-            <p>{{display_order.package.choose_platform}}</p>
+            <h3><b id="order-package_price">{{display_order.package.package_price}}</b></h3>
+            <p id="order-choose_platform">{{display_order.package.choose_platform}}</p>
 
-            <p><b>{{display_order.package.package_offering}}</b></p>
-            <p>{{display_order.package.package_include}}</p>
+            <p><b id="order-package_offering">{{display_order.package.package_offering}}</b></p>
+            <p id="order-package_include">{{display_order.package.package_include}}</p>
         </div>
 
         {% if not request.user.is_brand %}
