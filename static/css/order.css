@@ -23,15 +23,16 @@
 
 .order_list_option_item{
     width: 100%;
-    background-color: #ccc;
-    padding: 18px;
+    background-color: white;
+    padding: 15px;
     cursor: pointer;
     text-align: center;
 }
 
 .active{
-    background-color: rgb(97, 70, 124);
-    color: white;
+    background-color: white;
+    color: rgb(97, 70, 124);
+    border-bottom: solid 1px rgb(97, 70, 124);
 }
 
 .chat_list_div{
@@ -55,10 +56,7 @@
     margin-bottom: 5px;
 }
 
-.active-chat{
-    margin-top: 5px;
-    border-left: 4px solid rgb(97, 70, 124);
-}
+
 
 /****************************************************** Orders ends */
 
@@ -98,9 +96,10 @@
 
 .message-input{
     width: 85%;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 20px 0px 0px 20px;
     padding: 5px;
     border: 1px solid #ccc;
+    padding-left: 20px;
 }
 
 .message-input:focus{
@@ -150,4 +149,34 @@
 
 .username-span{
     font-weight: bold;
+}
+
+.message-container{
+    display: flex;
+}
+
+.message-by-user{
+    justify-content: end;
+}
+
+.message-inner-div{
+    padding: 12px;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.message-inner-div>p{
+    margin: 0px;
+}
+
+.message-inner-div-2{
+    padding: 12px;
+    border: solid 2px #e9e9e9;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.message-inner-div-2 >p{
+    margin: 0px;
 }

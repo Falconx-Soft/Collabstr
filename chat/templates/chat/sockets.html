@@ -212,24 +212,22 @@ function createChatMessageElement(msg, msg_id, username, user_id, maintainPositi
 var chatLog = document.getElementById("id_chat_log")
 
 var newMessageDiv = document.createElement("div")
-newMessageDiv.classList.add("d-flex")
-newMessageDiv.classList.add("flex-row")
 newMessageDiv.classList.add("message-container")
+if(String(username) == String("{{request.user.username}}"+": ")){
+	newMessageDiv.classList.add("message-by-user")
+}
+
 
 var div1 = document.createElement("div")
 div1.classList.add("d-flex")
 div1.classList.add("flex-column")
+if(String(username) == String("{{request.user.username}}"+": ")){
+	div1.classList.add("message-inner-div")
+}else{
+	div1.classList.add("message-inner-div-2")
+}
 
-var div2 = document.createElement("div")
-div2.classList.add("d-flex")
-div2.classList.add("flex-row")
 
-var usernameSpan = document.createElement("span")
-usernameSpan.innerHTML = username
-usernameSpan.classList.add("username-span")
-div2.appendChild(usernameSpan)
-
-div1.appendChild(div2)
 
 var msgP = document.createElement("p")
 msgP.innerHTML = msg
@@ -254,19 +252,12 @@ if(!maintainPosition){
 }
 
 function createConnectedDisconnectedElement(msg, msd_id, user_id){
-		var chatLog = document.getElementById("id_chat_log")
+		// var chatLog = document.getElementById("connection-status")
 
-		var newMessageDiv = document.createElement("div")
-		newMessageDiv.classList.add("d-flex")
-		newMessageDiv.classList.add("flex-row")
-		newMessageDiv.classList.add("message-container")
-
-		var usernameSpan = document.createElement("span")
-		usernameSpan.innerHTML = msg
-		usernameSpan.classList.add("username-span")
-		newMessageDiv.appendChild(usernameSpan)
-
-		chatLog.insertBefore(newMessageDiv, chatLog.firstChild)
+		// if(user_id != "{{request.user.id}}"){
+		// 	let temp = msg.split(" ");
+		// 	chatLog.innerHTML = temp[1]
+		// }
 
  	}
 
