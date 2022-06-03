@@ -92,27 +92,43 @@
 .input-div{
     display: flex;
     padding: 10px;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .message-input{
-    width: 85%;
-    border-radius: 20px 0px 0px 20px;
+    width: 100%;
     padding: 5px;
-    border: 1px solid #ccc;
-    padding-left: 20px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
 }
+
+.input-div-2{
+    width: 90%;
+    border: 1px solid #ccc;
+    display: flex;
+    padding: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+
 
 .message-input:focus{
-    border: 1px solid #ccc;
+    border: none;
+    outline: none;
 }
 
 
-.input-div>i{
+.input-div-2>i{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #ccc;
-    width: 7%;
+    border: none;
+    font-size: 20px;
 }
 
 
