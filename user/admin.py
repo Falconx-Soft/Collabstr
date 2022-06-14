@@ -15,6 +15,10 @@ admin.site.register(submit_requirements)
 admin.site.register(Orders)
 
 
+admin.site.register(PreviousExprience)
+admin.site.register(PreviousExprienceImages)
+
+
 class InfluencerAdmin(admin.ModelAdmin):
     list_display = ('influencer_username', 'full_name', 'email_address')
 admin.site.register(JoinInfluencer, InfluencerAdmin)

@@ -40,13 +40,14 @@ def calculate_timestamp(timestamp):
 	return str(ts)
 
 class LazyRoomChatMessageEncoder(Serializer):
-    def get_dump_object(self, obj):
-        dump_object = {}
-        dump_object.update({'msg_type': MSG_TYPE_MESSAGE})
-        dump_object.update({'msg_id': str(obj.id)})
-        dump_object.update({'user_id': str(obj.user.id)})
-        dump_object.update({'username': str(obj.user.username)})
-        dump_object.update({'message': str(obj.content)})
-        return dump_object
+	def get_dump_object(self, obj):
+		dump_object = {}
+		dump_object.update({'msg_type': MSG_TYPE_MESSAGE})
+		dump_object.update({'msg_id': str(obj.id)})
+		dump_object.update({'user_id': str(obj.user.id)})
+		dump_object.update({'username': str(obj.user.username)})
+		dump_object.update({'message': str(obj.content)})
+		dump_object.update({'time': str(obj.timestamp)})
+		return dump_object
 
 

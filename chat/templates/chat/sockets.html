@@ -3,6 +3,8 @@
 	var chatSocket = null;
 	var roomId = null;
 
+	var msg_date = "";
+
 	onStart()
 
 	function onStart(){
@@ -178,6 +180,7 @@ msg_id = data['msg_id']
 message = data['message']
 uName = data['username']
 user_id = data['user_id']
+time = data['time']
 console.log("append chat message: " + messageType)
 
 	var msg = "";
@@ -189,7 +192,7 @@ console.log("append chat message: " + messageType)
 			// new chatroom msg
 			username = uName + ": "
 			msg = message + '\n'
-			createChatMessageElement(msg, msg_id, username, user_id, maintainPosition, isNewMessage)
+			createChatMessageElement(msg, msg_id, username, user_id, maintainPosition, isNewMessage, time)
 			break;
 		case 1:
 			// User joined room
@@ -208,15 +211,48 @@ console.log("append chat message: " + messageType)
 /*
 Build a new ChatMessage element and append to the list
 */
-function createChatMessageElement(msg, msg_id, username, user_id, maintainPosition, isNewMessage){
+function createChatMessageElement(msg, msg_id, username, user_id, maintainPosition, isNewMessage, time){
 var chatLog = document.getElementById("id_chat_log")
+
+temp_date = time.split(" ");
+
+console.log(time,msg)
+
+if(msg_date == ""){
+	msg_date = temp_date[0]
+}else{
+	if(temp_date[0] != msg_date){
+		var newMessageDiv2 = document.createElement("div")
+		newMessageDiv2.classList.add("message-container")
+
+		var div12 = document.createElement("div")
+		div12.classList.add("d-flex")
+		div12.classList.add("flex-column")
+
+		var msgP2 = document.createElement("p")
+		msgP2.innerHTML = msg_date
+		msgP2.classList.add("msg-p")
+		div12.appendChild(msgP2)
+
+		newMessageDiv2.appendChild(div12)
+
+		chatLog.appendChild(newMessageDiv2)
+
+		if(!maintainPosition){
+			chatLog.scrollTop = chatLog.scrollHeight
+		}
+
+			chatLog.scrollHeight;
+
+		msg_date = temp_date[0];
+	}
+}
 
 var newMessageDiv = document.createElement("div")
 newMessageDiv.classList.add("message-container")
 if(String(username) == String("{{request.user.username}}"+": ")){
 	newMessageDiv.classList.add("message-by-user")
 }
-
 
 var div1 = document.createElement("div")
 div1.classList.add("d-flex")

@@ -87,15 +87,24 @@ class JoinInfluencer(models.Model):
     image4=models.ImageField(null=True,blank=True,upload_to="images/")
     image5=models.ImageField(null=True, blank=True,upload_to="images/")
 
-   
-
-     
-
-
-
-
     def __str__(self):
             return self.influencer_username
+
+
+class PreviousExprience(models.Model):
+    influencer = models.ForeignKey(JoinInfluencer,on_delete=models.CASCADE)
+    exprience_title = models.CharField(max_length=1000, default="", null=True, blank=True)
+
+    def __str__(self):
+          return self.exprience_title
+
+
+class PreviousExprienceImages(models.Model):
+    influencer = models.ForeignKey(PreviousExprience,on_delete=models.CASCADE)
+    image = models.ImageField(null=True, blank=True,upload_to="images/")
+
+    def __str__(self):
+          return self.influencer.influencer.user.username
 
 
 class InfluencerPackage(models.Model):

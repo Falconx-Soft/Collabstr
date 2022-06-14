@@ -1,0 +1,45 @@
+.booking-btn{
+    background-color: black;
+    color: white;
+    border: solid 1px black;
+    min-width: 90px;
+    margin-top: 10px;
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+
+}
+
+.privious-work{
+    display:grid; 
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px 20px;
+}
+
+.privious-work-img-div{
+    width: 100%;
+    background: black;
+    height: 210px;
+    position: relative;
+}
+
+.privious-work-img{
+    -webkit-mask-image: linear-gradient(to top, rgb(0 0 0 / 5%) 15%, rgba(0, 0, 0, 1));
+    overflow: hidden;
+    object-fit: cover;
+    transition: transform .2s;
+    height: 210px;
+    width: 100%;
+}
+
+.privious-work-title-div{
+    position: absolute;
+    bottom: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.privious-work-title-div>p{
+    color: white;
+}

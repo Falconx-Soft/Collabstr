@@ -1,0 +1,31 @@
+.date-div{
+    display: flex;
+
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.orders-div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.orders-inner-div{
+    width: 80%;
+}
+
+.dashboard-field{
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.table-bordered>tbody>tr>td{
+    border: none !important;
+}
+
+.table-bordered {
+    border: none !important;
+}

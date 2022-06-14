@@ -66,4 +66,6 @@ urlpatterns = [
       path('order/', views.order, name="order"),
 
       path('order/<int:id>/', views.order_by_id, name="order_by_id"),
+
+      path('dashboard/', views.dashboard, name="dashboard"),
 ]

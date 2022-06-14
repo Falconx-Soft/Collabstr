@@ -2281,6 +2281,9 @@ def influencer_home_profile(request):
 			
 			print("User is Home page--- :)", influencer_email)
 			joined_influencer=JoinInfluencer.objects.get(email_address=influencer_email)
+
+			previous_exprience_obj = PreviousExprience.objects.filter(influencer = joined_influencer)
+
 			username=joined_influencer.influencer_username
 			print("User is Home page username--- :)", joined_influencer.influencer_username)
 			package_influencer=InfluencerPackage.objects.filter(influencer_username__influencer_username=username)
@@ -2293,7 +2296,7 @@ def influencer_home_profile(request):
 					JoinInfluencerObj = JoinInfluencer.objects.get(email_address=request.user.email)
 					context={'nav_profile_image':JoinInfluencerObj.profile_image,'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
 					return render(request, 'User/influencer_home_profile.html', context)
-			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
+			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio, 'previous_exprience_obj':previous_exprience_obj}
 			return render(request, 'User/influencer_home_profile.html', context)
 		else:
 			print("User is not logged in :(")
@@ -2419,6 +2422,8 @@ def order(request):
 		influencer = JoinInfluencer.objects.get(email_address=request.user.email)
 		order_obj = Orders.objects.filter(influencer=influencer)
 
+		print(influencer,"*************")
+		print(order_obj,"*************")
 		context = {
 			'pending_orders':order_obj,
 			'display_order':order_obj[0]
@@ -2654,3 +2659,32 @@ def delete_profile_pic(request):
 	inful_profile_pic= inful.profile_image
 	inful_profile_pic.delete()
 	return redirect('/influencerprofile')
+
+
+def dashboard(request):
+	if request.method== 'POST':
+		status = request.POST.get('display_order_status')
+		id = request.POST.get('display_order_id')
+		order_T = Orders.objects.get(id=id)
+		order_T.status = status
+		order_T.save()
+	if request.user.is_brand:
+		joinBrandObj = JoinBrand.objects.get(user=request.user)
+		order_obj = Orders.objects.filter(brand=joinBrandObj)
+
+		context = {
+			'pending_orders':order_obj,
+			'display_order':order_obj[0]
+		}
+		return render(request, 'User/dashboard.html',context)
+	else:
+		influencer = JoinInfluencer.objects.get(email_address=request.user.email)
+		order_obj = Orders.objects.filter(influencer=influencer)
+
+		print(influencer,"*************")
+		print(order_obj,"*************")
+		context = {
+			'pending_orders':order_obj,
+			'display_order':order_obj[0]
+		}
+	return render(request,'User/dashboard.html',context)
