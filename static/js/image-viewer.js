@@ -1,56 +1,66 @@
-//*************************************************** */ Slider
-// Get the modal
-var modal = document.getElementById("myModal00");
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-const img = document.querySelectorAll("#myImg00");
-const myImgDiv00 = document.querySelectorAll("#myImgDiv00");
-
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption00");
-
-const aplicaciones_slider_left_btn = document.getElementById(
-  "aplicaciones-slider-left-btn"
-);
-
-const aplicaciones_slider_right_btn = document.getElementById(
-  "aplicaciones-slider-right-btn"
-);
-
-let imagenumber = 0;
-for (let i = 0; i < myImgDiv00.length; i++) {
-  myImgDiv00[i].addEventListener("click", function () {
-    imagenumber = i;
-    modal.style.display = "block";
-    modalImg.src = img[i].src;
-    captionText.innerHTML = img[i].alt;
-  });
-}
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close00")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-aplicaciones_slider_left_btn.addEventListener("click", function () {
-  if (imagenumber == 0) {
-    imagenumber = 3;
+function openModal(id) {
+    get_images(id)
+    document.getElementById("myModal").style.display = "block";
   }
-  modalImg.src = img[imagenumber - 1].src;
-  captionText.innerHTML = img[imagenumber - 1].alt;
-  imagenumber--;
-  console.log(imagenumber);
-});
-
-aplicaciones_slider_right_btn.addEventListener("click", function () {
-  modalImg.src = img[imagenumber + 1].src;
-  captionText.innerHTML = img[imagenumber + 1].alt;
-  imagenumber++;
-  if (imagenumber == 2) {
-    imagenumber = -1;
+  
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
   }
-  console.log(imagenumber);
-});
+  
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
+
+  function get_images(id) {
+    var mydata = { id: id };
+    $.ajax({
+      url: "/get_images/",
+      method: "GET",
+      data: mydata,
+      success: function (data) {
+
+        let main_img = "";
+
+        for(let i=0; i<data.length; i++){
+            let count = i + 1 ;
+            main_img += "<div class='mySlides'><div class='numbertext'>"+count+" / "+data.length+"</div><img src='"+data[i]+"' style='width:100%; height:80vh'></div>";
+        }
+
+        document.getElementById("main-image").innerHTML = main_img
+
+        let img = "";
+
+        for(let i=0; i<data.length; i++){
+            let count = i + 1 ;
+            img += "<div class='column'><img class='demo cursor' src='"+data[i]+"' style='width:100%; height: 100%;' onclick='currentSlide("+count+")' alt='Nature and sunrise'></div>";
+        }
+
+        document.getElementById("img-list").innerHTML = img
+      },
+    });
+  }

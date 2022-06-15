@@ -38,28 +38,8 @@
                                 <td>{{or.influencer.influencer_username}}</td>  
                                 <td>{{or.brand.full_name}}</td>  
                                 <td>{{or.package.package_price}}</td>  
-                                <td>{{or.status}}</td>
-                                <td data-toggle="modal" data-target="#exampleModal{{or.id}}" style="cursor: pointer;">View</td>    
+                                <td>{{or.status}}</td>    
                             </tr>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal{{or.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h2 class="modal-title" id="exampleModalLabel">Order</h2>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p><b>Influencer:</b> {{or.influencer.influencer_username}}</p>
-                                        <p><b>Brand:</b> {{or.brand.full_name}}</p>
-                                        <p><b>Price:</b> {{or.package.package_price}}</p>
-                                        <p><b>Status:</b> {{or.status}}</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
                         {% endfor %}
                     </tbody>
                 </table>

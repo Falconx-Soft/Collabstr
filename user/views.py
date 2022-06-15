@@ -14,6 +14,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 import stripe
 from chat.utils import find_or_create_private_chat
+from django.http import JsonResponse
 
 # from .models import join_influencer
 stripe.api_key= 'sk_test_51KhIAhGppnrRkU6FOSJWqqiDXogb03Zh0gF9tEg9ov0aCIHdPsN4ptPDlEM5pkRAzuYv30LRiwSG9e2bOvnr5rZH00Wv7Ifh6t'
@@ -2688,3 +2689,13 @@ def dashboard(request):
 			'display_order':order_obj[0]
 		}
 	return render(request,'User/dashboard.html',context)
+
+
+def get_images(request):
+	id=request.GET['id']
+	previousExprienceObj = PreviousExprience.objects.get(id=id)
+	images_obj = PreviousExprienceImages.objects.filter(influencer=previousExprienceObj)
+	images = list()
+	for i in images_obj:
+		images.append(i.image.url)
+	return JsonResponse(images, safe=False)

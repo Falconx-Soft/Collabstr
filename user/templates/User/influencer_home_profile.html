@@ -180,12 +180,35 @@ a:hover{
         {% for exprience in previous_exprience_obj %}
 
             <div class="privious-work-img-div">
-                <img src="{{exprience.id|get_pictures}}" class="privious-work-img">
+                <img src="{{exprience.id|get_pictures}}" onclick="openModal('{{exprience.id}}');currentSlide(1)" class="hover-shadow cursor privious-work-img">
                 <div class="privious-work-title-div">
                     <p>{{exprience.exprience_title}}</p>
                 </div>
             </div>
         {% endfor %}
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+
+            <div id="main-image">
+
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+            <div class="caption-container">
+            <p id="caption"></p>
+            </div>
+        
+            <div style="display: flex; height: 30vh;" id="img-list">
+                <div class="column">
+                    <img class="demo cursor" src="{{joined_influencer.profile_image.url}}" style="width:100%; height: 100%;" onclick="currentSlide(1)" alt="Nature and sunrise">
+                </div>
+            </div>
+        </div>
     </div>
 
 
