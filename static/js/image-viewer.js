@@ -33,7 +33,6 @@ function openModal(id) {
     }
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
-    captionText.innerHTML = dots[slideIndex-1].alt;
   }
 
   function get_images(id) {
@@ -52,6 +51,10 @@ function openModal(id) {
         }
 
         document.getElementById("main-image").innerHTML = main_img
+
+        var main_slider = document.getElementsByClassName("mySlides");
+
+        main_slider[0].style.display = "block";
 
         let img = "";
 
