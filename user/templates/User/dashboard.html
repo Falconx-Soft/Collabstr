@@ -24,10 +24,16 @@
 
     <canvas id="lineChart"></canvas>
 
-    <div class="date-div">
-        
-        <p><b>From:</b> May 14 2022 <b>To</b> May 14 2022</p>
-    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="date-div">
+            <p>
+                <b>From:</b> <input type="date" name="start-date"> <b>To</b> <input type="date" name="end-date"> 
+                <input style="background-color: rgba(105, 0, 132, .7); border: none; color: white;" type="submit" value="Search"> </p>
+        </div>
+    </form>
+
+    <input type="hidden" id="date_lable" value="{{order_dates}}">
 
     <div class="orders-div">
         <div class="table-area" style="position: relative; width:100%">
@@ -52,12 +58,13 @@
 
 
 
+{% include 'User/graph.html' %}
+
 {% endblock content %}
 
-<!-- Specific Page JS goes HERE  -->
 {% block extrajavascript %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="{% static 'js/dashboard.js' %}"></script>
+<!-- <script src="{% static 'js/dashboard.js' %}"></script> -->
 
 {% endblock extrajavascript %}

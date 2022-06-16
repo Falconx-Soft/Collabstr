@@ -15,6 +15,9 @@ from django.core.mail import send_mail
 import stripe
 from chat.utils import find_or_create_private_chat
 from django.http import JsonResponse
+import datetime
+from django.db.models import Q
+from django.db.models import Count
 
 # from .models import join_influencer
 stripe.api_key= 'sk_test_51KhIAhGppnrRkU6FOSJWqqiDXogb03Zh0gF9tEg9ov0aCIHdPsN4ptPDlEM5pkRAzuYv30LRiwSG9e2bOvnr5rZH00Wv7Ifh6t'
@@ -2295,7 +2298,7 @@ def influencer_home_profile(request):
 			if request.user.is_authenticated:
 				if not request.user.is_brand:
 					JoinInfluencerObj = JoinInfluencer.objects.get(email_address=request.user.email)
-					context={'nav_profile_image':JoinInfluencerObj.profile_image,'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
+					context={'nav_profile_image':JoinInfluencerObj.profile_image,'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio, 'previous_exprience_obj':previous_exprience_obj}
 					return render(request, 'User/influencer_home_profile.html', context)
 			context={'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio, 'previous_exprience_obj':previous_exprience_obj}
 			return render(request, 'User/influencer_home_profile.html', context)
@@ -2663,31 +2666,66 @@ def delete_profile_pic(request):
 
 
 def dashboard(request):
-	if request.method== 'POST':
-		status = request.POST.get('display_order_status')
-		id = request.POST.get('display_order_id')
-		order_T = Orders.objects.get(id=id)
-		order_T.status = status
-		order_T.save()
+	today = datetime.date.today()
+	print("Today's date:", today)
+	start_date = today - datetime.timedelta(days=7)
+	end_date = today
+	context = {}
+	if request.method == 'POST':
+		start_date = request.POST.get('start-date')
+		end_date = request.POST.get('end-date')
+		
 	if request.user.is_brand:
 		joinBrandObj = JoinBrand.objects.get(user=request.user)
-		order_obj = Orders.objects.filter(brand=joinBrandObj)
-
-		context = {
-			'pending_orders':order_obj,
-			'display_order':order_obj[0]
-		}
-		return render(request, 'User/dashboard.html',context)
+		order_obj = Orders.objects.distinct().filter(
+												Q(crated_at__gte = start_date) &
+												Q(crated_at__lte=end_date) &
+												Q(brand=joinBrandObj)
+											).order_by('crated_at')
 	else:
 		influencer = JoinInfluencer.objects.get(email_address=request.user.email)
-		order_obj = Orders.objects.filter(influencer=influencer)
+		order_obj = Orders.objects.distinct().filter(
+												Q(crated_at__gte = start_date) &
+												Q(crated_at__lte=end_date) &
+												Q(influencer=influencer)
+											).order_by('crated_at')
+	dates = []
+	count = []
 
-		print(influencer,"*************")
-		print(order_obj,"*************")
-		context = {
-			'pending_orders':order_obj,
-			'display_order':order_obj[0]
-		}
+	if len(order_obj) > 0:
+		dates.append(str(order_obj[0].crated_at))
+		c = 1
+		for o in range(1,len(order_obj)):
+			if str(order_obj[o].crated_at) not in dates:
+				dates.append(str(order_obj[o].crated_at))
+				count.append(c)
+				c = 1
+			else:
+				c += 1
+		if str(order_obj[len(order_obj)-1].crated_at) not in dates:
+			dates.append(str(order_obj[len(order_obj)-1].crated_at))
+		count.append(c)
+
+
+	if len(count) == 1:
+		count.append(count[0])
+	if len(count) == 0:
+		count.append(0)
+		count.append(0)
+	temp_date = ""
+	for d in dates:
+		temp_date += str(d)+","
+
+	print(temp_date)
+	context = {
+		'pending_orders':order_obj,
+		'start_date': start_date,
+		'end_date':end_date,
+		'order_count':count,
+		'order_dates':temp_date
+	}
+	
+	print(dates,count)
 	return render(request,'User/dashboard.html',context)
 
 

@@ -3,16 +3,7 @@ $(document).ready(function(){
 	let table = new DataTable('#example', {
         scrollY: 300,
         paging: false,
-        "searching": false
-    });
-
-  $('#search-order').on('keydown', function(){
-    console.log("Pressed",this.value);
-      table
-        .columns( 1 )
-        .search( this.value )
-        .draw();
-  });	
+    });	
 
   $('.nav-tabs a[href="#public"]').tab('show');
 	$('.nav-tabs a[href="#systematic_trading"]').tab('show');

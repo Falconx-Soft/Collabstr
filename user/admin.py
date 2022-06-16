@@ -12,7 +12,6 @@ admin.site.register(JoinBrand)
 # admin.site.register(User)
 
 admin.site.register(submit_requirements)
-admin.site.register(Orders)
 
 
 admin.site.register(PreviousExprience)
@@ -26,3 +25,8 @@ admin.site.register(JoinInfluencer, InfluencerAdmin)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'email', 'first_name')
 admin.site.register(User, UserAdmin)
+
+
+class orderAdmin(admin.ModelAdmin):
+    list_display = ('influencer', 'package', 'brand', 'status', 'crated_at')
+admin.site.register(Orders,orderAdmin)
