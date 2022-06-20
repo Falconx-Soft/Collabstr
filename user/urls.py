@@ -70,4 +70,8 @@ urlpatterns = [
       path('dashboard/', views.dashboard, name="dashboard"),
 
       path('get_images/', views.get_images, name="get_images"),
+
+      path('delete_experience/<int:id>/', views.delete_experience, name="delete_experience"),
+      path('edit_experience/<int:id>/', views.edit_experience, name="edit_experience"),
+      path('delete_exprience_image/<int:id>', views.delete_exprience_image, name="delete_exprience_image"),
 ]

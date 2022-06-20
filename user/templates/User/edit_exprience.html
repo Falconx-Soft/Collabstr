@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load get_pictures %}
+
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}">
+<link rel="stylesheet" href="{% static '/css/edit-page.css' %}">
+<link rel="stylesheet" href="{% static '/css/new_profile.css' %}">
+<style>
+    .img-input {
+    opacity: 0;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+.file-area{
+    position: relative;
+}
+/* port folio */
+.portfolio_upload_holder{
+	flex-wrap: wrap;
+	width: 100%;
+	max-height: 420px;
+    overflow-y: scroll;
+}
+.content_holder{
+	flex: 0 26%;
+    height: 265px;
+    margin: 2.5%;
+    position: relative;
+}
+.content_img, .content-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 884px){
+
+	.content_holder{
+		height: 130px;
+	}
+}
+</style>
+{% endblock extrastyle %}
+
+{% block content %}	
+<!-- {% if messages %}
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style=" padding: 2px; display: flex;">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div>{{ message }}</div>
+            {% endfor %}
+    </ul>
+</div>
+       
+        {% endif %} -->
+<form method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <div class="edit-main-div">
+        <h1 class="edit-main-headding">Edit Exprience</h1>
+
+        <div id="div-options" class="details-div">
+            <div class="details-input-div">
+                <label class="details-input-field-head">Title</label>
+                <br>
+                <input class="details-input-field" type="text" placeholder="Enter title" name="title" value="{{previousExprienceObj.exprience_title}}">
+            </div>
+
+            <div class="details-input-div">
+                <label class="details-input-field-head">Images</label>
+                <br>
+                
+                <div class="privious-work" style="margin-top: 20px;">
+
+                    {% for exprience in images_obj %}
+            
+                        <div>
+                            <div class="privious-work-img-div">
+    
+                                <img src="{{exprience.image.url}}" class="hover-shadow cursor privious-work-img">
+                            </div>
+    
+                            <div style="display: flex; justify-content: center;">
+                                <a href="{% url 'delete_exprience_image' exprience.id %}">Delete</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+
+            <div class="details-input-div">
+                <label class="details-input-field-head">Add Image</label>
+                <br>
+                <input class="details-input-field" type="file" name="exprience_image">
+            </div>
+
+            <div class="save-btn-div">
+                <button type="submit" class="save-btn">Save</button>
+            </div>
+
+        </div>
+
+    </div>
+</form>
+        
+    
+    
+        <div class="container" style="width: 100%;">
+            <div class="footer">
+                <div class="footer-top-row">
+                    <div class="footer-section">
+                        <div class="footer-title">Resources</div>
+                        <a href="/blog" class="footer-txt">Blog</a>
+                        <a href="/creator-hub" class="footer-txt">Creator Hub</a>
+                        <a href="/referral-program" class="footer-txt">Affiliate Program</a>
+                        <a href="/ultimate-guide-to-tiktok-for-brands" class="footer-txt">TikTok Ebook For Brands</a>
+                        <a href="/2022-influencer-marketing-report" class="footer-txt">2022 Influencer Marketing Report</a>
+                    </div>
+    
+                    <div class="footer-section">
+                        <div class="footer-title">Tools</div>
+                        <a href="/influencer-price-calculator" class="footer-txt">Influencer Price Calculator</a>
+                        <a href="/influencer-campaign-brief-template" class="footer-txt">Influencer Campaign Brief
+                            Template</a>
+                        <a href="/influencer-contract-template" class="footer-txt">Influencer Contract Generator</a>
+                    </div>
+    
+                    <div class="footer-section">
+                        <div class="footer-title">Discover</div>
+                        <a href="/find-influencers" class="footer-txt">Find Influencers</a>
+                        <a href="/hire-influencers" class="footer-txt">Hire Influencers</a>
+                        <a href="/search-influencers" class="footer-txt">Search Influencers</a>
+                        <a href="/influencer-shoutouts" class="footer-txt">Buy Shoutouts</a>
+                        <a href="/influencer-marketplace" class="footer-txt">Influencer Marketplace</a>
+                        <a href="/top-influencers" class="footer-txt">Top Influencers</a>
+                    </div>
+    
+                    <div class="footer-section">
+                        <div class="footer-title">Support</div>
+                        <a href="mailto:hello@INFUL.com" class="footer-txt">hello@INFUL.com</a>
+                        <a href="/#how-it-works" class="footer-txt">How It Works</a>
+                        <a href="/faq" class="footer-txt">FAQ</a>
+                    </div>
+                </div>
+                <div class="footer-btm-row">
+                    <div class="footer-btm-row-left">
+                        <div class="footer-item">© INFUL Inc.</div>
+                        <a href="/privacy" class="footer-item">Privacy</a>
+                        <a href="/terms" class="footer-item">Terms</a>
+                        <a href="/sitemap" class="footer-item">Sitemap</a>
+                    </div>
+    
+                    <div class="footer-btm-row-right">
+                        <div class="footer-img">
+                            <a href="https://instagram.com/INFUL" target="_blank"><span class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
+                                alt="Instagram logo" loading="lazy">
+                        </div>
+                        <div class="footer-img">
+                            <a href="https://tiktok.com/@INFUL.com" target="_blank"><span
+                                    class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
+                                alt="TikTok logo" loading="lazy">
+                        </div>
+    
+                        <div class="footer-img">
+                            <a href="https://twitter.com/@useINFUL" target="_blank"><span
+                                    class="link-spanner"></span></a>
+                            <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
+                                alt="Twitter logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+
+<script src="{% static 'js/image-viewer.js' %}"></script>
+
+{% endblock extrajavascript %}

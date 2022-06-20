@@ -6,7 +6,8 @@
 {% block extrastyle %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
+<!-- <link rel="stylesheet" href="{% static '/css/join-influencer-profile.css' %}"> -->
+<!-- <link rel="stylesheet" href="{% static '/css/join-influencer-earnings.css' %}"> -->
 <link rel="stylesheet" href="{% static '/css/profile.css' %}">
 <style>
     body{
@@ -23,62 +24,16 @@
     color: white;
     opacity: 1;
 }
-a{
-    text-decoration: none;
-}
-a:hover{
-    text-decoration: none;
-}
-.share-btn, .save-btn{
-    font-size: 15px !important;
-   
-}
-.platform-img-holder-mobile{
-    display: none !important;
-}
-
-.btn-row-mobile{
-    display: none !important;
-}
 @media only screen and (max-width: 800px){
-    .share-btn, .save-btn{
-   
-    padding-right: 0;
-}
 .row-btn-profile{
-    padding-bottom: 0px;
-    /* margin-bottom: -10px; */
-    padding-left: 0;
-    padding-right: 0px;
-    width: -webkit-fill-available !important;
-   
-}
-.platform-img-holder{
-    margin-bottom: 10px !important;
+    position: absolute;
+    left: -39px !important;
 }
 .profile-holder{
     display: none;
 }
-.platform-img-holder-mobile{
-    margin-bottom: -5px !important;
-    display: flex !important;
-    justify-content: flex-start !important;
 }
 
-.btn-row-mobile{
-    justify-content: end !important;
-    align-items: end !important;
-    display: flex !important;
-    position: relative !important;
-}
-.btn-row-big{
-    display: none !important;
-}
-}
-@media only screen and (max-width: 450px){
-   
-
-}
 </style>
 
 {% endblock extrastyle %}
@@ -93,98 +48,19 @@ a:hover{
 <!-- ________________________________________ -->
 <!-- body content -->
 <input type="hidden" name="influencer_username_3" value="{{influencer_username_3}}">
-<div class="btn-row btn-row-mobile">
-    <div style="width: 281px;display: flex;position: absolute;left: -20px;">
-        <div style="    width: -webkit-fill-available;">
-            <div class=" row-btn row-btn-profile" >{{joined_influencer.full_name |title}}</div>
-            <div class="profile-location">{{joined_influencer.location}}</div>
+<div class="btn-row">
+    <div class="share-btn row-btn row-btn-profile" style="position: absolute; left: 0;">{{joined_influencer.full_name |title}}</div>
 
-        </div>
-        <div class="platform-img-holder platform-img-holder-mobile">
-            {% if joined_influencer.instagram_username != "" %}
-            <div class="platform-img">
-                <a rel="nofollow" href="https://instagram.com/{{joined_influencer.instagram_username}}" target="_blank"
-                    data-platform="instagram" class="intercept"><span class="link-spanner"></span></a>
-                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/instagram.svg"
-                    alt="Instagram logo">
-            </div>
-            {% endif %}
-    
-            {% if joined_influencer.tiktok_username != "" %}
-            <div class="platform-img">
-                <a rel="nofollow" href="https://tiktok.com/{{joined_influencer.tiktok_username}}" target="_blank"
-                    data-platform="tiktok" class="intercept"><span class="link-spanner"></span></a>
-                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
-                    alt="TikTok logo">
-            </div>
-            {% endif %}
-            {% if joined_influencer.youtube_url != "" %}
-            <div class="platform-img">
-                <a rel="nofollow" href="{{joined_influencer.youtube_url}}"
-                    target="_blank" data-platform="youtube" class="intercept"><span
-                        class="link-spanner"></span></a>
-                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/youtube.svg"
-                    alt="YouTube logo">
-            </div>
-            {% endif %}
-            {% if joined_influencer.twitter_username != "" %}
-            <div class="platform-img">
-                <a rel="nofollow" href="https://twitter.com/{{joined_influencer.twitter_username}}"
-                    target="_blank" data-platform="youtube" class="intercept"><span
-                        class="link-spanner"></span></a>
-                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
-                    alt="Twitter logo">
-            </div>
-            {% endif %}
-            {% if joined_influencer.twitch_username != "" %}
-            <div class="platform-img">
-                <a rel="nofollow" href="https://www.twitch.tv/{{twitch_username}}"
-                    target="_blank" data-platform="youtube" class="intercept"><span
-                        class="link-spanner"></span></a>
-                <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitch.svg"
-                    alt="Twitch logo">
-            </div>
-            {% endif %}
-    
-    
-        </div>
-    </div>
-    
-    
 
-    <div style="display: flex;">
-        <div class="share-btn row-btn" onclick="location.href='#'"><img class="row-btn-img"
-            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/share.svg">Share</div>
+    <div class="share-btn row-btn" onclick="location.href='/influenceredit'"><img class="row-btn-img"
+            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/edit.svg">Edit</div>
 
 
 
 
-    <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
+    <!-- <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
             src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/save.svg"><span
-            class="save-btn-txt">Save</span></div>
-
-    </div>
-    
-
-</div>
-<div class="btn-row btn-row-big">
-    
-    <div class=" row-btn row-btn-profile" style="position: absolute; left: 0;">{{joined_influencer.full_name |title}}</div>
-    
-
-    <div style="display: flex;">
-        <div class="share-btn row-btn" onclick="location.href='#'"><img class="row-btn-img"
-            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/share.svg">Share</div>
-
-
-
-
-    <div class="save-btn row-btn" data-id="profile"><img class="row-btn-img"
-            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/save.svg"><span
-            class="save-btn-txt">Save</span></div>
-
-    </div>
-    
+            class="save-btn-txt">Save</span></div> -->
 
 </div>
 
@@ -207,43 +83,42 @@ a:hover{
             
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
-                <div class="carousel-item  active">
-                
-                    <div class="primary-img" style="">
-                        <div class="file-area">
-                            <picture>
-                            
-                                <img class="img img1"
-                                    src="{{joined_influencer.cover_image.url}}"
-                                    alt="Photo of Nigel Kabvina">
-                            </picture>
-                        </div>
+              <div class="carousel-item  active">
+                <!-- <img src="{{joined_influencer.cover_image.url}}" alt="Los Angeles" class="d-block" style="width:100%"> -->
+                <div class="primary-img" style="">
+                    <div class="file-area">
+                        <picture>
+                           
+                            <img class="img img1"
+                                src="{{joined_influencer.cover_image.url}}"
+                                alt="Photo of Nigel Kabvina">
+                        </picture>
                     </div>
                 </div>
-                {% if joined_influencer.image3 and joined_influencer.image4 and   joined_influencer.image5  %}
-                <div class="carousel-item">
-                    <div class="primary-img" style="">
-                        <div class="file-area">
-                            <picture>
-                            
-                                <img class="img img1"
-                                    src="{{joined_influencer.image3.url}}"
-                                    alt="Photo of Nigel Kabvina">
-                            </picture>
-                        </div>
-                    </div>             
-                </div>
-                <div class="carousel-item ">
-                    <div class="primary-img" style="">
-                        <div class="file-area">
-                            <picture>
-                            
-                                <img class="img img1"
-                                    src="{{joined_influencer.image4.url}}"
-                                    alt="Photo of Nigel Kabvina">
-                            </picture>
-                        </div>
-                    </div>   
+            </div>
+            {% if joined_influencer.image3 and joined_influencer.image4 and   joined_influencer.image5  %}
+              <div class="carousel-item">
+                <div class="primary-img" style="">
+                    <div class="file-area">
+                        <picture>
+                           
+                            <img class="img img1"
+                                src="{{joined_influencer.image3.url}}"
+                                alt="Photo of Nigel Kabvina">
+                        </picture>
+                    </div>
+                </div>             </div>
+              <div class="carousel-item ">
+                <div class="primary-img" style="">
+                    <div class="file-area">
+                        <picture>
+                           
+                            <img class="img img1"
+                                src="{{joined_influencer.image4.url}}"
+                                alt="Photo of Nigel Kabvina">
+                        </picture>
+                    </div>
+                </div>   
                 </div>
                 <div class="carousel-item ">
                     <div class="primary-img" style="">
@@ -256,45 +131,43 @@ a:hover{
                             </picture>
                         </div>
                     </div>             
-                </div>
+                 </div>
                  {% elif joined_influencer.image3 and joined_influencer.image4 and not  joined_influencer.image5  %}
-                    <div class="carousel-item">
-                        <div class="primary-img" style="">
-                            <div class="file-area">
-                                <picture>
-                                
-                                    <img class="img img1"
-                                        src="{{joined_influencer.image3.url}}"
-                                        alt="Photo of Nigel Kabvina">
-                                </picture>
-                            </div>
-                        </div>            
+                 <div class="carousel-item">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_influencer.image3.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>             </div>
+                  <div class="carousel-item ">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_influencer.image4.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>   
                     </div>
-                    <div class="carousel-item ">
-                        <div class="primary-img" style="">
-                            <div class="file-area">
-                                <picture>
-                                
-                                    <img class="img img1"
-                                        src="{{joined_influencer.image4.url}}"
-                                        alt="Photo of Nigel Kabvina">
-                                </picture>
-                            </div>
-                        </div>   
-                    </div>
-                    {% elif joined_influencer.image3 and not joined_influencer.image4 and not  joined_influencer.image5  %}
-                    <div class="carousel-item">
-                        <div class="primary-img" style="">
-                            <div class="file-area">
-                                <picture>
-                                
-                                    <img class="img img1"
-                                        src="{{joined_influencer.image3.url}}"
-                                        alt="Photo of Nigel Kabvina">
-                                </picture>
-                            </div>
-                        </div>             
-                    </div>
+                {% elif joined_influencer.image3 and not joined_influencer.image4 and not  joined_influencer.image5  %}
+                <div class="carousel-item">
+                    <div class="primary-img" style="">
+                        <div class="file-area">
+                            <picture>
+                               
+                                <img class="img img1"
+                                    src="{{joined_influencer.image3.url}}"
+                                    alt="Photo of Nigel Kabvina">
+                            </picture>
+                        </div>
+                    </div>             </div>
                  
                     {% elif not joined_influencer.image3 and  joined_influencer.image4 and not  joined_influencer.image5  %}
                     <div class="carousel-item">
@@ -371,7 +244,11 @@ a:hover{
                                 </picture>
                             </div>
                         </div>             
-                    </div>         
+                    </div>
+                    
+                    
+                     
+                     
                  {% endif %}
             </div>
             
@@ -385,7 +262,250 @@ a:hover{
           </div>
 
         
+        <!-- {% if joined_influencer.image3 and joined_influencer.image4 and   joined_influencer.image5  %}
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                   
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col ">
+            <div class="img-row-sq">
+                <div class="file-area" style="width: 50%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+                <div class="file-area" style="width: 50%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+            <div class="file-area file-area4">
+                <picture>
+                    <source media="(max-width: 800px)"
+                       >
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div> -->
+        <!-- {% elif joined_influencer.image3 and joined_influencer.image4 and not joined_influencer.image5  %}
+     
+        
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                    
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col ">
+            <div class="img-row-sq">
+                <div class="file-area" style="width: 50%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+                <div class="file-area" style="width: 50%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+           
+            
+        </div>
+            {% elif joined_influencer.image3 and not joined_influencer.image4 and not joined_influencer.image5  %}
+        <style>
+      
+    
+        </style>
+            <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                    
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col">
+            <div class="img-row-sq">
+                <div class="file-area" style="width: 200%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+                
+            </div>
+           
+        </div>
+
+        {% elif not  joined_influencer.image3 and  joined_influencer.image4 and not joined_influencer.image5  %}
+        <style>
+    
+   
+        </style>
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                  
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col">
+            <div class="img-row-sq">
+                
+                <div class="file-area" style="width: 200%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+           
+        </div>
        
+        {% elif not joined_influencer.image3 and not  joined_influencer.image4 and  joined_influencer.image5  %}
+      
+       
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                 
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col">
+            
+            <div class="file-area file-area4" style="height: 204%;">
+                <picture>
+                    
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+       
+        {% elif not joined_influencer.image3 and   joined_influencer.image4 and  joined_influencer.image5  %}
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                   
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div> -->
+        <!-- <div class="img-col">
+            <div class="img-row-sq"> -->
+                <!-- <div class="file-area" style="width: 200%; height: 200%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div> -->
+                <!-- <div class="file-area" style="width: 100%; height: 100%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div>
+            </div>
+            <div class="file-area file-area4" style="">
+                <picture>
+                    
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        {% elif  joined_influencer.image3 and not  joined_influencer.image4 and  joined_influencer.image5  %}
+        <div class="primary-img" style="">
+            <div class="file-area">
+                <picture>
+                  
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        <div class="img-col">
+            <div class="img-row-sq">
+                <div class="file-area" style="width: 200%; height: 100%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img2"
+                            src="{{joined_influencer.image3.url}}"
+                            alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div> -->
+                <!-- <div class="file-area" style="width: 100%; height: 100%;">
+                    <picture>
+                        <img style="width: 100%;" class="img img3"
+                        src="{{joined_influencer.image4.url}}"
+                        alt="Photo of Nigel Kabvina">
+                    </picture>
+                </div> -->
+            <!-- </div>
+            <div class="file-area file-area4" style="">
+                <picture>
+                    
+                    <img class="img img4"
+                        src="{{joined_influencer.image5.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div> -->
+
+        <!-- {% endif %}
+        {% if not joined_influencer.image3 and not joined_influencer.image4 and not joined_influencer.image5  %}
+        <div class="primary-img" style="width: 100%;">
+            <div class="file-area">
+                <picture>
+                    
+                    <img class="img img1"
+                        src="{{joined_influencer.cover_image.url}}"
+                        alt="Photo of Nigel Kabvina">
+                </picture>
+            </div>
+        </div>
+        
+
+        {% endif %} -->
     </div>
    
 
@@ -404,7 +524,7 @@ a:hover{
 
             <div class="packages-holder">
                 {% if not package_influencer %}
-                <div class="package-title" style="color: gray !important;">No Packages is till added by the Influencer</div>
+                <div class="package-title" style="color: gray !important; ">You have not added any Package. To add go to edit in your profile</div>
                 {% endif %}
                 {% for package in package_influencer %}
                 <div class="package-holder " style="border-left: 8px solid rgba(117, 86, 118, 0.65);" data-id="{{package.content_category}}">
@@ -417,7 +537,6 @@ a:hover{
                         </div>
                     </div>
                     <div class="package-description">{{package.package_include}}</div>
-                    <input type="hidden" class="package_id_holder" value="{{package.id}}" data-id="{{package.content_category}}">
 
                 </div>
                     {% endfor %}
@@ -425,7 +544,7 @@ a:hover{
 
             </div>
 
-            {% if edit_portfolio %}
+
             <div class="portfolio-section">
                 <h3>Portfolio</h3>
 
@@ -442,11 +561,8 @@ a:hover{
                 </div>
 
             </div>
-            {% endif %}
-            
 
 
-            {% if faq_influencer %}
             <div style="    margin-top: 25px;" class="faq-section">
                 <h3>FAQ</h3>
                 {% for faq in faq_influencer %}
@@ -467,9 +583,8 @@ a:hover{
                 </div> -->
 
              </div>
-            {% endif %}
 
-           
+
         </div>
         <div class="listing-col-r">
 
@@ -536,55 +651,34 @@ a:hover{
                     </div>
                 </div>
             </div>
-            <form action="{% url 'checkout_page' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="influencer_id" value="{{joined_influencer.id}}">
-                <div class="checkout-area">
 
-                    <div class="checkout-holder">
-    
-                        <div class="checkout-title">{{joined_influencer.title_influencer|title}}
-                        </div>
-                        <input type="text" name="influencer_email" hidden value="{{joined_influencer.email_address}}">
-                        <select class="input package-input" name="package_category" onchange="changePackage(this)">
-                            {% for package in package_influencer %}
-                            <option value="{{package.content_category}}">{{package.id}} {{package.content_category}}</option>
-                            {% endfor %}
-    
-                        </select>
+            <div class="checkout-area">
 
-                        <!-- <input type="text" name="package_obj" id="package_obj" value="{{package.id}}"> -->
+                <div class="checkout-holder">
 
-                        <input class="checkout-price-input" type="text" hidden name="checkout_price" value="">
-                        <div class="checkout-price"></div>
-                        <div class="checkout-description-holder">I will create a tailored TikTok video using your
-                            product to create something, with unique music and an eye catching hook (intro) to keep
-                            viewers watching. </div>
-                            
-                        {% if user.is_authenticated and user.is_brand %}
-                        <button type="submit" class="buy-btn btn" data-id="checkout" style="font-size: large;border-radius: 15px;font-weight: 500;">Continue</button>
-                    </form>
-                    <form action="{% url 'custom_offer' %}" method="post">
-                        {% csrf_token %}
-                        <input type="text" name="influencer_email_custom" hidden value="{{joined_influencer.email_address}}">
-                        <div class="msg-btn checkout-description-holder-custom" data-id="message" onClick="javascript:this.parentNode.submit();">Send Custom Offer</div>
-                    </form>
-    
-                            {% endif %}
-                            {% if not user.is_authenticated %}
-                        <button  class="buy-btn btn" data-id="checkout" style="font-size: large;border-radius: 15px;font-weight: 500;"  onclick="location.href='/login'">Continue</button>
-                        <div class="msg-btn checkout-description-holder-custom" data-id="message"  onclick="location.href='/login'">Send Custom Offer</div>
-                    
-    
-                            {% endif %}
+                    <div class="checkout-title">{{joined_influencer.title_influencer|title}}
                     </div>
-    
-                    <div class="how-it-works-btn"><img alt="How INFUL works" class="how-it-works-btn-img"
-                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/howItWorks.svg">How does it work?</div>
-    
+                    <select class="input package-input" onchange="changePackage(this)">
+                        {% for package in package_influencer %}
+                        <option value="{{package.content_category}}">{{package.content_category}}</option>
+                        {% endfor %}
+
+                    </select>
+                    <div class="checkout-price"></div>
+                    <div class="checkout-description-holder">I will create a tailored TikTok video using your
+                        product to create something, with unique music and an eye catching hook (intro) to keep
+                        viewers watching. </div>
+
+                    <!-- <button class="buy-btn btn" data-id="checkout">Continue</button>
+                    <div class="msg-btn checkout-description-holder" data-id="message">Send Custom Offer</div> -->
+
+
                 </div>
-            
-           
+
+                <div class="how-it-works-btn"><img alt="How INFUL works" class="how-it-works-btn-img"
+                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/howItWorks.svg">How does it work?</div>
+
+            </div>
 
         </div>
 
@@ -876,13 +970,11 @@ a:hover{
                 answer.slideDown();
             }
         });
-        // for selecting package holders
+        // Clicking first child
         $(document).ready(function(){
     $(".packages-holder").find(">:first-child").click(); 
 });
-
-
-
+        // for selecting package holders
         $('.package-holder').click(function () {
             $('.package-btn').removeClass('btn-active');
             $('.package-holder').removeClass('package-active');
@@ -892,17 +984,12 @@ a:hover{
 
             // update info on checkout box
             $('.checkout-price').html($(this).find('.package-price').html());
-            $('.checkout-price-input').val($(this).find('.package-price').html());
             $('.checkout-description-holder').html($(this).find('.package-description').html());
         });
 
         function changePackage(el) {
-            
             let packageID = $(el).find(":selected").val();
-            console.log('on change function calls', packageID)
             $(".packages-holder").find(`[data-id='${packageID}']`).click();
-
-            console.log($(".package_id_holder").find(`[data-id='${packageID}']`).val());
         }
 
         function changeFilter(el) {
@@ -917,35 +1004,35 @@ a:hover{
                 });
             }
         }
-        // $(document).on('click', '.login-btn', function () {
-        //     $('.form-holder-forgot').hide();
-        //     $('.form-holder-signup').hide();
-        //     $('.form-holder-login').show();
-        // });
-        // $(document).on('click', '.forgot-btn', function () {
-        //     $('.form-holder-login').hide();
-        //     $('.form-holder-forgot').show();
-        // });
-        // $(document).on('click', '.signup-btn', function () {
-        //     $('.form-holder-login').hide();
-        //     $('.form-holder-signup').show();
-        // });
-        // $('.msg-btn, .buy-btn, .save-btn').click(function () {
+        $(document).on('click', '.login-btn', function () {
+            $('.form-holder-forgot').hide();
+            $('.form-holder-signup').hide();
+            $('.form-holder-login').show();
+        });
+        $(document).on('click', '.forgot-btn', function () {
+            $('.form-holder-login').hide();
+            $('.form-holder-forgot').show();
+        });
+        $(document).on('click', '.signup-btn', function () {
+            $('.form-holder-login').hide();
+            $('.form-holder-signup').show();
+        });
+        $('.msg-btn, .buy-btn, .save-btn').click(function () {
 
-        //     $(".modal").css("display", "flex");
-        // });
-        // $('.close-modal').click(function () {
+            $(".modal").css("display", "flex");
+        });
+        $('.close-modal').click(function () {
 
-        //     $(".modal").css("display", "none");
-        //     $(".form-1").css("display", "block");
-        //         $(".form-2").css("display", "none");
-        // });
-        //     $('.modal-btn').click(function () {
+            $(".modal").css("display", "none");
+            $(".form-1").css("display", "block");
+                $(".form-2").css("display", "none");
+        });
+            $('.modal-btn').click(function () {
 
-        //         $(".form-1").css("display", "none");
-        //         $(".form-2").css("display", "block");
+                $(".form-1").css("display", "none");
+                $(".form-2").css("display", "block");
 
-        //     });
+            });
 
         
 
