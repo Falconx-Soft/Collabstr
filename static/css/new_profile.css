@@ -13,7 +13,7 @@
 
 .privious-work{
     display:grid; 
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px 20px;
 }
 
@@ -180,4 +180,72 @@
   .hover-shadow:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+
+
+  .main-image{
+    width:100%; 
+    height:80vh
+  }
+
+  .image-holder{
+    display: flex; 
+    height: 30vh;
+  }
+
+
+  @media only screen and (max-width: 900px){
+    .main-image{
+      height:60vh;
+    }
+
+    .image-holder{ 
+      height: 25vh;
+    }
+}
   
+
+
+  @media only screen and (max-width: 800px){
+    .listing-holder {
+      padding: 10px !important;
+    } 
+
+    .main-image{
+      height:50vh;
+    }
+
+    .image-holder{ 
+      height: 20vh;
+    }
+}
+
+
+@media only screen and (max-width: 765px){
+    
+  .privious-work{
+    grid-template-columns: repeat(2, 1fr);
+  }
+    
+}
+
+@media only screen and (max-width: 560px){
+    
+  .main-image{
+    height:37vh;
+  }
+
+  .image-holder{ 
+    height: 12vh;
+  }
+    
+}
+
+
+@media only screen and (max-width: 500px){
+    
+  .privious-work{
+    grid-template-columns: repeat(1, 1fr);
+  }
+    
+}
+

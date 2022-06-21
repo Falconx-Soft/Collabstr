@@ -27,9 +27,10 @@
     <form method="POST">
         {% csrf_token %}
         <div class="date-div">
-            <p>
+            <p class="search-p">
                 <b>From:</b> <input type="date" name="start-date"> <b>To</b> <input type="date" name="end-date"> 
-                <input style="background-color: rgba(105, 0, 132, .7); border: none; color: white;" type="submit" value="Search"> </p>
+                <input class="date-submit-btn" type="submit" value="Search"> 
+            </p>
         </div>
     </form>
 
@@ -44,7 +45,8 @@
                                 <td>{{or.influencer.influencer_username}}</td>  
                                 <td>{{or.brand.full_name}}</td>  
                                 <td>{{or.package.package_price}}</td>  
-                                <td>{{or.status}}</td>    
+                                <td>{{or.status}}</td>  
+                                <td>{{or.crated_at}}</td>    
                             </tr>
                         {% endfor %}
                     </tbody>

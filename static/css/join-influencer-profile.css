@@ -68,12 +68,6 @@
     font-weight: 400;
 }
 
-@media only screen and (max-width: 800px){
-    .navbar_content{
-        display: block !important;
-    }
-}
-
 
 /* content holder */
 /* scroll bar */

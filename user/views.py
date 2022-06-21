@@ -58,13 +58,12 @@ def loginUser(request):
 	if request.method == 'POST':
 		email = request.POST['email']
 		password = request.POST['password']
-
+		print(email,password,"****************")
 		try:
 			user = User.objects.get(email=email)
 			if user:
 				username = user.username
 				user = authenticate(request, username=username, password=password) # check password
-
 			if user is not None:
 				login(request, user)
 				return redirect('home')
@@ -1049,20 +1048,12 @@ def join_influencer_profile(request):
 
 
 def influencer_profile(request):
-	username = None
 
-	try:
-
-		if request.user.is_authenticated:
-			print("User is logged in :)")
-			user_email_inful=request.user.email
-			username= request.user.username
-			is_brand=BrandorInfluencer.objects.get(user__username=username)
-			is_brand_value= is_brand.brand
-			print("User is is_brand___________________________--- :)", is_brand_value)
-			print("User is is_brand_value--------------------------- :)", is_brand)
-			if is_brand_value:
-				return redirect('/brandprofile/')
+	if request.user.is_authenticated:
+		print("User is logged in :)")
+		user_email_inful=request.user.email
+		username= request.user.username
+		try:
 			joined_influencer=JoinInfluencer.objects.get(email_address=user_email_inful)
 			username_inful=joined_influencer.influencer_username
 			print('joined_influencer::::::::::',username_inful)
@@ -1075,12 +1066,12 @@ def influencer_profile(request):
 
 			context={'previous_exprience_obj':previous_exprience_obj,'nav_profile_image':joined_influencer.profile_image,'joined_influencer': joined_influencer, 'package_influencer': package_influencer, 'faq_influencer': faq_influencer, 'edit_portfolio':edit_portfolio}
 			return render(request, 'User/influencer_profile.html', context)
-		else:
-			print("User is not logged in :(")
-			# return redirect(request, 'User/influencer_profile.html')
-	except Exception as e:
+		except:
 			messages.success(request, 'oops there was problem')
 			return redirect('home')
+	else:
+		print("User is not logged in :(")
+		return redirect('home')
 
 
 def influencer_profile_edit(request):
@@ -1737,7 +1728,8 @@ def order(request):
 		print(order_obj,"*************")
 		context = {
 			'pending_orders':order_obj,
-			'display_order':order_obj[0]
+			'display_order':order_obj[0],
+			'nav_profile_image':influencer.profile_image
 		}
 		return render(request, 'User/order.html',context)
 
@@ -1977,6 +1969,7 @@ def dashboard(request):
 	print("Today's date:", today)
 	start_date = today - datetime.timedelta(days=7)
 	end_date = today
+	profile_img = None
 	context = {}
 	if request.method == 'POST':
 		start_date = request.POST.get('start-date')
@@ -1991,6 +1984,7 @@ def dashboard(request):
 											).order_by('crated_at')
 	else:
 		influencer = JoinInfluencer.objects.get(email_address=request.user.email)
+		profile_img = influencer.profile_image
 		order_obj = Orders.objects.distinct().filter(
 												Q(crated_at__gte = start_date) &
 												Q(crated_at__lte=end_date) &
@@ -2024,13 +2018,24 @@ def dashboard(request):
 		temp_date += str(d)+","
 
 	print(temp_date)
-	context = {
-		'pending_orders':order_obj,
-		'start_date': start_date,
-		'end_date':end_date,
-		'order_count':count,
-		'order_dates':temp_date
-	}
+
+	if request.user.is_brand:
+		context = {
+			'pending_orders':order_obj,
+			'start_date': start_date,
+			'end_date':end_date,
+			'order_count':count,
+			'order_dates':temp_date
+		}
+	else:
+		context = {
+			'pending_orders':order_obj,
+			'start_date': start_date,
+			'end_date':end_date,
+			'order_count':count,
+			'order_dates':temp_date,
+			'nav_profile_image':profile_img
+		}
 	
 	print(dates,count)
 	return render(request,'User/dashboard.html',context)
@@ -2066,7 +2071,8 @@ def edit_experience(request,id):
 				new_img.save()
 		context = {
 			'images_obj':images_obj,
-			'previousExprienceObj':previousExprienceObj
+			'previousExprienceObj':previousExprienceObj,
+			'nav_profile_image':previousExprienceObj.influencer.profile_image
 		}
 		return render(request,'User/edit_exprience.html',context)
 	else:

@@ -47,7 +47,7 @@ function openModal(id) {
 
         for(let i=0; i<data.length; i++){
             let count = i + 1 ;
-            main_img += "<div class='mySlides'><div class='numbertext'>"+count+" / "+data.length+"</div><img src='"+data[i]+"' style='width:100%; height:80vh'></div>";
+            main_img += "<div class='mySlides'><div class='numbertext'>"+count+" / "+data.length+"</div><img src='"+data[i]+"' class='main-image'></div>";
         }
 
         document.getElementById("main-image").innerHTML = main_img
