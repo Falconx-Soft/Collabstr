@@ -2013,6 +2013,13 @@ def dashboard(request):
 	if len(count) == 0:
 		count.append(0)
 		count.append(0)
+
+	max_num = max(count)
+	while len(count) < 11:
+		max_num += 1
+		count.append(max_num)
+
+	
 	temp_date = ""
 	for d in dates:
 		temp_date += str(d)+","

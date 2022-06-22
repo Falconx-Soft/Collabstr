@@ -1,28 +1,30 @@
 .orders-div{
-    width: 100%;
+    width: 90%;
 }
 
 .heading-div{
     padding: 20px;
-    border-bottom: 1px solid #ccc;
 }
+
 
 .order_list_option{
     display: flex;
 }
 
 .order_list_option_item{
-    width: 100%;
     background-color: white;
     padding: 15px;
     cursor: pointer;
     text-align: center;
+    font-size: larger;
 }
 
 .active{
     background-color: white;
     color: rgb(97, 70, 124);
     border-bottom: solid 1px rgb(97, 70, 124);
+    padding-bottom: 15px;
+    display: inline-block;
 }
 
 .chat_list_div{
