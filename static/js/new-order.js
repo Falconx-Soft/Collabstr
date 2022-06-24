@@ -3,6 +3,7 @@ $(document).ready(function(){
 	let table = new DataTable('#example', {
         scrollY: 300,
         paging: false,
+        sort: true,
     });	
 
   $('.nav-tabs a[href="#public"]').tab('show');

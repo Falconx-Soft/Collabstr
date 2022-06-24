@@ -34,16 +34,36 @@
 }
 
 .privious-work-title-div{
-    position: absolute;
-    bottom: 5px;
-    text-align: center;
-    width: 100%;
+  position: absolute;
+  top: 1px;
+  width: 100%;
+  padding-left: 5px;
 }
 
 .privious-work-title-div>p{
     color: white;
 }
 
+.exprience-title{
+  display: inline-block;
+    background-color: #ff0050;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
+}
+
+.edit-profile-btn{
+  padding: 5px;
+  border: none;
+  background-color: #ff0050;
+  color: white;
+  min-width: 100px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
 
 /* Image viewer */
 
@@ -223,7 +243,8 @@
 @media only screen and (max-width: 765px){
     
   .privious-work{
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px 10px;
   }
     
 }
@@ -244,7 +265,7 @@
 @media only screen and (max-width: 500px){
     
   .privious-work{
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
     
 }

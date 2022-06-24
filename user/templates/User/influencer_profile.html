@@ -57,7 +57,8 @@ a:hover{
    
 }
 .platform-img-holder{
-    margin-bottom: 10px !important;
+    margin-bottom: 20px !important;
+    margin-top: 10px !important;
 }
 
 .platform-img-holder-mobile{
@@ -102,17 +103,18 @@ a:hover{
 
             <div class="profile-holder">
                 <div class="profile-info-holder">
-                    {% if joined_influencer.profile_image  %}
-                    <img class="profile-pic"
-                        src="{{joined_influencer.profile_image.url}}"
-                        alt="Photo of {{joined_influencer.full_name | title}}">
-                    {% else %}
-                    <img class="profile-pic"
-                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/avatar.png"
-                    alt="">
-                    {% endif %}
-                    <div class="profile-name">{{joined_influencer.full_name | title}}</div>
-                    <div class="profile-location">{{joined_influencer.location}}</div>
+                    <div class="profile-pic-holder">
+                        {% if joined_influencer.profile_image  %}
+                            <img class="profile-pic" style="margin-bottom: 0px !important;"
+                            src="{{joined_influencer.profile_image.url}}"
+                            alt="Photo of {{joined_influencer.full_name | title}}">
+                        {% else %}
+                            <img class="profile-pic"
+                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/avatar.png"
+                            alt="">
+                        {% endif %}
+                    </div>
+                    <div class="profile-name" style="margin: 0px;">{{joined_influencer.full_name | title}}</div>
                     <div class="platform-img-holder">
                         {% if joined_influencer.instagram_username != "" %}
                         <div class="platform-img">
@@ -162,9 +164,10 @@ a:hover{
 
                     </div>
                     
-                    <div class="share-btn row-btn" onclick="location.href='/influenceredit'"><img class="row-btn-img"
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/edit.svg">Edit</div>
-                    
+                    <button class="edit-profile-btn" onclick="location.href='/influenceredit'">Edit</button>
+                    <div class="description-div">
+                        {{joined_influencer.description_influencer}}
+                    </div>
 
                 </div>
             </div>
@@ -178,7 +181,7 @@ a:hover{
             <div class="privious-work-img-div">
                 <img src="{{exprience.id|get_pictures}}" onclick="openModal('{{exprience.id}}');currentSlide(1)" class="hover-shadow cursor privious-work-img">
                 <div class="privious-work-title-div">
-                    <p>{{exprience.exprience_title}}</p>
+                    <div class="exprience-title">{{exprience.exprience_title}}</div>
                 </div>
             </div>
         {% endfor %}
@@ -204,117 +207,6 @@ a:hover{
     </div>
 
  
-</div>
-
-<div class="modal" style="">
-    <div class="modal-content-holder" style="width: 500px;">
-        <link rel="stylesheet" type="text/css" href="/static/igmarketplace/auth/brandSignupModal.css?v=3.16">
-
-
-        <form class="form-holder-signup">
-            <input type="hidden" name="csrfmiddlewaretoken"
-                value="o2hdUlC7XrRdNCSqt8UCJibpfCA03TTIQEhrIgHaGs3FcgHIUGXzN5ywLyWveR5u">
-            <!-- first form -->
-            <div class="form-1">
-                <div class="modal-content-header">
-                    <div class="modal-content-header-title">Brand Sign Up</div>
-                    <div class="close-modal"><img class="close-modal-img"
-                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/closeModal.svg">
-                    </div>
-                </div>
-
-                <div class="modal-content-scroll">
-                    <div class="form">
-                        <input class="input" type="text" placeholder="Full Name" name="name" required="">
-                        <input class="input" type="text" placeholder="Brand Name" name="company" required="">
-                        <input class="input" type="email" placeholder="Email" name="email" required="">
-                        <input class="input" type="password" placeholder="Password" name="password" minlength="6"
-                            required="">
-                    </div>
-                </div>
-
-                <div class="modal-content-footer">
-                    <button class="btn modal-btn">Continue</button>
-                    <div class="login-signup">Already have an account? <a class="login-btn">Login</a></div>
-                </div>
-            </div>
-
-            <!-- second form -->
-            <div class="form-2">
-                <div class="modal-content-header">
-                    <div class="modal-content-header-title">Complete Profile</div>
-                    <div class="close-modal"><img class="close-modal-img"
-                            src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/closeModal.svg">
-                    </div>
-                </div>
-
-                <div class="modal-content-scroll">
-                    <div class="form">
-                        <input class="input" type="text" name="website" placeholder="Website">
-                        <input class="input" type="text" name="instagram" placeholder="Instagram Username">
-                        <input class="input" type="text" name="tiktok" placeholder="TikTok Username">
-                        <input class="input" type="text" name="youtube" placeholder="YouTube URL">
-                    </div>
-                </div>
-
-                <div class="modal-content-footer">
-                    <button class="btn modal-btn">Sign Up</button>
-                    <div class="login-signup legal-signup">By signing up, you agree to our <a
-                            href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a></div>
-                </div>
-            </div>
-        </form>
-
-        <form class="form-holder-login">
-            <input type="hidden" name="csrfmiddlewaretoken"
-                value="o2hdUlC7XrRdNCSqt8UCJibpfCA03TTIQEhrIgHaGs3FcgHIUGXzN5ywLyWveR5u">
-
-            <div class="modal-content-header">
-                <div class="modal-content-header-title">Welcome Back</div>
-                <div class="close-modal"><img class="close-modal-img"
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/closeModal.svg">
-                </div>
-            </div>
-
-
-            <div class="modal-content-scroll">
-                <div class="form">
-                    <input class="input" type="email" placeholder="Email" name="email" required="">
-                    <input class="input" type="password" placeholder="Password" name="password" minlength="6"
-                        required="">
-                </div>
-            </div>
-
-            <div class="modal-content-footer">
-                <button class="btn modal-btn">Login</button>
-                <div class="login-signup forgot-btn">Forgot password?</div>
-                <div class="login-signup">Don't have an account? <a class="signup-btn">Sign up</a></div>
-            </div>
-        </form>
-
-        <form class="form-holder form-holder-forgot">
-            <input type="hidden" name="csrfmiddlewaretoken"
-                value="o2hdUlC7XrRdNCSqt8UCJibpfCA03TTIQEhrIgHaGs3FcgHIUGXzN5ywLyWveR5u">
-            <div class="modal-content-header">
-                <div class="modal-content-header-title">Reset Password</div>
-                <div class="close-modal"><img class="close-modal-img"
-                        src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/closeModal.svg">
-                </div>
-            </div>
-
-
-            <div class="modal-content-scroll">
-                <div class="form">
-                    <input class="input" type="email" placeholder="Email" name="email" required="">
-                </div>
-            </div>
-
-            <div class="modal-content-footer">
-                <button class="btn modal-btn">Send Reset Email</button>
-                <div class="login-signup">Want to try again? <a class="login-btn">Login.</a></div>
-            </div>
-        </form>
-    </div>
 </div>
 
 
@@ -386,16 +278,6 @@ a:hover{
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 {% endblock content %}
 
 

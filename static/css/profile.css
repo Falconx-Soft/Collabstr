@@ -211,12 +211,25 @@ option {
     align-items: center;
     flex-direction: column;
 }
+
+.profile-pic-holder{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 3%;
+    background-color: #00f2ea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile-pic {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 3%;
+    border: solid white;
 }
 .profile-name {
     display: flex;
@@ -245,6 +258,12 @@ option {
 .platform-img img {
     width: 100%;
     height: 100%;
+}
+
+.description-div{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
 }
 
 /* Check out area */
