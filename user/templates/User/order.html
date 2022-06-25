@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} Dashboard {% endblock %} 
+{% block title %} Dashboard {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block extrastyle %}
@@ -12,7 +12,9 @@
 
 <link rel="stylesheet" href="{% static '/css/new-order.css' %}">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 
@@ -21,16 +23,21 @@
 {% endblock extrastyle %}
 
 
-{% block content %}	
+{% block content %}
 
 
 
-<div class="container" style="padding-left: 5%; padding-right: 5%; position: relative; display: flex; justify-content: center;">
+<div class="container"
+    style="padding-left: 5%; padding-right: 5%; position: relative; display: flex; justify-content: center;">
 
     <div class="orders-div">
         <div class="heading-div">
             <h3 class="heading" style="font-size: 30px;"><b>Orders</b></h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat assumenda consequatur alias culpa laborum dicta, suscipit commodi repellat veniam consequuntur, tenetur ipsa ad tempore explicabo nesciunt ducimus vitae eos quo repudiandae. Quis ad, dolorem consequuntur perspiciatis repudiandae corrupti impedit tempore harum exercitationem recusandae dolor, odit rem inventore perferendis illum totam distinctio. Possimus, dolor. Mollitia nesciunt aut ipsum est error blanditiis assumenda.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat assumenda consequatur alias culpa
+                laborum dicta, suscipit commodi repellat veniam consequuntur, tenetur ipsa ad tempore explicabo nesciunt
+                ducimus vitae eos quo repudiandae. Quis ad, dolorem consequuntur perspiciatis repudiandae corrupti
+                impedit tempore harum exercitationem recusandae dolor, odit rem inventore perferendis illum totam
+                distinctio. Possimus, dolor. Mollitia nesciunt aut ipsum est error blanditiis assumenda.</p>
         </div>
 
         <div class="order_list_option">
@@ -52,60 +59,63 @@
         </div>
 
         <div id="requests_div">
-            
-            <div class="table-area" style="position: relative;">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Influencer</th>
-                                <th>Brand</th>
-                                <th>Price</th>
-                                <th>Status</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for or in pending_orders %}
-                                <tr id="table-entity">
-                                    <td>{{or.influencer.influencer_username}}</td>  
-                                    <td>{{or.brand.full_name}}</td>  
-                                    <td>{{or.package.package_price}}</td>  
-                                    <td>{{or.status}}</td>
-                                    <td data-toggle="modal" data-target="#exampleModal{{or.id}}" style="cursor: pointer;">View</td>    
-                                </tr>
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal{{or.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h2 class="modal-title" id="exampleModalLabel">Order</h2>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><b>Influencer:</b> {{or.influencer.influencer_username}}</p>
-                                            <p><b>Brand:</b> {{or.brand.full_name}}</p>
-                                            <p><b>Price:</b> {{or.package.package_price}}</p>
-                                            <p><b>Status:</b> {{or.status}}</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                    </div>
+
+            <div class="functionality-div">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."
+                title="Type in a name">
+                
+                <div class="functionality-btn-div">
+                    <button onclick="sortTable()" class="sort-btn">Sort</button>
+                </div>
+            </div>  
+            <div class="table-div">
+                <table id="myTable">
+                    <tr class="header">
+                        <th style="width:20%;">Influencer</th>
+                        <th style="width:20%;">Brand</th>
+                        <th style="width:20%;">Price</th>
+                        <th style="width:20%;">Status</th>
+                        <th style="width:20%;">Details</th>
+                    </tr>
+                    {% for or in pending_orders %}
+                        <tr id="table-entity">
+                            <td>{{or.influencer.influencer_username}}</td>  
+                            <td>{{or.brand.full_name}}</td>  
+                            <td>{{or.package.package_price}}</td>  
+                            <td><samp class="pending-status">{{or.status}}</samp></td>
+                            <td data-toggle="modal" data-target="#exampleModal{{or.id}}" style="cursor: pointer;">View</td>    
+                        </tr>
+
+                        <div class="modal fade" id="exampleModal{{or.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLabel">Order</h2>
                                 </div>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                <br />
+                                <div class="modal-body">
+                                    <p><b>Influencer:</b> {{or.influencer.influencer_username}}</p>
+                                    <p><b>Brand:</b> {{or.brand.full_name}}</p>
+                                    <p><b>Price:</b> {{or.package.package_price}}</p>
+                                    <p><b>Status:</b> {{or.status}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </table>
             </div>
 
         </div>
 
         <div id="in_progress_div" style="display: none;">
-            
+
         </div>
 
         <div id="completed_div" style="display: none;">
-            
+
         </div>
 
     </div>
@@ -123,13 +133,46 @@
 
 <script src="{% static 'js/new-order.js' %}"></script>
 
-<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script> 
-	{% if hidden %}
-		{{ hidden|json_script:"hidden" }}
-	{% endif %}	
-	{% if hidden1 %}
-		{{ hidden1|json_script:"hidden1" }}
-	{% endif %}
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+{% if hidden %}
+{{ hidden|json_script:"hidden" }}
+{% endif %}
+{% if hidden1 %}
+{{ hidden1|json_script:"hidden1" }}
+{% endif %}
 
 
 {% endblock extrajavascript %}
+
+
+
+
+<!-- 
+{% for or in pending_orders %}
+    <tr id="table-entity">
+        <td>{{or.influencer.influencer_username}}</td>  
+        <td>{{or.brand.full_name}}</td>  
+        <td>{{or.package.package_price}}</td>  
+        <td><samp class="pending-status">{{or.status}}</samp></td>
+        <td data-toggle="modal" data-target="#exampleModal{{or.id}}" style="cursor: pointer;">View</td>    
+    </tr>
+    model
+    <div class="modal fade" id="exampleModal{{or.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h2 class="modal-title" id="exampleModalLabel">Order</h2>
+            </div>
+            <div class="modal-body">
+                <p><b>Influencer:</b> {{or.influencer.influencer_username}}</p>
+                <p><b>Brand:</b> {{or.brand.full_name}}</p>
+                <p><b>Price:</b> {{or.package.package_price}}</p>
+                <p><b>Status:</b> {{or.status}}</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endfor %} -->

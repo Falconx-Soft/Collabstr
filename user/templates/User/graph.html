@@ -18,10 +18,10 @@
         label: "Orders you got",
         data: {{order_count}},
         backgroundColor: [
-            'rgba(105, 0, 132, .2)',
+            'transparent',
         ],
         borderColor: [
-            'rgba(200, 99, 132, .7)',
+            'rgb(0 142 255 / 88%)',
         ],
         borderWidth: 2
         }
@@ -30,6 +30,20 @@
     options: {
         responsive: true
     }
+    });
+
+</script>
+
+
+<script>
+
+    const filter_bnt = document.getElementById("filter");
+
+    filter_bnt.addEventListener("click", function(){
+        document.getElementById("date-display").style.display = "none";
+
+        document.getElementById("date-filter-form").style.display = "block";
+
     });
 
 </script>

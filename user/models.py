@@ -86,6 +86,7 @@ class JoinInfluencer(models.Model):
     image3= models.ImageField(null=True, blank=True,upload_to="images/")
     image4=models.ImageField(null=True,blank=True,upload_to="images/")
     image5=models.ImageField(null=True, blank=True,upload_to="images/")
+    crated_at = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):
             return self.influencer_username
@@ -189,6 +190,7 @@ class JoinBrand(models.Model):
     image3= models.ImageField(null=True, blank=True,upload_to="images/")
     image4=models.ImageField(null=True,blank=True,upload_to="images/")
     image5=models.ImageField(null=True, blank=True,upload_to="images/")
+    crated_at = models.DateField(auto_now_add=True, null=True)
 
 
     is_added= models.BooleanField(default=False)

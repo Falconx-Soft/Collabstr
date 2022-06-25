@@ -48,51 +48,96 @@
     margin-bottom: 5px;
 }
 
-/* End tabs */
+/* tabs */
 
-/* Table */
-
-.table-area{
-    margin-top: 20px;
-}
-
-/* Search input */
-
-#example_filter{
-    display: flex;
-    justify-content: center;
-}
-
-#example_filter>label{
-    width: 80%;
-    margin-bottom: 20px;
-}
-
-#example_filter>label>input{
-    display: block;
+table {
+    border-spacing: 0;
     width: 100%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
-    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 16px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+
+  .functionality-div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #cccccc61;
+  }
+
+  #myInput{
+    border: none;
+    width: 75%;
+    padding: 10px;
+  }
+
+  #myInput:focus {
+    outline: none;
+    }
+
+    #myTable{
+        margin-bottom: 100px;
+    }
+
+    .functionality-btn-div{
+        width: 25%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .sort-btn{
+        background: white;
+        border: solid 1px #ccc;
+        padding: 7px;
+        width: 83px;
+    }
+
+    .table-div{
+        width: 100%;
+        overflow: scroll;
+    }
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+    .table-div::-webkit-scrollbar {
+        display: none;
+    }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .table-div {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* End table */
+
+/* pending status */
+
+.pending-status{
+    color: #ffac00;
+    background-image: linear-gradient(#ffff0078, #ffff0078);
+    padding: 3px;
+    border-radius: 8px;
+    padding-left: 9px;
+    padding-right: 9px;
 }
 
-/* Pagination */
 
-.table{
-    margin-bottom: 0px !important;
+@media only screen and (max-width: 460px){
+    
+    .sort-btn{
+        width: 82%;
+    }
+    
 }
+
 

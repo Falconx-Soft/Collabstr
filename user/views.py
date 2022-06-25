@@ -1971,10 +1971,11 @@ def dashboard(request):
 	end_date = today
 	profile_img = None
 	context = {}
+
 	if request.method == 'POST':
 		start_date = request.POST.get('start-date')
 		end_date = request.POST.get('end-date')
-		
+
 	if request.user.is_brand:
 		joinBrandObj = JoinBrand.objects.get(user=request.user)
 		order_obj = Orders.objects.distinct().filter(
@@ -1990,10 +1991,14 @@ def dashboard(request):
 												Q(crated_at__lte=end_date) &
 												Q(influencer=influencer)
 											).order_by('crated_at')
+
 	dates = []
 	count = []
 
+	gross_amount = 0
+
 	if len(order_obj) > 0:
+		gross_amount += order_obj[0].package.package_price
 		dates.append(str(order_obj[0].crated_at))
 		c = 1
 		for o in range(1,len(order_obj)):
@@ -2003,6 +2008,8 @@ def dashboard(request):
 				c = 1
 			else:
 				c += 1
+			gross_amount += order_obj[o].package.package_price 
+
 		if str(order_obj[len(order_obj)-1].crated_at) not in dates:
 			dates.append(str(order_obj[len(order_obj)-1].crated_at))
 		count.append(c)
@@ -2024,7 +2031,8 @@ def dashboard(request):
 	for d in dates:
 		temp_date += str(d)+","
 
-	print(temp_date)
+
+	total_amount = gross_amount
 
 	if request.user.is_brand:
 		context = {
@@ -2032,7 +2040,9 @@ def dashboard(request):
 			'start_date': start_date,
 			'end_date':end_date,
 			'order_count':count,
-			'order_dates':temp_date
+			'order_dates':temp_date,
+			'gross_amount':gross_amount,
+			'total_amount':total_amount
 		}
 	else:
 		context = {
@@ -2041,7 +2051,9 @@ def dashboard(request):
 			'end_date':end_date,
 			'order_count':count,
 			'order_dates':temp_date,
-			'nav_profile_image':profile_img
+			'nav_profile_image':profile_img,
+			'gross_amount':gross_amount,
+			'total_amount':total_amount
 		}
 	
 	print(dates,count)
