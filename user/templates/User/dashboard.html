@@ -54,11 +54,30 @@
             {% for or in pending_orders %}
                 <div class="orders-list">
                     {% if forloop.counter0|divisibleby:2 %}
-                        <p class="order-list-lable"><span class="order-list-lable-icon" style="color: #0000ff96" ><i class="fa fa-circle" aria-hidden="true"></i></span>{{or.package.content_category}}</p>
+                        <p class="order-list-lable" style="width: 30%; text-align: center;">
+                            <span class="order-list-lable-icon" style="color: #0000ff96" >
+                                <i class="fa fa-circle" aria-hidden="true"></i>
+                            </span>
+                            {% if request.user.is_brand %}
+                                {{or.influencer.influencer_username}}
+                            {% else %}
+                                {{or.brand.full_name}}
+                            {% endif %}
+                        </p>
                     {% else %}
-                        <p class="order-list-lable"><span class="order-list-lable-icon" style="color: rgb(197, 140, 227)" ><i class="fa fa-circle" aria-hidden="true"></i></span>{{or.package.content_category}}</p>
+                        <p class="order-list-lable" style="width: 30%; text-align: center;">
+                            <span class="order-list-lable-icon" style="color: rgb(197, 140, 227)" >
+                                <i class="fa fa-circle" aria-hidden="true"></i>
+                            </span>
+                            {% if request.user.is_brand %}
+                                {{or.influencer.influencer_username}}
+                            {% else %}
+                                {{or.brand.full_name}}
+                            {% endif %}
+                        </p>
                     {% endif %}
-                    <p>${{or.package.package_price}}</p>    
+                    <p style="width: 30%; text-align: center;">{{or.crated_at}}</p>  
+                    <p style="width: 30%; text-align: right;">${{or.package.package_price}}</p>    
                 </div>
             {% endfor %}
             <div class="orders-list"  style="border: none;">

@@ -237,6 +237,14 @@
     .image-holder{ 
       height: 20vh;
     }
+
+    .listing-cols{
+      margin-top: 0px !important;
+    }
+
+    .navbar{
+      margin-bottom: 0px !important;
+    }
 }
 
 

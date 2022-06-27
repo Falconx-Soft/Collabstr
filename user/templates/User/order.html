@@ -40,11 +40,6 @@
                       </div>
                 </span>
             </div>
-            <p style="color: #a0a0a0; margin-top: 10px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat assumenda consequatur alias culpa
-                laborum dicta, suscipit commodi repellat veniam consequuntur, tenetur ipsa ad tempore explicabo nesciunt
-                ducimus vitae eos quo repudiandae. Quis ad, dolorem consequuntur perspiciatis repudiandae corrupti
-                impedit tempore harum exercitationem recusandae dolor, odit rem inventore perferendis illum totam
-                distinctio. Possimus, dolor. Mollitia nesciunt aut ipsum est error blanditiis assumenda.</p>
         </div>
 
         <div class="order_list_option">
@@ -79,19 +74,30 @@
             <div class="table-div">
                 <table id="myTable">
                     <tr class="header" style="border-bottom: solid 1px #ccc;">
+                        {% if request.user.is_brand %}
+                            <th style="width:20%;">
+                                <div class="th-div" onclick="sortTable()">
+                                    Influencer
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                    
+                                </div>
+                            </th>
+                        {% else %}
+                            <th style="width:20%;">
+                                <div class="th-div" onclick="sortTable()">
+                                    Brand
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                            </th>
+                        {% endif %}
+                        
                         <th style="width:20%;">
-                            <div class="th-div" onclick="sortTable()">
-                                Influencer
-                                <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                
+                            <div class="th-div">
+                                Date
+                                <i class="fa fa-caret-down" onclick="sortDate()" aria-hidden="true"></i>
                             </div>
                         </th>
-                        <th style="width:20%;">
-                            <div class="th-div" onclick="sortBrand()">
-                                Brand
-                                <i class="fa fa-caret-down" aria-hidden="true"></i>
-                            </div>
-                        </th>
+
                         <th style="width:20%;">
                             <div class="th-div" onclick="sortPrice()">
                                 Price
@@ -107,9 +113,13 @@
                     </tr>
                     {% for or in pending_orders %}
                         <tr id="table-entity">
-                            <td><b>{{or.influencer.influencer_username}}</b></td>  
-                            <td style="color: #a0a0a0;">{{or.brand.full_name}}</td>  
-                            <td><b>{{or.package.package_price}}</b></td>  
+                            {% if request.user.is_brand %}
+                                <td><b>{{or.influencer.influencer_username}}</b></td>  
+                            {% else %}
+                                <td style="color: #a0a0a0;">{{or.brand.full_name}}</td>  
+                            {% endif %}
+                            <td>{{or.crated_at}}</td>  
+                            <td><b>${{or.package.package_price}}</b></td>  
                             <td><samp class="pending-status">{{or.status}}</samp></td>
                             <td data-toggle="modal" data-target="#exampleModal{{or.id}}" 
                             style="

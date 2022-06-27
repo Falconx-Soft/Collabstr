@@ -2000,14 +2000,14 @@ def dashboard(request):
 	if len(order_obj) > 0:
 		gross_amount += order_obj[0].package.package_price
 		dates.append(str(order_obj[0].crated_at))
-		c = 1
+		c = order_obj[0].package.package_price
 		for o in range(1,len(order_obj)):
 			if str(order_obj[o].crated_at) not in dates:
 				dates.append(str(order_obj[o].crated_at))
 				count.append(c)
-				c = 1
+				c=order_obj[o].package.package_price
 			else:
-				c += 1
+				c += order_obj[o].package.package_price
 			gross_amount += order_obj[o].package.package_price 
 
 		if str(order_obj[len(order_obj)-1].crated_at) not in dates:
@@ -2023,7 +2023,7 @@ def dashboard(request):
 
 	max_num = max(count)
 	while len(count) < 11:
-		max_num += 1
+		max_num += 10
 		count.append(max_num)
 
 	

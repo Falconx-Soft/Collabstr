@@ -53,7 +53,7 @@ function myFunction() {
   }
 
 
-  function sortBrand() {
+  function sortDate() {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("myTable");
     switching = true;
