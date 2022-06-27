@@ -206,3 +206,12 @@ table {
 }
 
 
+@media only screen and (max-width: 800px){
+    
+  .navbar_content {
+    justify-content: flex-start;
+  }
+  
+}
+
+
