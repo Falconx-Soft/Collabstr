@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 <style>
 
 </style>
@@ -32,8 +32,15 @@
 
     <div class="orders-div">
         <div class="heading-div">
-            <h3 class="heading" style="font-size: 30px;"><b>Orders</b></h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat assumenda consequatur alias culpa
+            <div style="display: flex; align-items: center;">
+                <h3 class="heading" style="font-size: 30px; margin: 0px;"><b>Order Details</b></h3>
+                <span style="margin-left: 10px;">
+                    <div class="tooltip"><i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span class="tooltiptext">Tooltip text</span>
+                      </div>
+                </span>
+            </div>
+            <p style="color: #a0a0a0; margin-top: 10px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat assumenda consequatur alias culpa
                 laborum dicta, suscipit commodi repellat veniam consequuntur, tenetur ipsa ad tempore explicabo nesciunt
                 ducimus vitae eos quo repudiandae. Quis ad, dolorem consequuntur perspiciatis repudiandae corrupti
                 impedit tempore harum exercitationem recusandae dolor, odit rem inventore perferendis illum totam
@@ -42,17 +49,17 @@
 
         <div class="order_list_option">
             <div class="order_list_option_item">
-                <div class="active" id="requests_btn">
+                <div class="active" id="requests_btn" style="font-weight: bold;">
                     Requests
                 </div>
             </div>
             <div class="order_list_option_item">
-                <div id="in_progress_btn">
+                <div id="in_progress_btn" style="font-weight: bold;">
                     In-progress
                 </div>
             </div>
             <div class="order_list_option_item">
-                <div id="completed_btn">
+                <div id="completed_btn" style="font-weight: bold;">
                     Completed
                 </div>
             </div>
@@ -61,29 +68,54 @@
         <div id="requests_div">
 
             <div class="functionality-div">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order influencer, brand or price"
                 title="Type in a name">
                 
                 <div class="functionality-btn-div">
-                    <button onclick="sortTable()" class="sort-btn">Sort</button>
+                    <button onclick="sortTable()" class="sort-btn" style="margin-right: 5px; margin-left: 5px;"><i class="fa fa-sort" aria-hidden="true"></i> Sort</button>
+                    <button onclick="ExportToExcel('xlsx')" class="sort-btn"><i class="fa-solid fa-file-export"></i> Export</button>
                 </div>
             </div>  
             <div class="table-div">
                 <table id="myTable">
-                    <tr class="header">
-                        <th style="width:20%;">Influencer</th>
-                        <th style="width:20%;">Brand</th>
-                        <th style="width:20%;">Price</th>
-                        <th style="width:20%;">Status</th>
-                        <th style="width:20%;">Details</th>
+                    <tr class="header" style="border-bottom: solid 1px #ccc;">
+                        <th style="width:20%;">
+                            <div class="th-div" onclick="sortTable()">
+                                Influencer
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                
+                            </div>
+                        </th>
+                        <th style="width:20%;">
+                            <div class="th-div" onclick="sortBrand()">
+                                Brand
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </div>
+                        </th>
+                        <th style="width:20%;">
+                            <div class="th-div" onclick="sortPrice()">
+                                Price
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </div>
+                        </th>
+                        <th style="width:20%;">
+                            Status
+                        </th>
+                        <th style="width:20%;">
+                            Details
+                        </th>
                     </tr>
                     {% for or in pending_orders %}
                         <tr id="table-entity">
-                            <td>{{or.influencer.influencer_username}}</td>  
-                            <td>{{or.brand.full_name}}</td>  
-                            <td>{{or.package.package_price}}</td>  
+                            <td><b>{{or.influencer.influencer_username}}</b></td>  
+                            <td style="color: #a0a0a0;">{{or.brand.full_name}}</td>  
+                            <td><b>{{or.package.package_price}}</b></td>  
                             <td><samp class="pending-status">{{or.status}}</samp></td>
-                            <td data-toggle="modal" data-target="#exampleModal{{or.id}}" style="cursor: pointer;">View</td>    
+                            <td data-toggle="modal" data-target="#exampleModal{{or.id}}" 
+                            style="
+                            cursor: pointer;
+                            color: #a0a0a0;
+                            ">View</td>    
                         </tr>
 
                         <div class="modal fade" id="exampleModal{{or.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -134,6 +166,7 @@
 <script src="{% static 'js/new-order.js' %}"></script>
 
 <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+
 {% if hidden %}
 {{ hidden|json_script:"hidden" }}
 {% endif %}
@@ -143,36 +176,3 @@
 
 
 {% endblock extrajavascript %}
-
-
-
-
-<!-- 
-{% for or in pending_orders %}
-    <tr id="table-entity">
-        <td>{{or.influencer.influencer_username}}</td>  
-        <td>{{or.brand.full_name}}</td>  
-        <td>{{or.package.package_price}}</td>  
-        <td><samp class="pending-status">{{or.status}}</samp></td>
-        <td data-toggle="modal" data-target="#exampleModal{{or.id}}" style="cursor: pointer;">View</td>    
-    </tr>
-    model
-    <div class="modal fade" id="exampleModal{{or.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalLabel">Order</h2>
-            </div>
-            <div class="modal-body">
-                <p><b>Influencer:</b> {{or.influencer.influencer_username}}</p>
-                <p><b>Brand:</b> {{or.brand.full_name}}</p>
-                <p><b>Price:</b> {{or.package.package_price}}</p>
-                <p><b>Status:</b> {{or.status}}</p>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-        </div>
-    </div>
-{% endfor %} -->

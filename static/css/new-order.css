@@ -1,9 +1,41 @@
 .orders-div{
-    width: 90%;
+    width: 100%;
 }
 
 .heading-div{
     padding: 20px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  color: #ccc;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 
@@ -21,8 +53,8 @@
 
 .active{
     background-color: white;
-    color: rgb(97, 70, 124);
-    border-bottom: solid 1px rgb(97, 70, 124);
+    color: rgb(0 142 255 / 88%);
+    border-bottom: solid 1px rgb(0 142 255 / 88%);
     padding-bottom: 6px;
     display: inline-block;
 }
@@ -60,10 +92,7 @@ table {
     text-align: left;
     padding: 16px;
   }
-  
-  tr:nth-child(even) {
-    background-color: #f2f2f2
-  }
+
 
   .functionality-div{
     display: flex;
@@ -76,7 +105,7 @@ table {
 
   #myInput{
     border: none;
-    width: 75%;
+    width: 70%;
     padding: 10px;
   }
 
@@ -89,22 +118,47 @@ table {
     }
 
     .functionality-btn-div{
-        width: 25%;
+        width: 30%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
     }
 
     .sort-btn{
         background: white;
         border: solid 1px #ccc;
         padding: 7px;
-        width: 83px;
+        width: 50%;
     }
 
     .table-div{
         width: 100%;
         overflow: scroll;
     }
+
+    @media only screen and (max-width: 722px){
+    
+      .functionality-div {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+    }
+  
+    .functionality-btn-div {
+      width: 100% !important;
+      display: flex;
+      justify-content: space-between !important;
+      margin-top: 10px;
+    }
+
+    .sort-btn {
+      width: 50%;
+    }
+
+    #myInput {
+      width: 100%;
+  }
+      
+  }
 
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -120,6 +174,16 @@ table {
 
   /* End table */
 
+  .th-div{
+    width: 20%;
+    display: flex;
+    align-items: center;
+  }
+
+  .th-div>i{
+    margin-left: 5px;
+  }
+
 /* pending status */
 
 .pending-status{
@@ -129,6 +193,7 @@ table {
     border-radius: 8px;
     padding-left: 9px;
     padding-right: 9px;
+    font-weight: bold;
 }
 
 
