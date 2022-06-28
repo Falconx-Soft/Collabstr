@@ -42,6 +42,32 @@
     object-fit: cover;
 }
 
+.btn-logout{
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    border: none;
+    font-size: 13px;
+    font-family: inherit;
+    border-radius: 8px;
+    box-shadow: var(--lightBoxShadow);
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    position: relative;
+    background-color: #222;
+    color: white;
+    width: 78px;
+    padding: 6px 0;
+    margin: 0 0 0 auto;
+    text-decoration: none;
+
+}
+
+.btn-logout:hover{
+    color: white;
+}
+
 @media only screen and (max-width: 884px){
 
 	.content_holder{
@@ -67,7 +93,11 @@
 <form action="{% url 'influencer_profile_edit' %}" method="post" enctype="multipart/form-data" >
     {% csrf_token %}
     <div class="edit-main-div">
-        <h1 class="edit-main-headding">Edit Your Page</h1>
+        <div style="display: flex; justify-content:space-between; align-items:center;">
+            <h1 class="edit-main-headding">Edit Your Page</h1>
+
+            <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
+        </div>
 
         <div class="edit-div-options">
             <div class="edit-div-item active" id="option">Details</div>

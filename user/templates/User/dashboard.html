@@ -28,7 +28,7 @@
 
     
     <div class="date-div" id="date-display">
-        <i id="filter" class="fa fa-calendar" style="color: #008effe0; margin-right: 10px;" aria-hidden="true"></i>
+        <i id="filter" onclick="filter_date()" class="fa fa-calendar" style="color: #008effe0; margin-right: 10px;" aria-hidden="true"></i>
         <p class="date-div-lable">
             From:
             <b class="date-div-lable-dates">{{start_date}}</b> 
@@ -52,7 +52,7 @@
     <div class="orders-div">
         <div class="table-area" style="position: relative; width:100%">
             {% for or in pending_orders %}
-                <div class="orders-list">
+                <div class="orders-list" onclick="filter_date()" style="cursor: pointer;">
                     {% if forloop.counter0|divisibleby:2 %}
                         <p class="order-list-lable" style="width: 30%; text-align: center;">
                             <span class="order-list-lable-icon" style="color: #0000ff96" >

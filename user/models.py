@@ -203,7 +203,7 @@ class Orders(models.Model):
     package = models.ForeignKey(InfluencerPackage,on_delete=models.CASCADE)
     brand = models.ForeignKey(JoinBrand,on_delete=models.CASCADE)
     status = models.CharField(max_length=500, null=True)
-    crated_at = models.DateField(auto_now_add=True, null=True)
+    crated_at = models.DateField( null=True)
 
 class submit_requirements(models.Model):
     description = models.CharField(max_length=2000)

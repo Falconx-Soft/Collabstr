@@ -1967,7 +1967,7 @@ def delete_profile_pic(request):
 def dashboard(request):
 	today = datetime.date.today()
 	print("Today's date:", today)
-	start_date = today - datetime.timedelta(days=7)
+	start_date = today - datetime.timedelta(days=(today.day-1))
 	end_date = today
 	profile_img = None
 	context = {}
@@ -1999,6 +1999,8 @@ def dashboard(request):
 
 	if len(order_obj) > 0:
 		gross_amount += order_obj[0].package.package_price
+		dates.append(0)
+		count.append(0)
 		dates.append(str(order_obj[0].crated_at))
 		c = order_obj[0].package.package_price
 		for o in range(1,len(order_obj)):
