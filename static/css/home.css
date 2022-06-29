@@ -38,9 +38,6 @@ body{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .container{
-      margin-top: 14px;
-  }
   .title{
       font-size: 260%;
       font-weight: 600;

@@ -37,7 +37,7 @@ def home(request):
 	
 	if request.user.is_authenticated:
 		if not request.user.is_brand:
-			JoinInfluencerObj = JoinInfluencer.objects.get(email_address=request.user.email)
+			JoinInfluencerObj = JoinInfluencer.objects.get(user=request.user)
 			context= {
 				'all_influencer': all_influencer,
 				'all_packages':all_packages,
@@ -1816,24 +1816,25 @@ def social_signup(request):
 	return render(request,'User/social_signup.html')
 
 def categories(request):
-
+	print("HEre i am*****************", request.session.get('username_session'))
 	try:
-		influencer_obj= JoinInfluencer.objects.get(influencer_username= request.session.get('username_session'))
-		if not influencer_obj.user:
-			influencer_obj.user = request.user
-			influencer_obj.save()
+		print("try 1**********************")
+		influencer_obj= JoinInfluencer.objects.get(user=request.user)
 	except:
-		pass
+		influencer_obj = JoinInfluencer.objects.create(user=request.user)
+		influencer_obj.save()
 	try:
+		print("try 22222222222222**********************")
 		user_email_inful=request.user.email
-		session_user=request.session.get('username_session')
+		session_user=request.user.username
 		print('user_email_inful::::::@@@@',user_email_inful)
 		if JoinInfluencer.objects.filter(email_address= user_email_inful):
 			return redirect('/joininfluencerprofilepage')
+		print(session_user,"Session user*************")
 		if session_user is not None:
 			print('------------------------Session User', session_user)
 
-			join_inful=JoinInfluencer.objects.filter(influencer_username= session_user)
+			join_inful=JoinInfluencer.objects.filter(user=request.user)
 			if join_inful:
 				print('------------------------join_inful', join_inful)
 				join_inful_0=join_inful[0]
@@ -1865,8 +1866,8 @@ def categories(request):
 								print('fullname_influencer::::::@@@@',fullname_influencer)
 								username_session = request.session.get('username_session')
 								print('Fav username_session create page::::::@@@@',username_session)
-								influencer=User.objects.get(username= username)
-								influencer_obj= JoinInfluencer.objects.get(influencer_username= username_session)
+								influencer=request.user
+								influencer_obj= JoinInfluencer.objects.get(user= request.user)
 								influencer_obj.full_name=fullname_influencer
 								influencer_obj.email_address=user_email
 								niches= request.POST.get('niches_val')
@@ -2044,7 +2045,8 @@ def dashboard(request):
 			'order_count':count,
 			'order_dates':temp_date,
 			'gross_amount':gross_amount,
-			'total_amount':total_amount
+			'total_amount':total_amount,
+			'heighest': max(count),
 		}
 	else:
 		context = {
@@ -2055,7 +2057,8 @@ def dashboard(request):
 			'order_dates':temp_date,
 			'nav_profile_image':profile_img,
 			'gross_amount':gross_amount,
-			'total_amount':total_amount
+			'total_amount':total_amount,
+			'heighest': max(count),
 		}
 	
 	print(dates,count)

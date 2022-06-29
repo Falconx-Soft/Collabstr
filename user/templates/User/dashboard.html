@@ -24,11 +24,11 @@
 
 <div class="container" style="padding-left: 5%; padding-right: 5%; position: relative;">
 
-    <canvas id="lineChart"></canvas>
+    <canvas id="lineChart" style="max-height: 350px"></canvas>
 
     
-    <div class="date-div" id="date-display">
-        <i id="filter" onclick="filter_date()" class="fa fa-calendar" style="color: #008effe0; margin-right: 10px;" aria-hidden="true"></i>
+    <div class="date-div" id="date-display" onclick="filter_date()">
+        <i id="filter" class="fa fa-calendar" style="color: #008effe0; margin-right: 10px;" aria-hidden="true"></i>
         <p class="date-div-lable">
             From:
             <b class="date-div-lable-dates">{{start_date}}</b> 
@@ -82,8 +82,7 @@
             {% endfor %}
             <div class="orders-list"  style="border: none;">
                 <p><b>Total</b></p>
-                <p>Gross: <b>${{total_amount}}</b></p>
-                <p>Net: <b>${{total_amount}}</b></p>    
+                <p><b>${{total_amount}}</b></p>    
             </div>
             <br />
         </div>

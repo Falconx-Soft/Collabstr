@@ -10,26 +10,25 @@
     }
     
     var ctxL = document.getElementById("lineChart").getContext('2d');
-    var myLineChart = new Chart(ctxL, {
-    type: 'line',
-    data: {
+
+    new Chart("lineChart", {
+      type: "line",
+      data: {
         labels: list_of_date,
         datasets: [{
-        label: "Orders you got",
-        data: {{order_count}},
-        backgroundColor: [
-            'transparent',
-        ],
-        borderColor: [
-            'rgb(0 142 255 / 88%)',
-        ],
-        borderWidth: 2
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgb(0 142 255 / 88%)",
+          borderColor: "rgb(0 142 255 / 88%)",
+          data: {{order_count}}
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          yAxes: [{ticks: {min: 0, max:{{heighest}}}}],
         }
-        ]
-    },
-    options: {
-        responsive: true
-    }
+      }
     });
 
 </script>

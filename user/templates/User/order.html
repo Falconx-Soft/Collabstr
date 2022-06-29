@@ -34,11 +34,6 @@
         <div class="heading-div">
             <div style="display: flex; align-items: center;">
                 <h3 class="heading" style="font-size: 30px; margin: 0px;"><b>Order Details</b></h3>
-                <span style="margin-left: 10px;">
-                    <div class="tooltip"><i class="fa fa-question-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">Tooltip text</span>
-                      </div>
-                </span>
             </div>
         </div>
 
@@ -112,7 +107,7 @@
                         </th>
                     </tr>
                     {% for or in pending_orders %}
-                        <tr id="table-entity">
+                        <tr id="table-entity" data-toggle="modal" data-target="#exampleModal{{or.id}}" style="cursor: pointer;">
                             {% if request.user.is_brand %}
                                 <td><b>{{or.influencer.influencer_username}}</b></td>  
                             {% else %}
@@ -121,8 +116,7 @@
                             <td>{{or.crated_at}}</td>  
                             <td><b>${{or.package.package_price}}</b></td>  
                             <td><samp class="pending-status">{{or.status}}</samp></td>
-                            <td data-toggle="modal" data-target="#exampleModal{{or.id}}" 
-                            style="
+                            <td style="
                             cursor: pointer;
                             color: #a0a0a0;
                             ">View</td>    
@@ -153,11 +147,113 @@
         </div>
 
         <div id="in_progress_div" style="display: none;">
+            <div class="functionality-div">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order influencer, brand or price"
+                title="Type in a name">
+                
+                <div class="functionality-btn-div">
+                    <button onclick="sortTable()" class="sort-btn" style="margin-right: 5px; margin-left: 5px;"><i class="fa fa-sort" aria-hidden="true"></i> Sort</button>
+                    <button onclick="ExportToExcel('xlsx')" class="sort-btn"><i class="fa-solid fa-file-export"></i> Export</button>
+                </div>
+            </div>  
+            <div class="table-div">
+                <table id="myTable">
+                    <tr class="header" style="border-bottom: solid 1px #ccc;">
+                        {% if request.user.is_brand %}
+                            <th style="width:20%;">
+                                <div class="th-div" onclick="sortTable()">
+                                    Influencer
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                    
+                                </div>
+                            </th>
+                        {% else %}
+                            <th style="width:20%;">
+                                <div class="th-div" onclick="sortTable()">
+                                    Brand
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                            </th>
+                        {% endif %}
+                        
+                        <th style="width:20%;">
+                            <div class="th-div">
+                                Date
+                                <i class="fa fa-caret-down" onclick="sortDate()" aria-hidden="true"></i>
+                            </div>
+                        </th>
 
+                        <th style="width:20%;">
+                            <div class="th-div" onclick="sortPrice()">
+                                Price
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </div>
+                        </th>
+                        <th style="width:20%;">
+                            Status
+                        </th>
+                        <th style="width:20%;">
+                            Details
+                        </th>
+                    </tr>
+                    
+                </table>
+            </div>
         </div>
 
         <div id="completed_div" style="display: none;">
+            <div class="functionality-div">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order influencer, brand or price"
+                title="Type in a name">
+                
+                <div class="functionality-btn-div">
+                    <button onclick="sortTable()" class="sort-btn" style="margin-right: 5px; margin-left: 5px;"><i class="fa fa-sort" aria-hidden="true"></i> Sort</button>
+                    <button onclick="ExportToExcel('xlsx')" class="sort-btn"><i class="fa-solid fa-file-export"></i> Export</button>
+                </div>
+            </div>  
+            <div class="table-div">
+                <table id="myTable">
+                    <tr class="header" style="border-bottom: solid 1px #ccc;">
+                        {% if request.user.is_brand %}
+                            <th style="width:20%;">
+                                <div class="th-div" onclick="sortTable()">
+                                    Influencer
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                    
+                                </div>
+                            </th>
+                        {% else %}
+                            <th style="width:20%;">
+                                <div class="th-div" onclick="sortTable()">
+                                    Brand
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                            </th>
+                        {% endif %}
+                        
+                        <th style="width:20%;">
+                            <div class="th-div">
+                                Date
+                                <i class="fa fa-caret-down" onclick="sortDate()" aria-hidden="true"></i>
+                            </div>
+                        </th>
 
+                        <th style="width:20%;">
+                            <div class="th-div" onclick="sortPrice()">
+                                Price
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </div>
+                        </th>
+                        <th style="width:20%;">
+                            Status
+                        </th>
+                        <th style="width:20%;">
+                            Details
+                        </th>
+                    </tr>
+                    
+                </table>
+            </div>
         </div>
 
     </div>
