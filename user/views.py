@@ -2022,12 +2022,7 @@ def dashboard(request):
 		count.append(count[0])
 	if len(count) == 0:
 		count.append(0)
-		count.append(0)
-
-	max_num = max(count)
-	while len(count) < 11:
-		max_num += 10
-		count.append(max_num)
+		count.append(0)	
 
 	
 	temp_date = ""
