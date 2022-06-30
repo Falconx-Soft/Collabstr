@@ -24,7 +24,17 @@
 
 <div class="container" style="padding-left: 5%; padding-right: 5%; position: relative;">
 
+    <div class="graph-total-display">
+        <p><b>All Time</b></p>
+        <p>${{total_amount}}</p>
+    </div>
+
     <canvas id="lineChart" style="max-height: 350px"></canvas>
+
+    <div class="graph-dates-display">
+        <p><b>{{start_date}}</b></p>
+        <p><b>{{end_date}}</b></p>
+    </div>
 
     
     <div class="date-div" id="date-display" onclick="filter_date()">

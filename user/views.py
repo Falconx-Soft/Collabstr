@@ -16,6 +16,7 @@ import stripe
 from chat.utils import find_or_create_private_chat
 from django.http import JsonResponse
 import datetime
+
 from django.db.models import Q
 from django.db.models import Count
 
@@ -1970,13 +1971,18 @@ def dashboard(request):
 	print("Today's date:", today)
 	start_date = today - datetime.timedelta(days=(today.day-1))
 	end_date = today
+	mid_date = end_date - datetime.timedelta(days=(end_date.day-int((start_date.day + end_date.day)/2)))
 	profile_img = None
 	context = {}
 
 	if request.method == 'POST':
 		start_date = request.POST.get('start-date')
-		end_date = request.POST.get('end-date')
 
+		# mid_date = datetime.datetime.strptime(start_date, '%Y-%m-%d') - datetime.timedelta(days=datetime.datetime.strptime(start_date, '%Y-%m-%d'))
+
+		# print(mid_date,"******&&&&&")
+
+		end_date = request.POST.get('end-date')
 	if request.user.is_brand:
 		joinBrandObj = JoinBrand.objects.get(user=request.user)
 		order_obj = Orders.objects.distinct().filter(
@@ -2036,6 +2042,7 @@ def dashboard(request):
 		context = {
 			'pending_orders':order_obj,
 			'start_date': start_date,
+			'mid_date':mid_date,
 			'end_date':end_date,
 			'order_count':count,
 			'order_dates':temp_date,
@@ -2047,6 +2054,7 @@ def dashboard(request):
 		context = {
 			'pending_orders':order_obj,
 			'start_date': start_date,
+			'mid_date':mid_date,
 			'end_date':end_date,
 			'order_count':count,
 			'order_dates':temp_date,
