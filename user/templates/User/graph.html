@@ -26,7 +26,16 @@
       options: {
         legend: {display: false},
         scales: {
-          yAxes: [{ticks: {min: 0, max:{{heighest}}}}],
+          xAxes: [{
+            gridLines: {
+                display:false
+              }
+          }],
+          yAxes: [{
+              gridLines: {
+                  display:false
+              }   
+          }]
         }
       }
     });
