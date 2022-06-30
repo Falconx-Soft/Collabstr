@@ -164,7 +164,12 @@ a:hover{
 
                     </div>
                     
-                    <button class="edit-profile-btn" onClick="javascript:this.parentNode.submit();">Book {{joined_influencer.full_name}}</button>
+                    <form action="{% url 'custom_offer' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="influencer_email_custom" hidden value="{{joined_influencer.email_address}}">
+                        <button class="edit-profile-btn" onClick="javascript:this.parentNode.submit();">Book {{joined_influencer.full_name}}</button>
+                    </form>
+
                     <div class="description-div">
                         {{joined_influencer.description_influencer}}
                     </div>

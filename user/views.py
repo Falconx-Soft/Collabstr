@@ -2008,7 +2008,7 @@ def dashboard(request):
 			if str(order_obj[o].crated_at) not in dates:
 				dates.append(str(order_obj[o].crated_at))
 				count.append(c)
-				c=order_obj[o].package.package_price
+				c += order_obj[o].package.package_price
 			else:
 				c += order_obj[o].package.package_price
 			gross_amount += order_obj[o].package.package_price 
