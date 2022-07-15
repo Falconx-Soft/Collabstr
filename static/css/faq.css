@@ -1,0 +1,131 @@
+#holder{
+    font-size: 80%;
+    width: 80%;
+    margin: 4% auto;
+}
+
+.faq-title{
+    font-size: 340%;
+    font-weight: 600;
+    margin: 4% 0px;
+}
+
+.question-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.question{
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+}
+
+.answer-btn{
+    font-size: x-large;
+}
+
+.answer{
+    font-weight: 300;
+    font-size: medium;
+    display: none;
+}
+
+.show{
+    display: block !important;
+}
+
+.card-div{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+
+.card{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 5px;
+}
+
+.card>i{
+    font-size: 42px;
+}
+
+.message-title{
+    text-align: left;
+    width: 100%;
+    font-weight: 600;
+    font-size: 23px;
+}
+
+.form-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-div{
+    display: flex;
+    width: 100%;
+}
+
+.form-input{
+    padding: 10px;
+    border: solid 1px #ccc;
+    border-radius: 6px;
+    width: 50%;
+    font-size: 17px;
+}
+
+.form-textarea{
+    padding: 10px;
+    border: solid 1px #ccc;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 5px;
+    height: 100%;
+    font-size: 17px;
+}
+
+.message-btn{
+    width: 100%;
+    margin-top: 5px;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 17px;
+}
+
+@media only screen and (max-width: 800px){
+    .card-div{
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+    }
+
+    .form-textarea {
+        height: 200px;
+    }
+
+    #holder{
+        font-size: 80%;
+        width: 100%;
+        margin: 0px;
+        padding: 10px;
+    }
+
+    .card{
+        margin: 0px;
+    }
+    
+}

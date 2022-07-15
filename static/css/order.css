@@ -2,6 +2,7 @@
     margin: 0px;
     display: flex;
     width: 100%;
+    margin-bottom: 40px;
 }
 
 /****************************************************** Orders */
@@ -62,6 +63,32 @@
 
 .heading{
     margin: 0px;
+}
+
+.chat-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-heading>button{
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    width: 84px;
+    border-radius: 5px;
+    display: none;
+}
+
+.back-btn-div{
+    display: flex;
+    align-items: center;
+}
+
+.back-btn-div>i{
+    margin-right: 10px;
+    display: none;
 }
 
 .chat_area{
@@ -131,6 +158,10 @@
     font-size: 20px;
 }
 
+.modal-dialog {
+    margin-top: 40% !important;
+}
+
 
 
 /****************************************************** Orders details */
@@ -195,4 +226,54 @@
 
 .message-inner-div-2 >p{
     margin: 0px;
+}
+
+/*************************** Responsive ************************/
+
+
+@media only screen and (max-width: 1088px){
+    .orders_list_are{
+        width: 30%;
+    }
+    
+    .chat_area{
+        width: 70%;
+    }
+    
+    .order_details_area{
+        display: none;
+    }
+
+    .chat-box{
+        height: 376px;
+    }
+
+    .chat-heading>button{
+        display: block;
+    }
+
+    .back-btn-div>i{
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 915px){
+    .orders_list_are{
+        width: 40%;
+    }
+    
+    .chat_area{
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 684px){
+    .orders_list_are{
+        width: 100%;
+    }
+    
+    .chat_area{
+        display: none;
+        width: 100%;
+    }
 }

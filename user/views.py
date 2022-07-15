@@ -2110,3 +2110,18 @@ def delete_exprience_image(request,id):
 	ex_id = images_obj.influencer.id
 	images_obj.delete()
 	return redirect(reverse('edit_experience',  args=[ex_id]))
+
+def privacy(request):
+	return render(request,'User/privacy.html')
+
+def terms(request):
+	return render(request,'User/terms.html')
+
+def faq(request):
+	return render(request,'User/faq.html')
+
+def sitemap(request):
+	return render(request,'User/sitemap.html')
+
+def contact_us(request):
+	return render(request,'User/contact_us.html')

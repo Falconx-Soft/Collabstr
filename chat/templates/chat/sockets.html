@@ -7,14 +7,25 @@
 
 	function onStart(){
 		{% if pending_orders %}
-			onSelectFriend("{{pending_orders.0.id}}")
+			onSelectFriend2("{{pending_orders.0.id}}")
 		{% endif %}
 		// {% for x in m_and_f %}
 		// 	preloadImage("{{x.friend..url|safe}}", "id_friend_img_{{x.friend.id}}")
 		// {% endfor %}
 	}
 
+	document.getElementById("back_to_chat_list").addEventListener("click", function(){
+		document.getElementById("orders_list_are").style.display = "block";
+		document.getElementById("chat_area").style.display = "none";
+	});
+
 	function onSelectFriend(orderId){
+		document.getElementById("orders_list_are").style.display = "none";
+		document.getElementById("chat_area").style.display = "block";
+		createOrReturnPrivateChat(orderId)
+	}
+
+	function onSelectFriend2(orderId){
 		createOrReturnPrivateChat(orderId)
 	}
 
@@ -342,6 +353,7 @@ function createOrReturnPrivateChat(id){
 		success: function(data) {
 			console.log("SUCCESS", data)
 			if(data['response'] == "Successfully got the chat."){
+
 				setupWebSocket(data['chatroom_id'])
 
 				document.getElementById("order-status").innerHTML = data['status'];
@@ -350,6 +362,13 @@ function createOrReturnPrivateChat(id){
 				document.getElementById("order-choose_platform").innerHTML = data['choose_platform'];
 				document.getElementById("order-package_offering").innerHTML = data['package_offering'];
 				document.getElementById("order-package_include").innerHTML = data['package_include'];
+
+				document.getElementById("display-status").innerHTML = data['status'];
+				document.getElementById("display-category").innerHTML = data['content_category'];
+				document.getElementById("display-price").innerHTML = data['package_price'];
+				document.getElementById("display-platform").innerHTML = data['choose_platform'];
+				document.getElementById("display-offering").innerHTML = data['package_offering'];
+				document.getElementById("display-include").innerHTML = data['package_include'];
 			}
 			else if(data['response'] != null){
 				alert(data['response'])

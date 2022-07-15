@@ -27,7 +27,7 @@
 
 <div class="container">
 
-    <div class="orders_list_are">
+    <div class="orders_list_are" id="orders_list_are">
         <div class="heading-div">
             <h3 class="heading"><b>Orders</b></h3>
         </div>
@@ -76,9 +76,37 @@
 
     </div>
 
-    <div class="chat_area">
-        <div class="heading-div">
-            <h3 class="heading"><b>Chat with <span id="id_other_username"></span></b> <span id="connection-status"></span></h3>
+    <div class="chat_area" id="chat_area">
+        <div class="heading-div chat-heading">
+            <div class="back-btn-div">
+                <i class="fa fa-arrow-left" id="back_to_chat_list" aria-hidden="true"></i>
+                <h3 class="heading"><b>Chat with <span id="id_other_username"></span></b> <span id="connection-status"></span></h3>
+            </div>
+
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Details</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Details</h4>
+                    </div>
+                    <div class="modal-body">
+                    <p><b>Status:</b> <span id="display-status"></span></p>
+                    <p><b>Category:</b> <span id="display-category"></span></p>
+                    <p><b>Price:</b> <span id="display-price"></span></p>
+                    <p><b>Platform:</b> <span id="display-platform"></span></p>
+                    <p><b>Offering:</b> <span id="display-offering"></span></p>
+                    <p><b>Include:</b> <span id="display-include"></span></p>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
         </div>
         <div class="chat-box" id="id_chat_log">
             

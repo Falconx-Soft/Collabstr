@@ -74,4 +74,13 @@ urlpatterns = [
       path('delete_experience/<int:id>/', views.delete_experience, name="delete_experience"),
       path('edit_experience/<int:id>/', views.edit_experience, name="edit_experience"),
       path('delete_exprience_image/<int:id>', views.delete_exprience_image, name="delete_exprience_image"),
+
+
+      path('privacy/', views.privacy, name="privacy"),
+      path('terms/', views.terms, name="terms"),
+      path('faq/', views.faq, name="faq"),
+      path('sitemap/', views.sitemap, name="sitemap"),
+      path('contact-us/', views.contact_us, name="contact_us"),
+
+      
 ]
