@@ -232,6 +232,19 @@
 
 
 @media only screen and (max-width: 1088px){
+
+    .orders_list_are{
+        height: 93vh !important;
+    }
+
+    .container {
+        margin-bottom: 0px !important;
+    }
+
+    .navbar{
+        margin-bottom: 0px !important;
+    }
+
     .orders_list_are{
         width: 30%;
     }
@@ -245,7 +258,7 @@
     }
 
     .chat-box{
-        height: 376px;
+        height: 385px;
     }
 
     .chat-heading>button{

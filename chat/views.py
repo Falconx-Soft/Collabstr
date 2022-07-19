@@ -4,7 +4,6 @@ from user.models import *
 from chat.models import PrivateChatRoom, RoomChatMessage
 import json
 from django.http import HttpResponse
-from chat.utils import find_or_create_private_chat
 from user.models import *
 
 DEBUG = False
@@ -68,22 +67,15 @@ def create_or_return_private_chat(request, *args, **kwargs):
 			print(order_id,"********id**********")
 			order = Orders.objects.get(id=order_id)
 			try:
-				if user1.is_brand:
-					user2 = order.influencer.user
-					print(user2,"******************")
-				else:
-					user2 = order.brand.user 
-				chat = find_or_create_private_chat(user1, user2)
-				print(order.package.package_include,"**********price********")
-				print(order.package.package_offering,"**********price********")
+				chat = PrivateChatRoom.objects.get(order=order)
 				payload['response'] = "Successfully got the chat."
 				payload['chatroom_id'] = chat.id
 
-				payload['choose_platform'] = order.package.choose_platform
-				payload['content_category'] = order.package.content_category
-				payload['package_offering'] = order.package.package_offering
-				payload['package_include'] = order.package.package_include
-				payload['package_price'] = order.package.package_price
+				# payload['choose_platform'] = order.package.choose_platform
+				# payload['content_category'] = order.package.content_category
+				# payload['package_offering'] = order.package.package_offering
+				# payload['package_include'] = order.package.package_include
+				# payload['package_price'] = order.package.package_price
 
 				payload['status'] = order.status
 

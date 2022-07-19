@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load get_chat %}
 {% block title %} Dashboard {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
@@ -28,9 +29,6 @@
 <div class="container">
 
     <div class="orders_list_are" id="orders_list_are">
-        <div class="heading-div">
-            <h3 class="heading"><b>Orders</b></h3>
-        </div>
 
         <div class="order_list_option">
             <div class="order_list_option_item active" id="requests_btn">
@@ -58,7 +56,7 @@
                         {% else %}
                             <p><b>{{order.brand.full_name}}</b></p>
                         {% endif %}
-                        <p>{{order.package.content_category}}</p>
+                        <p>{{order.id|get_chat:request}}</p>
                     </div>
                 </div>
             {% endfor %}

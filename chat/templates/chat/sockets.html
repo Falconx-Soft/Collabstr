@@ -20,8 +20,10 @@
 	});
 
 	function onSelectFriend(orderId){
-		document.getElementById("orders_list_are").style.display = "none";
-		document.getElementById("chat_area").style.display = "block";
+		if(window.innerWidth <= 684){
+			document.getElementById("orders_list_are").style.display = "none";
+			document.getElementById("chat_area").style.display = "block";
+		}
 		createOrReturnPrivateChat(orderId)
 	}
 

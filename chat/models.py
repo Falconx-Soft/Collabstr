@@ -1,5 +1,7 @@
+import imp
 from django.db import models
 from django.conf import settings
+from user.models import Orders
 
 
 class PrivateChatRoom(models.Model):
@@ -8,6 +10,7 @@ class PrivateChatRoom(models.Model):
 	"""
 	user1               = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user1")
 	user2               = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user2")
+	order				= models.OneToOneField(Orders, on_delete=models.CASCADE, related_name="order", null=True)
 
 	is_active 			= models.BooleanField(default=False)
 

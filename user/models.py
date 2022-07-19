@@ -204,10 +204,11 @@ class JoinBrand(models.Model):
 
 class Orders(models.Model):
     influencer = models.ForeignKey(JoinInfluencer,on_delete=models.CASCADE)
-    package = models.ForeignKey(InfluencerPackage,on_delete=models.CASCADE)
+    package = models.ForeignKey(InfluencerPackage,on_delete=models.CASCADE,null=True)
     brand = models.ForeignKey(JoinBrand,on_delete=models.CASCADE)
     status = models.CharField(max_length=500, null=True)
     crated_at = models.DateField(auto_now_add=True, null=True)
+    price = models.IntegerField(null=True)
 
 class submit_requirements(models.Model):
     description = models.CharField(max_length=2000)

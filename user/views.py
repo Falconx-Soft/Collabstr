@@ -10,10 +10,10 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 import uuid
 from .models import*
+from chat.models import PrivateChatRoom
 from django.conf import settings
 from django.core.mail import send_mail
 import stripe
-from chat.utils import find_or_create_private_chat
 from django.http import JsonResponse
 import datetime
 
@@ -1651,17 +1651,16 @@ def placeOrder(request):
 	if request.method== 'POST':
 		influencerId= request.POST.get('influencerId')
 		packageId = request.POST.get('packageId')
+		total_price = request.POST.get('total_price')
+		print(packageId,"************************")
 		influencer_obj = JoinInfluencer.objects.get(id=influencerId)
-		package_obj = InfluencerPackage.objects.get(id=packageId)
+		# package_obj = InfluencerPackage.objects.get(id=packageId)
 		brand_obj = JoinBrand.objects.get(user=request.user)
 
-		chat = find_or_create_private_chat(brand_obj.user, influencer_obj.user)
-		if not chat.is_active:
-			chat.is_active = True
-			chat.save()
-
-		order_obj = Orders.objects.create(influencer=influencer_obj, package=package_obj, brand=brand_obj, status="pending")
+		order_obj = Orders.objects.create(influencer=influencer_obj, brand=brand_obj, status="pending", price=float(total_price))
 		order_obj.save()
+		chat = PrivateChatRoom.objects.create(user1=request.user,user2=influencer_obj.user,order=order_obj,is_active=True)
+		chat.save()
 		context={
 		'joined_influencer':influencer_obj.id,
 		'order':order_obj.id
@@ -2005,19 +2004,19 @@ def dashboard(request):
 	gross_amount = 0
 
 	if len(order_obj) > 0:
-		gross_amount += order_obj[0].package.package_price
+		gross_amount += order_obj[0].price
 		dates.append(0)
 		count.append(0)
 		dates.append(str(order_obj[0].crated_at))
-		c = order_obj[0].package.package_price
+		c = order_obj[0].price
 		for o in range(1,len(order_obj)):
 			if str(order_obj[o].crated_at) not in dates:
 				dates.append(str(order_obj[o].crated_at))
 				count.append(c)
-				c += order_obj[o].package.package_price
+				c += order_obj[o].price
 			else:
-				c += order_obj[o].package.package_price
-			gross_amount += order_obj[o].package.package_price 
+				c += order_obj[o].price
+			gross_amount += order_obj[o].price
 
 		if str(order_obj[len(order_obj)-1].crated_at) not in dates:
 			dates.append(str(order_obj[len(order_obj)-1].crated_at))

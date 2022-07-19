@@ -114,7 +114,7 @@
                                 <td style="color: #a0a0a0;">{{or.brand.full_name}}</td>  
                             {% endif %}
                             <td>{{or.crated_at}}</td>  
-                            <td><b>${{or.package.package_price}}</b></td>  
+                            <td><b>${{or.price}}</b></td>  
                             <td><samp class="pending-status">{{or.status}}</samp></td>
                             <td style="
                             cursor: pointer;
@@ -131,7 +131,7 @@
                                 <div class="modal-body">
                                     <p><b>Influencer:</b> {{or.influencer.influencer_username}}</p>
                                     <p><b>Brand:</b> {{or.brand.full_name}}</p>
-                                    <p><b>Price:</b> {{or.package.package_price}}</p>
+                                    <p><b>Price:</b> {{or.price}}</p>
                                     <p><b>Status:</b> {{or.status}}</p>
                                 </div>
                                 <div class="modal-footer">
