@@ -11,6 +11,7 @@ from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 from requests import request
+from django.urls import reverse
 
 # Create your models here.
 class User(AbstractUser):
@@ -90,6 +91,9 @@ class JoinInfluencer(models.Model):
 
     def __str__(self):
             return self.influencer_username
+
+    def get_absolute_url(self):
+        return reverse('get_joinInfluencer', args=[str(self.influencer_username)])
 
 
 class PreviousExprience(models.Model):
@@ -203,7 +207,7 @@ class Orders(models.Model):
     package = models.ForeignKey(InfluencerPackage,on_delete=models.CASCADE)
     brand = models.ForeignKey(JoinBrand,on_delete=models.CASCADE)
     status = models.CharField(max_length=500, null=True)
-    crated_at = models.DateField( null=True)
+    crated_at = models.DateField(auto_now_add=True, null=True)
 
 class submit_requirements(models.Model):
     description = models.CharField(max_length=2000)

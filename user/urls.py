@@ -82,5 +82,7 @@ urlpatterns = [
       path('sitemap/', views.sitemap, name="sitemap"),
       path('contact-us/', views.contact_us, name="contact_us"),
 
+      path('get_joinInfluencer/<str:name>', views.get_joinInfluencer, name="get_joinInfluencer"),
+
       
 ]

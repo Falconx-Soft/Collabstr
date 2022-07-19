@@ -1,7 +1,7 @@
 from multiprocessing import context
 import profile
 from urllib.parse import uses_netloc
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -2125,3 +2125,10 @@ def sitemap(request):
 
 def contact_us(request):
 	return render(request,'User/contact_us.html')
+
+
+def get_joinInfluencer(request, name):
+
+	get_joinInfluencer_obj = JoinInfluencer.objects.get(influencer_username=name)
+	print(get_joinInfluencer_obj)
+	return HttpResponseRedirect(reverse('get_joinInfluencer', args=[id]))
