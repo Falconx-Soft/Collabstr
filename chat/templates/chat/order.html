@@ -31,14 +31,20 @@
     <div class="orders_list_are" id="orders_list_are">
 
         <div class="order_list_option">
-            <div class="order_list_option_item active" id="requests_btn">
-                Requests
+            <div class="order_list_option_item">
+                <div class="active lable" id="requests_btn" style="font-weight: bold;">
+                    Requests
+                </div>
             </div>
-            <div class="order_list_option_item" id="in_progress_btn">
-                In-progress
+            <div class="order_list_option_item">
+                <div class="lable" id="in_progress_btn" style="font-weight: bold;">
+                    In-progress
+                </div>
             </div>
-            <div class="order_list_option_item" id="completed_btn">
-                Completed
+            <div class="order_list_option_item">
+                <div class="lable" id="completed_btn" style="font-weight: bold;">
+                    Completed
+                </div>
             </div>
         </div>
 
@@ -67,6 +73,16 @@
                 <img class="chat-profile" src="{% static 'images/245446.jpg' %}">
                 <div class="chat-details-div">
                     <p><b>progress</b></p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="complete_div" style="display: none;">
+            <div class="chat_list_div active-chat">
+                <img class="chat-profile" src="{% static 'images/245446.jpg' %}">
+                <div class="chat-details-div">
+                    <p><b>Completed</b></p>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
             </div>
@@ -125,19 +141,6 @@
         </div>
         <div class="status">
             <p><b id="order-status">{{display_order.status}}</b></p>
-            <p id="order-content_category">{{display_order.package.content_category}}</p>
-        </div>
-
-        <div class="package-div">
-            <p>Package</p>
-        </div>
-
-        <div class="details">
-            <h3><b id="order-package_price">{{display_order.package.package_price}}</b></h3>
-            <p id="order-choose_platform">{{display_order.package.choose_platform}}</p>
-
-            <p><b id="order-package_offering">{{display_order.package.package_offering}}</b></p>
-            <p id="order-package_include">{{display_order.package.package_include}}</p>
         </div>
 
         {% if not request.user.is_brand %}
@@ -146,6 +149,7 @@
                 <h3><b>Order Status</b></h3>
                 <select class="input package-input" name="display_order_status">
                     <option value="pending">Pending</option>
+                    <option value="In progress">In progress</option>
                     <option value="declined">Declined</option>
                 </select>
                 <input type="hidden" value="{{display_order.id}}" name="display_order_id">
@@ -182,17 +186,38 @@
 
     requests_div = document.getElementById("requests_div");
     in_progress_div = document.getElementById("in_progress_div");
+    complete_div = document.getElementById("complete_div");
 
     requests_btn.addEventListener("click", function(){
-        in_progress_div.style.display = "none";
+        hide_div();
         requests_div.style.display = "block";
+        requests_btn.classList.add("active");
     });
 
 
     in_progress_btn.addEventListener("click", function(){
+        hide_div();
         in_progress_div.style.display = "block";
-        requests_div.style.display = "none";
+        in_progress_btn.classList.add("active");
     });
+
+    completed_btn.addEventListener("click", function(){
+        hide_div();
+        complete_div.style.display = "block";
+        completed_btn.classList.add("active");
+    });
+
+    function hide_div(){
+        requests_div.style.display = "none";
+        in_progress_div.style.display = "none";
+        complete_div.style.display = "none";
+
+        requests_btn.classList.remove("active");
+        in_progress_btn.classList.remove("active");
+        completed_btn.classList.remove("active");
+        // active
+
+    }
 
 </script>
 
