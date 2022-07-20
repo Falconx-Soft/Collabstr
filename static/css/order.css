@@ -139,7 +139,8 @@
     width: 90%;
     border: 1px solid #ccc;
     display: flex;
-    padding: 20px;
+    padding-left: 3px;
+    padding-right: 20px;
     padding-top: 0px;
     padding-bottom: 0px;
     justify-content: space-between;
@@ -231,6 +232,12 @@
     margin: 0px;
 }
 
+.send-btn{
+    background-color: transparent;
+    border: none;
+    color: rgb(0 142 255 / 88%);
+}
+
 /*************************** Responsive ************************/
 
 @media only screen and (max-width: 1384px){
@@ -245,10 +252,6 @@
 
 
 @media only screen and (max-width: 1088px){
-
-    .orders_list_are{
-        height: 93vh !important;
-    }
 
     .container {
         margin-bottom: 0px !important;
@@ -294,6 +297,19 @@
 }
 
 @media only screen and (max-width: 684px){
+
+    .chat-list{
+        min-height: 70vh;
+    }
+
+    .footer{
+        padding: 0px !important;
+    }
+
+    .footer-section {
+        margin-top: 0px !important;
+    }
+
     .lable{
         font-size: 15px;
     }

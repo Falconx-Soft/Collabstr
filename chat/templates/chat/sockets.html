@@ -138,6 +138,15 @@ if (chatSocket.readyState == WebSocket.OPEN) {
 
 document.getElementById('id_chat_message_input').focus();
 document.getElementById('id_chat_message_input').onkeyup = function(e) {
+
+	if(document.getElementById('id_chat_message_input').value == ""){
+		document.getElementById("send-img").style.display = "flex";
+		document.getElementById("send-btn").style.display = "none";
+	}else{
+		document.getElementById("send-btn").style.display = "block";
+		document.getElementById("send-img").style.display = "none";
+	}
+
 if (e.keyCode === 13 && e.shiftKey) {  // enter + return
 	// Handled automatically by textarea
 }
@@ -152,6 +161,23 @@ chatSocket.send(JSON.stringify({
 messageInputDom.value = '';
 }
 };
+
+document.getElementById("send-btn").addEventListener("click", function(){
+
+	console.log("click *********");
+	const messageInputDom = document.getElementById('id_chat_message_input');
+	const message = messageInputDom.value;
+	chatSocket.send(JSON.stringify({
+		"command": "send",
+		"message": message,
+		"room": roomId
+	}));
+	messageInputDom.value = '';
+
+	document.getElementById("send-img").style.display = "flex";
+	document.getElementById("send-btn").style.display = "none";
+
+});
 
 // document.getElementById('id_chat_message_submit').onclick = function(e) {
 // const messageInputDom = document.getElementById('id_chat_message_input');

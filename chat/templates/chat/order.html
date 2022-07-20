@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div id="requests_div">
+        <div id="requests_div" class="chat-list">
             {% for order in pending_orders %}
                 <div class="chat_list_div active-chat" onclick="onSelectFriend('{{order.id}}')">
                     {% if request.user.is_brand %}
@@ -68,7 +68,7 @@
             {% endfor %}
         </div>
 
-        <div id="in_progress_div" style="display: none;">
+        <div id="in_progress_div" class="chat-list" style="display: none;">
             <div class="chat_list_div active-chat">
                 <img class="chat-profile" src="{% static 'images/245446.jpg' %}">
                 <div class="chat-details-div">
@@ -78,7 +78,7 @@
             </div>
         </div>
 
-        <div id="complete_div" style="display: none;">
+        <div id="complete_div" class="chat-list" style="display: none;">
             <div class="chat_list_div active-chat">
                 <img class="chat-profile" src="{% static 'images/245446.jpg' %}">
                 <div class="chat-details-div">
@@ -97,7 +97,7 @@
                 <h3 class="heading"><b>Chat with <span id="id_other_username"></span></b> <span id="connection-status"></span></h3>
             </div>
 
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Details</button>
+            <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Details</button> -->
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">
@@ -128,9 +128,9 @@
         <span style="display:none;" class="{% if not debug %}d-none{% endif %} page-number" id="id_page_number">1</span>
         <div class="input-div">
             <div class="input-div-2">
-                <i class="far fa-grin"></i>
                 <input type="text" id="id_chat_message_input" class="message-input" placeholder="Message">
-                <i class="far fa-file-image"></i>
+                <button class="send-btn" id="send-btn" style="display:none;">Send</button>
+                <i class="far fa-file-image" id="send-img"></i>
             </div>
         </div>
     </div>

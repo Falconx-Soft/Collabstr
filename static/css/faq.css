@@ -39,8 +39,7 @@
 }
 
 .card-div{
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
+    display: block;
 }
 
 .card{
@@ -108,10 +107,6 @@
 }
 
 @media only screen and (max-width: 800px){
-    .card-div{
-        display: grid;
-        grid-template-columns: repeat(1, 100%);
-    }
 
     .form-textarea {
         height: 200px;
