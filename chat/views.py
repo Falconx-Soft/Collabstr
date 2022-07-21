@@ -29,12 +29,20 @@ def private_chat_room_view(request, *args, **kwargs):
 		joinBrandObj = JoinBrand.objects.get(user=request.user)
 		order_obj = Orders.objects.filter(brand=joinBrandObj)
 
-		context = {
-			'debug':DEBUG,
-			'debug_mode':settings.DEBUG,
-			'pending_orders':order_obj,
-			'display_order':order_obj[0]
-		}
+		try:
+			context = {
+				'debug':DEBUG,
+				'debug_mode':settings.DEBUG,
+				'pending_orders':order_obj,
+				'display_order':order_obj[0]
+			}
+		except:
+			context = {
+				'debug':DEBUG,
+				'debug_mode':settings.DEBUG,
+				'pending_orders':order_obj,
+				'display_order':order_obj
+			}
 		return render(request, 'chat/order.html',context)
 	else:
 		influencer_obj = JoinInfluencer.objects.get(user=request.user)
