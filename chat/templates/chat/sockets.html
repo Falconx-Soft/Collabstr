@@ -54,7 +54,7 @@ var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 {% if debug_mode %}
 	var ws_path = ws_scheme + '://' + window.location.host + "/chat/" + roomId + "/"; // development
 {% else %}
-	var ws_path = ws_scheme + '://' + window.location.host + ":8001/chat/" + roomId + "/"; // production
+	var ws_path = ws_scheme + '://' + window.location.host + ":8000/chat/" + roomId + "/"; // production
 {% endif %}
 
 
