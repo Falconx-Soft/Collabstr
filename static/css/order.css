@@ -274,7 +274,7 @@
     }
 
     .chat-box{
-        height: 385px;
+        height: 60vh;
     }
 
     .chat-heading>button{
@@ -297,10 +297,6 @@
 }
 
 @media only screen and (max-width: 684px){
-
-    .chat-list{
-        min-height: 70vh;
-    }
 
     .footer{
         padding: 0px !important;
