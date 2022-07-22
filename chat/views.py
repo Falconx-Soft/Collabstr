@@ -48,6 +48,7 @@ def private_chat_room_view(request, *args, **kwargs):
 	else:
 		influencer_obj = JoinInfluencer.objects.get(user=request.user)
 		order_obj = Orders.objects.filter(influencer=influencer_obj)
+		print(order_obj,"******************")
 
 		if order_obj:
 

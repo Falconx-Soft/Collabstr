@@ -227,7 +227,7 @@
 
      <!-- mobile navbar -->
      {% if user.is_authenticated %}
-        <div class="mobile-nav-holder" >
+        <div class="mobile-nav-holder" id="mobile-nav">
 
             <a class="nav-item" href="{% url 'home' %}">
                 <div class="nav-img-holder">
@@ -261,7 +261,7 @@
         
         </div>
     {% else %}
-        <div class="mobile-nav-holder" >
+        <div class="mobile-nav-holder" id="mobile-nav-2">
             <a class="nav-item" href="{% url 'home' %}">
                 <div class="nav-img-holder">
                     <svg class="nav-img nav-img-stroke" viewBox="0 0 32 32"><g fill="none"><path d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9"></path></g></svg>

@@ -1,5 +1,7 @@
 <script type="text/javascript">
 
+	document.getElementById("site-footer").style.display = "none";
+
 	var chatSocket = null;
 	var roomId = null;
 
@@ -137,6 +139,22 @@ if (chatSocket.readyState == WebSocket.OPEN) {
 }
 
 document.getElementById('id_chat_message_input').focus();
+
+
+const mobile_nav = document.querySelectorAll(".mobile-nav-holder")
+function focusFunction(){
+
+	for(let i=0; i<mobile_nav.length; i++){
+		mobile_nav[i].style.display = "none";
+	}
+}
+
+function focusOutFunction(){
+	for(let i=0; i<mobile_nav.length; i++){
+		mobile_nav[i].style.display = "flex";
+	}
+}
+
 document.getElementById('id_chat_message_input').onkeyup = function(e) {
 
 	if(document.getElementById('id_chat_message_input').value == ""){
