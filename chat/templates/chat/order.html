@@ -22,9 +22,7 @@
 {% endblock extrastyle %}
 
 
-{% block content %}	
-
-
+{% block content %}
 
 <div class="container">
 
@@ -128,7 +126,7 @@
         <span style="display:none;" class="{% if not debug %}d-none{% endif %} page-number" id="id_page_number">1</span>
         <div class="input-div">
             <div class="input-div-2">
-                <input type="text" id="id_chat_message_input" class="message-input" placeholder="Message" onfocus="focusFunction()" onfocusout="focusOutFunction()">
+                <input type="text" id="id_chat_message_input" class="message-input" placeholder="Message" onfocus="focusFunction()" onfocusout="focusOutFunction()" onkeyup="keyPressFunction(event)">
                 <button class="send-btn" id="send-btn" style="display:none;">Send</button>
                 <i class="far fa-file-image" id="send-img"></i>
             </div>

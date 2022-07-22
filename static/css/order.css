@@ -1,3 +1,5 @@
+
+
 .container{
     margin: 0px;
     display: flex;
@@ -74,6 +76,7 @@
     align-items: center;
     position: fixed;
     width: 100%;
+    background-color: white;
 }
 
 .chat-heading>button{
