@@ -141,17 +141,18 @@ if (chatSocket.readyState == WebSocket.OPEN) {
 document.getElementById('id_chat_message_input').focus();
 
 
-const mobile_nav = document.querySelectorAll(".mobile-nav-holder")
 function focusFunction(){
 
-	for(let i=0; i<mobile_nav.length; i++){
-		mobile_nav[i].style.display = "none";
+	for(let i=0; i<document.querySelectorAll(".mobile-nav-holder").length; i++){
+		document.querySelectorAll(".mobile-nav-holder")[i].style.display = "none";
+		document.getElementById("id_chat_log").style.height = "80vh";
 	}
 }
 
 function focusOutFunction(){
-	for(let i=0; i<mobile_nav.length; i++){
-		mobile_nav[i].style.display = "flex";
+	for(let i=0; i<document.querySelectorAll(".mobile-nav-holder").length; i++){
+		document.querySelectorAll(".mobile-nav-holder")[i].style.display = "flex";
+		document.getElementById("id_chat_log").style.height = "70vh";
 	}
 }
 

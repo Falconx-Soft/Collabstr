@@ -72,6 +72,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    width: 100%;
 }
 
 .chat-heading>button{
@@ -100,7 +102,7 @@
 
 .chat-box{
     padding: 20px;
-    height: 400px;
+    height: 70vh;
 
     display: flex;
 
@@ -273,10 +275,6 @@
         display: none;
     }
 
-    .chat-box{
-        max-height: 60vh;
-    }
-
     .chat-heading>button{
         display: block;
     }
@@ -316,6 +314,5 @@
     .chat_area{
         display: none;
         width: 100%;
-        padding-bottom: 70px;
     }
 }
