@@ -1,7 +1,6 @@
 <script type="text/javascript">
 
 	document.getElementById("site-footer").style.display = "none";
-	document.getElementById("input-div").style.bottom = "50px";
 
 	var chatSocket = null;
 	var roomId = null;
@@ -148,6 +147,7 @@
 			for (let i = 0; i < document.querySelectorAll(".mobile-nav-holder").length; i++) {
 				document.querySelectorAll(".mobile-nav-holder")[i].style.display = "none";
 				document.getElementById("id_chat_log").style.height = "33vh";
+				document.getElementById("input-div").style.bottom = "50px";
 			}
 		}
 	}
