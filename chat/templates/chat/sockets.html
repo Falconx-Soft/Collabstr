@@ -146,10 +146,14 @@
 		if (window.innerWidth <= 684) {
 			for (let i = 0; i < document.querySelectorAll(".mobile-nav-holder").length; i++) {
 				document.querySelectorAll(".mobile-nav-holder")[i].style.display = "none";
-				document.getElementById("id_chat_log").style.height = "20vh";
+				document.getElementById("id_chat_log").style.height = "30vh";
 
 				document.getElementById("nav-div").style.position= "fixed";
 				document.getElementById("nav-div").style.display= "contents";
+
+				document.getElementById("input-div").style.position = "absolute";
+				document.getElementById("input-div").style.width = "100%";
+				document.getElementById("input-div").style.bottom = "0%";
 			}
 		}
 	}
@@ -159,6 +163,8 @@
 			for (let i = 0; i < document.querySelectorAll(".mobile-nav-holder").length; i++) {
 				document.querySelectorAll(".mobile-nav-holder")[i].style.display = "flex";
 				document.getElementById("id_chat_log").style.height = "62vh";
+
+				document.getElementById("input-div").style.position = "relative";
 			}
 		}
 	}
