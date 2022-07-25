@@ -99,6 +99,7 @@
 
 .chat_area{
     width: 50%;
+    position: relative;
 }
 
 .chat-box{
