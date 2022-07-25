@@ -19,12 +19,15 @@
 	document.getElementById("back_to_chat_list").addEventListener("click", function () {
 		document.getElementById("orders_list_are").style.display = "block";
 		document.getElementById("chat_area").style.display = "none";
+		document.getElementById("nav-div").style.display= "block";
 	});
 
 	function onSelectFriend(orderId) {
 		if (window.innerWidth <= 684) {
 			document.getElementById("orders_list_are").style.display = "none";
 			document.getElementById("chat_area").style.display = "block";
+
+			document.getElementById("nav-div").style.display= "none";
 		}
 		createOrReturnPrivateChat(orderId)
 	}
@@ -146,16 +149,10 @@
 		if (window.innerWidth <= 684) {
 			for (let i = 0; i < document.querySelectorAll(".mobile-nav-holder").length; i++) {
 				document.querySelectorAll(".mobile-nav-holder")[i].style.display = "none";
-				document.getElementById("id_chat_log").style.height = "40vh";
 
-				document.getElementById("nav-div").style.position= "fixed";
-				document.getElementById("nav-div").style.display= "contents";
+				document.getElementById("id_chat_log").style.height = "80vh";
 
-				document.getElementById("input-div").style.position = "absolute";
-				document.getElementById("input-div").style.width = "100%";
-				document.getElementById("input-div").style.bottom = "0%";
-
-				document.getElementById("container").style.height = "90vh";
+				// document.getElementById("container").style.height = "80vh";
 			}
 		}
 	}
@@ -164,11 +161,8 @@
 		if (window.innerWidth <= 684) {
 			for (let i = 0; i < document.querySelectorAll(".mobile-nav-holder").length; i++) {
 				document.querySelectorAll(".mobile-nav-holder")[i].style.display = "flex";
-				document.getElementById("id_chat_log").style.height = "62vh";
 
-				document.getElementById("input-div").style.position = "relative";
-
-				document.getElementById("container").style.height = "100%";
+				document.getElementById("id_chat_log").style.height = "70vh";
 			}
 		}
 	}
