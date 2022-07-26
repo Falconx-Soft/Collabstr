@@ -6,9 +6,7 @@ from user.models import Orders
 register= template.Library()
 @register.filter(name='get_chat')
 def get_chat(id,request):
-    orders_obj = Orders.objects.get(id=id)
-    chat = PrivateChatRoom.objects.get(order=orders_obj)
-
+    chat = PrivateChatRoom.objects.get(id=id)
     try:
         PreviousChat_obj = RoomChatMessage.objects.filter(room=chat).order_by('-id')[0]
         return PreviousChat_obj.content[:30]

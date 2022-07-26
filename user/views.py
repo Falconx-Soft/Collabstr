@@ -1659,8 +1659,8 @@ def placeOrder(request):
 
 		order_obj = Orders.objects.create(influencer=influencer_obj, brand=brand_obj, status="pending", price=float(total_price))
 		order_obj.save()
-		chat = PrivateChatRoom.objects.create(user1=request.user,user2=influencer_obj.user,order=order_obj,is_active=True)
-		chat.save()
+		# chat = PrivateChatRoom.objects.create(user1=request.user,user2=influencer_obj.user,order=order_obj,is_active=True)
+		# chat.save()
 		context={
 		'joined_influencer':influencer_obj.id,
 		'order':order_obj.id
@@ -2131,3 +2131,15 @@ def get_joinInfluencer(request, name):
 	get_joinInfluencer_obj = JoinInfluencer.objects.get(influencer_username=name)
 	print(get_joinInfluencer_obj)
 	return HttpResponseRedirect(reverse('get_joinInfluencer', args=[id]))
+
+def add_chat(request, id):
+	influencer_obj = JoinInfluencer.objects.get(id=id)
+	brand_obj = JoinBrand.objects.get(user=request.user)
+
+	try:
+		chat_obj = PrivateChatRoom.objects.get(brand=brand_obj, influencer=influencer_obj)
+
+	except:
+		chat_obj = PrivateChatRoom.objects.create(brand=brand_obj, influencer=influencer_obj, is_active=True)
+		chat_obj.save()
+	return redirect('chat:start_new_chat',id)

@@ -19,7 +19,7 @@ admin.site.register(PreviousExprienceImages)
 
 
 class InfluencerAdmin(admin.ModelAdmin):
-    list_display = ('influencer_username', 'full_name', 'email_address')
+    list_display = ('full_name', 'email_address')
 admin.site.register(JoinInfluencer, InfluencerAdmin)
 
 class UserAdmin(admin.ModelAdmin):

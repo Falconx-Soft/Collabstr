@@ -1,16 +1,16 @@
 import imp
+from pickle import TRUE
 from django.db import models
 from django.conf import settings
-from user.models import Orders
+from user.models import Orders, JoinInfluencer, JoinBrand
 
 
 class PrivateChatRoom(models.Model):
 	"""
 	A private room for people to chat in.
 	"""
-	user1               = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user1")
-	user2               = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user2")
-	order				= models.OneToOneField(Orders, on_delete=models.CASCADE, related_name="order", null=True)
+	brand               = models.ForeignKey(JoinBrand, on_delete=models.CASCADE, related_name="brand", null=TRUE)
+	influencer          = models.ForeignKey(JoinInfluencer, on_delete=models.CASCADE, related_name="influencer", null=True)
 
 	is_active 			= models.BooleanField(default=False)
 

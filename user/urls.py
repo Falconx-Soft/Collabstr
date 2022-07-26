@@ -84,5 +84,6 @@ urlpatterns = [
 
       path('get_joinInfluencer/<str:name>', views.get_joinInfluencer, name="get_joinInfluencer"),
 
+      path('add_chat/<int:id>',views.add_chat,name="add_chat"),
       
 ]

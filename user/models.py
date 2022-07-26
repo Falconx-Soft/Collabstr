@@ -90,7 +90,7 @@ class JoinInfluencer(models.Model):
     crated_at = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):
-            return self.influencer_username
+            return self.full_name
 
     def get_absolute_url(self):
         return reverse('get_joinInfluencer', args=[str(self.influencer_username)])

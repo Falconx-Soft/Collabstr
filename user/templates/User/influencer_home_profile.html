@@ -171,6 +171,10 @@ a:hover{
                     </form>
 
                     <div class="description-div">
+                        <button class="edit-profile-btn" style="background-color: #00f2ea;"> <a style="color: white;" href="{% url 'add_chat' joined_influencer.id %}">Lets Chat</a></button>
+                    </div>
+
+                    <div class="description-div">
                         {{joined_influencer.description_influencer}}
                     </div>
 

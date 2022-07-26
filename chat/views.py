@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
-from user.models import *
+from user.models import JoinInfluencer, JoinInfluencer
 from chat.models import PrivateChatRoom, RoomChatMessage
 import json
 from django.http import HttpResponse
 from user.models import *
+from .utils import find_or_create_private_chat
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 DEBUG = False
 
@@ -15,55 +20,46 @@ def private_chat_room_view(request, *args, **kwargs):
 	if not user.is_authenticated:
 		return redirect("login")
 
-	# context = {}
-	# context['debug'] = DEBUG
-	# context['debug_mode'] = settings.DEBUG
-
-	if request.method== 'POST':
-		status = request.POST.get('display_order_status')
-		id = request.POST.get('display_order_id')
-		order_T = Orders.objects.get(id=id)
-		order_T.status = status
-		order_T.save()
 	if request.user.is_brand:
-		joinBrandObj = JoinBrand.objects.get(user=request.user)
-		order_obj = Orders.objects.filter(brand=joinBrandObj)
+		brand_obj = JoinBrand.objects.get(user=request.user)
+		chat_room = PrivateChatRoom.objects.filter(brand=brand_obj)
 
-		if order_obj:
+		if chat_room:
 
 			context = {
 				'debug':DEBUG,
 				'debug_mode':settings.DEBUG,
-				'pending_orders':order_obj,
-				'display_order':order_obj[0]
+				'chat_room':chat_room,
+				'chat_room_display':chat_room[0],
+				'friend_id': chat_room[0].influencer.user.id
 			}
 		else:
 			context = {
 				'debug':DEBUG,
 				'debug_mode':settings.DEBUG,
-				'pending_orders':order_obj,
-				'display_order':''
+				'chat_room':chat_room,
+				'chat_room_display':''
 			}
 		return render(request, 'chat/order.html',context)
 	else:
 		influencer_obj = JoinInfluencer.objects.get(user=request.user)
-		order_obj = Orders.objects.filter(influencer=influencer_obj)
-		print(order_obj,"******************")
+		chat_room = PrivateChatRoom.objects.filter(influencer=influencer_obj)
 
-		if order_obj:
+		if chat_room:
 
 			context = {
 				'debug':DEBUG,
 				'debug_mode':settings.DEBUG,
-				'pending_orders':order_obj,
-				'display_order':order_obj[0]
+				'chat_room':chat_room,
+				'chat_room_display':chat_room[0],
+				'friend_id': chat_room[0].brand.user.id
 			}
 		else:
 			context = {
 				'debug':DEBUG,
 				'debug_mode':settings.DEBUG,
-				'pending_orders':order_obj,
-				'display_order':''
+				'chat_room':chat_room,
+				'chat_room_display':''
 			}
 		return render(request, 'chat/order.html',context)
 
@@ -73,24 +69,49 @@ def create_or_return_private_chat(request, *args, **kwargs):
 	payload = {}
 	if user1.is_authenticated:
 		if request.method == "POST":
-			order_id = request.POST.get("order_id")
-			print(order_id,"********id**********")
-			order = Orders.objects.get(id=order_id)
+			user2_id = request.POST.get("user2_id")
 			try:
-				chat = PrivateChatRoom.objects.get(order=order)
-				payload['response'] = "Successfully got the chat."
-				payload['chatroom_id'] = chat.id
-
-				# payload['choose_platform'] = order.package.choose_platform
-				# payload['content_category'] = order.package.content_category
-				# payload['package_offering'] = order.package.package_offering
-				# payload['package_include'] = order.package.package_include
-				# payload['package_price'] = order.package.package_price
-
-				payload['status'] = order.status
-
-			except JoinInfluencer.DoesNotExist:
+				user2 = User.objects.get(id=user2_id)
+				if request.user.is_brand:
+					brand_obj = JoinBrand.objects.get(user=user1)
+					influencer_obj = JoinInfluencer.objects.get(user=user2)
+					chat = PrivateChatRoom.objects.get(brand=brand_obj, influencer=influencer_obj)
+					print("Successfully got the chat")
+					payload['response'] = "Successfully got the chat."
+					payload['chatroom_id'] = chat.id
+				else:
+					brand_obj = JoinBrand.objects.get(user=user2)
+					influencer_obj = JoinInfluencer.objects.get(user=user1)
+					chat = PrivateChatRoom.objects.get(brand=brand_obj, influencer=influencer_obj)
+					print("Successfully got the chat")
+					payload['response'] = "Successfully got the chat."
+					payload['chatroom_id'] = chat.id
+			except User.DoesNotExist:
 				payload['response'] = "Unable to start a chat with that user."
 	else:
 		payload['response'] = "You can't start a chat if you are not authenticated."
 	return HttpResponse(json.dumps(payload), content_type="application/json")
+
+def start_new_chat(request,id):
+	brand_obj = JoinBrand.objects.get(user=request.user)
+	chat_room = PrivateChatRoom.objects.filter(brand=brand_obj)
+	influencer_obj = JoinInfluencer.objects.get(id=id)
+
+	if chat_room:
+
+		context = {
+			'debug':DEBUG,
+			'debug_mode':settings.DEBUG,
+			'chat_room':chat_room,
+			'chat_room_display':chat_room[0],
+			'friend_id': influencer_obj.user.id
+		}
+	else:
+		context = {
+			'debug':DEBUG,
+			'debug_mode':settings.DEBUG,
+			'chat_room':chat_room,
+			'chat_room_display':''
+		}
+	return render(request, 'chat/order.html',context)
+

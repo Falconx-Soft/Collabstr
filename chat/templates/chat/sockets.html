@@ -8,8 +8,8 @@
 	onStart()
 
 	function onStart() {
-		{% if pending_orders %}
-		onSelectFriend2("{{pending_orders.0.id}}")
+		{% if chat_room %}
+			onSelectFriend2("{{friend_id}}")
 		{% endif %}
 		// {% for x in m_and_f %}
 		// 	preloadImage("{{x.friend..url|safe}}", "id_friend_img_{{x.friend.id}}")
@@ -22,18 +22,18 @@
 		document.getElementById("nav-div").style.display= "block";
 	});
 
-	function onSelectFriend(orderId) {
+	function onSelectFriend(friendID) {
 		if (window.innerWidth <= 684) {
 			document.getElementById("orders_list_are").style.display = "none";
 			document.getElementById("chat_area").style.display = "block";
 
 			document.getElementById("nav-div").style.display= "none";
 		}
-		createOrReturnPrivateChat(orderId)
+		createOrReturnPrivateChat(friendID)
 	}
 
-	function onSelectFriend2(orderId) {
-		createOrReturnPrivateChat(orderId)
+	function onSelectFriend2(friendID) {
+		createOrReturnPrivateChat(friendID)
 	}
 
 	function closeWebSocket() {
@@ -397,10 +397,10 @@
 	}
 
 
-	function createOrReturnPrivateChat(id) {
+	function createOrReturnPrivateChat(friendID) {
 		payload = {
 			"csrfmiddlewaretoken": "{{ csrf_token }}",
-			"order_id": id,
+			"user2_id": friendID,
 		}
 		$.ajax({
 			type: 'POST',

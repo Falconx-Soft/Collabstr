@@ -47,22 +47,40 @@
         </div>
 
         <div id="requests_div" class="chat-list" style="min-height: 80vh;">
-            {% for order in pending_orders %}
-                <div class="chat_list_div active-chat" onclick="onSelectFriend('{{order.id}}')">
-                    {% if request.user.is_brand %}
-                        <img class="chat-profile" src="{{order.influencer.profile_image.url}}">
-                    {% else %}
-                        <img class="chat-profile" src="{% static 'images/default.png' %}">
-                    {% endif %}
-                    <div class="chat-details-div">
+            {% for room in chat_room %}
+                {% if request.user.is_brand %}
+                    <div class="chat_list_div active-chat" onclick="onSelectFriend('{{room.influencer.user.id}}')">
                         {% if request.user.is_brand %}
-                            <p><b>{{order.influencer.influencer_username}}</b></p>
+                            <img class="chat-profile" src="{{room.influencer.profile_image.url}}">
                         {% else %}
-                            <p><b>{{order.brand.full_name}}</b></p>
+                            <img class="chat-profile" src="{% static 'images/default.png' %}">
                         {% endif %}
-                        <p>{{order.id|get_chat:request}}</p>
+                        <div class="chat-details-div">
+                            {% if request.user.is_brand %}
+                                <p><b>{{room.influencer.full_name}}</b></p>
+                            {% else %}
+                                <p><b>{{room.brand.full_name}}</b></p>
+                            {% endif %}
+                            <p>{{room.id|get_chat:request}}</p>
+                        </div>
                     </div>
-                </div>
+                {% else %}
+                    <div class="chat_list_div active-chat" onclick="onSelectFriend('{{room.brand.user.id}}')">
+                        {% if request.user.is_brand %}
+                            <img class="chat-profile" src="{{room.influencer.profile_image.url}}">
+                        {% else %}
+                            <img class="chat-profile" src="{% static 'images/default.png' %}">
+                        {% endif %}
+                        <div class="chat-details-div">
+                            {% if request.user.is_brand %}
+                                <p><b>{{room.influencer.full_name}}</b></p>
+                            {% else %}
+                                <p><b>{{room.brand.full_name}}</b></p>
+                            {% endif %}
+                            <p>{{room.id|get_chat:request}}</p>
+                        </div>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
 
@@ -137,32 +155,6 @@
         <div class="heading-div">
             <h3 class="heading"><b>Order</b></h3>
         </div>
-        <div class="status">
-            <p><b id="order-status">{{display_order.status}}</b></p>
-        </div>
-
-        {% if not request.user.is_brand %}
-            <form method="post">
-                {% csrf_token %}
-                <h3><b>Order Status</b></h3>
-                <select class="input package-input" name="display_order_status">
-                    <option value="pending">Pending</option>
-                    <option value="In progress">In progress</option>
-                    <option value="declined">Declined</option>
-                </select>
-                <input type="hidden" value="{{display_order.id}}" name="display_order_id">
-                <button type="submit" class="buy-btn btn" data-id="checkout" 
-                style="
-                    font-size: large;
-                    border-radius: 15px;
-                    font-weight: 500;
-                    width: 100%;
-                    color: white;
-                    background-color: black;
-                    height: 37px;
-                ">Continue</button>
-            </form>
-        {% endif %}
     </div>
 
 </div>

@@ -294,14 +294,14 @@ def get_room_or_error(room_id, user):
 	except PrivateChatRoom.DoesNotExist:
 		raise ClientError("ROOM_INVALID", "Invalid room.")
 
-	# Is this user allowed in the room? (must be user1 or user2)
-	if user != room.user1 and user != room.user2:
+	# Is this user allowed in the room? (must be brand or influencer)
+	if user != room.brand.user and user != room.influencer.user:
 		raise ClientError("ROOM_ACCESS_DENIED", "You do not have permission to join this room.")
 
 	# Are the users in this room friends?
 	# friend_list = FriendList.objects.get(user=user).friends.all()
-	# if not room.user1 in friend_list:
-	# 	if not room.user2 in friend_list:
+	# if not room.brand in friend_list:
+	# 	if not room.influencer in friend_list:
 	# 		raise ClientError("ROOM_ACCESS_DENIED", "You must be friends to chat.")
 	return room
 
@@ -337,10 +337,10 @@ def get_user_info(room, user):
 	"""
 	try:
 		# Determine who is who
-		other_user = room.user1
+		other_user = room.brand
 		print("*******************")
 		if other_user == user:
-			other_user = room.user2
+			other_user = room.influencer
 		print("*******###########***")
 
 		payload = {}
