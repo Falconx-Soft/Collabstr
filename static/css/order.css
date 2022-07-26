@@ -72,7 +72,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: relative;
     width: 100%;
     background-color: white;
 }
@@ -103,7 +103,7 @@
 }
 
 .chat-box{
-    margin-top: 75px;
+    margin-top: 0px;
     padding: 20px;
     height: 69vh;
 
@@ -278,6 +278,10 @@
         display: none;
     }
 
+    .chat-heading{
+        width: 100%;
+    }
+
     .chat-heading>button{
         display: block;
     }
@@ -317,5 +321,13 @@
     .chat_area{
         display: none;
         width: 100%;
+    }
+
+    .chat-heading{
+        position: fixed;
+    }
+
+    .chat-box{
+        margin-top: 75px;
     }
 }
