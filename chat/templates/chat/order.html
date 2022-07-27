@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load get_chat %}
-{% block title %} Dashboard {% endblock %} 
+{% block title %} Dashboard {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block extrastyle %}
@@ -13,7 +13,9 @@
 
 <link rel="stylesheet" href="{% static '/css/order.css' %}">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 
@@ -48,39 +50,39 @@
 
         <div id="requests_div" class="chat-list" style="min-height: 80vh;">
             {% for room in chat_room %}
+            {% if request.user.is_brand %}
+            <div class="chat_list_div active-chat" onclick="onSelectFriend('{{room.influencer.user.id}}')">
                 {% if request.user.is_brand %}
-                    <div class="chat_list_div active-chat" onclick="onSelectFriend('{{room.influencer.user.id}}')">
-                        {% if request.user.is_brand %}
-                            <img class="chat-profile" src="{{room.influencer.profile_image.url}}">
-                        {% else %}
-                            <img class="chat-profile" src="{% static 'images/default.png' %}">
-                        {% endif %}
-                        <div class="chat-details-div">
-                            {% if request.user.is_brand %}
-                                <p><b>{{room.influencer.full_name}}</b></p>
-                            {% else %}
-                                <p><b>{{room.brand.full_name}}</b></p>
-                            {% endif %}
-                            <p>{{room.id|get_chat:request}}</p>
-                        </div>
-                    </div>
+                <img class="chat-profile" src="{{room.influencer.profile_image.url}}">
                 {% else %}
-                    <div class="chat_list_div active-chat" onclick="onSelectFriend('{{room.brand.user.id}}')">
-                        {% if request.user.is_brand %}
-                            <img class="chat-profile" src="{{room.influencer.profile_image.url}}">
-                        {% else %}
-                            <img class="chat-profile" src="{% static 'images/default.png' %}">
-                        {% endif %}
-                        <div class="chat-details-div">
-                            {% if request.user.is_brand %}
-                                <p><b>{{room.influencer.full_name}}</b></p>
-                            {% else %}
-                                <p><b>{{room.brand.full_name}}</b></p>
-                            {% endif %}
-                            <p>{{room.id|get_chat:request}}</p>
-                        </div>
-                    </div>
+                <img class="chat-profile" src="{% static 'images/default.png' %}">
                 {% endif %}
+                <div class="chat-details-div">
+                    {% if request.user.is_brand %}
+                    <p><b>{{room.influencer.full_name}}</b></p>
+                    {% else %}
+                    <p><b>{{room.brand.full_name}}</b></p>
+                    {% endif %}
+                    <p>{{room.id|get_chat:request}}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="chat_list_div active-chat" onclick="onSelectFriend('{{room.brand.user.id}}')">
+                {% if request.user.is_brand %}
+                <img class="chat-profile" src="{{room.influencer.profile_image.url}}">
+                {% else %}
+                <img class="chat-profile" src="{% static 'images/default.png' %}">
+                {% endif %}
+                <div class="chat-details-div">
+                    {% if request.user.is_brand %}
+                    <p><b>{{room.influencer.full_name}}</b></p>
+                    {% else %}
+                    <p><b>{{room.brand.full_name}}</b></p>
+                    {% endif %}
+                    <p>{{room.id|get_chat:request}}</p>
+                </div>
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
 
@@ -110,41 +112,22 @@
         <div class="heading-div chat-heading">
             <div class="back-btn-div">
                 <i class="fa fa-arrow-left" id="back_to_chat_list" aria-hidden="true"></i>
-                <h3 class="heading"><b><span id="id_other_username"></span></b> <span id="connection-status"></span></h3>
+                <h3 class="heading"><b><span id="id_other_username"></span></b> <span id="connection-status"></span>
+                </h3>
             </div>
 
-            <button type="button" style="font-size: larger;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Contract</button>
+            <button type="button" style="font-size: larger;" class="btn btn-info btn-lg" data-toggle="modal"
+                data-target="#myModal">Contract</button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Contract</h4>
-                    </div>
-                    <div class="modal-body">
-                    <p><b>Status:</b> <span id="display-status"></span></p>
-                    <p><b>Category:</b> <span id="display-category"></span></p>
-                    <p><b>Price:</b> <span id="display-price"></span></p>
-                    <p><b>Platform:</b> <span id="display-platform"></span></p>
-                    <p><b>Offering:</b> <span id="display-offering"></span></p>
-                    <p><b>Include:</b> <span id="display-include"></span></p>
-                    </div>
-                </div>
-                
-                </div>
-            </div>
         </div>
         <div class="chat-box" id="id_chat_log">
-            
+
         </div>
         <span style="display:none;" class="{% if not debug %}d-none{% endif %} page-number" id="id_page_number">1</span>
         <div class="input-div" id="input-div">
             <div class="input-div-2">
-                <input type="text" id="id_chat_message_input" class="message-input" placeholder="Message" onfocus="focusFunction()" onfocusout="focusOutFunction()" onkeyup="keyPressFunction(event)">
+                <input type="text" id="id_chat_message_input" class="message-input" placeholder="Message"
+                    onfocus="focusFunction()" onfocusout="focusOutFunction()" onkeyup="keyPressFunction(event)">
                 <button class="send-btn" id="send-btn" style="display:none;">Send</button>
                 <i class="far fa-file-image" id="send-img"></i>
             </div>
@@ -154,6 +137,223 @@
     <div class="order_details_area">
         <div class="heading-div">
             <h3 class="heading"><b>Order</b></h3>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Contract</h4>
+                </div>
+                <div class="modal-body" style="padding: 0px;">
+                    <div class="container"
+                        style="position: relative; display: flex; justify-content: center;">
+
+                        <div class="orders-div" style="width: 100%; padding-bottom: 10px;">
+
+                            <div class="order_list_option">
+                                <div class="order_list_option_item" style="font-size: 15px;">
+                                    <div class="active" id="requests_btn" style="font-weight: bold;">
+                                        Requests
+                                    </div>
+                                </div>
+                                <div class="order_list_option_item" style="font-size: 15px;">
+                                    <div id="in_progress_btn" style="font-weight: bold;">
+                                        In-progress
+                                    </div>
+                                </div>
+                                <div class="order_list_option_item" style="font-size: 15px;">
+                                    <div id="completed_btn" style="font-weight: bold;">
+                                        Completed
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="requests_div" style="padding-left: 10px; padding-right: 10px;">
+                                <div class="table-div">
+                                    <table id="myTable">
+                                        <tr class="header" style="border-bottom: solid 1px #ccc;">
+                                            {% if request.user.is_brand %}
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortTable()">
+                                                    Influencer
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+                                            {% else %}
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortTable()">
+                                                    Brand
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+                                            {% endif %}
+
+                                            <th style="width:20%;">
+                                                <div class="th-div">
+                                                    Date
+                                                    <i class="fa fa-caret-down" onclick="sortDate()"
+                                                        aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortPrice()">
+                                                    Price
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+                                            <th style="width:20%;">
+                                                Status
+                                            </th>
+                                        </tr>
+                                        <tr id="table-entity" data-toggle="modal" data-target="#exampleModal{{or.id}}"
+                                            style="cursor: pointer;">
+                                            {% if request.user.is_brand %}
+                                            <td><b>Ibrahim</b></td>
+                                            {% else %}
+                                            <td style="color: #a0a0a0;">Tayyab</td>
+                                            {% endif %}
+                                            <td>10-5-2021</td>
+                                            <td><b>$100</b></td>
+                                            <td><samp class="pending-status">pending</samp></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div id="in_progress_div" style="display: none;">
+                                <div class="functionality-div">
+                                    <input type="text" id="myInput" onkeyup="myFunction()"
+                                        placeholder="Search for order influencer, brand or price"
+                                        title="Type in a name">
+
+                                    <div class="functionality-btn-div">
+                                        <button onclick="sortTable()" class="sort-btn"
+                                            style="margin-right: 5px; margin-left: 5px;"><i class="fa fa-sort"
+                                                aria-hidden="true"></i> Sort</button>
+                                        <button onclick="ExportToExcel('xlsx')" class="sort-btn"><i
+                                                class="fa-solid fa-file-export"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="table-div">
+                                    <table id="myTable">
+                                        <tr class="header" style="border-bottom: solid 1px #ccc;">
+                                            {% if request.user.is_brand %}
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortTable()">
+                                                    Influencer
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+
+                                                </div>
+                                            </th>
+                                            {% else %}
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortTable()">
+                                                    Brand
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+                                            {% endif %}
+
+                                            <th style="width:20%;">
+                                                <div class="th-div">
+                                                    Date
+                                                    <i class="fa fa-caret-down" onclick="sortDate()"
+                                                        aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortPrice()">
+                                                    Price
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+                                            <th style="width:20%;">
+                                                Status
+                                            </th>
+                                            <th style="width:20%;">
+                                                Details
+                                            </th>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div id="completed_div" style="display: none;">
+                                <div class="functionality-div">
+                                    <input type="text" id="myInput" onkeyup="myFunction()"
+                                        placeholder="Search for order influencer, brand or price"
+                                        title="Type in a name">
+
+                                    <div class="functionality-btn-div">
+                                        <button onclick="sortTable()" class="sort-btn"
+                                            style="margin-right: 5px; margin-left: 5px;"><i class="fa fa-sort"
+                                                aria-hidden="true"></i> Sort</button>
+                                        <button onclick="ExportToExcel('xlsx')" class="sort-btn"><i
+                                                class="fa-solid fa-file-export"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="table-div">
+                                    <table id="myTable">
+                                        <tr class="header" style="border-bottom: solid 1px #ccc;">
+                                            {% if request.user.is_brand %}
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortTable()">
+                                                    Influencer
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+
+                                                </div>
+                                            </th>
+                                            {% else %}
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortTable()">
+                                                    Brand
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+                                            {% endif %}
+
+                                            <th style="width:20%;">
+                                                <div class="th-div">
+                                                    Date
+                                                    <i class="fa fa-caret-down" onclick="sortDate()"
+                                                        aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+
+                                            <th style="width:20%;">
+                                                <div class="th-div" onclick="sortPrice()">
+                                                    Price
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </div>
+                                            </th>
+                                            <th style="width:20%;">
+                                                Status
+                                            </th>
+                                            <th style="width:20%;">
+                                                Details
+                                            </th>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -178,26 +378,26 @@
     in_progress_div = document.getElementById("in_progress_div");
     complete_div = document.getElementById("complete_div");
 
-    requests_btn.addEventListener("click", function(){
+    requests_btn.addEventListener("click", function () {
         hide_div();
         requests_div.style.display = "block";
         requests_btn.classList.add("active");
     });
 
 
-    in_progress_btn.addEventListener("click", function(){
+    in_progress_btn.addEventListener("click", function () {
         hide_div();
         in_progress_div.style.display = "block";
         in_progress_btn.classList.add("active");
     });
 
-    completed_btn.addEventListener("click", function(){
+    completed_btn.addEventListener("click", function () {
         hide_div();
         complete_div.style.display = "block";
         completed_btn.classList.add("active");
     });
 
-    function hide_div(){
+    function hide_div() {
         requests_div.style.display = "none";
         in_progress_div.style.display = "none";
         complete_div.style.display = "none";
@@ -210,6 +410,8 @@
     }
 
 </script>
+
+<script src="{% static 'js/new-order.js' %}"></script>
 
 {% include 'chat/sockets.html' %}
 
