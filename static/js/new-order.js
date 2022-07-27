@@ -137,6 +137,14 @@ requests_btn = document.getElementById("requests_btn");
 in_progress_btn = document.getElementById("in_progress_btn");
 completed_btn = document.getElementById("completed_btn");
 
+try {
+  delivered_btn = document.getElementById("delivered_btn");
+  delivered_div = document.getElementById("delivered_div");
+}
+catch(err) {
+  console.log("");
+}
+
 requests_div = document.getElementById("requests_div");
 in_progress_div = document.getElementById("in_progress_div");
 completed_div = document.getElementById("completed_div");
@@ -154,20 +162,42 @@ in_progress_btn.addEventListener("click", function(){
     in_progress_btn.classList.add('active');
 });
 
+delivered_btn.addEventListener("click", function(){
+  in_active();
+  delivered_div.style.display = "block";
+  delivered_btn.classList.add('active');
+});
+
 completed_btn.addEventListener("click", function(){
+    console.log("********");
     in_active();
-    in_progress_div.style.display = "block";
+    completed_div.style.display = "block";
     completed_btn.classList.add('active');
 });
+
+function complete_div(){
+    console.log("********");
+    in_active();
+    completed_div.style.display = "block";
+    completed_btn.classList.add('active');
+}
 
 function in_active(){
     requests_btn.classList.remove('active');
     in_progress_btn.classList.remove('active');
     completed_btn.classList.remove('active');
+    
+    try {
+      delivered_btn.classList.remove('active');
+      delivered_div.style.display = "none";
+    }
+    catch(err) {
+      
+    }
 
     requests_div.style.display = "none";
     in_progress_div.style.display = "none";
-    in_progress_div.style.display = "none";
+    completed_div.style.display = "none";
 }
 
 

@@ -413,20 +413,32 @@
 				if (data['response'] == "Successfully got the chat.") {
 
 					setupWebSocket(data['chatroom_id'])
+					
+					console.log("********************");
+					console.log(data['panding_orders'],"******************");
+					
+					const panding_order_body = document.getElementById("panding_order_body");
+					const accept_order_body = document.getElementById("accept_order_body");
+					const complete_order_body = document.getElementById("complete_order_body");
+					
+					let pop_up_data = "";
+					for(let i=0; i<data['panding_orders'].length; i++){
+						pop_up_data += '<tr>{% if request.user.is_brand %}<td><b>'+data['panding_orders'][i]['influencer_name']+'</b></td>{% else %}<td style="color: #a0a0a0;">'+data['panding_orders'][i]['brand_name']+'</td>{% endif %}<td>'+data['panding_orders'][i]['date']+'</td><td><b>'+data['panding_orders'][i]['price']+'</b></td><td><samp class="pending-status">'+data['panding_orders'][i]['status']+'</samp></td></tr>';
+					}
+					panding_order_body.innerHTML = pop_up_data;
 
-					document.getElementById("order-status").innerHTML = data['status'];
-					document.getElementById("order-content_category").innerHTML = data['content_category'];
-					document.getElementById("order-package_price").innerHTML = data['package_price'];
-					document.getElementById("order-choose_platform").innerHTML = data['choose_platform'];
-					document.getElementById("order-package_offering").innerHTML = data['package_offering'];
-					document.getElementById("order-package_include").innerHTML = data['package_include'];
+					pop_up_data = "";
+					for(let i=0; i<data['accept_orders'].length; i++){
+						pop_up_data += '<tr>{% if request.user.is_brand %}<td><b>'+data['accept_orders'][i]['influencer_name']+'</b></td>{% else %}<td style="color: #a0a0a0;">'+data['accept_orders'][i]['brand_name']+'</td>{% endif %}<td>'+data['accept_orders'][i]['date']+'</td><td><b>'+data['accept_orders'][i]['price']+'</b></td><td><samp class="pending-status">'+data['accept_orders'][i]['status']+'</samp></td></tr>';
+					}
+					accept_order_body.innerHTML = pop_up_data;
 
-					document.getElementById("display-status").innerHTML = data['status'];
-					document.getElementById("display-category").innerHTML = data['content_category'];
-					document.getElementById("display-price").innerHTML = data['package_price'];
-					document.getElementById("display-platform").innerHTML = data['choose_platform'];
-					document.getElementById("display-offering").innerHTML = data['package_offering'];
-					document.getElementById("display-include").innerHTML = data['package_include'];
+					pop_up_data = "";
+					for(let i=0; i<data['complete_orders'].length; i++){
+						pop_up_data += '<tr>{% if request.user.is_brand %}<td><b>'+data['complete_orders'][i]['influencer_name']+'</b></td>{% else %}<td style="color: #a0a0a0;">'+data['complete_orders'][i]['brand_name']+'</td>{% endif %}<td>'+data['complete_orders'][i]['date']+'</td><td><b>'+data['complete_orders'][i]['price']+'</b></td><td><samp class="pending-status">'+data['complete_orders'][i]['status']+'</samp></td></tr>';
+					}
+					complete_order_body.innerHTML = pop_up_data;
+
 				}
 				else if (data['response'] != null) {
 					alert(data['response'])

@@ -1713,23 +1713,31 @@ def order(request):
 		order_T.save()
 	if request.user.is_brand:
 		joinBrandObj = JoinBrand.objects.get(user=request.user)
-		order_obj = Orders.objects.filter(brand=joinBrandObj)
+		order_pending_obj = Orders.objects.filter(brand=joinBrandObj, status="pending")
+		order_accept_obj = Orders.objects.filter(brand=joinBrandObj, status="accept")
+		order_deliver_obj = Orders.objects.filter(brand=joinBrandObj, status="deliver")
+		order_complete_obj = Orders.objects.filter(brand=joinBrandObj, status="complete")
 
 		context = {
-			'pending_orders':order_obj,
-			'display_order':order_obj[0]
+			'pending_orders':order_pending_obj,
+			'accept_orders':order_accept_obj,
+			'order_deliver':order_deliver_obj,
+			'complete_orders': order_complete_obj,
 		}
 		return render(request, 'User/order.html',context)
 	else:
 		influencer = JoinInfluencer.objects.get(email_address=request.user.email)
-		order_obj = Orders.objects.filter(influencer=influencer)
+		order_pending_obj = Orders.objects.filter(influencer=influencer, status="pending")
+		order_accept_obj = Orders.objects.filter(influencer=influencer, status="accept")
+		order_deliver_obj = Orders.objects.filter(influencer=influencer, status="deliver")
+		order_complete_obj = Orders.objects.filter(influencer=influencer, status="complete")
 
-		print(influencer,"*************")
-		print(order_obj,"*************")
 		context = {
-			'pending_orders':order_obj,
-			'display_order':order_obj[0],
-			'nav_profile_image':influencer.profile_image
+			'pending_orders':order_pending_obj,
+			'accept_orders':order_accept_obj,
+			'order_deliver':order_deliver_obj,
+			'complete_orders': order_complete_obj,
+			'nav_profile_image':influencer.profile_image,
 		}
 		return render(request, 'User/order.html',context)
 
