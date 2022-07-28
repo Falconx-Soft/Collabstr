@@ -19,6 +19,7 @@ import datetime
 
 from django.db.models import Q
 from django.db.models import Count
+import math
 
 # from .models import join_influencer
 stripe.api_key= 'sk_test_51KhIAhGppnrRkU6FOSJWqqiDXogb03Zh0gF9tEg9ov0aCIHdPsN4ptPDlEM5pkRAzuYv30LRiwSG9e2bOvnr5rZH00Wv7Ifh6t'
@@ -1611,25 +1612,16 @@ def influencer_home_profile(request):
 			return redirect('home')
 	
 def checkout(request):
-	stripe.api_key = "sk_test_51JjUwfESLCYKQ10LN1j8BbiZN4qYF8bU1GL7U33Xeyr0SHTfseQRahhDz7yB2fCkM1J83rGGBD5nJUKEgMNr1c8h00a491NEQ8"
-
-	# stripe.api_key ="sk_test_4eC39HqLyjWDarjtT1zdp7dc"
-
-	intent = stripe.PaymentIntent.create(
-			amount = 1200,
-			currency = "eur",
-			automatic_payment_methods = {"enabled": True},
-		)
-	context = {
-		'intent':intent
-	}
 	try:
 		if request.method== 'POST':
-
 			influencer_email= request.POST.get('influencer_email')
 			package_category= request.POST.get('package_category')
 			checkout_price= request.POST.get('checkout_price')
 			influencer_id = request.POST.get('influencer_id')
+
+			package_platform = request.POST.get('package_platform')
+			package_description = request.POST.get('package_description')
+
 			checkout_price_int= checkout_price.replace('$','')
 			ten_percent_price= int(checkout_price_int)/10
 			total_price= int(checkout_price_int)+ ten_percent_price
@@ -1639,7 +1631,7 @@ def checkout(request):
 			print('total:::::::::::::::::::',total_price)
 			print('influencer_id:::::::::::::::::::::',influencer_id)
 			joined_influencer=JoinInfluencer.objects.get(email_address=influencer_email)
-			context= {'intent':intent,'joined_influencer': joined_influencer , 'package_category':package_category, 'checkout_price':checkout_price_int, 'ten_percent_price':ten_percent_price,'total_price': total_price}
+			context= {'joined_influencer': joined_influencer , 'package_category':package_category, 'checkout_price':checkout_price_int, 'ten_percent_price':ten_percent_price,'total_price': math.ceil(total_price),'package_platform':package_platform, 'package_description':package_description}
 			return render(request, 'User/checkout.html', context)
 		else:
 			return redirect(request, 'User/home.html')
@@ -1648,16 +1640,33 @@ def checkout(request):
 			return redirect('home')
 
 def placeOrder(request):
+	print("****************************************")
 	if request.method== 'POST':
+
 		influencerId= request.POST.get('influencerId')
 		packageId = request.POST.get('packageId')
 		total_price = request.POST.get('total_price')
-		print(packageId,"************************")
+
+		package_category = request.POST.get('package_category')
+		package_platform = request.POST.get('package_platform')
+		package_description = request.POST.get('package_description')
+
+		stripe.api_key = "sk_test_51JjUwfESLCYKQ10LN1j8BbiZN4qYF8bU1GL7U33Xeyr0SHTfseQRahhDz7yB2fCkM1J83rGGBD5nJUKEgMNr1c8h00a491NEQ8"
+	
+		token = request.POST.get('stripeToken') # Using Flask
+
+		charge = stripe.Charge.create(
+		amount=math.ceil(float(total_price))*100,
+		currency='usd',
+		description='Example charge',
+		source=token,
+		capture=False,
+		)
+		print(charge,token,"&&&&&&&&&&&&&&&&&&")
 		influencer_obj = JoinInfluencer.objects.get(id=influencerId)
-		# package_obj = InfluencerPackage.objects.get(id=packageId)
 		brand_obj = JoinBrand.objects.get(user=request.user)
 
-		order_obj = Orders.objects.create(influencer=influencer_obj, brand=brand_obj, status="pending", price=float(total_price))
+		order_obj = Orders.objects.create(influencer=influencer_obj, brand=brand_obj, status="pending", price=float(total_price), package_category=package_category,package_platform=package_platform,package_description=package_description, token=charge.id)
 		order_obj.save()
 		# chat = PrivateChatRoom.objects.create(user1=request.user,user2=influencer_obj.user,order=order_obj,is_active=True)
 		# chat.save()
@@ -1665,7 +1674,7 @@ def placeOrder(request):
 		'joined_influencer':influencer_obj.id,
 		'order':order_obj.id
 		}
-		return render(request, 'User/checkout_requirements.html',context)	
+	return render(request, 'User/checkout_requirements.html',context)	
 
 def checkout_requirements(request):
 	if request.method== 'POST':
@@ -1711,6 +1720,10 @@ def order(request):
 		order_T = Orders.objects.get(id=id)
 		order_T.status = status
 		order_T.save()
+		if status == "accept":
+			stripe.api_key = 'sk_test_51JjUwfESLCYKQ10LN1j8BbiZN4qYF8bU1GL7U33Xeyr0SHTfseQRahhDz7yB2fCkM1J83rGGBD5nJUKEgMNr1c8h00a491NEQ8'
+			stripe.Charge.capture(order_T.token)
+
 	if request.user.is_brand:
 		joinBrandObj = JoinBrand.objects.get(user=request.user)
 		order_pending_obj = Orders.objects.filter(brand=joinBrandObj, status="pending")

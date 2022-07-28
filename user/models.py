@@ -209,6 +209,10 @@ class Orders(models.Model):
     status = models.CharField(max_length=500, null=True)
     crated_at = models.DateField(auto_now_add=True, null=True)
     price = models.IntegerField(null=True)
+    package_platform = models.CharField(max_length=1000, null=True)
+    package_category = models.CharField(max_length=10000, null=True)
+    package_description = models.TextField(null=True)
+    token = models.CharField(max_length=1000, null=True)
 
 class submit_requirements(models.Model):
     description = models.CharField(max_length=2000)

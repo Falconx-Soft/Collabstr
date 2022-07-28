@@ -1,6 +1,6 @@
 {% extends "base_profile.html" %}
 {% load static %}
-{% block title %} Dashboard {% endblock %} 
+{% block title %} Dashboard {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block extrastyle %}
@@ -11,28 +11,32 @@
 <link rel="stylesheet" href="{% static '/css/brand-pricing.css' %}">
 <link rel="stylesheet" href="{% static '/css/checkout.css' %}">
 <style>
-    body{
+    body {
         font-size: initial;
     }
- 
-a{
-    text-decoration: none;
-}
-a:hover{
-    text-decoration: none;
-}
-.secure-holder{
-            font-size: 11px;
-    display: flex;
-    color: rgb(42, 43, 46);
-    align-items: baseline;
-    margin-bottom: 5px;
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    .secure-holder {
+        font-size: 11px;
+        display: flex;
+        color: rgb(42, 43, 46);
+        align-items: baseline;
+        margin-bottom: 5px;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .row-btn-profile {
+            position: absolute;
+            left: -39px !important;
         }
-@media only screen and (max-width: 800px){
-.row-btn-profile{
-    position: absolute;
-    left: -39px !important;
-}}
+    }
 </style>
 
 {% endblock extrastyle %}
@@ -40,7 +44,7 @@ a:hover{
 
 </style>
 
-{% block content %}	
+{% block content %}
 <div class="progress-bar">
     <div class="progress-step step-active" data-id="0">
         <div class="step-num num-active">1</div>
@@ -57,9 +61,10 @@ a:hover{
     <div>
         <div class="form-section-checkout">
             <div class="form-title-checkout">Place Order</div>
-            
-                <div class="form-desc-checkout">A hold on your card will be placed for 72 hours. You will only be charged if Influencer accepts your request.</div>
-            
+
+            <div class="form-desc-checkout">A hold on your card will be placed for 72 hours. You will only be charged if
+                Influencer accepts your request.</div>
+
 
             <div class="checkout-row">
                 <!-- <div class="checkout-col checkout-form">
@@ -85,30 +90,37 @@ a:hover{
                 </form>
                     </div> -->
 
-                    <div class='checkout-col checkout-form'>
-                        <label class="inputLabel">Add card details:</label>
-                        <div class='filedAre'>
-                            <div class='fields'>
-                                <form id="payment-form">
-                                  <div id="payment-element">
+                <div class='checkout-col checkout-form'>
+                    <label class="inputLabel">Add card details:</label>
+                    <div class='filedAre'>
+                        <div class='fields'>
+                            <form id="payment-form">
+                                <div id="payment-element">
                                     <!-- Elements will create form elements here -->
-                                  </div>
-                                  <button id="submit" class="btn  btn-primary" style="margin-top: 20px; background: black !important;">Submit</button>
-                                  <div id="error-message">
+                                </div>
+                                <button type="button" id="submit-payment" class="btn  btn-primary"
+                                    style="margin-top: 20px; background: black !important;">Submit</button>
+                                <div id="error-message">
                                     <!-- Display error message to your customers here -->
-                                  </div>
-                                </form>
-                              </div>
-                          </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+                </div>
 
-                    <form action="{% url 'placeOrder' %}" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="influencerId" value="{{joined_influencer.id}}">
-                        <input type="hidden" name="packageId" value="6">
-                        <input type="submit" style="display: none;" id="requirements_page">
-                        <input type="hidden" value="{{total_price}}" name="total_price" >
-                    </form>
+                <form action="{% url 'placeOrder' %}" method="POST" id="placeorder_form">
+                    {% csrf_token %}
+                    <input type="hidden" name="influencerId" value="{{joined_influencer.id}}">
+                    <input type="hidden" name="packageId" value="6">
+                    <input type="hidden" value="{{total_price}}" name="total_price">
+                    <input type="hidden" value="" name="stripeToken" id="stripeToken">
+
+                    <input type="hidden" value="{{package_category}}" name="package_category">
+                    <input type="hidden" value="{{package_platform}}" name="package_platform">
+                    <input type="hidden" value="{{package_description}}" name="package_description">
+
+                    <input type="submit" style="display: none;" id="requirements_page">
+                </form>
 
                 <div class="checkout-col">
                     <div class="package-holder-checkout">
@@ -125,7 +137,11 @@ a:hover{
                             <div>${{checkout_price}}</div>
                         </div>
                         <div class="price-row">
-                            <div class="tooltip-checkout">Fee<img class="tooltip-checkout-img" src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/tooltip.svg"><div class="tooltip-txt">This helps us operate our platform and cover payment processing fees.</div></div>
+                            <div class="tooltip-checkout">Fee<img class="tooltip-checkout-img"
+                                    src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/tooltip.svg">
+                                <div class="tooltip-txt">This helps us operate our platform and cover payment processing
+                                    fees.</div>
+                            </div>
                             <div>${{ten_percent_price}}</div>
                         </div>
                         <div class="price-row tax-row">
@@ -142,29 +158,38 @@ a:hover{
 
             <div class="guides-holder">
                 <div class="guide-holder">
-                    
-                            <div class="guide-title"><div class="guide-num">1</div>Place Order</div>
-                       
-                    
-                    
-                    
-                    <div class="guide-txt">Submit the requirements for the collaboration. Influencer has 72 hours to accept your request before the hold on your card is removed.</div>
+
+                    <div class="guide-title">
+                        <div class="guide-num">1</div>Place Order
+                    </div>
+
+
+
+
+                    <div class="guide-txt">Submit the requirements for the collaboration. Influencer has 72 hours to
+                        accept your request before the hold on your card is removed.</div>
                 </div>
 
                 <div class="guide-holder">
-                    <div class="guide-title"><div class="guide-num">2</div>Chat With Influencer</div>
-                    <div class="guide-txt">Chat with Influencer and arrange the collaboration. Your funds are held securely until they complete the work.</div>
+                    <div class="guide-title">
+                        <div class="guide-num">2</div>Chat With Influencer
+                    </div>
+                    <div class="guide-txt">Chat with Influencer and arrange the collaboration. Your funds are held
+                        securely until they complete the work.</div>
                 </div>
 
                 <div class="guide-holder">
-                    <div class="guide-title"><div class="guide-num">3</div>Receive Content</div>
-                    <div class="guide-txt">Receive your content to review and approve. The collaboration is complete and payment is released to the influencer.</div>
+                    <div class="guide-title">
+                        <div class="guide-num">3</div>Receive Content
+                    </div>
+                    <div class="guide-txt">Receive your content to review and approve. The collaboration is complete and
+                        payment is released to the influencer.</div>
                 </div>
             </div>
 
         </div>
 
-       
+
     </div>
 </div>
 
@@ -223,15 +248,13 @@ a:hover{
                         alt="Instagram logo" loading="lazy">
                 </div>
                 <div class="footer-img">
-                    <a href="https://tiktok.com/@INFUL.com" target="_blank"><span
-                            class="link-spanner"></span></a>
+                    <a href="https://tiktok.com/@INFUL.com" target="_blank"><span class="link-spanner"></span></a>
                     <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/tiktok.svg"
                         alt="TikTok logo" loading="lazy">
                 </div>
 
                 <div class="footer-img">
-                    <a href="https://twitter.com/@useINFUL" target="_blank"><span
-                            class="link-spanner"></span></a>
+                    <a href="https://twitter.com/@useINFUL" target="_blank"><span class="link-spanner"></span></a>
                     <img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/twitter.svg"
                         alt="Twitter logo" loading="lazy">
                 </div>
@@ -255,170 +278,64 @@ a:hover{
 {% block extrajavascript %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- <script>
-       $('.faq-holder').click(function () {
-            let answer = $(this).children('.faq-answer');
-            if (answer.is(":visible")) {
-                answer.slideUp();
-            } else {
-                answer.slideDown();
-            }
-        });
-        // for selecting package holders
-        $('.package-holder').click(function () {
-            $('.package-btn').removeClass('btn-active');
-            $('.package-holder').removeClass('package-active');
-            $(this).find('.package-btn').addClass('btn-active');
-            $(this).addClass('package-active');
-            $('.package-input').val($(this).data('id'));
+<script src="https://js.stripe.com/v3/"></script>
 
-            // update info on checkout box
-            $('.checkout-price').html($(this).find('.package-price').html());
-            $('.checkout-description-holder').html($(this).find('.package-description').html());
-        });
+<script>
 
-        function changePackage(el) {
-            
-            let packageID = $(el).find(":selected").val();
-            console.log('on change function calls', packageID)
-            $(".packages-holder").find(`[data-id='${packageID}']`).click();
-        }
+    const stripe = Stripe('pk_test_51JjUwfESLCYKQ10LuYcS5op815ibdVIdgy1iOHvzOy2tgk04sW4R7tWfy44PrvjHurcdDl9sizct1uLPuAHmQbtY00w9TKZZj2');
 
-        function changeFilter(el) {
-            let cat = $(el).find(":selected").val();
+    const elements = stripe.elements();
 
-            $('.package-holder').show();
-            if (cat !== 'All') {
-                $(".package-category").each(function () {
-                    if ($(this).text().toLowerCase() !== cat) {
-                        $(this).parent('.package-holder').hide();
-                    }
-                });
-            }
-        }
-        // $(document).on('click', '.login-btn', function () {
-        //     $('.form-holder-forgot').hide();
-        //     $('.form-holder-signup').hide();
-        //     $('.form-holder-login').show();
-        // });
-        // $(document).on('click', '.forgot-btn', function () {
-        //     $('.form-holder-login').hide();
-        //     $('.form-holder-forgot').show();
-        // });
-        // $(document).on('click', '.signup-btn', function () {
-        //     $('.form-holder-login').hide();
-        //     $('.form-holder-signup').show();
-        // });
-        // $('.msg-btn, .buy-btn, .save-btn').click(function () {
-
-        //     $(".modal").css("display", "flex");
-        // });
-        // $('.close-modal').click(function () {
-
-        //     $(".modal").css("display", "none");
-        //     $(".form-1").css("display", "block");
-        //         $(".form-2").css("display", "none");
-        // });
-        //     $('.modal-btn').click(function () {
-
-        //         $(".form-1").css("display", "none");
-        //         $(".form-2").css("display", "block");
-
-        //     });
-
-        
-
-    </script> -->
-
-    <script src="https://js.stripe.com/v3/"></script>
-
-    <script>
-      // Set your publishable key: remember to change this to your live publishable key in production
-      // See your keys here: https://dashboard.stripe.com/apikeys
-      
-    //   const stripe = Stripe('pk_live_51KQUjHA4UJLsim4TNzqL21nv9sLlTsqkERkKHDNa6WhA9EBf41CgbdRiSTAUROHrQvuWbuIuI2koIJA6hz4rNXNa00T3g3eDgb');
-        
-        const stripe = Stripe('pk_test_51JjUwfESLCYKQ10LuYcS5op815ibdVIdgy1iOHvzOy2tgk04sW4R7tWfy44PrvjHurcdDl9sizct1uLPuAHmQbtY00w9TKZZj2');
-    
-      const options = {
-      clientSecret: '{{intent.client_secret}}',
-      // Fully customizable with appearance API.
-      appearance: {/*...*/},
-      };
-    
-      // Set up Stripe.js and Elements to use in checkout form, passing the client secret obtained in step 2
-      const elements = stripe.elements(options);
-    
-      // Create and mount the Payment Element
-      const paymentElement = elements.create('payment');
-      //paymentElement.mount('#payment-element');
-    
-      var card = elements.create("card", {
+    var card = elements.create("card", {
         iconStyle: "solid",
         style: {
-          base: {
-            iconColor: "black",
-            color: "black",
-            fontWeight: 400,
-            fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-            fontSize: "15px",
-            fontSmoothing: "antialiased",
-    
-            "::placeholder": {
-              color: "#BFAEF6"
-            },
-            ":-webkit-autofill": {
-              color: "black"
-            }
-            
-          },
-          invalid: {
-            iconColor: "red",
-            color: "red"
-          }
-    
-          
-    
-        }
-      });
-      //paymentElement.mount('#payment-element');
-      card.mount("#payment-element");
-      const form = document.getElementById('payment-form');
-    
-      form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-    
-      stripe.confirmCardPayment('{{intent.client_secret}}', {
-        payment_method: {
-          card: card,
-          billing_details: {
-            name: '{{request.user.username}}',
-            email: '{{request.user.email}}'
-          },
-        },
-      })
-      .then(function(result) {
-        console.log("result*******************************", result)
-        if(result.error){
-          window.alert(result.error.code);
-        }
-        console.log("paymentIntent",result['paymentIntent'] , result['paymentIntent']['status'])
-        if(result['paymentIntent']['status'] == 'succeeded'){
-        //   document.getElementById("loading").style.display = 'block';
-        //   alertBoxMessage=false;
-        //   document.getElementById("details-form").submit()
-        document.getElementById("requirements_page").click()
+            base: {
+                iconColor: "black",
+                color: "black",
+                fontWeight: 400,
+                fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontSize: "15px",
+                fontSmoothing: "antialiased",
 
-        }else{
-          alert("Transaction failed")
-          
+                "::placeholder": {
+                    color: "#BFAEF6"
+                },
+                ":-webkit-autofill": {
+                    color: "black"
+                }
+            },
+            invalid: {
+                iconColor: "red",
+                color: "red"
+            }
         }
-        // Handle result.error or result.paymentIntent
-      });
-    
-      });
-    
-    </script>
+    });
+    //paymentElement.mount('#payment-element');
+    card.mount("#payment-element");
+    const form = document.getElementById('submit-payment');
+
+    form.addEventListener('click', function () {
+        // document.getElementById("loading").style.display = 'block';
+        stripe.createToken(card).then(function (result) {
+            if (result.error) {
+                // Inform the customer that there was an error.
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the token to your server.
+                stripeTokenHandler(result.token);
+            }
+        });
+    });
+
+    function stripeTokenHandler(token) {
+        // Insert the token ID into the form so it gets submitted to the 
+        console.log(token, "*****************")
+        document.getElementById("stripeToken").value = token.id;
+        document.getElementById("requirements_page").click()
+    }
+
+</script>
 
 
 
