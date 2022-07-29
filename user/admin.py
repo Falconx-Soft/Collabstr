@@ -28,5 +28,5 @@ admin.site.register(User, UserAdmin)
 
 
 class orderAdmin(admin.ModelAdmin):
-    list_display = ('influencer', 'package', 'brand', 'status', 'crated_at')
+    list_display = ('influencer', 'package', 'brand', 'status', 'timestamp')
 admin.site.register(Orders,orderAdmin)

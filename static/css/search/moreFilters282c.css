@@ -1,0 +1,21 @@
+.more-filter-select{
+    width: 100%;
+}
+
+#location-input{
+    width: calc(100% - 10px);
+}
+
+.more-filter-holder{
+    margin: 2% 0 5% 0;
+}
+
+.more-filter-title{
+    margin-bottom: 6px;
+}
+
+@media only screen and (max-width: 800px) {
+    .more-filter-holder {
+        margin: 3% 0 7% 0;
+    }
+}

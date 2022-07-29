@@ -8,6 +8,9 @@ from user.models import *
 from .utils import find_or_create_private_chat
 from django.contrib.auth import get_user_model
 from django.core import serializers
+from datetime import timedelta
+from django.db.models.functions import Now
+import stripe
 User = get_user_model()
 
 
@@ -71,14 +74,13 @@ def get_order_list(orders_obj):
 		temp = {
 			'influencer_name':order.influencer.full_name,
 			'brand_name':order.brand.full_name,
-			'date':str(order.crated_at),
+			'date':str(order.timestamp.date()),
 			'price':order.price,
 			'status':order.status
 		}
 		order_list.append(temp)
 
 	return order_list
-
 
 # Ajax call to return a private chatroom or create one if does not exist
 def create_or_return_private_chat(request, *args, **kwargs):
@@ -93,6 +95,12 @@ def create_or_return_private_chat(request, *args, **kwargs):
 					brand_obj = JoinBrand.objects.get(user=user1)
 					influencer_obj = JoinInfluencer.objects.get(user=user2)
 					chat = PrivateChatRoom.objects.get(brand=brand_obj, influencer=influencer_obj)
+
+					temp_orders = Orders.objects.filter(timestamp__lte=Now()-timedelta(days=3))
+
+					for odr in temp_orders:
+						odr.delete()
+						
 
 					orders_obj = Orders.objects.filter(influencer=influencer_obj, brand=brand_obj, status="pending")
 					panding_orders = get_order_list(orders_obj)

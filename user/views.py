@@ -36,6 +36,33 @@ def home(request):
 		'all_packages':all_packages,
 		'nav_profile_image':"image"
 		}
+
+	if request.method == 'POST':
+		pass
+		# platform = request.POST.get('platform')
+		# category = request.POST.get('category')
+		# remove_space = category.replace("&", "")
+		# split_category = remove_space.split(" ")
+		# filter_list = []
+		# for cat in split_category:
+		# 	temp = JoinInfluencer.objects.filter(cat=True)
+		# 	for t in temp:
+		# 		filter_list.append(t)
+		# if not request.user.is_brand:
+		# 	JoinInfluencerObj = JoinInfluencer.objects.get(user=request.user)
+		# 	context= {
+		# 		'all_influencer': filter_list,
+		# 		'all_packages':all_packages,
+		# 		'nav_profile_image':JoinInfluencerObj.profile_image
+		# 	}
+		# 	return render(request,'User/home.html', context)
+		# else:
+		# 	context= {
+		# 	'all_influencer': filter_list,
+		# 	'all_packages':all_packages,
+		# 	'nav_profile_image':"image"
+		# 	}
+		# 	return render(request,'User/home.html', context)
 	
 	if request.user.is_authenticated:
 		if not request.user.is_brand:
@@ -1662,7 +1689,6 @@ def placeOrder(request):
 		source=token,
 		capture=False,
 		)
-		print(charge,token,"&&&&&&&&&&&&&&&&&&")
 		influencer_obj = JoinInfluencer.objects.get(id=influencerId)
 		brand_obj = JoinBrand.objects.get(user=request.user)
 
