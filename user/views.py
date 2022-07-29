@@ -38,32 +38,239 @@ def home(request):
 		}
 
 	if request.method == 'POST':
-		pass
-		# platform = request.POST.get('platform')
-		# category = request.POST.get('category')
-		# remove_space = category.replace("&", "")
-		# split_category = remove_space.split(" ")
-		# filter_list = []
-		# for cat in split_category:
-		# 	temp = JoinInfluencer.objects.filter(cat=True)
-		# 	for t in temp:
-		# 		filter_list.append(t)
-		# if not request.user.is_brand:
-		# 	JoinInfluencerObj = JoinInfluencer.objects.get(user=request.user)
-		# 	context= {
-		# 		'all_influencer': filter_list,
-		# 		'all_packages':all_packages,
-		# 		'nav_profile_image':JoinInfluencerObj.profile_image
-		# 	}
-		# 	return render(request,'User/home.html', context)
-		# else:
-		# 	context= {
-		# 	'all_influencer': filter_list,
-		# 	'all_packages':all_packages,
-		# 	'nav_profile_image':"image"
-		# 	}
-		# 	return render(request,'User/home.html', context)
-	
+		platform = request.POST.get('platform')
+		category = request.POST.get('category')
+		gender = request.POST.get('gender')
+		category = category.lower()
+		remove_space = category.replace("&", "")
+		split_category = remove_space.split(" ")
+		
+		final_list = []
+
+		categories_list = []
+		if category != "":
+			if "lifestyle" in split_category:
+				temp = JoinInfluencer.objects.filter(lifestyle=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "fashion" in split_category:
+				temp = JoinInfluencer.objects.filter(fashion=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "beauty" in split_category:
+				temp = JoinInfluencer.objects.filter(beauty=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "health" in split_category:
+				temp = JoinInfluencer.objects.filter(health_fitness=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "travel" in split_category:
+				temp = JoinInfluencer.objects.filter(travel=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "food" in split_category:
+				temp = JoinInfluencer.objects.filter(food_drink=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "model" in split_category:
+				temp = JoinInfluencer.objects.filter(model=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "comedy" in split_category:
+				temp = JoinInfluencer.objects.filter(comedy_entertainment=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "art" in split_category:
+				temp = JoinInfluencer.objects.filter(art_photography=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "music" in split_category:
+				temp = JoinInfluencer.objects.filter(music_dance=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "entrepreneur" in split_category:
+				temp = JoinInfluencer.objects.filter(entrepreneur_business=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "family" in split_category:
+				temp = JoinInfluencer.objects.filter(family_children=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "animals" in split_category:
+				temp = JoinInfluencer.objects.filter(animals_pets=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "athlete" in split_category:
+				temp = JoinInfluencer.objects.filter(athlete_sports=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "celebrity" in split_category:
+				temp = JoinInfluencer.objects.filter(celebrity_public_pigure=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "adventure_outdoors" in split_category:
+				temp = JoinInfluencer.objects.filter(adventure=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "actor" in split_category:
+				temp = JoinInfluencer.objects.filter(actor=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "education" in split_category:
+				temp = JoinInfluencer.objects.filter(education=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "gaming" in split_category:
+				temp = JoinInfluencer.objects.filter(gaming=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "lgbtq2+" in split_category:
+				temp = JoinInfluencer.objects.filter(lgbtq=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "technology" in split_category:
+				temp = JoinInfluencer.objects.filter(technology=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "healthcare" in split_category:
+				temp = JoinInfluencer.objects.filter(healthcare=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "vegan" in split_category:
+				temp = JoinInfluencer.objects.filter(vegan=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "cannabis" in split_category:
+				temp = JoinInfluencer.objects.filter(cannabis=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "skilled" in split_category:
+				temp = JoinInfluencer.objects.filter(skilled_trades=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+			if "automotive" in split_category:
+				temp = JoinInfluencer.objects.filter(automotive=True)
+				for t in temp:
+					if t not in categories_list:
+						categories_list.append(t)
+
+			for c in categories_list:
+				final_list.append(c)
+		
+
+		platform_list = []
+		if platform != "" and platform != "Any":
+			if final_list != []:
+				for category in final_list:
+					if platform.lower() == "instagram":
+						if category.instagram_username != "":
+							print("Hello")
+							platform_list.append(category)
+					elif platform.lower() == "tiktok":
+						if category.tiktok_username:
+							platform_list.append(category)
+					elif platform.lower() == "youtube":
+						if category.youtube_url:
+							platform_list.append(category)
+			else:
+				for category in all_influencer:
+					if platform.lower() == "instagram":
+						if category.instagram_username != "":
+							platform_list.append(category)
+					elif platform.lower() == "tiktok":
+						if category.tiktok_username:
+							platform_list.append(category)
+					elif platform.lower() == "youtube":
+						if category.youtube_url:
+							platform_list.append(category)
+			final_list = []
+			for p in platform_list:
+				final_list.append(p)
+
+		
+		gender_list = []
+		if gender != "":
+			print(gender,"*****************")
+			if final_list != []:
+				for category in final_list:
+					if gender.lower() == "male":
+						if category.gender_influencer.lower() == "male":
+							gender_list.append(category)
+						elif gender.lower() == "female":
+							if category.gender_influencer.lower() == "female":
+								gender_list.append(category)
+						elif gender.lower() == "other":
+							if category.gender_influencer.lower() == "other":
+								gender_list.append(category)
+			else:
+				for category in all_influencer:
+					if gender.lower() == "male":
+						if category.gender_influencer.lower() == "male":
+							gender_list.append(category)
+					elif gender.lower() == "female":
+						print("**************")
+						if category.gender_influencer.lower() == "female":
+							print("ffffffffffffffffff")
+							gender_list.append(category)
+					elif gender.lower() == "other":
+						if category.gender_influencer.lower() == "other":
+							gender_list.append(category)
+			final_list = []
+			for p in gender_list:
+				final_list.append(p)
+			print(final_list,"&&&&&&&&&&&&&&&")
+
+		if platform != "" or platform != "Any" or category != "" or gender != "":
+			if request.user.is_authenticated:
+				if not request.user.is_brand:	
+					context= {
+						'all_influencer': final_list,
+						'all_packages':all_packages,
+						'nav_profile_image':JoinInfluencerObj.profile_image
+					}
+					return render(request,'User/home.html', context)
+				else:
+					context= {
+					'all_influencer': final_list,
+					'all_packages':all_packages,
+					'nav_profile_image':"image"
+					}
+					return render(request,'User/home.html', context)
+			else:
+				context= {
+				'all_influencer': final_list,
+				'all_packages':all_packages,
+				'nav_profile_image':"image"
+				}
+				return render(request,'User/home.html', context)
+
+
 	if request.user.is_authenticated:
 		if not request.user.is_brand:
 			JoinInfluencerObj = JoinInfluencer.objects.get(user=request.user)

@@ -100,7 +100,6 @@ def create_or_return_private_chat(request, *args, **kwargs):
 
 					for odr in temp_orders:
 						odr.delete()
-						
 
 					orders_obj = Orders.objects.filter(influencer=influencer_obj, brand=brand_obj, status="pending")
 					panding_orders = get_order_list(orders_obj)
